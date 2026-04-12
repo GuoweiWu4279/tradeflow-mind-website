@@ -1,0 +1,38 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Button from '~/components/ui/Button.astro';
+
+import products from '~/data/products.json';
+
+const metadata = {
+  title: 'Checkout — PSI Monitor',
+  description: 'Complete your PSI Monitor purchase. Secure checkout will be connected here.',
+};
+
+const { salePrice, msrp, currency } = products.pricing;
+const salesMail = `mailto:${products.purchase.salesEmail}?subject=${encodeURIComponent('PSI Monitor — purchase ($' + salePrice + ')')}&body=${encodeURIComponent('Please send payment instructions or confirm my order.\n')}`;
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Purchase"
+    title="Complete your purchase"
+    subtitle={`PSI Monitor — introductory ${currency} $${salePrice} (MSRP $${msrp}).`}
+  />
+
+  <section class="max-w-xl mx-auto px-6 pb-20 text-center">
+    <div class="rounded-2xl border border-zinc-200 bg-white px-6 py-10 shadow-sm">
+      <p class="text-zinc-700 text-sm leading-relaxed mb-6">
+        Online checkout (Stripe or similar) will be connected on this page. For now, you can email our sales inbox to
+        arrange payment and receive your license instructions.
+      </p>
+      <Button variant="primary" href={salesMail} class="w-full sm:w-auto px-8 py-3 rounded-full font-semibold">
+        Email to buy — ${salePrice}
+      </Button>
+      <p class="mt-6 text-xs text-zinc-500">
+        Replace this flow with your payment link in <code class="text-zinc-700">src/data/products.json</code> when ready.
+      </p>
+    </div>
+  </section>
+</Layout>

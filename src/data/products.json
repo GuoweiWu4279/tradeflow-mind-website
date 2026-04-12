@@ -1,25 +1,34 @@
 {
-  "name": "TradeFlow Mind",
-  "tagline": "Trading Psychology Stability Index for NinjaTrader",
-  "description": "A real-time psychological stability index monitor for NinjaTrader 8. Helps traders maintain discipline by tracking emotional state patterns during live trading sessions.",
+  "name": "PSI Monitor",
+  "legalNameNote": "Marketing name for the PSI TradeMonitor NinjaTrader 8 add-on. In-product labels may differ.",
+  "tagline": "Real-time psychological stability for NinjaTrader 8",
+  "description": "PSI Monitor tracks seven behavioral dimensions and computes your Psychological Stability Index (PSI) during live and playback sessions — locally on your PC, with no cloud uploads.",
   "version": "1.0.0",
-  "platform": "NinjaTrader 8",
-  "category": "Trading Psychology Tool",
+  "platform": "NinjaTrader 8 (64-bit)",
+  "category": "Trading psychology monitor",
   "systemRequirements": {
-    "os": "Windows 10 / 11 (64-bit)",
-    "ninjaTrader": "NinjaTrader 8.0.23.0 or later",
-    "dotNet": ".NET Framework 4.8 or later",
+    "os": "Windows 10 or later (64-bit)",
+    "ninjaTrader": "NinjaTrader 8 — we recommend the latest stable build from NinjaTrader",
     "ram": "4 GB RAM minimum",
-    "disk": "50 MB free disk space"
+    "disk": "50 MB free disk space",
+    "note": "Older NinjaTrader 8 builds may work but are not guaranteed. NinjaTrader 7 is not supported."
   },
-  "socialProof": {
-    "activeUsers": "500+",
-    "rating": "4.8",
-    "reviewCount": 47
+  "pricing": {
+    "currency": "USD",
+    "msrp": 39.99,
+    "salePrice": 24.99,
+    "billing": "one-time license",
+    "msrpLabel": "MSRP"
+  },
+  "purchase": {
+    "checkoutPath": "/checkout",
+    "supportEmail": "support@psimonitor.com",
+    "salesEmail": "sales@psimonitor.com"
   },
   "links": {
     "download": "/download",
     "pricing": "/pricing",
+    "checkout": "/checkout",
     "docs": "/docs",
     "support": "/support",
     "changelog": "/changelog"

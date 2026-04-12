@@ -5,11 +5,11 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 _Last updated: April 2026_
 
-TradeFlow Mind is designed with privacy as a core principle. This policy explains what data we collect, why, and how we protect it.
+PSI Monitor is designed with privacy as a core principle. This policy explains what data we collect, why, and how we protect it.
 
 ## 1. Core Privacy Principle
 
-**TradeFlow Mind does not collect, transmit, or store your trading data.** All session analysis, stability index calculations, and behavioral tracking happen entirely on your local machine. Your trading activity never leaves your computer.
+**PSI Monitor does not collect, transmit, or store your trading data.** All session analysis, stability index calculations, and behavioral tracking happen entirely on your local machine. Your trading activity never leaves your computer.
 
 ## 2. Information We Collect
 
@@ -56,7 +56,7 @@ Depending on your jurisdiction (GDPR, CCPA, etc.), you may have the right to:
 - Request a copy of any data associated with your account
 - Opt out of communications
 
-To exercise these rights, email: **support@tradeflowmind.com**
+To exercise these rights, email: **support@psimonitor.com**
 
 ## 7. Children's Privacy
 
@@ -68,4 +68,4 @@ We may update this Privacy Policy. We will notify users of significant changes v
 
 ## 9. Contact
 
-Privacy questions: **support@tradeflowmind.com**
+Privacy questions: **support@psimonitor.com**

@@ -1,46 +1,53 @@
 {
   "features": [
     {
-      "id": "stability-index",
-      "title": "Real-Time Stability Index",
-      "description": "A composite psychological stability score (0–100) calculated in real time during your trading session, based on configurable behavioral inputs.",
-      "icon": "tabler:activity",
+      "id": "psi-index",
+      "title": "Psychological Stability Index (PSI)",
+      "description": "A 0–100 score updated in real time, mapped to Stable (≥88), Caution (72–87), and Critical (<72) so you can see when emotional pressure is building.",
+      "icon": "tabler:gauge",
       "category": "core"
     },
     {
-      "id": "session-tracking",
-      "title": "Session-by-Session Tracking",
-      "description": "Automatically records each trading session, allowing you to review your psychological patterns over time and identify recurring stress triggers.",
-      "icon": "tabler:timeline",
+      "id": "d1-d7",
+      "title": "Seven behavioral dimensions",
+      "description": "Separate signals for revenge-style re-entry, stop manipulation, size outliers, hold-time collapse, holding deep losses, rule violations, and overtrading — each with its own weight you can tune.",
+      "icon": "tabler:binary-tree",
       "category": "core"
     },
     {
-      "id": "alert-system",
-      "title": "Threshold Alerts",
-      "description": "Set personal stability thresholds. Receive in-platform alerts when your index drops below your chosen level — a signal to pause and reassess.",
-      "icon": "tabler:bell",
+      "id": "hud",
+      "title": "Floating HUD + hub",
+      "description": "A lightweight overlay during trading plus a full hub for session stats, timelines, history, profile baselines, and settings — all inside NinjaTrader 8.",
+      "icon": "tabler:layout-dashboard",
       "category": "core"
     },
     {
-      "id": "ninjatrader-native",
-      "title": "NinjaTrader 8 Native",
-      "description": "Built exclusively for NinjaTrader 8. Runs as an indicator panel directly inside your existing NinjaTrader workspace — no external software needed.",
-      "icon": "tabler:plug",
-      "category": "platform"
+      "id": "baseline",
+      "title": "Adaptive local baselines",
+      "description": "Uses online statistics to adapt to your own trade timing and rhythm. Playback sessions do not pollute your live baseline.",
+      "icon": "tabler:chart-dots",
+      "category": "analytics"
     },
     {
       "id": "local-only",
-      "title": "100% Local — No Data Uploads",
-      "description": "All analysis runs on your machine. Your trading data and behavioral patterns are never sent to any server. Complete privacy by design.",
-      "icon": "tabler:shield-lock",
+      "title": "No cloud, no accounts",
+      "description": "Configuration and history stay in local XML on your machine. The add-on does not phone home — suitable for traders who care about privacy.",
+      "icon": "tabler:cloud-off",
       "category": "privacy"
     },
     {
-      "id": "historical",
-      "title": "Historical Analysis",
-      "description": "Export session data to CSV and review your psychological stability trends alongside your trading P&L to identify behavioral patterns over time.",
-      "icon": "tabler:chart-bar",
-      "category": "analytics"
+      "id": "nt8",
+      "title": "Built for NinjaTrader 8",
+      "description": "Ships as an NT8 add-on using account and execution events. Works in live and Market Replay. NinjaTrader 7 is not supported.",
+      "icon": "tabler:brand-npm",
+      "category": "platform"
+    },
+    {
+      "id": "alerts",
+      "title": "Alerts you can hear and see",
+      "description": "Visual and optional voice alerts when PSI or dimensions cross the thresholds you configure — a nudge to pause, not an order blocker.",
+      "icon": "tabler:bell-ringing",
+      "category": "core"
     }
   ]
 }

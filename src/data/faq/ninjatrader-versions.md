@@ -4,6 +4,6 @@ category: technical
 order: 2
 ---
 
-TradeFlow Mind requires **NinjaTrader 8.0.23.0 or later**. It is not compatible with NinjaTrader 7 or earlier versions.
+PSI Monitor targets **NinjaTrader 8 (64-bit)**. We recommend installing the **latest stable NinjaTrader 8 build** from NinjaTrader. NinjaTrader 7 and earlier are not supported.
 
-We aim to maintain compatibility with all current NinjaTrader 8 releases. If you encounter issues after a NinjaTrader update, check the [Changelog](/changelog) for a compatibility update or contact [support](/support).
+Very old NT8 builds may still run but are **not guaranteed**. If something breaks after an update, check the [Changelog](/changelog) or [support](/support).

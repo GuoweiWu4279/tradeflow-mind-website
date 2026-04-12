@@ -1,4 +1,4 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -58,7 +58,7 @@ export const headerData = {
       ],
     },
   ],
-  actions: [{ text: 'Free Trial', href: getPermalink('/download'), variant: 'primary' }],
+  actions: [{ text: 'Buy — $24.99', href: getPermalink('/checkout'), variant: 'primary' }],
 };
 
 export const footerData = {
@@ -68,6 +68,7 @@ export const footerData = {
       links: [
         { text: 'Features', href: getPermalink('/#features') },
         { text: 'Pricing', href: getPermalink('/pricing') },
+        { text: 'Checkout', href: getPermalink('/checkout') },
         { text: 'Download', href: getPermalink('/download') },
         { text: 'Changelog', href: getPermalink('/changelog') },
       ],
@@ -76,9 +77,9 @@ export const footerData = {
       title: 'Support',
       links: [
         { text: 'FAQ', href: getPermalink('/faq') },
-        { text: 'Contact Support', href: 'mailto:support@tradeflowmind.com' },
-        { text: 'System Requirements', href: getPermalink('/download#requirements') },
-        { text: 'Installation Guide', href: getPermalink('/download#install') },
+        { text: 'Contact support', href: 'mailto:support@psimonitor.com' },
+        { text: 'System requirements', href: getPermalink('/download#requirements') },
+        { text: 'Installation', href: getPermalink('/download#install') },
       ],
     },
     {
@@ -96,11 +97,9 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
     { text: 'Risk Disclaimer', href: getPermalink('/disclaimer') },
   ],
-  socialLinks: [
-    { ariaLabel: 'X / Twitter', icon: 'tabler:brand-x', href: 'https://twitter.com/tradeflowmind' },
-  ],
+  socialLinks: [{ ariaLabel: 'Website', icon: 'tabler:world', href: 'https://psimonitor.com' }],
   footNote: `
-    &copy; ${new Date().getFullYear()} TradeFlow Mind. All rights reserved. &nbsp;·&nbsp;
+    &copy; ${new Date().getFullYear()} PSI Monitor. All rights reserved. &nbsp;·&nbsp;
     <span class="text-xs text-muted">Trading involves substantial risk of loss. Past performance is not indicative of future results.</span>
   `,
 };

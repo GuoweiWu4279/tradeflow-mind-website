@@ -1,6 +1,6 @@
 site:
-  name: TradeFlow Mind
-  site: 'https://tradeflowmind.com'
+  name: PSI Monitor
+  site: 'https://psimonitor.com'
   base: '/'
   trailingSlash: false
 
@@ -9,22 +9,22 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: TradeFlow Mind
-    template: '%s — TradeFlow Mind'
-  description: "TradeFlow Mind is a real-time trading psychology stability index for NinjaTrader 8. Monitor your emotional state and maintain discipline during live trading sessions."
+    default: PSI Monitor
+    template: '%s — PSI Monitor'
+  description: "PSI Monitor measures your trading psychology stability in real time inside NinjaTrader 8 — seven behavioral dimensions, local-only data, no signals."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: TradeFlow Mind
+    site_name: PSI Monitor
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@tradeflowmind'
-    site: '@tradeflowmind'
+    handle: '@psimonitor'
+    site: '@psimonitor'
     cardType: summary_large_image
 
 i18n:
@@ -68,5 +68,6 @@ analytics:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
 
+# Light-first UI — calm, modern feel for a psychology product
 ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'light:only'

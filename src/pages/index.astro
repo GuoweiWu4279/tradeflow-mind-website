@@ -10,195 +10,184 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'TradeFlow Mind — Trading Psychology Stability Index for NinjaTrader 8',
+  title: 'PSI Monitor — Trading psychology stability for NinjaTrader 8',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-
-  <!-- Hero -->
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Start Free Trial',
-        href: '/download',
-        icon: 'tabler:download',
+        text: 'Buy — $24.99',
+        href: '/checkout',
+        icon: 'tabler:shopping-cart',
       },
-      { text: 'See Pricing', href: '/pricing' },
+      { text: 'See pricing', href: '/pricing' },
     ]}
   >
     <Fragment slot="title">
-      Know Your Mind.
+      See your stability
       <br />
-      <span class="text-accent dark:text-white">Trade with Discipline.</span>
+      <span class="text-accent dark:text-emerald-700">before the next click.</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      TradeFlow Mind is a real-time <strong>psychological stability index</strong> for NinjaTrader 8.
-      Monitor your emotional state during live sessions and build the self-awareness that disciplined traders rely on.
+      <strong>PSI Monitor</strong> is a NinjaTrader 8 add-on that computes your <strong>Psychological Stability Index (PSI)</strong>
+      from seven behavioral dimensions — in real time, entirely on your PC.
       <br /><br />
       <span class="text-sm text-muted italic">
-        Monitoring tool only. Does not provide trading signals or financial advice.
-        <a href="/disclaimer" class="underline">Risk Disclaimer</a>.
+        Monitoring only. No signals, no investment advice, no order blocking.
+        <a href="/disclaimer" class="underline">Risk disclaimer</a>.
       </span>
     </Fragment>
   </Hero>
 
-  <!-- Note / Philosophy banner -->
   <Note
-    title="Designed for:"
-    description="Futures and forex traders on NinjaTrader 8 who take trading psychology seriously."
+    title="Built for traders who want clarity, not noise:"
+    description="Futures and forex traders on NinjaTrader 8 who care about discipline, session rhythm, and privacy."
   />
 
-  <!-- Stats -->
   <Stats
     stats={[
-      { title: 'Active Traders', amount: '500+' },
-      { title: 'Avg. Rating', amount: '4.8★' },
-      { title: 'NinjaTrader Version', amount: 'NT8' },
-      { title: 'Data Sent to Servers', amount: '0' },
+      { title: 'Behavioral dimensions', amount: '7' },
+      { title: 'PSI zones', amount: '3' },
+      { title: 'Cloud uploads', amount: '0' },
+      { title: 'Intro license', amount: '$24.99' },
     ]}
   />
 
-  <!-- Features -->
   <Features
     id="features"
-    tagline="Core Features"
-    title="What TradeFlow Mind Does"
-    subtitle="A focused set of tools to help you understand your psychological patterns during trading — nothing more, nothing less."
+    tagline="Inside the product"
+    title="What PSI Monitor does"
+    subtitle="Every feature exists to make your emotional load visible — without sending your trades to the internet."
     items={[
       {
-        title: 'Real-Time Stability Index',
+        title: 'Psychological Stability Index',
         description:
-          'A composite psychological stability score (0–100) calculated in real time during your NinjaTrader session, based on configurable behavioral inputs you define.',
-        icon: 'tabler:activity',
+          'A 0–100 PSI with Stable, Caution, and Critical bands so you can spot rising behavioral pressure during the session.',
+        icon: 'tabler:gauge',
       },
       {
-        title: 'Session-by-Session Tracking',
+        title: 'Seven weighted dimensions',
         description:
-          'Automatically records each trading session. Review your psychological patterns over time and identify recurring stress triggers across sessions.',
-        icon: 'tabler:timeline',
+          'Revenge-style re-entry, stop manipulation, size outliers, hold-time collapse, prolonged loss holds, rule compliance, and overtrading — each explained in-session.',
+        icon: 'tabler:binary-tree',
       },
       {
-        title: 'Threshold Alerts',
+        title: 'HUD + full hub',
         description:
-          'Set personal stability thresholds. Receive in-platform visual and audio alerts when your index drops below your chosen level.',
-        icon: 'tabler:bell',
+          'A floating overlay while you trade, plus Session, History, Profile, and Settings views for deeper review.',
+        icon: 'tabler:layout-dashboard',
       },
       {
-        title: 'NinjaTrader 8 Native',
+        title: 'Adaptive local baselines',
         description:
-          'Runs directly inside NinjaTrader 8 as an indicator panel. No external applications, no browser windows — stays within your existing workflow.',
-        icon: 'tabler:plug',
+          'Learns your timing and size habits on-device. Market Replay sessions do not write to your live baseline.',
+        icon: 'tabler:chart-dots',
       },
       {
-        title: '100% Local — No Data Uploads',
+        title: 'Local-only data',
         description:
-          'All analysis runs on your machine. Your trading data and behavioral patterns are never transmitted to any external server. Privacy by design.',
-        icon: 'tabler:shield-lock',
+          'Configuration and history are stored in local files on your machine — built for traders who want control of their data.',
+        icon: 'tabler:cloud-off',
       },
       {
-        title: 'Historical Export',
+        title: 'Live & playback',
         description:
-          'Export session data to CSV and compare psychological stability trends alongside your trading results over time. Identify your patterns.',
-        icon: 'tabler:chart-bar',
+          'Use the same tooling in live markets or Market Replay to rehearse routines without polluting production stats.',
+        icon: 'tabler:player-play',
       },
     ]}
   />
 
-  <!-- How it works -->
   <Steps
-    title="How It Works"
+    title="How it fits into your day"
     items={[
       {
-        title: 'Step 1: <span class="font-normal">Download & Install</span>',
+        title: 'Step 1: <span class="font-normal">Install in NinjaTrader 8</span>',
         description:
-          'Import TradeFlow Mind into NinjaTrader 8 via the standard NinjaScript Add-On import process. Takes under 2 minutes.',
+          'Deploy the add-on through your NinjaTrader 8 custom assembly workflow, then launch PSI Monitor from the Control Center.',
         icon: 'tabler:download',
       },
       {
-        title: 'Step 2: <span class="font-normal">Configure Your Thresholds</span>',
+        title: 'Step 2: <span class="font-normal">Tune profile & weights</span>',
         description:
-          'Set up your stability index parameters and alert thresholds in the indicator settings panel. Customize to match your trading style.',
-        icon: 'tabler:settings',
+          'Set session windows, risk limits, and how much each behavioral dimension influences PSI — match your playbook.',
+        icon: 'tabler:adjustments',
       },
       {
-        title: 'Step 3: <span class="font-normal">Trade & Monitor</span>',
+        title: 'Step 3: <span class="font-normal">Trade with the HUD</span>',
         description:
-          'The stability index panel is visible in your chart workspace during live trading. Watch your psychological state in real time.',
+          'Watch PSI and dimension bars update after each fill. Use alerts as a prompt to pause — not as a signal.',
         icon: 'tabler:eye',
       },
       {
-        title: 'Step 4: <span class="font-normal">Review & Learn</span>',
+        title: 'Step 4: <span class="font-normal">Review the session</span>',
         description:
-          'After each session, review your stability data. Over time, identify the conditions under which your discipline tends to weaken.',
+          'Open the hub to study timelines, session stats, and how each dimension contributed — then iterate deliberately.',
         icon: 'tabler:report-analytics',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Trader at workstation monitoring market',
+      alt: 'Trader at workstation',
     }}
   />
 
-  <!-- FAQ (abbreviated) -->
   <FAQs
-    title="Common Questions"
-    subtitle="For full answers, visit the FAQ page."
+    title="Quick answers"
+    subtitle="Full FAQ lives on the FAQ page."
     tagline="FAQ"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Does TradeFlow Mind provide trading signals?',
+        title: 'Does PSI Monitor place or block trades?',
         description:
-          'No. TradeFlow Mind is a psychological monitoring tool only. It does not provide trading signals, market analysis, or any form of financial advice. All trading decisions remain entirely yours.',
+          'No. It observes executions and positions to compute PSI. It does not send orders or prevent you from trading.',
       },
       {
-        title: 'Is my trading data private?',
+        title: 'Will a higher PSI make me profitable?',
         description:
-          'Yes. All calculations run locally on your machine. No trading data is ever sent to external servers. See our Privacy Policy for details.',
+          'Not necessarily. PSI describes behavioral pressure, not market outcomes. Results vary; trading involves substantial risk of loss.',
       },
       {
-        title: 'Which version of NinjaTrader is required?',
+        title: 'Is my data private?',
         description:
-          'NinjaTrader 8.0.23.0 or later is required. TradeFlow Mind is not compatible with NinjaTrader 7.',
+          'Yes. The add-on stores data locally in XML on your computer and does not upload your trades to our servers.',
       },
       {
-        title: 'What is the refund policy?',
+        title: 'Which NinjaTrader versions work?',
         description:
-          '30-day money-back guarantee if the software fails to run on a supported system. See the Refund Policy page for full details.',
+          'NinjaTrader 8 (64-bit) is required — we recommend the latest stable build. NT7 is not supported; very old NT8 builds may work but are not guaranteed.',
       },
     ]}
   />
 
-  <!-- CTA -->
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Download Free Trial',
-        href: '/download',
-        icon: 'tabler:download',
+        text: 'Buy — $24.99',
+        href: '/checkout',
+        icon: 'tabler:shopping-cart',
       },
       {
-        text: 'View Pricing',
-        href: '/pricing',
+        text: 'Download area',
+        href: '/download',
       },
     ]}
   >
-    <Fragment slot="title">
-      Ready to trade with more self-awareness?
-    </Fragment>
+    <Fragment slot="title">Bring calm data to a loud market</Fragment>
 
     <Fragment slot="subtitle">
-      14-day free trial. No credit card required. Works with your existing NinjaTrader 8 setup.
+      Introductory pricing · one-time license · built for NinjaTrader 8.
       <br />
       <span class="text-sm text-muted italic mt-2 block">
-        Trading involves substantial risk of loss. TradeFlow Mind does not guarantee trading results.
+        Trading involves substantial risk of loss. PSI Monitor does not guarantee trading results.
       </span>
     </Fragment>
   </CallToAction>
-
 </Layout>

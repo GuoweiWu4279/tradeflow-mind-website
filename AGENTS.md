@@ -4,7 +4,7 @@
 
 This is the official website for a **NinjaTrader trading psychology stability index monitor** — a financial software plugin.
 
-- Product name: **TradeFlow Mind** (update when branding is finalized)
+- Product name: **PSI Monitor** (working title; in-product labels may differ)
 - Platform: NinjaTrader 8
 - Category: Trading psychology / behavioral tools
 - Target users: Retail futures/forex traders using NinjaTrader
@@ -72,7 +72,7 @@ title: "vX.Y.Z - Brief description"
 version: "X.Y.Z"
 publishDate: 2026-01-01
 type: patch   # must be: major | minor | patch | hotfix
-downloadUrl: "/downloads/tradeflow-mind-vX.Y.Z.zip"
+downloadUrl: "/downloads/psimonitor-vX.Y.Z.zip"
 isLatest: false   # set true only for the newest release, set previous latest to false
 ---
 

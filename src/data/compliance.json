@@ -2,15 +2,15 @@
   "_note": "This file is HUMAN EDIT ONLY. Do not modify via AI automation.",
   "riskDisclosure": {
     "short": "Trading involves substantial risk of loss. Past performance is not indicative of future results.",
-    "full": "RISK DISCLOSURE: Futures and forex trading involve substantial risk of loss and are not appropriate for all investors. Past performance is not indicative of future results. The high degree of leverage that is often obtainable in futures and forex trading can work against you as well as for you. The possibility exists that you could sustain a total loss of initial margin funds and be required to deposit additional funds to maintain your position. TradeFlow Mind is a psychological monitoring tool only and does not provide trading signals, investment advice, or recommendations of any kind. You should carefully consider whether such trading is suitable for you in light of your financial condition. If you have any doubt, you should seek advice from an independent financial advisor.",
-    "notAdvice": "TradeFlow Mind does not constitute financial advice, investment advice, trading advice, or any other sort of advice. You should not treat any of the website's content as such. The website's owner does not recommend that any cryptocurrency, security, or other asset should be bought, sold, or held by you.",
+    "full": "RISK DISCLOSURE: Futures and forex trading involve substantial risk of loss and are not appropriate for all investors. Past performance is not indicative of future results. The high degree of leverage that is often obtainable in futures and forex trading can work against you as well as for you. The possibility exists that you could sustain a total loss of initial margin funds and be required to deposit additional funds to maintain your position. PSI Monitor is a psychological monitoring tool only and does not provide trading signals, investment advice, or recommendations of any kind. You should carefully consider whether such trading is suitable for you in light of your financial condition. If you have any doubt, you should seek advice from an independent financial advisor.",
+    "notAdvice": "PSI Monitor does not constitute financial advice, investment advice, trading advice, or any other sort of advice. You should not treat any of the website's content as such. The website's owner does not recommend that any cryptocurrency, security, or other asset should be bought, sold, or held by you.",
     "pastPerformance": "Past performance results are not necessarily indicative of future results. All trading involves risk. Substantial risk of loss exists."
   },
   "refundPolicy": {
     "period": 30,
     "periodUnit": "days",
     "conditions": "Full refund available within 30 days of purchase if the software fails to install or run on a supported system. Refunds are not available for change of mind after the product has been successfully installed and used.",
-    "process": "To request a refund, contact support@tradeflowmind.com with your order number and reason for refund."
+    "process": "To request a refund, contact support@psimonitor.com with your order number and reason for refund."
   },
   "legalJurisdiction": "To be determined — consult legal counsel for your jurisdiction."
 }

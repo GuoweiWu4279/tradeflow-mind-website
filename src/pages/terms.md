@@ -5,15 +5,15 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 _Last updated: April 2026_
 
-**IMPORTANT: This software is for informational and educational purposes only. Please read these Terms of Service carefully before purchasing or using TradeFlow Mind.**
+**IMPORTANT: This software is for informational and educational purposes only. Please read these Terms of Service carefully before purchasing or using PSI Monitor.**
 
 ## 1. Acceptance of Terms
 
-By downloading, installing, or using TradeFlow Mind ("the Software"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the Software.
+By downloading, installing, or using PSI Monitor ("the Software"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the Software.
 
 ## 2. Description of Software
 
-TradeFlow Mind is a psychological stability monitoring tool designed for use with NinjaTrader 8. The Software provides a real-time composite index based on user-configured behavioral inputs during trading sessions. **The Software does not provide trading signals, financial advice, or investment recommendations of any kind.**
+PSI Monitor is a psychological stability monitoring tool designed for use with NinjaTrader 8. The Software provides a real-time composite index based on user-configured behavioral inputs during trading sessions. **The Software does not provide trading signals, financial advice, or investment recommendations of any kind.**
 
 ## 3. License
 
@@ -42,7 +42,7 @@ Nothing in the Software, this website, or any associated documentation constitut
 
 ## 8. Third-Party Platform
 
-TradeFlow Mind is an independent third-party add-on for NinjaTrader 8. We are not affiliated with, sponsored by, or endorsed by NinjaTrader LLC. Your use of NinjaTrader is governed by NinjaTrader's own terms of service.
+PSI Monitor is an independent third-party add-on for NinjaTrader 8. We are not affiliated with, sponsored by, or endorsed by NinjaTrader LLC. Your use of NinjaTrader is governed by NinjaTrader's own terms of service.
 
 ## 9. Payments and Refunds
 
@@ -62,4 +62,4 @@ These Terms are governed by the laws of [Jurisdiction TBD — consult legal coun
 
 ## 13. Contact
 
-For questions about these Terms, email: **support@tradeflowmind.com**
+For questions about these Terms, email: **support@psimonitor.com**

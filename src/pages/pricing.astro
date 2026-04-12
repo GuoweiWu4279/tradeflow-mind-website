@@ -1,134 +1,121 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import Prices from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+
+import pricing from '~/data/pricing.json';
+
+const { singleTier, footnote, headline, subhead } = pricing;
 
 const metadata = {
-  title: 'Pricing — TradeFlow Mind',
-  description: 'Simple, transparent pricing for TradeFlow Mind. Start with a free 14-day trial. No credit card required.',
+  title: 'Pricing — PSI Monitor',
+  description:
+    'PSI Monitor — one-time license. Introductory price $24.99 USD. MSRP $39.99 for reference. Trading involves substantial risk.',
 };
 ---
 
 <Layout metadata={metadata}>
+  <HeroText tagline="Pricing" title={headline} subtitle={subhead} />
 
-  <HeroText
-    tagline="Pricing"
-    title="Simple, Transparent Pricing"
-    subtitle="Start free for 14 days. No credit card required. Cancel anytime."
-  />
+  <section class="max-w-2xl mx-auto px-6 pb-6">
+    <div
+      class="relative rounded-3xl border border-emerald-200/80 bg-gradient-to-b from-white to-emerald-50/40 shadow-lg shadow-emerald-900/5 px-8 py-10 text-center"
+    >
+      {singleTier.badge && (
+        <span class="inline-block rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white mb-4">
+          {singleTier.badge}
+        </span>
+      )}
+      <h2 class="text-2xl font-bold text-zinc-900 tracking-tight">{singleTier.name}</h2>
+      <p class="mt-2 text-sm text-zinc-600">{singleTier.billingPeriod}</p>
 
-  <Prices
-    title="Choose your plan"
-    subtitle="All plans include a 30-day money-back guarantee if the software fails to run on your system."
-    prices={[
-      {
-        title: 'Free Trial',
-        subtitle: 'Full access for 14 days. No credit card needed.',
-        price: 0,
-        period: '14-day trial',
-        items: [
-          { description: 'Real-time stability index' },
-          { description: 'Up to 5 tracked sessions' },
-          { description: 'Basic alert thresholds' },
-          { description: 'NinjaTrader 8 integration' },
-          { description: 'Community support' },
-        ],
-        callToAction: {
-          target: '_self',
-          text: 'Start Free Trial',
-          href: '/download',
-        },
-      },
-      {
-        title: 'Pro',
-        subtitle: 'For active traders who take psychology seriously.',
-        price: 49,
-        period: 'per month',
-        items: [
-          { description: 'Unlimited session tracking' },
-          { description: 'Full historical data & CSV export' },
-          { description: 'Custom alert rules & thresholds' },
-          { description: 'Session replay analysis' },
-          { description: 'Email support' },
-          { description: 'All future updates included' },
-        ],
-        callToAction: {
-          target: '_self',
-          text: 'Get Pro',
-          href: '/download',
-        },
-        hasRibbon: true,
-        ribbonTitle: 'Popular',
-      },
-      {
-        title: 'Lifetime',
-        subtitle: 'Pay once, use forever. Includes all v1.x updates.',
-        price: 299,
-        period: 'one-time',
-        items: [
-          { description: 'Everything in Pro' },
-          { description: 'One-time payment' },
-          { description: 'Lifetime updates (v1.x)' },
-          { description: 'Priority email support' },
-          { description: 'Early access to beta features' },
-        ],
-        callToAction: {
-          target: '_self',
-          text: 'Buy Lifetime',
-          href: '/download',
-        },
-      },
-    ]}
-  />
+      <div class="mt-8 flex flex-col items-center gap-1">
+        <div class="flex items-baseline justify-center gap-3">
+          <span class="text-2xl text-zinc-400 line-through decoration-zinc-400" aria-label="MSRP">
+            ${singleTier.msrp}
+          </span>
+          <div class="flex items-baseline text-zinc-900">
+            <span class="text-3xl font-semibold">$</span>
+            <span class="text-6xl font-extrabold tracking-tight">{singleTier.price}</span>
+            <span class="ml-1 text-lg font-medium text-zinc-500">USD</span>
+          </div>
+        </div>
+        <p class="text-xs text-zinc-500 max-w-sm mt-2">
+          MSRP is the suggested retail price for reference. Introductory pricing may end or change without notice.
+        </p>
+      </div>
 
-  <!-- Billing FAQ -->
+      <ul class="mt-10 space-y-3 text-left max-w-md mx-auto">
+        {
+          singleTier.features.map((line: string) => (
+            <li class="flex gap-3 text-sm text-zinc-700">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500">
+                <Icon name="tabler:check" class="h-3.5 w-3.5 text-white" />
+              </span>
+              <span>{line}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-10 flex flex-col items-center gap-3">
+        <Button variant="primary" href={singleTier.ctaHref} class="px-8 py-3 text-base font-semibold rounded-full">
+          {singleTier.cta}
+        </Button>
+        <a href="/download" class="text-sm text-emerald-700 font-medium hover:underline"> Already purchased? Go to downloads → </a>
+      </div>
+    </div>
+
+    <p class="mt-8 text-center text-xs text-zinc-500 leading-relaxed max-w-xl mx-auto">
+      {footnote}
+      <a href="/disclaimer" class="underline text-emerald-800 hover:text-emerald-900"> Risk disclaimer</a>.
+    </p>
+  </section>
+
   <FAQs
-    title="Pricing Questions"
+    title="Billing questions"
     tagline=""
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Can I switch plans?',
-        description: 'Yes. You can upgrade or downgrade your plan at any time from your account dashboard.',
+        title: 'Is this a subscription?',
+        description: 'No. PSI Monitor is sold as a one-time license at the price shown above, unless we announce a different model in the future.',
       },
       {
-        title: 'What payment methods are accepted?',
-        description: 'We accept major credit and debit cards (Visa, Mastercard, Amex) via our secure payment processor.',
+        title: 'What payment methods will be supported?',
+        description:
+          'We plan to accept major cards through a standard checkout provider. The checkout page will be updated when live payments are connected.',
       },
       {
-        title: 'Is there a free trial for Pro?',
-        description: 'Yes — the 14-day free trial gives you full access to all Pro features with no credit card required.',
+        title: 'What does the money-back policy cover?',
+        description:
+          'See our Refund Policy — if the software fails to install or run on a supported configuration and we cannot resolve it, you may qualify for a refund within the stated window.',
       },
       {
-        title: 'What does the 30-day money-back guarantee cover?',
-        description: 'If the software fails to install or run correctly on a supported system and our support team cannot resolve the issue, you receive a full refund. See the full Refund Policy for details.',
+        title: 'Does a higher PSI mean I will make money?',
+        description:
+          'No. PSI reflects behavioral pressure signals from your session. It is not a performance or profitability predictor. Trading involves substantial risk of loss.',
       },
     ]}
   />
-
-  <div class="max-w-3xl mx-auto px-6 pb-8">
-    <p class="text-xs text-center text-zinc-500 dark:text-zinc-400">
-      Prices in USD. Annual billing available — saves ~20%. Trading involves substantial risk of loss.
-      TradeFlow Mind does not guarantee trading results. <a href="/disclaimer" class="underline">Risk Disclaimer</a>.
-    </p>
-  </div>
 
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Start 14-Day Free Trial',
-        href: '/download',
-        icon: 'tabler:download',
+        text: singleTier.cta,
+        href: singleTier.ctaHref,
+        icon: 'tabler:shopping-cart',
       },
+      { text: 'System requirements', href: '/download' },
     ]}
   >
-    <Fragment slot="title">No risk. Start free today.</Fragment>
+    <Fragment slot="title">Ready when you are</Fragment>
     <Fragment slot="subtitle">
-      Full Pro access for 14 days. No credit card required.
+      One license. Local-first psychology monitoring for NinjaTrader 8.
     </Fragment>
   </CallToAction>
-
 </Layout>

@@ -1,0 +1,80 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = {
+  title: 'Risk Disclaimer — TradeFlow Mind',
+  description: 'Important risk disclosure and legal disclaimer for TradeFlow Mind trading psychology software.',
+  robots: { index: true, follow: true },
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    title="Risk Disclaimer"
+    subtitle="Please read this disclaimer carefully before using TradeFlow Mind."
+  />
+
+  <section class="max-w-4xl mx-auto px-6 pb-20 prose dark:prose-invert prose-headings:font-semibold prose-a:text-blue-600 dark:prose-a:text-blue-400">
+
+    <div class="not-prose bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 rounded-xl p-6 mb-10">
+      <p class="text-amber-900 dark:text-amber-200 font-semibold text-base leading-relaxed">
+        IMPORTANT NOTICE: Trading futures, forex, and other financial instruments involves substantial risk of loss and is not suitable for all investors. Before using this software, please read and understand this entire disclaimer.
+      </p>
+    </div>
+
+    <h2>Risk of Loss</h2>
+    <p>
+      Trading commodity futures contracts, options, and forex involves substantial risk of loss. The risk of loss in trading commodity futures can be substantial. You should therefore carefully consider whether such trading is suitable for you in light of your financial condition. The high degree of leverage that is often obtainable in commodity interest trading can work against you as well as for you. The possibility exists that you could sustain a total loss of funds deposited and may be required to deposit additional funds to maintain your position.
+    </p>
+
+    <h2>Software Purpose — Not Financial Advice</h2>
+    <p>
+      TradeFlow Mind is a <strong>psychological monitoring tool only</strong>. It does not:
+    </p>
+    <ul>
+      <li>Provide trading signals, buy/sell recommendations, or market analysis</li>
+      <li>Constitute financial advice, investment advice, or any other form of professional advice</li>
+      <li>Predict or guarantee future trading results or outcomes</li>
+      <li>Replace the judgment of a qualified financial advisor</li>
+    </ul>
+    <p>
+      The psychological stability index displayed by TradeFlow Mind reflects patterns derived from user-configured behavioral inputs during a trading session. It is intended solely as a personal awareness tool. All trading decisions remain entirely the responsibility of the user.
+    </p>
+
+    <h2>Past Performance</h2>
+    <p>
+      Past performance results are not necessarily indicative of future results. Any trading results discussed, referenced, or implied in connection with this software do not guarantee or imply similar results in the future. All trading involves risk. Substantial risk of loss exists.
+    </p>
+
+    <h2>No Guarantee of Results</h2>
+    <p>
+      TradeFlow Mind makes no guarantees regarding improvement in trading performance, consistency, profitability, or reduction of trading losses as a result of using this software. Individual results will vary significantly based on personal trading methods, market conditions, risk management practices, and other factors outside this software's scope.
+    </p>
+
+    <h2>Regulatory Compliance</h2>
+    <p>
+      It is your responsibility to comply with all applicable laws and regulations in your jurisdiction regarding the use of trading software and the execution of trades. TradeFlow Mind does not accept liability for any regulatory violations resulting from your trading activities.
+    </p>
+
+    <h2>Software Accuracy</h2>
+    <p>
+      While TradeFlow Mind is developed with care, the software is provided "as is" without warranty of any kind. We do not warrant that the software will be error-free, uninterrupted, or that it will operate without defects. The developer is not liable for any losses, damages, or missed opportunities arising from technical errors, software failures, or incorrect calculations.
+    </p>
+
+    <h2>Third-Party Platform</h2>
+    <p>
+      TradeFlow Mind is a third-party add-on for NinjaTrader 8. It is not affiliated with, endorsed by, or supported by NinjaTrader LLC. NinjaTrader® is a registered trademark of NinjaTrader LLC. Use of TradeFlow Mind in conjunction with NinjaTrader is subject to NinjaTrader's own terms of service.
+    </p>
+
+    <h2>Consult a Professional</h2>
+    <p>
+      You should seek advice from an independent, qualified financial advisor before engaging in any trading activity. Nothing on this website or in the TradeFlow Mind software should be interpreted as a recommendation to trade any specific instrument or to adopt any particular trading strategy.
+    </p>
+
+    <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-10 border-t pt-6">
+      Last updated: April 2026. This disclaimer is subject to change. Please check this page regularly for updates.
+    </p>
+
+  </section>
+</Layout>

@@ -1,0 +1,44 @@
+---
+description: Rules for creating and editing Astro components and pages
+globs: src/components/**/*.astro,src/pages/**/*.astro
+alwaysApply: false
+---
+
+# Component and Page Rules
+
+## Styling
+
+- Use **Tailwind CSS classes only** — no inline `style` attributes
+- Do not add custom CSS classes outside `src/assets/styles/tailwind.css`
+- Dark mode variants must use `dark:` prefix, never hardcode colors for dark mode only
+- Responsive breakpoints: `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px)
+
+## Component Architecture
+
+- Components must accept data via props — never hardcode marketing copy inside `.astro` files
+- Text content (headlines, descriptions, CTAs) must come from:
+  - Props passed from the page
+  - JSON files in `src/data/`
+  - NOT hardcoded strings in component files
+- Reference the canonical Astrowind widget pattern in `src/components/widgets/` for new sections
+
+## Page Files
+
+- Pages should be thin — they import components and pass data, no business logic
+- Every `.astro` page must import and render `<RiskBanner />` before the closing `</Layout>` tag
+- Page metadata (title, description) must be set via the `metadata` prop on `<Layout>`
+
+## Compliance Component Rule
+
+The following components in `src/components/compliance/` are protected:
+- `RiskBanner.astro` — must never be removed or hidden via CSS
+
+If you need to adjust styling of compliance components, ask the user first.
+
+## New Page Checklist
+
+When creating a new page, ensure:
+1. `<Layout metadata={...}>` wrapper is present
+2. `<RiskBanner />` is included
+3. Page is added to `src/navigation.ts` if it should appear in nav or footer
+4. Page has proper `metadata.title` and `metadata.description`

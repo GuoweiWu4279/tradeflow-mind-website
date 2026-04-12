@@ -65,6 +65,31 @@ const postCollection = defineCollection({
   }),
 });
 
+// Changelog collection — schema-validated release notes
+const changelogCollection = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/changelog' }),
+  schema: z.object({
+    title: z.string(),
+    version: z.string(),
+    publishDate: z.coerce.date(),
+    type: z.enum(['major', 'minor', 'patch', 'hotfix']),
+    downloadUrl: z.string().optional(),
+    isLatest: z.boolean().default(false),
+  }),
+});
+
+// FAQ collection — schema-validated Q&A entries
+const faqCollection = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/faq' }),
+  schema: z.object({
+    question: z.string(),
+    category: z.enum(['installation', 'trading', 'billing', 'technical', 'general']),
+    order: z.number().default(99),
+  }),
+});
+
 export const collections = {
   post: postCollection,
+  changelog: changelogCollection,
+  faq: faqCollection,
 };

@@ -1,0 +1,27 @@
+{
+  "name": "TradeFlow Mind",
+  "tagline": "Trading Psychology Stability Index for NinjaTrader",
+  "description": "A real-time psychological stability index monitor for NinjaTrader 8. Helps traders maintain discipline by tracking emotional state patterns during live trading sessions.",
+  "version": "1.0.0",
+  "platform": "NinjaTrader 8",
+  "category": "Trading Psychology Tool",
+  "systemRequirements": {
+    "os": "Windows 10 / 11 (64-bit)",
+    "ninjaTrader": "NinjaTrader 8.0.23.0 or later",
+    "dotNet": ".NET Framework 4.8 or later",
+    "ram": "4 GB RAM minimum",
+    "disk": "50 MB free disk space"
+  },
+  "socialProof": {
+    "activeUsers": "500+",
+    "rating": "4.8",
+    "reviewCount": 47
+  },
+  "links": {
+    "download": "/download",
+    "pricing": "/pricing",
+    "docs": "/docs",
+    "support": "/support",
+    "changelog": "/changelog"
+  }
+}

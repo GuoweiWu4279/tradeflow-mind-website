@@ -1,0 +1,45 @@
+---
+description: Deployment and configuration file protection rules
+globs: astro.config.ts,vercel.json,package.json,tailwind.config.js,tsconfig.json,.npmrc
+alwaysApply: false
+---
+
+# Deployment & Configuration Rules
+
+## Protected Configuration Files
+
+The following files must NOT be modified without explicit user instruction:
+
+- `astro.config.ts` — Astro build configuration
+- `vercel.json` — Vercel deployment settings
+- `package.json` — Dependencies and scripts
+- `tailwind.config.js` — Design system tokens
+- `tsconfig.json` — TypeScript configuration
+- `.npmrc` — Package manager settings
+
+## If Modification is Required
+
+Before modifying any config file:
+1. Explain exactly what change is needed and why
+2. Show the diff of what will change
+3. Wait for explicit user confirmation
+4. After making the change, show the final result
+
+## Third-Party Scripts
+
+**Never add** tracking pixels, analytics scripts, or any third-party JavaScript without user confirmation. This includes:
+- Ad tracking (Facebook Pixel, Google Ads, etc.)
+- Heatmaps (Hotjar, etc.)
+- A/B testing tools
+- Chat widgets
+
+Exception: Google Analytics ID configured in `src/config.yaml` is pre-approved.
+
+## Build Commands
+
+The build command is `npm run build`. Do not change it.
+The dev command is `npm run dev`. Do not change it.
+
+## Environment Variables
+
+Never commit `.env` files. Environment variables for production go in Vercel dashboard, not in code files.

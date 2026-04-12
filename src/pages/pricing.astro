@@ -3,242 +3,132 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Prices from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Pricing',
+  title: 'Pricing — TradeFlow Mind',
+  description: 'Simple, transparent pricing for TradeFlow Mind. Start with a free 14-day trial. No credit card required.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
 
   <HeroText
     tagline="Pricing"
-    title="Stellar Pricing for Every Journey"
-    subtitle="Choose the perfect plan that aligns with your cosmic goals."
+    title="Simple, Transparent Pricing"
+    subtitle="Start free for 14 days. No credit card required. Cancel anytime."
   />
-
-  <!-- Pricing Widget ******************* -->
 
   <Prices
-    title="Our prices"
-    subtitle="Only pay for what you need"
+    title="Choose your plan"
+    subtitle="All plans include a 30-day money-back guarantee if the software fails to run on your system."
     prices={[
       {
-        title: 'basic',
-        subtitle: 'Optimal choice for personal use',
-        price: 29,
+        title: 'Free Trial',
+        subtitle: 'Full access for 14 days. No credit card needed.',
+        price: 0,
+        period: '14-day trial',
+        items: [
+          { description: 'Real-time stability index' },
+          { description: 'Up to 5 tracked sessions' },
+          { description: 'Basic alert thresholds' },
+          { description: 'NinjaTrader 8 integration' },
+          { description: 'Community support' },
+        ],
+        callToAction: {
+          target: '_self',
+          text: 'Start Free Trial',
+          href: '/download',
+        },
+      },
+      {
+        title: 'Pro',
+        subtitle: 'For active traders who take psychology seriously.',
+        price: 49,
         period: 'per month',
         items: [
-          {
-            description: 'Etiam in libero, et volutpat',
-          },
-          {
-            description: 'Aenean ac nunc dolor tristique',
-          },
-          {
-            description: 'Cras scelerisque accumsan lib',
-          },
-          {
-            description: 'In hac habitasse',
-          },
+          { description: 'Unlimited session tracking' },
+          { description: 'Full historical data & CSV export' },
+          { description: 'Custom alert rules & thresholds' },
+          { description: 'Session replay analysis' },
+          { description: 'Email support' },
+          { description: 'All future updates included' },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Get started',
-          href: '#',
-        },
-      },
-      {
-        title: 'standard',
-        subtitle: 'Optimal choice for small teams',
-        price: 69,
-        period: 'Per Month',
-        items: [
-          {
-            description: 'Proin vel laoreet',
-          },
-          {
-            description: 'Ut efficitur habitasse egestas',
-          },
-          {
-            description: 'Volutpat hac curabitur',
-          },
-          {
-            description: 'Pellentesque blandit ut nibh',
-          },
-          {
-            description: 'Donec fringilla sem',
-          },
-        ],
-        callToAction: {
-          target: '_blank',
-          text: 'Get started',
-          href: '#',
+          target: '_self',
+          text: 'Get Pro',
+          href: '/download',
         },
         hasRibbon: true,
-        ribbonTitle: 'popular',
+        ribbonTitle: 'Popular',
       },
       {
-        title: 'premium',
-        subtitle: 'Optimal choice for companies',
-        price: 199,
-        period: 'Per Month',
+        title: 'Lifetime',
+        subtitle: 'Pay once, use forever. Includes all v1.x updates.',
+        price: 299,
+        period: 'one-time',
         items: [
-          {
-            description: 'Curabitur suscipit risus',
-          },
-          {
-            description: 'Aliquam habitasse malesuada',
-          },
-          {
-            description: 'Suspendisse sit amet blandit',
-          },
-          {
-            description: 'Suspendisse auctor blandit dui',
-          },
+          { description: 'Everything in Pro' },
+          { description: 'One-time payment' },
+          { description: 'Lifetime updates (v1.x)' },
+          { description: 'Priority email support' },
+          { description: 'Early access to beta features' },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Get started',
-          href: '#',
+          target: '_self',
+          text: 'Buy Lifetime',
+          href: '/download',
         },
       },
     ]}
   />
 
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Price-related features"
-    subtitle="Discover the advantages of choosing our plans"
-    columns={2}
-    items={[
-      {
-        title: 'Tiered Pricing Plans',
-        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
-        icon: 'tabler:stairs',
-      },
-      {
-        title: 'Transparent Pricing',
-        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
-        icon: 'tabler:flip-vertical',
-      },
-      {
-        title: 'Secure Payment Methods',
-        description: 'Secure payment gateways to protect your financial information during transactions.',
-        icon: 'tabler:shield-lock',
-      },
-      {
-        title: 'Instant Access',
-        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
-        icon: 'tabler:accessible',
-      },
-      {
-        title: 'Upgrade Value',
-        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
-        icon: 'tabler:chevrons-up',
-      },
-      {
-        title: '24H support',
-        description: 'Questions answered via live chat, email or phone, every calendar day.',
-        icon: 'tabler:headset',
-      },
-    ]}
-    classes={{ container: 'max-w-5xl' }}
-  />
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="A guided journey from plans to creativity"
-    tagline="simplified process"
-    isReversed={true}
-    items={[
-      {
-        title: 'Explore plans',
-        icon: 'tabler:number-1',
-      },
-      {
-        title: 'Select a plan',
-        icon: 'tabler:number-2',
-      },
-      {
-        title: 'Sign Up / Log In',
-        icon: 'tabler:number-3',
-      },
-      {
-        title: 'Review order',
-        icon: 'tabler:number-4',
-      },
-      {
-        title: 'Enter payment details',
-        icon: 'tabler:number-5',
-      },
-      {
-        title: 'Confirmation',
-        icon: 'tabler:number-6',
-      },
-      {
-        title: 'Download and start using the template(s)',
-        icon: 'tabler:number-7',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1536816579748-4ecb3f03d72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
+  <!-- Billing FAQ -->
   <FAQs
-    title="Pricing FAQs"
-    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
-    columns={1}
+    title="Pricing Questions"
+    tagline=""
+    classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Do the plans come with customer support?',
-        description:
-          'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.',
+        title: 'Can I switch plans?',
+        description: 'Yes. You can upgrade or downgrade your plan at any time from your account dashboard.',
       },
       {
-        title: 'Is there a trial period for the different plans?',
-        description:
-          "Unfortunately, we don't offer trial periods for the plans. However, you can check out our demo section to preview the quality of our templates.",
+        title: 'What payment methods are accepted?',
+        description: 'We accept major credit and debit cards (Visa, Mastercard, Amex) via our secure payment processor.',
       },
       {
-        title: 'Can I switch between plans?',
-        description:
-          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
+        title: 'Is there a free trial for Pro?',
+        description: 'Yes — the 14-day free trial gives you full access to all Pro features with no credit card required.',
       },
       {
-        title: 'What payment methods do you accept?',
-        description:
-          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
-      },
-      {
-        title: 'Are there any hidden fees beyond the displayed cost?',
-        description:
-          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
+        title: 'What does the 30-day money-back guarantee cover?',
+        description: 'If the software fails to install or run correctly on a supported system and our support team cannot resolve the issue, you receive a full refund. See the full Refund Policy for details.',
       },
     ]}
   />
 
-  <!-- CallToAction Widget *********** -->
+  <div class="max-w-3xl mx-auto px-6 pb-8">
+    <p class="text-xs text-center text-zinc-500 dark:text-zinc-400">
+      Prices in USD. Annual billing available — saves ~20%. Trading involves substantial risk of loss.
+      TradeFlow Mind does not guarantee trading results. <a href="/disclaimer" class="underline">Risk Disclaimer</a>.
+    </p>
+  </div>
 
   <CallToAction
-    title="Ready to boost your projects?"
-    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
     actions={[
       {
         variant: 'primary',
-        text: 'Get started now',
-        href: '/',
+        text: 'Start 14-Day Free Trial',
+        href: '/download',
+        icon: 'tabler:download',
       },
     ]}
-  />
+  >
+    <Fragment slot="title">No risk. Start free today.</Fragment>
+    <Fragment slot="subtitle">
+      Full Pro access for 14 days. No credit card required.
+    </Fragment>
+  </CallToAction>
+
 </Layout>

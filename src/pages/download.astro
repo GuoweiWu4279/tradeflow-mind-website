@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = {
+  title: 'Download TradeFlow Mind',
+  description: 'Download the latest version of TradeFlow Mind for NinjaTrader 8. Free 14-day trial, no credit card required.',
+};
+
+const allEntries = await getCollection('changelog');
+const sorted = allEntries.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+const latest = sorted.find(e => e.data.isLatest) ?? sorted[0];
+const olderVersions = sorted.filter(e => e.id !== latest?.id).slice(0, 5);
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    title="Download TradeFlow Mind"
+    subtitle={`Current version: ${latest?.data.version ?? '1.0.0'} — Free 14-day trial, no credit card required.`}
+  />
+
+  <!-- System Requirements -->
+  <section class="max-w-4xl mx-auto px-6 mb-14">
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Requirements card -->
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-700 p-6 bg-zinc-50 dark:bg-zinc-900/50">
+        <h2 class="text-lg font-semibold mb-4">System Requirements</h2>
+        <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+          <li class="flex gap-2"><span class="text-zinc-400">OS</span><span class="ml-auto font-medium text-zinc-900 dark:text-white">Windows 10 / 11 (64-bit)</span></li>
+          <li class="flex gap-2"><span class="text-zinc-400">NinjaTrader</span><span class="ml-auto font-medium text-zinc-900 dark:text-white">8.0.23.0 or later</span></li>
+          <li class="flex gap-2"><span class="text-zinc-400">.NET</span><span class="ml-auto font-medium text-zinc-900 dark:text-white">Framework 4.8+</span></li>
+          <li class="flex gap-2"><span class="text-zinc-400">RAM</span><span class="ml-auto font-medium text-zinc-900 dark:text-white">4 GB minimum</span></li>
+          <li class="flex gap-2"><span class="text-zinc-400">Disk</span><span class="ml-auto font-medium text-zinc-900 dark:text-white">50 MB free space</span></li>
+        </ul>
+      </div>
+
+      <!-- Installation steps -->
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-700 p-6 bg-zinc-50 dark:bg-zinc-900/50">
+        <h2 class="text-lg font-semibold mb-4">Installation Steps</h2>
+        <ol class="space-y-2 text-sm text-zinc-600 dark:text-zinc-400 list-decimal list-inside">
+          <li>Download the <code>.zip</code> file below</li>
+          <li>Open NinjaTrader 8</li>
+          <li>Go to <strong>Tools → Import → NinjaScript Add-On</strong></li>
+          <li>Select the downloaded file</li>
+          <li>Restart NinjaTrader when prompted</li>
+          <li>Find TradeFlow Mind in the Indicators list</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download card -->
+  <section class="max-w-4xl mx-auto px-6 mb-16">
+    <div class="rounded-2xl border-2 border-zinc-900 dark:border-zinc-100 p-8 text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-zinc-900/5 to-transparent dark:from-white/5 pointer-events-none"></div>
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-sm font-medium mb-4">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Latest Release — v{latest?.data.version}
+        </div>
+        <h2 class="text-2xl font-bold mb-2">TradeFlow Mind {latest?.data.version}</h2>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-6 text-sm">
+          Released {latest?.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          &nbsp;·&nbsp; For NinjaTrader 8
+        </p>
+
+        <!-- Disclaimer checkbox -->
+        <div class="max-w-lg mx-auto mb-6">
+          <label class="flex items-start gap-3 text-left cursor-pointer group">
+            <input type="checkbox" id="disclaimer-confirm" class="mt-0.5 w-4 h-4 rounded border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-white cursor-pointer shrink-0" />
+            <span class="text-sm text-zinc-600 dark:text-zinc-400">
+              I have read and understood the <a href="/disclaimer" class="text-blue-600 dark:text-blue-400 underline">Risk Disclaimer</a>.
+              I acknowledge that TradeFlow Mind is a monitoring tool only, trading involves substantial risk of loss,
+              and past performance is not indicative of future results.
+            </span>
+          </label>
+        </div>
+
+        <a
+          id="download-btn"
+          href={latest?.data.downloadUrl ?? '#'}
+          class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium opacity-40 pointer-events-none transition-all"
+          aria-disabled="true"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download v{latest?.data.version} (.zip)
+        </a>
+        <p class="text-xs text-zinc-400 mt-3">Free 14-day trial · No credit card required</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Older versions -->
+  {olderVersions.length > 0 && (
+    <section class="max-w-4xl mx-auto px-6 pb-20">
+      <h2 class="text-lg font-semibold mb-4 text-zinc-700 dark:text-zinc-300">Previous Versions</h2>
+      <div class="rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden divide-y divide-zinc-200 dark:divide-zinc-800">
+        {olderVersions.map(entry => (
+          <div class="flex items-center justify-between px-5 py-3.5 bg-zinc-50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors">
+            <div>
+              <span class="font-medium text-sm text-zinc-900 dark:text-white">v{entry.data.version}</span>
+              <span class="ml-3 text-xs text-zinc-500">
+                {entry.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </span>
+            </div>
+            {entry.data.downloadUrl && (
+              <a href={entry.data.downloadUrl} class="text-xs text-blue-600 dark:text-blue-400 hover:underline">
+                Download
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+      <p class="text-sm text-zinc-500 mt-4">
+        View full release notes in the <a href="/changelog" class="text-blue-600 dark:text-blue-400 hover:underline">Changelog</a>.
+      </p>
+    </section>
+  )}
+</Layout>
+
+<script>
+  const checkbox = document.getElementById('disclaimer-confirm') as HTMLInputElement;
+  const btn = document.getElementById('download-btn') as HTMLAnchorElement;
+
+  checkbox?.addEventListener('change', () => {
+    if (checkbox.checked) {
+      btn.classList.remove('opacity-40', 'pointer-events-none');
+      btn.removeAttribute('aria-disabled');
+    } else {
+      btn.classList.add('opacity-40', 'pointer-events-none');
+      btn.setAttribute('aria-disabled', 'true');
+    }
+  });
+</script>

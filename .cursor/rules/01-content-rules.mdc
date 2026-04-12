@@ -1,0 +1,54 @@
+---
+description: Rules for editing website content — changelog entries, FAQ, blog posts, and JSON data files
+globs: src/data/**/*.md,src/data/**/*.mdx,src/data/*.json
+alwaysApply: false
+---
+
+# Content Editing Rules
+
+## Changelog Files (`src/data/changelog/`)
+
+Every changelog file MUST have all of these frontmatter fields:
+
+```yaml
+---
+title: "vX.Y.Z - Brief one-line description"
+version: "X.Y.Z"              # Semantic version string
+publishDate: YYYY-MM-DD       # ISO date (no time)
+type: patch                   # ONLY: major | minor | patch | hotfix
+downloadUrl: "/downloads/tradeflow-mind-vX.Y.Z.zip"
+isLatest: false               # Only ONE file may have true at any time
+---
+```
+
+Rules:
+- Never modify an existing changelog file — only create new ones
+- When creating a new release with `isLatest: true`, first update the previous latest to `isLatest: false`
+- File naming must be exactly: `vX.Y.Z.md` (e.g., `v1.2.3.md`)
+- Body must use H3 sections: `### Changes`, `### Fixed`, `### Known Issues`
+
+## FAQ Files (`src/data/faq/`)
+
+Every FAQ file MUST have:
+
+```yaml
+---
+question: "The full question text?"
+category: installation  # ONLY: installation | trading | billing | technical | general
+order: 1               # Integer for sort order within category
+---
+```
+
+## JSON Data Files (`src/data/*.json`)
+
+- `products.json` — product metadata only, no legal claims
+- `pricing.json` — pricing tiers, do NOT change prices without user confirmation
+- `features.json` — feature list, use conservative language (see AGENTS.md)
+- `compliance.json` — READ ONLY by AI, human edit only
+
+## Prohibited Content in Any File
+
+- Claims of guaranteed financial returns
+- "Risk-free" descriptions
+- Statistics that imply profit outcomes (e.g., "80% win rate")
+- Any language that could be construed as financial advice

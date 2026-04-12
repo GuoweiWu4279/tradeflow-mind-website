@@ -1,0 +1,46 @@
+{
+  "features": [
+    {
+      "id": "stability-index",
+      "title": "Real-Time Stability Index",
+      "description": "A composite psychological stability score (0–100) calculated in real time during your trading session, based on configurable behavioral inputs.",
+      "icon": "tabler:activity",
+      "category": "core"
+    },
+    {
+      "id": "session-tracking",
+      "title": "Session-by-Session Tracking",
+      "description": "Automatically records each trading session, allowing you to review your psychological patterns over time and identify recurring stress triggers.",
+      "icon": "tabler:timeline",
+      "category": "core"
+    },
+    {
+      "id": "alert-system",
+      "title": "Threshold Alerts",
+      "description": "Set personal stability thresholds. Receive in-platform alerts when your index drops below your chosen level — a signal to pause and reassess.",
+      "icon": "tabler:bell",
+      "category": "core"
+    },
+    {
+      "id": "ninjatrader-native",
+      "title": "NinjaTrader 8 Native",
+      "description": "Built exclusively for NinjaTrader 8. Runs as an indicator panel directly inside your existing NinjaTrader workspace — no external software needed.",
+      "icon": "tabler:plug",
+      "category": "platform"
+    },
+    {
+      "id": "local-only",
+      "title": "100% Local — No Data Uploads",
+      "description": "All analysis runs on your machine. Your trading data and behavioral patterns are never sent to any server. Complete privacy by design.",
+      "icon": "tabler:shield-lock",
+      "category": "privacy"
+    },
+    {
+      "id": "historical",
+      "title": "Historical Analysis",
+      "description": "Export session data to CSV and review your psychological stability trends alongside your trading P&L to identify behavioral patterns over time.",
+      "icon": "tabler:chart-bar",
+      "category": "analytics"
+    }
+  ]
+}

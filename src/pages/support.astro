@@ -1,0 +1,65 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+
+const metadata = {
+  title: 'Support — TradeFlow Mind',
+  description: 'Get help with TradeFlow Mind. Contact support, browse FAQs, or check the changelog.',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    title="Support"
+    subtitle="We're here to help. Typical response time: 1–2 business days."
+  />
+
+  <Features3
+    title="How to Get Help"
+    subtitle=""
+    columns={3}
+    items={[
+      {
+        title: 'Email Support',
+        description: 'For installation issues, licensing questions, or bug reports, email us directly.',
+        icon: 'tabler:mail',
+        callToAction: {
+          text: 'support@tradeflowmind.com',
+          href: 'mailto:support@tradeflowmind.com',
+        },
+      },
+      {
+        title: 'FAQ',
+        description: 'Check our frequently asked questions for quick answers to common issues.',
+        icon: 'tabler:help-circle',
+        callToAction: {
+          text: 'Browse FAQ',
+          href: '/faq',
+        },
+      },
+      {
+        title: 'Changelog',
+        description: 'See recent updates and fixes. Your issue may already be resolved in the latest version.',
+        icon: 'tabler:git-commit',
+        callToAction: {
+          text: 'View Changelog',
+          href: '/changelog',
+        },
+      },
+    ]}
+  />
+
+  <section class="max-w-2xl mx-auto px-6 pb-20">
+    <div class="rounded-2xl border border-zinc-200 dark:border-zinc-700 p-8 bg-zinc-50 dark:bg-zinc-900/40">
+      <h2 class="text-lg font-semibold mb-4">When Contacting Support, Please Include:</h2>
+      <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-400 list-disc list-inside">
+        <li>Your order number or license key (last 4 characters only)</li>
+        <li>NinjaTrader version (Help → About in NinjaTrader)</li>
+        <li>Windows version (Win 10 or Win 11)</li>
+        <li>A description of the issue and steps to reproduce it</li>
+        <li>Any error messages shown (screenshot or text)</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

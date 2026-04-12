@@ -1,0 +1,70 @@
+{
+  "tiers": [
+    {
+      "id": "free",
+      "name": "Free Trial",
+      "price": 0,
+      "currency": "USD",
+      "billingPeriod": "14 days",
+      "description": "Try TradeFlow Mind free for 14 days. No credit card required.",
+      "cta": "Start Free Trial",
+      "ctaHref": "/download",
+      "highlighted": false,
+      "features": [
+        "Full access to stability index",
+        "Session tracking (up to 5 sessions)",
+        "Basic alert thresholds",
+        "NinjaTrader 8 integration",
+        "Community support"
+      ],
+      "limitations": [
+        "Limited to 14 days",
+        "No historical data export",
+        "No custom alert rules"
+      ]
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "price": 49,
+      "currency": "USD",
+      "billingPeriod": "month",
+      "annualPrice": 39,
+      "description": "Full access for active traders who take their psychology seriously.",
+      "cta": "Get Pro",
+      "ctaHref": "/download",
+      "highlighted": true,
+      "badge": "Most Popular",
+      "features": [
+        "Unlimited session tracking",
+        "Full historical data & export",
+        "Custom alert rules & thresholds",
+        "Session replay analysis",
+        "Pattern recognition insights",
+        "Email support",
+        "All future updates included"
+      ],
+      "limitations": []
+    },
+    {
+      "id": "lifetime",
+      "name": "Lifetime",
+      "price": 299,
+      "currency": "USD",
+      "billingPeriod": "one-time",
+      "description": "Pay once, use forever. Includes all updates for the current major version.",
+      "cta": "Buy Lifetime",
+      "ctaHref": "/download",
+      "highlighted": false,
+      "features": [
+        "Everything in Pro",
+        "One-time payment",
+        "Lifetime updates (v1.x)",
+        "Priority email support",
+        "Early access to beta features"
+      ],
+      "limitations": []
+    }
+  ],
+  "note": "Prices shown in USD. All plans include a 30-day money-back guarantee. Results may vary. Trading involves substantial risk of loss."
+}

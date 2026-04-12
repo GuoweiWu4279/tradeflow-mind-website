@@ -1,0 +1,53 @@
+---
+description: Financial compliance guardrails — always active for this trading software website
+globs:
+alwaysApply: true
+---
+
+# Compliance Guardrails — Financial Software
+
+This website is for a **financial trading tool**. These rules are ALWAYS active.
+
+## Protected Files — Do Not Modify Without User Confirmation
+
+The following files contain legally significant content and must NOT be auto-modified:
+
+- `src/pages/disclaimer.astro` — Risk Disclosure page
+- `src/pages/terms.md` — Terms of Service
+- `src/pages/privacy.md` — Privacy Policy
+- `src/pages/refund.astro` — Refund Policy
+- `src/data/compliance.json` — Compliance text registry
+
+If a user asks you to update legal text in these files, **always ask for confirmation first** and remind them to review with a qualified legal professional.
+
+## Required Compliance Elements
+
+These elements must ALWAYS be present on the website:
+
+1. **`<RiskBanner />`** component on every page — contains the required risk disclosure
+2. Risk disclaimer link in the footer's secondary links
+3. The phrase "Trading involves substantial risk of loss" must appear on the homepage
+
+## Marketing Copy Rules
+
+When writing or editing any marketing copy:
+
+**Never write:**
+- "guarantees", "guaranteed returns", "risk-free"
+- "always profitable", "never lose", "100% accurate"
+- "financial advice", "investment recommendation"
+- Specific profit percentages or dollar amounts as examples of user gains
+
+**Always include when making performance claims:**
+> *Results may vary. Trading involves substantial risk of loss.*
+
+## Compliance Flag
+
+If you generate any text that might violate the above rules, add this comment immediately after:
+```
+<!-- [COMPLIANCE REVIEW NEEDED] Review this text before publishing -->
+```
+
+## Download Page Compliance
+
+The `/download` page must include a checkbox requiring users to acknowledge the risk disclaimer before the download button becomes active.

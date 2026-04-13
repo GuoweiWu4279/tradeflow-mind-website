@@ -5,11 +5,11 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 _Last updated: April 2026_
 
-PSI Monitor is designed with privacy as a core principle. This policy explains what data we collect, why, and how we protect it.
+Meridian is designed with privacy as a core principle. This policy explains what data we collect, why, and how we protect it.
 
 ## 1. Core Privacy Principle
 
-**PSI Monitor does not collect, transmit, or store your trading data.** All session analysis, stability index calculations, and behavioral tracking happen entirely on your local machine. Your trading activity never leaves your computer.
+**Meridian does not collect, transmit, or store your trading data.** All session analysis, stability index calculations, and behavioral tracking happen entirely on your local machine. Your trading activity never leaves your computer.
 
 ## 2. Information We Collect
 

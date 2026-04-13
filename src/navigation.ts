@@ -58,7 +58,7 @@ export const headerData = {
       ],
     },
   ],
-  actions: [{ text: 'Start free trial', href: getPermalink('/checkout'), variant: 'primary' }],
+  actions: [{ text: 'Start free trial', href: 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25', variant: 'primary' }],
 };
 
 export const footerData = {

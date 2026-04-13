@@ -21,6 +21,7 @@
     "cancelAnytime": true
   },
   "purchase": {
+    "checkoutUrl": "https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25",
     "checkoutPath": "/checkout",
     "supportEmail": "contactmeridianpsi@gmail.com",
     "salesEmail": "contactmeridianpsi@gmail.com"

@@ -1,6 +1,6 @@
 site:
   name: Meridian
-  site: 'https://meridianpsi.com'
+  site: 'https://www.meridianpsi.com'
   base: '/'
   trailingSlash: false
 

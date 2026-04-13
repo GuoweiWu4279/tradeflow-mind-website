@@ -97,7 +97,7 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
     { text: 'Risk Disclaimer', href: getPermalink('/disclaimer') },
   ],
-  socialLinks: [{ ariaLabel: 'Website', icon: 'tabler:world', href: 'https://meridianpsi.com' }],
+  socialLinks: [{ ariaLabel: 'Website', icon: 'tabler:world', href: 'https://www.meridianpsi.com' }],
   footNote: `
     &copy; ${new Date().getFullYear()} Meridian. All rights reserved. &nbsp;·&nbsp;
     <span class="text-xs text-muted">Trading involves substantial risk of loss. Past performance is not indicative of future results.</span>

@@ -1,9 +1,26 @@
 ---
 import { SITE } from 'astrowind:config';
+
+interface Props {
+  /** 'header' = nav bar; 'compact' = footer / tight spaces */
+  variant?: 'header' | 'compact';
+}
+
+const { variant = 'header' } = Astro.props;
+const name = SITE?.name ?? 'Meridian';
+
+const sizeClass =
+  variant === 'compact'
+    ? 'h-6 md:h-7 w-auto max-w-[180px] object-contain object-left'
+    : 'h-8 md:h-9 w-auto max-w-[200px] sm:max-w-none object-contain object-left';
 ---
 
-<span
-  class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
->
-  🚀 {SITE?.name}
-</span>
+<img
+  src="/meridian-logo.png"
+  alt={`${name} — home`}
+  class:list={[sizeClass, 'self-center']}
+  width="220"
+  height="48"
+  loading="eager"
+  decoding="async"
+/>

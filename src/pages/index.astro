@@ -2,10 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
@@ -13,6 +10,22 @@ const metadata = {
   title: 'Meridian — The First Real-Time Psychological Stability Index for Active Traders',
   ignoreTitleTemplate: true,
 };
+
+const row1 = [
+  { quote: "been using it about 3 months. didn't realize how bad my overtrading was until i actually saw the numbers. first week of data was kind of humbling", name: "Jason K.", role: "Futures day trader" },
+  { quote: "passed apex eval on my 3rd attempt. first two i blew up on days i genuinely should've just logged off. not saying this is the reason but it helped me see the pattern", name: "Mike", role: "Prop firm trader" },
+  { quote: "was convinced my problem was my entries. turns out i was just adding to losers and completely ignoring my own plan. not fun to see, but useful", name: "Anonymous", role: "" },
+  { quote: "the privacy thing mattered to me. i don't want my trade data sitting on someone's server. knowing it stays local was honestly what made me try it in the first place", name: "David Chen", role: "Independent trader" },
+  { quote: "it doesn't fix anything for you. you still have to actually stop when it goes red. that part is still entirely on you. but at least now i can see it clearly", name: "T. Rodriguez", role: "NQ futures" },
+];
+
+const row2 = [
+  { quote: "watched my PSI drop into caution, ignored it, then blew my daily limit 20 minutes later. doing better now. slowly", name: "Sara", role: "ES trader" },
+  { quote: "good tool. wish i had this 2 years ago when i was on my 4th funded account restart. the revenge entry tracker alone is worth the sub", name: "Alex Nowak", role: "Prop trader" },
+  { quote: "been trading NQ for 4 years. thought i had a pretty good read on myself. week one showed me i didn't", name: "James O.", role: "Day trader" },
+  { quote: "tried a few psychology apps before. most are journals you fill out after the session. this one runs while you're in the trade. that's the difference", name: "Anonymous", role: "" },
+  { quote: "took a bit to get the baseline calibrated properly but once it clicked it started making sense. alerts don't distract you mid-trade which i was worried about", name: "Priya S.", role: "Futures trader" },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -41,11 +54,6 @@ const metadata = {
       <span class="text-zinc-500 font-normal">Most psychology tools analyze what happened. Meridian tells you what's happening — <em>right now</em>.</span>
     </Fragment>
   </Hero>
-
-  <Note
-    title="Strategy is the easy part."
-    description="The traders who actually profit have learned to execute it without emotion — every single time."
-  />
 
   <Stats
     stats={[
@@ -158,173 +166,74 @@ const metadata = {
     ]}
   />
 
-  <Steps
-    title="How it fits into your day"
-    items={[
-      {
-        title: 'Step 1: <span class="font-normal">Install into NinjaTrader 8</span>',
-        description:
-          'Add the plugin to your NinjaTrader 8 installation — it lives inside NinjaTrader and starts the moment you connect an account. No separate app to manage.',
-        icon: 'tabler:download',
-      },
-      {
-        title: 'Step 2: <span class="font-normal">Configure your profile</span>',
-        description:
-          'Set your session window, risk limits, and how much each behavioral dimension influences your PSI — match it to your own playbook.',
-        icon: 'tabler:adjustments',
-      },
-      {
-        title: 'Step 3: <span class="font-normal">Trade with the HUD</span>',
-        description:
-          'Watch PSI and the seven dimension bars update after each fill. Use alerts as a prompt to pause and reassess — not as a trading signal.',
-        icon: 'tabler:eye',
-      },
-      {
-        title: 'Step 4: <span class="font-normal">Review the session</span>',
-        description:
-          'Open the hub after the session to study timelines, behavioral breakdowns, and how each dimension contributed. Iterate deliberately.',
-        icon: 'tabler:report-analytics',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Trader at workstation',
-    }}
-  />
-
-  <FAQs
-    title="Quick answers"
-    subtitle="Full FAQ on the FAQ page."
-    tagline="FAQ"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Does Meridian place or block trades?',
-        description:
-          'No. It observes executions and positions to compute PSI. It does not send orders or prevent you from trading.',
-      },
-      {
-        title: 'Will a higher PSI make me profitable?',
-        description:
-          'PSI measures behavioral stability, not market outcomes. A stable mindset supports disciplined execution — but trading results depend on many factors. Results vary; trading involves substantial risk of loss.',
-      },
-      {
-        title: 'Is my data private?',
-        description:
-          'Yes. Meridian has zero network calls. All data is stored locally on your machine in XML files — it never leaves your PC.',
-      },
-      {
-        title: 'How does the free trial work?',
-        description:
-          'You get 7 days of full access. After the trial, the subscription is $24.99/month. Cancel any time — no lock-in.',
-      },
-    ]}
-  />
-
-  <!-- Testimonials carousel -->
-  <section class="py-16 bg-zinc-50 border-t border-zinc-100 overflow-hidden">
-    <div class="max-w-5xl mx-auto px-6">
-      <p class="text-center text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">What traders say</p>
-      <h2 class="text-center text-2xl md:text-3xl font-bold text-zinc-900 mb-10">From traders who've been there</h2>
+  <!-- Testimonials — dual-row infinite marquee -->
+  <section class="py-16 bg-zinc-50 border-t border-zinc-100">
+    <div class="max-w-5xl mx-auto px-6 mb-10 text-center">
+      <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">What traders say</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900">From traders who've been there</h2>
     </div>
 
-    <div class="relative max-w-5xl mx-auto">
-      <button
-        id="t-prev"
-        class="hidden md:flex absolute -left-2 top-1/2 -translate-y-8 z-10 w-10 h-10 rounded-full bg-white border border-zinc-200 shadow-md items-center justify-center text-zinc-400 hover:text-zinc-800 hover:shadow-lg transition-all"
-        aria-label="Previous"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      <div
-        id="t-track"
-        class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {[
-          {
-            quote: "been using it about 3 months. didn't realize how bad my overtrading was until i actually saw the numbers. first week of data was kind of humbling",
-            name: "Jason K.",
-            role: "Futures day trader",
-          },
-          {
-            quote: "passed apex eval on my 3rd attempt. first two i blew up on days i genuinely should've just logged off. not saying this is the reason but it helped me see the pattern",
-            name: "Mike",
-            role: "Prop firm trader",
-          },
-          {
-            quote: "was convinced my problem was my entries. turns out i was just adding to losers and completely ignoring my own plan. not fun to see, but useful",
-            name: "Anonymous",
-            role: "",
-          },
-          {
-            quote: "the privacy thing mattered to me. i don't want my trade data sitting on someone's server. knowing it stays local was honestly what made me try it in the first place",
-            name: "David Chen",
-            role: "Independent trader",
-          },
-          {
-            quote: "it doesn't fix anything for you. you still have to actually stop when it goes red. that part is still entirely on you. but at least now i can see it clearly",
-            name: "T. Rodriguez",
-            role: "NQ futures",
-          },
-          {
-            quote: "watched my PSI drop into caution, ignored it, then blew my daily limit 20 minutes later. doing better now. slowly",
-            name: "Sara",
-            role: "ES trader",
-          },
-          {
-            quote: "good tool. wish i had this 2 years ago when i was on my 4th funded account restart. the revenge entry tracker alone is worth the sub",
-            name: "Alex Nowak",
-            role: "Prop trader",
-          },
-          {
-            quote: "been trading NQ for 4 years. thought i had a pretty good read on myself. week one showed me i didn't",
-            name: "James O.",
-            role: "Day trader",
-          },
-          {
-            quote: "tried a few psychology apps before. most are journals you fill out after the session. this one runs while you're in the trade. that's the difference",
-            name: "Anonymous",
-            role: "",
-          },
-          {
-            quote: "took a bit to get the baseline calibrated properly but once it clicked it started making sense. alerts don't distract you mid-trade which i was worried about",
-            name: "Priya S.",
-            role: "Futures trader",
-          },
-        ].map((t) => (
-          <div class="snap-start shrink-0 w-[85vw] sm:w-[360px] md:w-[calc(50%-10px)] bg-white rounded-2xl border border-zinc-200 p-6 shadow-sm flex flex-col justify-between">
-            <p class="text-zinc-700 leading-relaxed text-sm mb-5">"{t.quote}"</p>
-            <div>
-              <p class="font-semibold text-zinc-900 text-sm">{t.name}</p>
-              {t.role && <p class="text-xs text-zinc-500">{t.role}</p>}
+    <div
+      class="overflow-hidden"
+      style="mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);"
+    >
+      <!-- Row 1: scroll left -->
+      <div class="marquee-left flex gap-4 mb-4 w-max">
+        {[...row1, ...row1].map((t) => (
+          <div class="w-72 shrink-0 bg-white rounded-2xl border border-zinc-200 p-5 shadow-sm">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center shrink-0 select-none">
+                  {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
+                </div>
+                <div>
+                  <p class="font-semibold text-zinc-900 text-sm leading-tight">{t.name}</p>
+                  {t.role && <p class="text-xs text-zinc-400">{t.role}</p>}
+                </div>
+              </div>
+              <div class="flex gap-0.5 shrink-0 mt-0.5">
+                {Array(5).fill(null).map(() => (
+                  <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
             </div>
+            <p class="text-zinc-600 text-sm leading-relaxed">"{t.quote}"</p>
           </div>
         ))}
       </div>
 
-      <button
-        id="t-next"
-        class="hidden md:flex absolute -right-2 top-1/2 -translate-y-8 z-10 w-10 h-10 rounded-full bg-white border border-zinc-200 shadow-md items-center justify-center text-zinc-400 hover:text-zinc-800 hover:shadow-lg transition-all"
-        aria-label="Next"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+      <!-- Row 2: scroll right -->
+      <div class="marquee-right flex gap-4 w-max">
+        {[...row2, ...row2].map((t) => (
+          <div class="w-72 shrink-0 bg-white rounded-2xl border border-zinc-200 p-5 shadow-sm">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center shrink-0 select-none">
+                  {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
+                </div>
+                <div>
+                  <p class="font-semibold text-zinc-900 text-sm leading-tight">{t.name}</p>
+                  {t.role && <p class="text-xs text-zinc-400">{t.role}</p>}
+                </div>
+              </div>
+              <div class="flex gap-0.5 shrink-0 mt-0.5">
+                {Array(5).fill(null).map(() => (
+                  <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <p class="text-zinc-600 text-sm leading-relaxed">"{t.quote}"</p>
+          </div>
+        ))}
+      </div>
     </div>
 
-    <p class="text-center text-xs text-zinc-400 mt-6 italic px-6">Results may vary. Trading involves substantial risk of loss.</p>
+    <p class="text-center text-xs text-zinc-400 mt-8 italic">Results may vary. Trading involves substantial risk of loss.</p>
   </section>
-
-  <script>
-    const track = document.getElementById('t-track') as HTMLElement | null;
-    const scrollAmount = () => ((track?.firstElementChild as HTMLElement)?.offsetWidth ?? 360) + 16;
-    document.getElementById('t-prev')?.addEventListener('click', () => track?.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
-    document.getElementById('t-next')?.addEventListener('click', () => track?.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
-  </script>
 
   <CallToAction
     actions={[
@@ -352,3 +261,24 @@ const metadata = {
     </Fragment>
   </CallToAction>
 </Layout>
+
+<style>
+  .marquee-left {
+    animation: marquee-left 35s linear infinite;
+  }
+  .marquee-right {
+    animation: marquee-right 35s linear infinite;
+  }
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+  .marquee-left:hover,
+  .marquee-right:hover {
+    animation-play-state: paused;
+  }
+</style>

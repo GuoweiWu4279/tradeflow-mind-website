@@ -137,8 +137,9 @@ const marqueeRow2 = [
     </Fragment>
 
     <Fragment slot="subtitle">
-      <strong>Meridian</strong> is the first real-time psychological stability index for NinjaTrader 8.
-      It tracks seven behavioral dimensions during your live session. Each dimension is scored with on-device statistical modeling — personalized baselines, asymmetric pressure dynamics, and constructs grounded in trading psychology and behavioral finance, refined through years of live futures experience — then combined into one live PSI score so you know where you stand before the next trade.
+      <strong>Meridian</strong> is the first real-time psychological stability index for active traders. It tracks seven behavioral dimensions, builds and updates dynamic statistical baselines from your own session history and performance, and combines behavioral-finance and cognitive-science models with rigorous on-device mathematics to compute your PSI score — entirely on your PC, with no cloud uploads.
+      <br /><br />
+      It tracks seven behavioral dimensions during your live session. Each dimension is scored on-device using statistical modeling — personalized baselines, asymmetric EWMA-style pressure dynamics, and patterns grounded in behavioral finance and trading psychology (informed by years of live futures experience) — then combined into one PSI score so you can see rising behavioral pressure before the next trade.
       <br /><br />
       <span class="text-zinc-500 font-normal">Most psychology tools analyze what happened. Meridian tells you what's happening — <em>right now</em>.</span>
     </Fragment>
@@ -194,7 +195,7 @@ const marqueeRow2 = [
       {
         title: 'A composite behavioral index — updated in under 100ms',
         description:
-          'After every fill, Meridian recalculates your PSI score across all seven behavioral dimensions simultaneously. No polling. No delay. The score reflects your current psychological state before you reach for the next trade.',
+          'After every fill, Meridian recalculates PSI across all seven dimensions simultaneously — no artificial delay. The score reflects behavioral pressure inferred from your session activity (executions, holds, and rule compliance), so you get feedback before the next decision.',
         icon: 'tabler:gauge',
       },
       {
@@ -363,6 +364,14 @@ const marqueeRow2 = [
         </p>
         <p class="mt-3 text-sm text-zinc-400 font-medium">— Gary Caffrey, Founder of Meridian &nbsp;·&nbsp; <a href="/about" class="underline hover:text-zinc-600">Read the full story →</a></p>
       </div>
+    </div>
+  </section>
+
+  <section class="py-10 px-6 bg-zinc-50/80 border-t border-zinc-100">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-xs text-zinc-500 leading-relaxed text-center">
+        PSI is a behavioral proxy index derived from your trading activity inside NinjaTrader. It does not measure physiology (for example heart rate or stress hormones), and it is not validated as a predictor of trading profits or losses. Meridian is designed to improve self-awareness and discipline during a session; outcomes still depend on many factors beyond psychology.
+      </p>
     </div>
   </section>
 

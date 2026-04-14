@@ -5,7 +5,7 @@ const checkoutUrl = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-
 export const headerData = {
   links: [
     {
-      text: 'Meridian',
+      text: 'PSI Monitor',
       href: getPermalink('/'),
       links: [
         {

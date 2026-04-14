@@ -6,6 +6,7 @@ export const headerData = {
   links: [
     {
       text: 'Meridian',
+      href: getPermalink('/'),
       links: [
         {
           text: 'Features',

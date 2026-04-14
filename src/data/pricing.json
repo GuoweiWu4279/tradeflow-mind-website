@@ -12,13 +12,13 @@
     "cta": "Start free trial",
     "ctaHref": "https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25",
     "features": [
-      "Real-time PSI (0–100) with Stable / Caution / Critical zones",
-      "Seven behavioral dimensions (revenge entry, stop manipulation, size outlier, hold-time collapse, prolonged loss hold, rule compliance, overtrading)",
-      "Floating HUD overlay + multi-page hub (session, history, profile, settings)",
-      "Adaptive baselines — learns your rhythm locally (Market Replay excluded from baseline writes)",
-      "100% local storage — no network calls, no cloud account",
-      "Cancel any time — no lock-in",
-      "Email support"
+      "Real-time psychological stability index — refreshes in under 100ms after every fill so you see pressure in the moment, not only in hindsight",
+      "Seven independent behavioral signals that combine into one composite score you can read at a glance",
+      "Baselines calibrated from your own history — not one-size-fits-all thresholds",
+      "Native NinjaTrader 8 — live readout while you trade, plus a hub for session detail, history, and settings",
+      "100% local — no cloud uploads, no accounts, no telemetry; your data stays on your PC",
+      "Cancel any time — monthly billing, no long-term lock-in",
+      "Commercial support — we aim to reply within 1–2 business days"
     ]
   },
   "footnote": "Subscription billed monthly at $24.99 USD after the 7-day free trial. Cancel any time before the trial ends and you will not be charged. Trading involves substantial risk of loss. Meridian does not provide trading signals or investment advice. Results may vary."

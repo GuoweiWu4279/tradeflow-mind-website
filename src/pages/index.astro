@@ -24,7 +24,7 @@ const marqueeRow1 = [
     name: 'Mike R.',
     role: 'Prop firm trader',
   },
-  { quote: 'Not my entries. Size into losers. Ouch.', name: 'Anonymous', role: '' },
+  { quote: "Spent months telling myself it was my entry timing. Turned out I was adding to losing positions and ignoring my own rules entirely. Hard to see. Necessary to see.", name: 'Anonymous', role: '' },
   {
     quote:
       "I won't run journaling tools that want my fills in the cloud. Local-only was the only reason I installed anything new on my trading box.",
@@ -37,7 +37,7 @@ const marqueeRow1 = [
     name: 'T. Rodriguez',
     role: 'NQ futures',
   },
-  { quote: "Seven bars → seven habits I can't gaslight myself about anymore.", name: 'Elena V.', role: 'MNQ scalper' },
+  { quote: "Seven bars, and it's immediately obvious which habit is dragging the score down. I kept thinking I was 'basically fine' — the data had a different opinion.", name: 'Elena V.', role: 'MNQ scalper' },
   {
     quote:
       "Market Replay + Test Mode sounds like a footnote. In practice it's where I rehearse without contaminating my baseline — boring sentence, huge relief.",
@@ -85,7 +85,7 @@ const marqueeRow2 = [
     name: 'Priya S.',
     role: 'Futures trader',
   },
-  { quote: 'Stop widening. Caught. Embarrassing. Useful.', name: 'Marcus T.', role: 'CL / GC' },
+  { quote: "The stop-widening flag caught me doing the thing I always deny doing. I was moving my stop further away on losing trades. Embarrassing to confirm. Useful to know.", name: 'Marcus T.', role: 'CL / GC' },
   {
     quote:
       "Thought I was patient. The rushed-exit signal says: 'not on Wednesdays.' (I hate that it might be right.)",
@@ -136,8 +136,8 @@ const marqueeRow2 = [
 
   <Stats
     stats={[
-      { title: 'Behavioral patterns tracked', amount: '7' },
-      { title: 'Days of history stored', amount: '365' },
+      { title: 'Behavioral dimensions tracked', amount: '7' },
+      { title: 'PSI update after every fill', amount: '<100ms' },
       { title: 'Free trial', amount: '7 days' },
       { title: 'Per month after trial', amount: '$24.99' },
     ]}
@@ -177,45 +177,45 @@ const marqueeRow2 = [
 
   <Features
     id="features"
-    tagline="What's inside"
-    title="A live instrument, not a journal."
-    subtitle="Seven independent trackers, one live score — running natively inside NinjaTrader 8 while you trade."
+    tagline="How it works"
+    title="Not a journal. Not a mood tracker. A precision instrument."
+    subtitle="Meridian applies a multi-dimensional behavioral model — drawing from trading psychology, cognitive science, and behavioral finance — to produce a single, mathematically rigorous score in real time."
     items={[
       {
-        title: 'A live PSI — from 0 to 100, in real time',
+        title: 'A composite behavioral index — updated in under 100ms',
         description:
-          'A single score updated after every execution: Stable (≥88), Caution (72–87), or Critical (<72). Spot rising behavioral pressure before it compounds.',
+          'After every fill, Meridian recalculates your PSI score across all seven behavioral dimensions simultaneously. No polling. No delay. The score reflects your current psychological state before you reach for the next trade.',
         icon: 'tabler:gauge',
       },
       {
-        title: 'The seven patterns that quietly cost traders the most',
+        title: 'Seven dimensions drawn from behavioral and cognitive research',
         description:
-          'Revenge entries, stop manipulation, size outliers, hold-time collapse, prolonged loss holds, session rule violations, and overtrading — each tracked independently.',
-        icon: 'tabler:binary-tree',
+          'Revenge Entry · Stop Manipulation · Size Spike · Rushed Exit · Position Overstay · Rule Violations · Overtrading Pace — each dimension targets a distinct cognitive failure mode documented in trading psychology and behavioral finance literature. They run independently and compound into a single score.',
+        icon: 'tabler:brain',
       },
       {
-        title: 'A live overlay that stays out of your way',
+        title: 'Personalized statistical baseline — not a generic threshold',
         description:
-          'A floating HUD shows PSI and all seven dimension bars while you trade. Open the full hub for session timelines, history, and a detailed behavioral breakdown.',
-        icon: 'tabler:layout-dashboard',
-      },
-      {
-        title: 'It learns what normal looks like for you',
-        description:
-          'Adaptive baselines calibrate to your own trading history using statistical modeling — not someone else\'s standard. Market Replay sessions train your awareness without affecting your live baseline.',
+          'Meridian builds a statistical model of your specific trading behavior using Welford online estimation — tracking your historical hold times, position sizes, and entry pace. The score is calibrated against your own history, not an industry average. It converges meaningfully around 30 sessions.',
         icon: 'tabler:chart-dots',
       },
       {
-        title: 'Your data stays on your machine — always',
+        title: 'EWMA-weighted scoring with asymmetric pressure dynamics',
         description:
-          'No accounts, no cloud sync, no network calls. Configuration and session history are stored in local files only you can access.',
-        icon: 'tabler:cloud-off',
+          'Behavioral pressure accumulates fast and recovers slowly — mirroring how cognitive load actually works under stress. Each dimension uses exponential weighted decay, so a single bad decision doesn\'t define you, but a pattern absolutely does.',
+        icon: 'tabler:math-function',
       },
       {
-        title: 'Test it in Market Replay first',
+        title: 'Overnight carry: psychological debt doesn\'t reset overnight',
         description:
-          'Use Meridian in NinjaTrader\'s Market Replay to understand your behavioral patterns before going live. Your real baseline is never affected.',
-        icon: 'tabler:player-play',
+          'Unresolved behavioral pressure carries forward between sessions with a time-decay model. A bad Tuesday doesn\'t vanish from your score Wednesday morning. Markets rest — stress responses don\'t.',
+        icon: 'tabler:moon',
+      },
+      {
+        title: 'Completely local. Zero network calls. Ever.',
+        description:
+          'No accounts, no cloud sync, no telemetry. Your fills, session history, and behavioral baseline never leave your machine. Meridian runs entirely inside NinjaTrader 8 — a native add-on, not a connected service.',
+        icon: 'tabler:cloud-off',
       },
     ]}
   />
@@ -349,7 +349,7 @@ const marqueeRow2 = [
       <div class="shrink-0 w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold flex items-center justify-center select-none">G</div>
       <div>
         <p class="text-zinc-700 leading-relaxed text-base italic">
-          "I built Meridian because I kept losing sessions I had no business losing. The strategy was fine. The market wasn't the problem. I was. I needed something that told me that <em>while it was happening</em> — not the next morning in a journal."
+          "I built Meridian because I kept blowing up sessions that had no reason to go wrong. The strategy was solid. The market wasn't the problem. I was. I needed something that told me that <em>while it was happening</em> — not the next morning in a journal."
         </p>
         <p class="mt-3 text-sm text-zinc-400 font-medium">— Gary Caffrey, Founder of Meridian &nbsp;·&nbsp; <a href="/about" class="underline hover:text-zinc-600">Read the full story →</a></p>
       </div>

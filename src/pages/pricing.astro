@@ -67,21 +67,21 @@ const metadata = {
         </div>
       </div>
 
-      <div class="relative rounded-3xl border border-zinc-200 bg-white shadow-sm px-8 py-10 text-center">
+      <div class="relative rounded-3xl border border-zinc-200 bg-zinc-950 shadow-sm px-8 py-10 text-center">
         {annualPreview.badge && (
-          <span class="inline-block rounded-full bg-zinc-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white mb-4">
+          <span class="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white mb-4">
             {annualPreview.badge}
           </span>
         )}
-        <h2 class="text-2xl font-bold text-zinc-900 tracking-tight">{annualPreview.name}</h2>
+        <h2 class="text-2xl font-bold text-white tracking-tight">{annualPreview.name}</h2>
 
         <div class="mt-8 flex flex-col items-center gap-1">
           <div class="flex items-baseline justify-center">
-            <span class="text-3xl font-semibold text-zinc-900">$</span>
-            <span class="text-6xl font-extrabold tracking-tight text-zinc-900">{annualPreview.price}</span>
-            <span class="ml-1 text-lg font-medium text-zinc-500">{annualPreview.billingPeriod}</span>
+            <span class="text-3xl font-semibold text-white">$</span>
+            <span class="text-6xl font-extrabold tracking-tight text-white">{annualPreview.price}</span>
+            <span class="ml-1 text-lg font-medium text-zinc-400">{annualPreview.billingPeriod}</span>
           </div>
-          <p class="text-sm text-zinc-500 mt-2">
+          <p class="text-sm text-zinc-400 mt-2">
             About ${annualPreview.effectiveMonthly}/month · save ${annualPreview.savings}/year
           </p>
         </div>
@@ -89,8 +89,8 @@ const metadata = {
         <ul class="mt-10 space-y-3 text-left max-w-md mx-auto">
           {
             annualPreview.features.map((line: string) => (
-              <li class="flex gap-3 text-sm text-zinc-700">
-                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-zinc-800">
+              <li class="flex gap-3 text-sm text-zinc-300">
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10">
                   <Icon name="tabler:check" class="h-3.5 w-3.5 text-white" />
                 </span>
                 <span>{line}</span>
@@ -100,14 +100,10 @@ const metadata = {
         </ul>
 
         <div class="mt-10 flex flex-col items-center gap-3">
-          <a
-            href={`mailto:${supportEmail}?subject=Annual%20plan%20interest`}
-            class="inline-flex items-center justify-center rounded-full border border-zinc-300 px-8 py-3 text-base font-semibold text-zinc-900 hover:border-zinc-400 hover:bg-zinc-50"
-          >
+          <Button variant="primary" href={annualPreview.ctaHref} class="px-8 py-3 text-base font-semibold rounded-full">
             {annualPreview.cta}
-          </a>
-          <p class="text-xs text-zinc-500">We will enable annual checkout as soon as it is available.</p>
-          <p class="text-xs text-zinc-400">Email {supportEmail} if you want early access when the annual plan goes live.</p>
+          </Button>
+          <p class="text-xs text-zinc-500">No payment required during trial</p>
         </div>
       </div>
     </div>
@@ -129,9 +125,9 @@ const metadata = {
           'Your first seven days include full access to Meridian at no cost. If you choose to continue afterward, the plan is $24.99 per month. You may cancel during the trial at any time; in that case, no subscription charge applies.',
       },
       {
-        title: 'Will there be an annual plan?',
+        title: 'Is there an annual plan?',
         description:
-          'Yes. We plan to offer annual pricing at $239.88 per year, which works out to about $19.99 per month and saves about $60 per year versus monthly billing. Until annual checkout is enabled, monthly remains the live purchase option.',
+          'Yes. Annual pricing is $239.88 per year — about $19.99 per month — and saves around $60 per year versus monthly billing. A 7-day free trial is included on the annual plan as well.',
       },
       {
         title: 'Can I cancel at any time?',
@@ -169,7 +165,7 @@ const metadata = {
   >
     <Fragment slot="title">Try Meridian free for seven days</Fragment>
     <Fragment slot="subtitle">
-      Full product access during the trial. After that, $24.99/month. Annual pricing at $239.88/year is planned next. NinjaTrader 8 is required.
+      Full product access during the trial. Monthly at $24.99 or annual at $239.88/year. NinjaTrader 8 is required.
     </Fragment>
   </CallToAction>
 </Layout>

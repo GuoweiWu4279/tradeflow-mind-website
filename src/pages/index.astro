@@ -11,96 +11,107 @@ const metadata = {
   ignoreTitleTemplate: true,
 };
 
-/** Marquee: two identical flex strips side-by-side so translateX(-50%) matches one full cycle (gap-safe). */
 const marqueeRow1 = [
   {
-    quote:
-      "Three months in. Week one was humbling — I thought I traded 'clean' until the overtrading metric disagreed with me in public (on my own screen).",
+    quote: "Three months in. I thought I had clean execution — the overtrading metric disagreed from day one. Week one data was genuinely humbling.",
     name: 'Jason K.',
     role: 'Futures day trader',
   },
   {
-    quote: "Third Apex attempt passed. First two? Classic 'one more trade' days. Not claiming causation — but the pattern was impossible to unsee afterward.",
+    quote: "Passed my third Apex evaluation. The first two I blew up on days where, in hindsight, I should have closed the platform. The pattern was obvious once I could see it laid out.",
     name: 'Mike R.',
     role: 'Prop firm trader',
   },
-  { quote: "Spent months telling myself it was my entry timing. Turned out I was adding to losing positions and ignoring my own rules entirely. Hard to see. Necessary to see.", name: 'Anonymous', role: '' },
   {
-    quote:
-      "I won't run journaling tools that want my fills in the cloud. Local-only was the only reason I installed anything new on my trading box.",
-    name: 'David Chen',
-    role: 'Independent trader',
-  },
-  {
-    quote:
-      "It won't press Flat for you (obviously). What changed for me is I stopped pretending I didn't notice the score drifting while I was negotiating with my stop.",
-    name: 'T. Rodriguez',
-    role: 'NQ futures',
-  },
-  { quote: "Seven bars, and it's immediately obvious which habit is dragging the score down. I kept thinking I was 'basically fine' — the data had a different opinion.", name: 'Elena V.', role: 'MNQ scalper' },
-  {
-    quote:
-      "Market Replay + Test Mode sounds like a footnote. In practice it's where I rehearse without contaminating my baseline — boring sentence, huge relief.",
-    name: 'Chris P.',
-    role: 'Futures swing',
-  },
-  {
-    quote:
-      "Two accounts, occasional copy fills. I was braced for double-counting weirdness. So far it's been… shockingly sane?",
-    name: 'Jordan L.',
-    role: 'Multi-account',
-  },
-  {
-    quote:
-      "After a red session I used to stare at candles. Now I stare at the report first. Uncomfortable, shorter, more honest.",
-    name: 'Sam W.',
-    role: 'ES / NQ',
-  },
-  { quote: "Didn't want another subscription. Tried the trial anyway. Still paying — HUD stays readable when I'm actually in market.", name: 'Rina M.', role: 'Day trader' },
-];
-
-const marqueeRow2 = [
-  {
-    quote:
-      "Caution flashed. I talked myself into 'just managing it.' Twenty minutes later: daily limit gone. Not blaming the software — finally not confused about the cause chain.",
-    name: 'Sara',
-    role: 'ES trader',
-  },
-  {
-    quote:
-      "Fourth funded-account restart club, hello. If you told me a 'revenge entry' flag would matter more than another indicator pack, I'd have laughed. I was wrong.",
-    name: 'Alex Nowak',
-    role: 'Prop trader',
-  },
-  { quote: "NQ for years. 'Self-awareness'? Week one politely disagreed.", name: 'James O.', role: 'Day trader' },
-  {
-    quote:
-      "I've tried the post-session journaling apps. Fine for therapy vibes. This is different — feedback lands while the mistake is still expensive.",
+    quote: "I spent months convinced my entries were the problem. Turned out I was repeatedly adding to losing positions and ignoring my own risk rules. Uncomfortable to discover. Worth knowing.",
     name: 'Anonymous',
     role: '',
   },
   {
-    quote:
-      "Baseline felt fussy until it didn't. Once it clicked, alerts stopped feeling random; more like 'ohhh that's the habit it's reacting to.'",
+    quote: "I don't run tools that send my trade data to a server. Local-only storage was the only reason I was willing to install something new on my trading machine.",
+    name: 'David Chen',
+    role: 'Independent trader',
+  },
+  {
+    quote: "It doesn't close your positions for you — that's still on you. What it changed for me is I stopped pretending I didn't notice the score dropping while I was moving my stop around.",
+    name: 'T. Rodriguez',
+    role: 'NQ futures',
+  },
+  {
+    quote: "The seven dimension bars make it clear which specific habit is dragging the score down. I kept telling myself I was trading fine — the data consistently had a different view.",
+    name: 'Elena V.',
+    role: 'MNQ scalper',
+  },
+  {
+    quote: "Being able to use Market Replay without it affecting my live baseline was more important than I expected. I could run practice sessions and keep my real history clean.",
+    name: 'Chris P.',
+    role: 'Futures swing',
+  },
+  {
+    quote: "I run two accounts and occasionally use copy-fill software. I was expecting messy double-counting in the score. It handled it cleanly without any configuration.",
+    name: 'Jordan L.',
+    role: 'Multi-account',
+  },
+  {
+    quote: "After a losing session I used to go back and look at charts trying to explain what happened. Now I check the session report first. It's faster and a lot more honest.",
+    name: 'Sam W.',
+    role: 'ES / NQ',
+  },
+  {
+    quote: "I was resistant to another subscription. Tried the trial because it was free. Kept it because the overlay is actually readable mid-session without being distracting.",
+    name: 'Rina M.',
+    role: 'Day trader',
+  },
+];
+
+const marqueeRow2 = [
+  {
+    quote: "The caution indicator fired and I decided I could manage through it. Twenty minutes later I had hit my daily loss limit. I can't blame the tool — I ignored it. That part is on me.",
+    name: 'Sara',
+    role: 'ES trader',
+  },
+  {
+    quote: "I've restarted funded accounts more times than I want to admit. If someone had told me a revenge-entry detector would be more useful than another indicator, I wouldn't have believed them. I was wrong.",
+    name: 'Alex Nowak',
+    role: 'Prop trader',
+  },
+  {
+    quote: "I've been trading NQ for four years and thought I had a decent read on my own behavior. The first week of data showed me I had several habits I wasn't aware of.",
+    name: 'James O.',
+    role: 'Day trader',
+  },
+  {
+    quote: "I've used the post-session journaling tools. They have their place. This is different — the feedback arrives while the session is still active, not the next morning.",
+    name: 'Anonymous',
+    role: '',
+  },
+  {
+    quote: "The baseline took a few sessions to calibrate properly. Once it did, the alerts started making sense — I could see exactly which behavioral pattern had triggered each one.",
     name: 'Priya S.',
     role: 'Futures trader',
   },
-  { quote: "The stop-widening flag caught me doing the thing I always deny doing. I was moving my stop further away on losing trades. Embarrassing to confirm. Useful to know.", name: 'Marcus T.', role: 'CL / GC' },
   {
-    quote:
-      "Thought I was patient. The rushed-exit signal says: 'not on Wednesdays.' (I hate that it might be right.)",
+    quote: "The stop-widening flag caught me doing something I always denied doing — moving my stop further out when a trade was going against me. Difficult to see confirmed in data. Useful.",
+    name: 'Marcus T.',
+    role: 'CL / GC',
+  },
+  {
+    quote: "I thought my exits were disciplined. The rushed-exit signal showed a consistent pattern on certain days of the week. I don't love that it was right, but I can work with the information.",
     name: 'Kim H.',
     role: 'Index futures',
   },
   {
-    quote: "Weirdly comforting: a bad Tuesday doesn't vanish from the score just because the calendar flipped.",
+    quote: "The overnight carry on the score is something I didn't expect to matter, but it does. A difficult Tuesday doesn't disappear from the score just because Wednesday started.",
     name: 'Leo B.',
     role: 'Overnight + day',
   },
-  { quote: "Rare voice pings → I don't mute them out of habit. When it fires, I actually stop and breathe once.", name: 'Andre C.', role: 'Prop + personal' },
   {
-    quote:
-      "The history view isn't flashy. I like that. Streaks turn 'discipline' into something I can point at instead of vibes.",
+    quote: "The voice alerts are infrequent enough that I don't filter them out. When one fires, I actually pause and reassess before doing anything.",
+    name: 'Andre C.',
+    role: 'Prop + personal',
+  },
+  {
+    quote: "The history view is straightforward. I appreciate that. Seeing consistent green streaks makes discipline feel like something measurable rather than just a goal.",
     name: 'Nina F.',
     role: 'Futures',
   },
@@ -385,10 +396,10 @@ const marqueeRow2 = [
 
 <style>
   .marquee-left {
-    animation: marquee-left 95s linear infinite;
+    animation: marquee-left 130s linear infinite;
   }
   .marquee-right {
-    animation: marquee-right 95s linear infinite;
+    animation: marquee-right 130s linear infinite;
   }
   @keyframes marquee-left {
     from { transform: translateX(0); }

@@ -1,9 +1,11 @@
 import { getPermalink } from './utils/permalinks';
 
+const checkoutUrl = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25';
+
 export const headerData = {
   links: [
     {
-      text: 'Product',
+      text: 'Meridian',
       links: [
         {
           text: 'Features',
@@ -30,11 +32,15 @@ export const headerData = {
           text: 'FAQ',
           href: getPermalink('/faq'),
         },
-        {
-          text: 'Support',
-          href: getPermalink('/support'),
-        },
       ],
+    },
+    {
+      text: 'Support',
+      href: getPermalink('/support'),
+    },
+    {
+      text: 'About',
+      href: getPermalink('/about'),
     },
     {
       text: 'Legal',
@@ -58,28 +64,27 @@ export const headerData = {
       ],
     },
   ],
-  actions: [{ text: 'Start free trial — 7 days', href: 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25', variant: 'primary' }],
+  actions: [{ text: 'Start free trial', href: checkoutUrl, variant: 'primary' }],
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: 'Meridian',
       links: [
         { text: 'Features', href: getPermalink('/#features') },
         { text: 'Pricing', href: getPermalink('/pricing') },
-        { text: 'Checkout', href: getPermalink('/checkout') },
         { text: 'Download', href: getPermalink('/download') },
         { text: 'Changelog', href: getPermalink('/changelog') },
       ],
     },
     {
-      title: 'Support',
+      title: 'Company',
       links: [
+        { text: 'About', href: getPermalink('/about') },
+        { text: 'Support', href: getPermalink('/support') },
         { text: 'FAQ', href: getPermalink('/faq') },
-        { text: 'Contact support', href: 'mailto:contactmeridianpsi@gmail.com' },
         { text: 'System requirements', href: getPermalink('/download#requirements') },
-        { text: 'Installation', href: getPermalink('/download#install') },
       ],
     },
     {

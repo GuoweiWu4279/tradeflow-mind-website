@@ -26,10 +26,6 @@ export const headerData = {
       text: 'Resources',
       links: [
         {
-          text: 'Changelog',
-          href: getPermalink('/changelog'),
-        },
-        {
           text: 'FAQ',
           href: getPermalink('/faq'),
         },
@@ -76,7 +72,6 @@ export const footerData = {
         { text: 'Features', href: getPermalink('/features') },
         { text: 'Pricing', href: getPermalink('/pricing') },
         { text: 'Releases', href: getPermalink('/releases') },
-        { text: 'Changelog', href: getPermalink('/changelog') },
       ],
     },
     {

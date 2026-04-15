@@ -1,40 +1,53 @@
 {
   "headline": "See yourself clearly. Every session.",
-  "subhead": "Same full product. Choose how you pay.",
-  "singleTier": {
-    "id": "standard",
-    "name": "Meridian",
-    "price": 24.99,
-    "currency": "USD",
-    "billingPeriod": "/month",
-    "trialDays": 7,
-    "badge": "7-day free trial",
-    "cta": "Start free trial",
-    "ctaHref": "https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25",
-    "features": [
-      "Real-time psychological stability index — refreshes in under 100ms after every fill so you see pressure in the moment, not only in hindsight",
-      "Seven independent behavioral signals that combine into one composite score you can read at a glance",
-      "Baselines calibrated from your own history — not one-size-fits-all thresholds",
-      "Native NinjaTrader 8 — live readout while you trade, plus a hub for session detail, history, and settings",
-      "100% local — no cloud uploads, no accounts, no telemetry; your data stays on your PC",
-      "Cancel any time — monthly billing, no long-term lock-in"
-    ]
-  },
-  "annualPreview": {
-    "name": "Annual",
-    "price": 239.88,
-    "effectiveMonthly": 19.99,
-    "billingPeriod": "/year",
-    "savings": 60,
-    "badge": "Best value",
-    "cta": "Start free trial",
-    "ctaHref": "https://meridianpsi.lemonsqueezy.com/checkout/buy/04e32f4e-a20e-469f-ba4e-274d381739c6",
-    "features": [
-      "Everything in monthly — same full product, same features",
-      "Billed once at $239.88/year, about $19.99/month",
-      "Save about $60 per year versus monthly billing",
-      "7-day free trial included — no charge until the trial ends"
-    ]
-  },
-  "footnote": "Monthly plan is billed at $24.99/month after the 7-day free trial. Annual plan is billed at $239.88/year after the 7-day free trial. Cancel any time before the trial ends and you will not be charged. Trading involves substantial risk of loss. Meridian does not provide trading signals or investment advice. Results may vary."
+  "subhead": "Two products. Same commitment to precision.",
+  "tiers": [
+    {
+      "id": "meridian",
+      "name": "Meridian",
+      "description": "The full real-time PSI monitor for active traders.",
+      "monthlyPrice": 24.99,
+      "annualPrice": 239.88,
+      "annualMonthly": 19.99,
+      "annualSavings": 60,
+      "currency": "USD",
+      "trialDays": 7,
+      "badge": "",
+      "highlight": false,
+      "monthlyCtaHref": "https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25",
+      "annualCtaHref": "https://meridianpsi.lemonsqueezy.com/checkout/buy/04e32f4e-a20e-469f-ba4e-274d381739c6",
+      "features": [
+        "Real-time PSI — updates in under 100ms after every fill",
+        "Seven independent behavioral dimensions in one composite score",
+        "Baselines calibrated from your own session history",
+        "Native NinjaTrader 8 add-on — no cloud, no accounts",
+        "365-day session history and post-session reports",
+        "Cancel any time"
+      ]
+    },
+    {
+      "id": "guard",
+      "name": "Meridian Guard",
+      "description": "Advanced protection for serious traders. More details coming soon.",
+      "monthlyPrice": 34.99,
+      "annualPrice": 359.88,
+      "annualMonthly": 29.99,
+      "annualSavings": 60,
+      "currency": "USD",
+      "trialDays": 7,
+      "badge": "Coming soon",
+      "highlight": true,
+      "monthlyCtaHref": "#",
+      "annualCtaHref": "#",
+      "features": [
+        "Everything in Meridian",
+        "Additional features — details announced soon",
+        "Additional features — details announced soon",
+        "Additional features — details announced soon",
+        "Additional features — details announced soon",
+        "Priority support"
+      ]
+    }
+  ],
+  "footnote": "Meridian is billed at $24.99/month or $239.88/year after the 7-day free trial. Meridian Guard is billed at $34.99/month or $359.88/year after the 7-day free trial. Cancel any time before the trial ends and you will not be charged. Trading involves substantial risk of loss. Meridian does not provide trading signals or investment advice. Results may vary."
 }

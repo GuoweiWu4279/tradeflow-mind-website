@@ -3,106 +3,156 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import { Icon } from 'astro-icon/components';
 
 import pricing from '~/data/pricing.json';
-
-const { singleTier, annualPreview, footnote, headline, subhead } = pricing;
 
 const metadata = {
   title: 'Pricing — Meridian',
   description:
-    'Meridian pricing: $24.99/month or $239.88/year after a 7-day free trial. Trading involves substantial risk.',
+    'Meridian pricing: from $24.99/month after a 7-day free trial. Trading involves substantial risk.',
 };
 
-const features = singleTier.features;
+const { tiers, footnote, headline, subhead } = pricing;
+const [standard, guard] = tiers;
 ---
 
 <Layout metadata={metadata}>
   <HeroText tagline="Pricing" title={headline} subtitle={subhead} />
 
-  <section class="max-w-lg mx-auto px-6 pb-6">
-
-    <!-- Billing toggle -->
-    <div class="flex items-center justify-center mb-10">
-      <div class="relative flex items-center bg-zinc-100 rounded-full p-1 gap-1">
-        <button
-          id="btn-monthly"
-          class="relative z-10 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 bg-white text-zinc-900 shadow-sm"
-        >
-          Monthly
-        </button>
-        <button
-          id="btn-annual"
-          class="relative z-10 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 text-zinc-500"
-        >
-          Annual
-          <span
-            id="save-badge"
-            class="ml-2 inline-block rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-2 py-0.5 transition-opacity duration-200 opacity-100"
-          >
-            Save $60/yr
-          </span>
-        </button>
-      </div>
+  <!-- Billing toggle -->
+  <div class="flex items-center justify-center mb-10 px-6">
+    <div class="relative flex items-center bg-zinc-100 rounded-full p-1 gap-1">
+      <button
+        id="btn-monthly"
+        class="relative z-10 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 bg-white text-zinc-900 shadow-sm"
+      >
+        Monthly
+      </button>
+      <button
+        id="btn-annual"
+        class="relative z-10 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 text-zinc-500"
+      >
+        Annual
+        <span class="ml-2 inline-block rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-2 py-0.5">
+          Save ~$60/yr
+        </span>
+      </button>
     </div>
+  </div>
 
-    <!-- Pricing card -->
-    <div class="relative rounded-3xl border border-emerald-200/80 bg-gradient-to-b from-white to-emerald-50/40 shadow-lg shadow-emerald-900/5 px-8 py-10 text-center">
+  <!-- Two pricing cards -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="grid md:grid-cols-2 gap-6 items-start">
 
-      <!-- Badge -->
-      <span class="inline-block rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white mb-4">
-        7-day free trial
-      </span>
-
-      <!-- Price block -->
-      <div class="mt-4 flex flex-col items-center gap-1 min-h-[96px]">
-        <div class="flex items-baseline justify-center">
-          <span class="text-3xl font-semibold text-zinc-900">$</span>
-          <span id="price-display" class="text-6xl font-extrabold tracking-tight text-zinc-900 tabular-nums transition-all duration-150">
-            {singleTier.price}
-          </span>
-          <span class="ml-1 text-lg font-medium text-zinc-500">/mo</span>
+      <!-- Meridian (standard) -->
+      <div class="rounded-3xl border border-zinc-200 bg-white shadow-sm px-8 py-10">
+        <div class="mb-6">
+          <h2 class="text-xl font-bold text-zinc-900 mb-1">{standard.name}</h2>
+          <p class="text-sm text-zinc-500">{standard.description}</p>
         </div>
-        <div id="billing-note-monthly" class="text-sm text-zinc-500 mt-1">
-          After 7-day free trial · cancel any time
-        </div>
-        <div id="billing-note-annual" class="text-sm text-zinc-500 mt-1 hidden">
-          Billed at $239.88/year · <span class="text-emerald-700 font-semibold">save $60/year</span> vs monthly
-        </div>
-      </div>
 
-      <!-- Features -->
-      <ul class="mt-8 space-y-3 text-left max-w-md mx-auto">
-        {
-          features.map((line: string) => (
-            <li class="flex gap-3 text-sm text-zinc-700">
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500">
-                <Icon name="tabler:check" class="h-3.5 w-3.5 text-white" />
-              </span>
-              <span>{line}</span>
-            </li>
-          ))
-        }
-      </ul>
+        <div class="mb-6 min-h-[80px]">
+          <div id="std-monthly-price" class="flex items-baseline gap-1">
+            <span class="text-4xl font-bold text-zinc-900">${standard.monthlyPrice}</span>
+            <span class="text-zinc-500 text-sm">/month</span>
+          </div>
+          <div id="std-annual-price" class="hidden flex items-baseline gap-1">
+            <span class="text-4xl font-bold text-zinc-900">${standard.annualMonthly}</span>
+            <span class="text-zinc-500 text-sm">/month</span>
+          </div>
+          <p id="std-monthly-note" class="text-xs text-zinc-400 mt-1">Billed monthly · 7-day free trial</p>
+          <p id="std-annual-note" class="text-xs text-zinc-400 mt-1 hidden">
+            Billed ${standard.annualPrice}/year · saves ~${standard.annualSavings}/yr · 7-day free trial
+          </p>
+        </div>
 
-      <!-- CTA -->
-      <div class="mt-10 flex flex-col items-center gap-3">
         <a
-          id="cta-btn"
-          href={singleTier.ctaHref}
-          class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-base font-semibold transition-colors"
+          id="std-cta"
+          href={standard.monthlyCtaHref}
+          class="block w-full text-center px-6 py-3 rounded-full bg-zinc-900 hover:bg-zinc-700 text-white font-semibold text-sm transition-colors mb-8"
         >
           Start free trial
         </a>
-        <p class="text-xs text-zinc-500">No payment required during trial</p>
-        <a href="/download" class="text-sm text-emerald-700 font-medium hover:underline">
-          Already subscribed? Go to downloads →
-        </a>
+
+        <ul class="space-y-3">
+          {standard.features.map((f) => (
+            <li class="flex items-start gap-2.5 text-sm text-zinc-600">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              {f}
+            </li>
+          ))}
+        </ul>
       </div>
+
+      <!-- Meridian Guard -->
+      <div class="rounded-3xl border-2 border-emerald-600/30 bg-gradient-to-b from-white to-emerald-50/30 shadow-lg shadow-emerald-900/5 px-8 py-10 relative overflow-hidden">
+        <!-- Coming soon ribbon -->
+        <div class="absolute top-4 right-4">
+          <span class="inline-block rounded-full bg-emerald-600 text-white text-xs font-semibold px-3 py-1">
+            Coming soon
+          </span>
+        </div>
+
+        <div class="mb-6">
+          <h2 class="text-xl font-bold text-zinc-900 mb-1">{guard.name}</h2>
+          <p class="text-sm text-zinc-500">{guard.description}</p>
+        </div>
+
+        <div class="mb-6 min-h-[80px]">
+          <div id="guard-monthly-price" class="flex items-baseline gap-1">
+            <span class="text-4xl font-bold text-zinc-900">${guard.monthlyPrice}</span>
+            <span class="text-zinc-500 text-sm">/month</span>
+          </div>
+          <div id="guard-annual-price" class="hidden flex items-baseline gap-1">
+            <span class="text-4xl font-bold text-zinc-900">${guard.annualMonthly}</span>
+            <span class="text-zinc-500 text-sm">/month</span>
+          </div>
+          <p id="guard-monthly-note" class="text-xs text-zinc-400 mt-1">Billed monthly · 7-day free trial</p>
+          <p id="guard-annual-note" class="text-xs text-zinc-400 mt-1 hidden">
+            Billed ${guard.annualPrice}/year · saves ~${guard.annualSavings}/yr · 7-day free trial
+          </p>
+        </div>
+
+        <button
+          disabled
+          class="block w-full text-center px-6 py-3 rounded-full bg-emerald-600/40 text-white font-semibold text-sm cursor-not-allowed mb-8"
+        >
+          Coming soon
+        </button>
+
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2.5 text-sm text-zinc-600">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            Everything in Meridian
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-zinc-400 italic">
+            <svg class="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Additional features — details announced soon
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-zinc-400 italic">
+            <svg class="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Additional features — details announced soon
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-zinc-400 italic">
+            <svg class="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Additional features — details announced soon
+          </li>
+        </ul>
+      </div>
+
     </div>
 
-    <p class="mt-8 text-center text-xs text-zinc-500 leading-relaxed max-w-xl mx-auto">
+    <p class="mt-8 text-center text-xs text-zinc-500 leading-relaxed max-w-2xl mx-auto">
       {footnote}
       <a href="/disclaimer" class="underline text-emerald-800 hover:text-emerald-900"> Risk disclaimer</a>.
     </p>
@@ -116,12 +166,17 @@ const features = singleTier.features;
       {
         title: 'How does the free trial work?',
         description:
-          'Your first seven days include full access to Meridian at no cost. If you choose to continue afterward, you pay the plan rate you selected — monthly or annual. You may cancel during the trial at any time and no charge applies.',
+          'Your first seven days include full access at no cost. If you choose to continue afterward, you pay the plan rate you selected — monthly or annual. You may cancel during the trial at any time and no charge applies.',
       },
       {
         title: 'What is the difference between monthly and annual?',
         description:
-          'Same full product, same features. Monthly is $24.99/month billed every month. Annual is $239.88 billed once per year — about $19.99/month — saving around $60 versus paying monthly. Both include a 7-day free trial.',
+          'Same full product, same features. Monthly is billed every month. Annual is billed once per year at a reduced effective rate — saving around $60 per year. Both include a 7-day free trial.',
+      },
+      {
+        title: 'What is the difference between Meridian and Meridian Guard?',
+        description:
+          'Meridian is the full real-time PSI monitor. Meridian Guard is an upgraded tier currently in development — full details will be announced at launch. Both share the same core behavioral-index engine.',
       },
       {
         title: 'Can I cancel at any time?',
@@ -150,16 +205,17 @@ const features = singleTier.features;
     actions={[
       {
         variant: 'primary',
-        text: singleTier.cta,
-        href: singleTier.ctaHref,
+        text: 'Start free trial — Meridian',
+        href: standard.monthlyCtaHref,
         icon: 'tabler:player-play',
       },
-      { text: 'System requirements', href: '/download' },
+      { text: 'System requirements', href: '/releases#requirements' },
     ]}
   >
     <Fragment slot="title">Try Meridian free for seven days</Fragment>
     <Fragment slot="subtitle">
       Full product access during the trial. Monthly at $24.99 or annual at $239.88/year. NinjaTrader 8 is required.
+      <span class="block text-xs text-muted mt-2">Trading involves substantial risk of loss. Meridian does not guarantee trading results.</span>
     </Fragment>
   </CallToAction>
 </Layout>
@@ -167,38 +223,57 @@ const features = singleTier.features;
 <script>
   const btnMonthly = document.getElementById('btn-monthly') as HTMLButtonElement;
   const btnAnnual  = document.getElementById('btn-annual')  as HTMLButtonElement;
-  const priceDisplay = document.getElementById('price-display') as HTMLElement;
-  const noteMonthly  = document.getElementById('billing-note-monthly') as HTMLElement;
-  const noteAnnual   = document.getElementById('billing-note-annual')  as HTMLElement;
-  const ctaBtn = document.getElementById('cta-btn') as HTMLAnchorElement;
 
-  const MONTHLY_PRICE  = '24.99';
-  const ANNUAL_PRICE   = '19.99';
+  const stdMonthlyPrice  = document.getElementById('std-monthly-price');
+  const stdAnnualPrice   = document.getElementById('std-annual-price');
+  const stdMonthlyNote   = document.getElementById('std-monthly-note');
+  const stdAnnualNote    = document.getElementById('std-annual-note');
+  const stdCta           = document.getElementById('std-cta') as HTMLAnchorElement;
+
+  const guardMonthlyPrice = document.getElementById('guard-monthly-price');
+  const guardAnnualPrice  = document.getElementById('guard-annual-price');
+  const guardMonthlyNote  = document.getElementById('guard-monthly-note');
+  const guardAnnualNote   = document.getElementById('guard-annual-note');
+
   const MONTHLY_URL = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25';
   const ANNUAL_URL  = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/04e32f4e-a20e-469f-ba4e-274d381739c6';
 
   function setMonthly() {
-    priceDisplay.textContent = MONTHLY_PRICE;
-    ctaBtn.href = MONTHLY_URL;
-    noteMonthly.classList.remove('hidden');
-    noteAnnual.classList.add('hidden');
     btnMonthly.classList.add('bg-white', 'text-zinc-900', 'shadow-sm');
     btnMonthly.classList.remove('text-zinc-500');
     btnAnnual.classList.remove('bg-white', 'text-zinc-900', 'shadow-sm');
     btnAnnual.classList.add('text-zinc-500');
+
+    stdMonthlyPrice?.classList.remove('hidden');
+    stdAnnualPrice?.classList.add('hidden');
+    stdMonthlyNote?.classList.remove('hidden');
+    stdAnnualNote?.classList.add('hidden');
+    if (stdCta) stdCta.href = MONTHLY_URL;
+
+    guardMonthlyPrice?.classList.remove('hidden');
+    guardAnnualPrice?.classList.add('hidden');
+    guardMonthlyNote?.classList.remove('hidden');
+    guardAnnualNote?.classList.add('hidden');
   }
 
   function setAnnual() {
-    priceDisplay.textContent = ANNUAL_PRICE;
-    ctaBtn.href = ANNUAL_URL;
-    noteAnnual.classList.remove('hidden');
-    noteMonthly.classList.add('hidden');
     btnAnnual.classList.add('bg-white', 'text-zinc-900', 'shadow-sm');
     btnAnnual.classList.remove('text-zinc-500');
     btnMonthly.classList.remove('bg-white', 'text-zinc-900', 'shadow-sm');
     btnMonthly.classList.add('text-zinc-500');
+
+    stdMonthlyPrice?.classList.add('hidden');
+    stdAnnualPrice?.classList.remove('hidden');
+    stdMonthlyNote?.classList.add('hidden');
+    stdAnnualNote?.classList.remove('hidden');
+    if (stdCta) stdCta.href = ANNUAL_URL;
+
+    guardMonthlyPrice?.classList.add('hidden');
+    guardAnnualPrice?.classList.remove('hidden');
+    guardMonthlyNote?.classList.add('hidden');
+    guardAnnualNote?.classList.remove('hidden');
   }
 
-  btnMonthly.addEventListener('click', setMonthly);
-  btnAnnual.addEventListener('click', setAnnual);
+  btnMonthly?.addEventListener('click', setMonthly);
+  btnAnnual?.addEventListener('click', setAnnual);
 </script>

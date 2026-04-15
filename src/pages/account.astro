@@ -1,0 +1,115 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Account — Meridian',
+  description: 'Manage your Meridian subscription — cancel, update payment, or download invoices.',
+};
+
+const portalUrl = 'https://app.lemonsqueezy.com/my-orders/';
+const checkoutMonthly = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25';
+---
+
+<Layout metadata={metadata}>
+  <section class="py-16 px-6">
+    <div class="max-w-xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-3">Account</h1>
+        <p class="text-zinc-500 text-base">
+          Manage your Meridian subscription — billing, cancellation, and invoices.
+        </p>
+      </div>
+
+      <!-- Portal CTA — primary card -->
+      <div class="rounded-2xl border border-emerald-200/80 bg-gradient-to-b from-white to-emerald-50/30 p-8 text-center shadow-sm mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+        <h2 class="text-lg font-semibold text-zinc-900 mb-2">Manage your subscription</h2>
+        <p class="text-sm text-zinc-500 mb-6 max-w-sm mx-auto">
+          Cancel, update your payment method, switch plans, or download past invoices — all from the Lemon Squeezy customer portal.
+        </p>
+        <a
+          href={portalUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors"
+        >
+          Go to account portal
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        <p class="text-xs text-zinc-400 mt-4">
+          Opens Lemon Squeezy — enter the email you used at checkout to sign in.
+        </p>
+      </div>
+
+      <!-- How to sign in -->
+      <div class="rounded-xl border border-zinc-200 bg-white p-6 mb-6">
+        <h3 class="text-sm font-semibold text-zinc-900 mb-4">How to access the portal</h3>
+        <ol class="space-y-3">
+          {[
+            'Click "Go to account portal" above.',
+            'Enter the email address you used when you subscribed.',
+            'Check your inbox for a sign-in link from Lemon Squeezy.',
+            'Click the link — you\'ll see your subscription, invoices, and options.',
+          ].map((step, i) => (
+            <li class="flex items-start gap-3 text-sm text-zinc-600">
+              <span class="mt-0.5 w-5 h-5 rounded-full bg-zinc-100 text-zinc-500 text-xs font-bold flex items-center justify-center shrink-0">
+                {i + 1}
+              </span>
+              {step}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- What you can do in the portal -->
+      <div class="rounded-xl border border-zinc-200 bg-white p-6 mb-6">
+        <h3 class="text-sm font-semibold text-zinc-900 mb-4">What you can do in the portal</h3>
+        <ul class="space-y-2.5">
+          {[
+            ['Cancel subscription', 'Cancel any time — no fees. Access continues until the end of your current period.'],
+            ['Update payment method', 'Change your credit card or PayPal account.'],
+            ['Switch plans', 'Move between monthly and annual billing.'],
+            ['Download invoices', 'Access PDF receipts for every payment.'],
+          ].map(([action, detail]) => (
+            <li class="flex items-start gap-3 text-sm">
+              <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
+              <span>
+                <span class="font-medium text-zinc-800">{action}</span>
+                <span class="text-zinc-500"> — {detail}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- No subscription yet -->
+      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-5 text-center">
+        <p class="text-sm text-zinc-500">
+          Don't have a subscription yet?{' '}
+          <a href={checkoutMonthly} class="text-emerald-700 font-medium hover:underline">
+            Start your 7-day free trial →
+          </a>
+        </p>
+      </div>
+
+      <!-- Help -->
+      <p class="text-xs text-center text-zinc-400 mt-8">
+        Need help with billing?{' '}
+        <a href="/support" class="underline hover:text-zinc-600">Contact support</a>
+        {' '}or email{' '}
+        <a href="mailto:contactmeridianpsi@gmail.com" class="underline hover:text-zinc-600">
+          contactmeridianpsi@gmail.com
+        </a>
+      </p>
+
+    </div>
+  </section>
+</Layout>

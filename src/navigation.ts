@@ -36,6 +36,10 @@ export const headerData = {
       href: getPermalink('/support'),
     },
     {
+      text: 'Account',
+      href: getPermalink('/account'),
+    },
+    {
       text: 'About',
       href: getPermalink('/about'),
     },
@@ -79,6 +83,7 @@ export const footerData = {
       links: [
         { text: 'About', href: getPermalink('/about') },
         { text: 'Support', href: getPermalink('/support') },
+        { text: 'Account', href: getPermalink('/account') },
         { text: 'FAQ', href: getPermalink('/faq') },
         { text: 'System requirements', href: getPermalink('/releases#requirements') },
       ],

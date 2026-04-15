@@ -17,8 +17,8 @@ export const headerData = {
           href: getPermalink('/pricing'),
         },
         {
-          text: 'Download',
-          href: getPermalink('/download'),
+          text: 'Releases',
+          href: getPermalink('/releases'),
         },
       ],
     },
@@ -75,7 +75,7 @@ export const footerData = {
       links: [
         { text: 'Features', href: getPermalink('/features') },
         { text: 'Pricing', href: getPermalink('/pricing') },
-        { text: 'Download', href: getPermalink('/download') },
+        { text: 'Releases', href: getPermalink('/releases') },
         { text: 'Changelog', href: getPermalink('/changelog') },
       ],
     },
@@ -85,7 +85,7 @@ export const footerData = {
         { text: 'About', href: getPermalink('/about') },
         { text: 'Support', href: getPermalink('/support') },
         { text: 'FAQ', href: getPermalink('/faq') },
-        { text: 'System requirements', href: getPermalink('/download#requirements') },
+        { text: 'System requirements', href: getPermalink('/releases#requirements') },
       ],
     },
     {

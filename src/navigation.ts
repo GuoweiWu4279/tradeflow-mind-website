@@ -23,46 +23,25 @@ export const headerData = {
       ],
     },
     {
-      text: 'Resources',
+      text: 'About',
+      href: getPermalink('/about'),
+    },
+    {
+      text: 'Support',
       links: [
         {
           text: 'FAQ',
           href: getPermalink('/faq'),
         },
+        {
+          text: 'Contact',
+          href: getPermalink('/support'),
+        },
       ],
-    },
-    {
-      text: 'Support',
-      href: getPermalink('/support'),
     },
     {
       text: 'Account',
       href: getPermalink('/account'),
-    },
-    {
-      text: 'About',
-      href: getPermalink('/about'),
-    },
-    {
-      text: 'Legal',
-      links: [
-        {
-          text: 'Risk Disclaimer',
-          href: getPermalink('/disclaimer'),
-        },
-        {
-          text: 'Terms of Service',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy Policy',
-          href: getPermalink('/privacy'),
-        },
-        {
-          text: 'Refund Policy',
-          href: getPermalink('/refund'),
-        },
-      ],
     },
   ],
   actions: [{ text: 'Start free trial', href: checkoutUrl, variant: 'primary' }],

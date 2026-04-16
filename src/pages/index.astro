@@ -271,67 +271,66 @@ const marqueeRow2 = [
 
   <!-- Section 3: Session history — left carousel, right text -->
   <section class="py-20 lg:py-28 px-6 bg-white border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-      <!-- Left: image carousel -->
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+      <!-- Left: sliding carousel -->
       <div class="relative group/carousel">
-        <!-- Slide 1: December -->
-        <div data-carousel="history">
-          <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
-            <img
-              src="/screenshots/session-log-december.png"
-              alt="Session log December 2025"
-              class="w-full max-h-[380px] object-cover object-top block"
-              loading="lazy"
-            />
+        <!-- Overflow container clips the sliding track -->
+        <div class="relative overflow-hidden rounded-2xl shadow-xl border border-zinc-800">
+          <div data-track="history" class="flex transition-transform duration-300 ease-out">
+            <div class="min-w-full shrink-0">
+              <img
+                src="/screenshots/session-log-december.png"
+                alt="Session log December 2025"
+                class="w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
+            <div class="min-w-full shrink-0">
+              <img
+                src="/screenshots/session-log-april.png"
+                alt="Session log April 2026"
+                class="w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
           </div>
-          <div class="mt-3 flex items-center flex-wrap gap-2 px-1">
+          <!-- Dot indicators over image -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+            <button data-dot="history" class="h-1.5 w-4 rounded-full bg-white/90 transition-all" aria-label="Slide 1"></button>
+            <button data-dot="history" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 2"></button>
+          </div>
+        </div>
+        <!-- Caption (swapped by JS) -->
+        <div class="mt-3 px-1 min-h-[2rem]">
+          <div data-caption="history-0" class="flex items-center flex-wrap gap-2">
             <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 1 — December 2025</span>
             <span class="text-red-500 font-semibold text-sm">Composure 49%</span>
             <span class="text-zinc-400 text-sm">·</span>
             <span class="text-red-500 font-semibold text-sm">Avg P&amp;L &minus;$629</span>
           </div>
-        </div>
-        <!-- Slide 2: April -->
-        <div data-carousel="history" class="hidden">
-          <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
-            <img
-              src="/screenshots/session-log-april.png"
-              alt="Session log April 2026"
-              class="w-full max-h-[380px] object-cover object-top block"
-              loading="lazy"
-            />
-          </div>
-          <div class="mt-3 flex items-center flex-wrap gap-2 px-1">
+          <div data-caption="history-1" class="flex items-center flex-wrap gap-2 hidden">
             <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 5 — April 2026</span>
             <span class="text-emerald-600 font-semibold text-sm">Composure 79%</span>
             <span class="text-zinc-400 text-sm">·</span>
             <span class="text-emerald-600 font-semibold text-sm">Avg P&amp;L +$997</span>
           </div>
         </div>
-
-        <!-- Overlay prev arrow — outside overflow-hidden -->
+        <!-- Overlay prev arrow -->
         <button
           data-prev="history"
-          class="absolute left-3 top-[46%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
+          class="absolute left-3 top-[43%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
           aria-label="Previous"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /></svg>
         </button>
-
         <!-- Overlay next arrow -->
         <button
           data-next="history"
-          class="absolute right-3 top-[46%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
+          class="absolute right-3 top-[43%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
           aria-label="Next"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </button>
-
-        <!-- Dot indicators -->
-        <div class="absolute bottom-[52px] left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
-          <button data-dot="history" class="h-1.5 w-4 rounded-full bg-white/90 transition-all" aria-label="Slide 1"></button>
-          <button data-dot="history" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 2"></button>
-        </div>
       </div>
       <!-- Right: text -->
       <div>
@@ -405,47 +404,105 @@ const marqueeRow2 = [
   </section>
 
   <!-- Guard teaser -->
-  <section class="py-20 lg:py-28 px-6 bg-zinc-900 text-white">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-xs font-semibold tracking-[0.15em] text-emerald-400 uppercase mb-4">Meridian Guard — Coming soon</p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          You already know the rules.<br />Guard makes sure you follow them.
-        </h2>
-        <p class="text-zinc-400 text-base max-w-2xl mx-auto leading-relaxed">
-          When you are calm, you write the rules. When the moment comes, Guard enforces them — automatically, without requiring a decision from you. This is what behavioral economists call a commitment device.
-        </p>
-      </div>
+  <section class="py-20 lg:py-28 px-6 bg-zinc-900 text-white border-t border-zinc-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="md:grid md:grid-cols-[5fr_7fr] md:gap-16 md:items-center">
+        <!-- Left: copy -->
+        <div class="mb-12 md:mb-0">
+          <p class="text-xs font-semibold tracking-[0.15em] text-emerald-400 uppercase mb-4">Meridian Guard — Coming soon</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-5">
+            You already know the rules.<br />Guard makes sure you follow them.
+          </h2>
+          <p class="text-zinc-400 text-base leading-relaxed mb-8">
+            When you are calm, you write the rules. When the moment comes, Guard enforces them automatically — without requiring a decision from you.
+          </p>
+          <div class="space-y-5 mb-8">
+            <div>
+              <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-1">Guard System</p>
+              <p class="text-zinc-300 text-sm leading-relaxed">6 trigger conditions. 5 action levels — from a quiet alert to a full broker disconnect. Set once, active every session.</p>
+            </div>
+            <div>
+              <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-1">Intel Layer</p>
+              <p class="text-zinc-300 text-sm leading-relaxed">Monthly digest, PSI × P&amp;L correlation, weakest-day analysis, and a daily pre-session risk brief — built from your own history.</p>
+            </div>
+            <div>
+              <p class="text-white text-xs font-bold tracking-widest uppercase mb-1">Key finding</p>
+              <p class="text-zinc-300 text-sm leading-relaxed">Stable PSI sessions averaged +$1,296. Critical sessions averaged −$550. Guard shows you before you get there.</p>
+            </div>
+          </div>
+          <a
+            href="/guard"
+            class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-full px-8 py-3 transition-colors duration-200"
+          >
+            See everything in Meridian Guard
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
 
-      <!-- 3 key feature callouts -->
-      <div class="grid sm:grid-cols-3 gap-4 mb-10">
-        <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-2xl p-5">
-          <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">Guard System</p>
-          <p class="text-white font-semibold mb-2">Rules that enforce themselves</p>
-          <p class="text-zinc-400 text-sm leading-relaxed">6 trigger conditions. 5 action levels from a quiet toast to a full broker disconnect. Set once — active every session.</p>
+        <!-- Right: Intel screenshot carousel -->
+        <div class="relative group/carousel">
+          <div class="relative overflow-hidden rounded-2xl border border-zinc-700 shadow-2xl">
+            <div data-track="intel-home" class="flex transition-transform duration-300 ease-out">
+              <!-- Slide 1: PSI x Performance -->
+              <div class="min-w-full shrink-0">
+                <div class="bg-zinc-800 px-5 py-3 border-b border-zinc-700 flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                  <p class="text-xs font-semibold text-zinc-300">PSI × Performance — session-level correlation</p>
+                </div>
+                <img src="/screenshots/psi-performance.png" alt="PSI x Performance" class="w-full h-auto block" loading="lazy" />
+              </div>
+              <!-- Slide 2: Monthly Digest December -->
+              <div class="min-w-full shrink-0">
+                <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200 flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-zinc-400 shrink-0"></span>
+                  <p class="text-xs font-semibold text-zinc-500">Monthly Digest — December 2025 (Grade C)</p>
+                </div>
+                <img src="/screenshots/digest-december.png" alt="Monthly Digest December" class="w-full h-auto block" loading="lazy" />
+              </div>
+              <!-- Slide 3: Monthly Digest March -->
+              <div class="min-w-full shrink-0">
+                <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200 flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                  <p class="text-xs font-semibold text-zinc-500">Monthly Digest — March 2026 (Grade B+)</p>
+                </div>
+                <img src="/screenshots/digest-march.png" alt="Monthly Digest March" class="w-full h-auto block" loading="lazy" />
+              </div>
+              <!-- Slide 4: Weekday Patterns -->
+              <div class="min-w-full shrink-0">
+                <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200 flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-zinc-400 shrink-0"></span>
+                  <p class="text-xs font-semibold text-zinc-500">Weekday patterns + 6-month Composure progress</p>
+                </div>
+                <img src="/screenshots/weekday-patterns.png" alt="Weekday Patterns" class="w-full h-auto block" loading="lazy" />
+              </div>
+            </div>
+            <!-- Dot indicators -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+              <button data-dot="intel-home" class="h-1.5 w-4 rounded-full bg-white/90 transition-all" aria-label="Slide 1"></button>
+              <button data-dot="intel-home" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 2"></button>
+              <button data-dot="intel-home" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 3"></button>
+              <button data-dot="intel-home" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 4"></button>
+            </div>
+          </div>
+          <!-- Overlay prev arrow -->
+          <button
+            data-prev="intel-home"
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
+            aria-label="Previous"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /></svg>
+          </button>
+          <!-- Overlay next arrow -->
+          <button
+            data-next="intel-home"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
+            aria-label="Next"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+          </button>
         </div>
-        <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-2xl p-5">
-          <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">Intel Layer</p>
-          <p class="text-white font-semibold mb-2">See patterns across months</p>
-          <p class="text-zinc-400 text-sm leading-relaxed">Monthly digest, PSI &times; P&amp;L correlation, weekday patterns, and a pre-session risk brief — built from your own history.</p>
-        </div>
-        <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-2xl p-5">
-          <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">Key finding</p>
-          <p class="text-white font-semibold mb-2">Stable PSI &rarr; +$1,402/session</p>
-          <p class="text-zinc-400 text-sm leading-relaxed">Critical PSI &rarr; &minus;$550/session. Guard shows you — and stops you — before you get there.</p>
-        </div>
-      </div>
-
-      <div class="text-center">
-        <a
-          href="/guard"
-          class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-full px-8 py-3 transition-colors duration-200"
-        >
-          See everything in Meridian Guard
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
       </div>
     </div>
   </section>
@@ -643,28 +700,51 @@ const marqueeRow2 = [
 </style>
 
 <script>
-  function initCarousel(id: string) {
-    const slides = Array.from(document.querySelectorAll<HTMLElement>(`[data-carousel="${id}"]`));
-    const dots   = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
-    if (!slides.length) return;
+  function initSlider(id: string) {
+    const track = document.querySelector<HTMLElement>(`[data-track="${id}"]`);
+    if (!track) return;
+    const total = track.children.length;
+    const dots = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
     let current = 0;
 
-    function goTo(index: number) {
-      slides[current].classList.add('hidden');
-      dots[current]?.classList.remove('bg-white/90', 'w-4');
-      dots[current]?.classList.add('bg-white/40', 'w-1.5');
-      current = ((index % slides.length) + slides.length) % slides.length;
-      slides[current].classList.remove('hidden');
-      dots[current]?.classList.add('bg-white/90', 'w-4');
-      dots[current]?.classList.remove('bg-white/40', 'w-1.5');
+    function getW() {
+      return (track.parentElement as HTMLElement).offsetWidth;
+    }
+
+    function goTo(n: number) {
+      const prev = current;
+      current = ((n % total) + total) % total;
+      track.style.transform = `translateX(-${current * getW()}px)`;
+      dots[prev]?.classList.remove('w-4', 'bg-white/90');
+      dots[prev]?.classList.add('w-1.5', 'bg-white/40');
+      dots[current]?.classList.add('w-4', 'bg-white/90');
+      dots[current]?.classList.remove('w-1.5', 'bg-white/40');
+      // Swap caption labels if present
+      document.querySelector<HTMLElement>(`[data-caption="${id}-${prev}"]`)?.classList.add('hidden');
+      document.querySelector<HTMLElement>(`[data-caption="${id}-${current}"]`)?.classList.remove('hidden');
     }
 
     document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));
     document.querySelector(`[data-next="${id}"]`)?.addEventListener('click', () => goTo(current + 1));
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      track.style.transitionDuration = '0ms';
+      track.style.transform = `translateX(-${current * getW()}px)`;
+      resizeTimer = setTimeout(() => { track.style.transitionDuration = ''; }, 150);
+    });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    initCarousel('history');
-  });
+  function boot() {
+    initSlider('history');
+    initSlider('intel-home');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 </script>

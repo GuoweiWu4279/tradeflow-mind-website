@@ -1,6 +1,6 @@
 import { getPermalink } from './utils/permalinks';
 
-const checkoutUrl = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25';
+const checkoutUrl = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/60b8b911-1d62-4f90-87a9-23f609a75c86?enabled=1539446';
 
 export const headerData = {
   links: [

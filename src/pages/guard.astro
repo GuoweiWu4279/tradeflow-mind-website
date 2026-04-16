@@ -159,36 +159,76 @@ const metadata = {
         ))}
       </div>
 
-      <!-- PSI x Performance — single featured screenshot with callout -->
-      <div class="bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800">
-        <div class="px-6 pt-5 pb-3">
-          <p class="text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-1">PSI x Performance — live from your data</p>
-          <p class="text-zinc-300 text-sm">Stable PSI sessions averaged <span class="text-emerald-400 font-semibold">+$1,402</span>. Critical sessions averaged <span class="text-red-400 font-semibold">-$550</span>. That is a $1,952 difference — per session.</p>
+      <!-- Intel image carousel -->
+      <div class="relative">
+        <!-- Slide 1: PSI x Performance -->
+        <div data-carousel="intel">
+          <div class="bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800">
+            <div class="px-6 pt-5 pb-3">
+              <p class="text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-1">PSI x Performance — live from your data</p>
+              <p class="text-zinc-300 text-sm">Stable PSI sessions averaged <span class="text-emerald-400 font-semibold">+$1,296</span>. Critical sessions averaged <span class="text-red-400 font-semibold">-$550</span>. That is a $1,846 difference — per session.</p>
+            </div>
+            <img
+              src="/screenshots/psi-performance.png"
+              alt="PSI x Performance Session-Level Correlation"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
         </div>
-        <img
-          src="/screenshots/psi-performance.png"
-          alt="PSI x Performance Session-Level Correlation"
-          class="w-full h-auto block"
-          loading="lazy"
-        />
-      </div>
+        <!-- Slide 2: Monthly Digest December -->
+        <div data-carousel="intel" class="hidden">
+          <div class="rounded-2xl overflow-hidden border border-zinc-200 bg-white">
+            <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
+              <p class="text-xs font-semibold text-zinc-500">Monthly Digest — December 2025 (Grade C)</p>
+            </div>
+            <img
+              src="/screenshots/digest-december.png"
+              alt="Monthly Digest December 2025 Grade C"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <!-- Slide 3: Monthly Digest March -->
+        <div data-carousel="intel" class="hidden">
+          <div class="rounded-2xl overflow-hidden border border-zinc-200 bg-white">
+            <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
+              <p class="text-xs font-semibold text-zinc-500">Monthly Digest — March 2026 (Grade B+)</p>
+            </div>
+            <img
+              src="/screenshots/digest-march.png"
+              alt="Monthly Digest March 2026 Grade B+"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <!-- Slide 4: Weekday Patterns -->
+        <div data-carousel="intel" class="hidden">
+          <div class="rounded-2xl overflow-hidden border border-zinc-200 bg-white">
+            <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
+              <p class="text-xs font-semibold text-zinc-500">Weekday patterns + 6-month Composure progress</p>
+            </div>
+            <img
+              src="/screenshots/weekday-patterns.png"
+              alt="Weekday Patterns and Composure Progress"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+        </div>
 
-      <!-- Two smaller screenshots below -->
-      <div class="grid sm:grid-cols-2 gap-4 mt-4">
-        <div class="rounded-xl overflow-hidden border border-zinc-200">
-          <div class="bg-zinc-50 px-4 py-2 border-b border-zinc-200">
-            <p class="text-xs font-semibold text-zinc-500">Monthly Digest — December C &rarr; March B+</p>
+        <!-- Controls -->
+        <div class="flex items-center justify-between mt-5">
+          <button data-prev="intel" class="h-9 w-9 rounded-full border border-zinc-300 flex items-center justify-center text-zinc-500 hover:border-zinc-500 hover:text-zinc-900 transition-colors text-base leading-none" aria-label="Previous">&#8592;</button>
+          <div class="flex gap-2">
+            <button data-dot="intel" class="h-2 w-2 rounded-full bg-zinc-900 transition-all"></button>
+            <button data-dot="intel" class="h-2 w-2 rounded-full bg-zinc-300 transition-all"></button>
+            <button data-dot="intel" class="h-2 w-2 rounded-full bg-zinc-300 transition-all"></button>
+            <button data-dot="intel" class="h-2 w-2 rounded-full bg-zinc-300 transition-all"></button>
           </div>
-          <div class="grid grid-cols-2">
-            <img src="/screenshots/digest-december.png" alt="Monthly Digest December 2025 Grade C" class="w-full h-auto block border-r border-zinc-200" loading="lazy" />
-            <img src="/screenshots/digest-march.png" alt="Monthly Digest March 2026 Grade B+" class="w-full h-auto block" loading="lazy" />
-          </div>
-        </div>
-        <div class="rounded-xl overflow-hidden border border-zinc-200">
-          <div class="bg-zinc-50 px-4 py-2 border-b border-zinc-200">
-            <p class="text-xs font-semibold text-zinc-500">Weekday patterns + 6-month progress</p>
-          </div>
-          <img src="/screenshots/weekday-patterns.png" alt="Weekday Patterns and Composure Progress" class="w-full h-auto block" loading="lazy" />
+          <button data-next="intel" class="h-9 w-9 rounded-full border border-zinc-300 flex items-center justify-center text-zinc-500 hover:border-zinc-500 hover:text-zinc-900 transition-colors text-base leading-none" aria-label="Next">&#8594;</button>
         </div>
       </div>
     </div>
@@ -254,3 +294,30 @@ const metadata = {
   </CallToAction>
 
 </Layout>
+
+<script>
+  function initCarousel(id: string) {
+    const slides = Array.from(document.querySelectorAll<HTMLElement>(`[data-carousel="${id}"]`));
+    const dots   = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
+    if (!slides.length) return;
+    let current = 0;
+
+    function goTo(index: number) {
+      slides[current].classList.add('hidden');
+      dots[current]?.classList.remove('bg-zinc-900');
+      dots[current]?.classList.add('bg-zinc-300');
+      current = ((index % slides.length) + slides.length) % slides.length;
+      slides[current].classList.remove('hidden');
+      dots[current]?.classList.add('bg-zinc-900');
+      dots[current]?.classList.remove('bg-zinc-300');
+    }
+
+    document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));
+    document.querySelector(`[data-next="${id}"]`)?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('intel');
+  });
+</script>

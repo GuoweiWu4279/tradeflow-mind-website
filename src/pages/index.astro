@@ -269,63 +269,84 @@ const marqueeRow2 = [
     </div>
   </section>
 
-  <!-- Section 3: Session history — before/after calendar comparison -->
+  <!-- Section 3: Session history — left carousel, right text -->
   <section class="py-20 px-6 bg-white border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-10">
-        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Session review and history</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-4">
-          Not just P&amp;L. Whether you traded right.
-        </h2>
-        <p class="text-zinc-500 leading-relaxed text-base max-w-2xl">
-          Meridian tracks discipline session by session. Over time, the pattern becomes visible — and so does the improvement.
-        </p>
-      </div>
-      <!-- Before / After comparison -->
-      <div class="grid md:grid-cols-2 gap-5">
-        <!-- Before -->
-        <div class="relative">
-          <div class="absolute -top-3 left-4 z-10">
-            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 1 — December 2025</span>
-          </div>
-          <div class="rounded-2xl overflow-hidden shadow-lg border border-zinc-800 max-h-[440px]">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <!-- Left: image carousel -->
+      <div>
+        <!-- Slide 1: December -->
+        <div data-carousel="history">
+          <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
             <img
               src="/screenshots/session-log-december.png"
-              alt="Session log December 2025 showing mostly red Critical sessions"
-              class="w-full h-auto block object-top"
+              alt="Session log December 2025"
+              class="w-full h-auto block"
               loading="lazy"
             />
           </div>
-          <div class="mt-3 flex gap-4 px-1 text-sm">
-            <span class="text-red-500 font-semibold">Composure 49%</span>
-            <span class="text-red-500 font-semibold">Avg P&L &minus;$629</span>
+          <div class="mt-3 flex items-center flex-wrap gap-2 px-1">
+            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 1 — December 2025</span>
+            <span class="text-red-500 font-semibold text-sm">Composure 49%</span>
+            <span class="text-zinc-400 text-sm">·</span>
+            <span class="text-red-500 font-semibold text-sm">Avg P&amp;L &minus;$629</span>
           </div>
         </div>
-        <!-- After -->
-        <div class="relative">
-          <div class="absolute -top-3 left-4 z-10">
-            <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 5 — April 2026</span>
-          </div>
-          <div class="rounded-2xl overflow-hidden shadow-lg border border-zinc-800 max-h-[440px]">
+        <!-- Slide 2: April -->
+        <div data-carousel="history" class="hidden">
+          <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
             <img
               src="/screenshots/session-log-april.png"
-              alt="Session log April 2026 showing mostly green and yellow Stable sessions"
-              class="w-full h-auto block object-top"
+              alt="Session log April 2026"
+              class="w-full h-auto block"
               loading="lazy"
             />
           </div>
-          <div class="mt-3 flex gap-4 px-1 text-sm">
-            <span class="text-emerald-600 font-semibold">Composure 79%</span>
-            <span class="text-emerald-600 font-semibold">Avg P&L +$997</span>
+          <div class="mt-3 flex items-center flex-wrap gap-2 px-1">
+            <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 5 — April 2026</span>
+            <span class="text-emerald-600 font-semibold text-sm">Composure 79%</span>
+            <span class="text-zinc-400 text-sm">·</span>
+            <span class="text-emerald-600 font-semibold text-sm">Avg P&amp;L +$997</span>
           </div>
         </div>
+        <!-- Controls -->
+        <div class="flex items-center justify-between mt-5 px-1">
+          <button data-prev="history" class="h-9 w-9 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-500 hover:border-zinc-400 hover:text-zinc-900 transition-colors text-base leading-none" aria-label="Previous">&#8592;</button>
+          <div class="flex gap-2">
+            <button data-dot="history" class="h-2 w-2 rounded-full bg-zinc-900 transition-all"></button>
+            <button data-dot="history" class="h-2 w-2 rounded-full bg-zinc-300 transition-all"></button>
+          </div>
+          <button data-next="history" class="h-9 w-9 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-500 hover:border-zinc-400 hover:text-zinc-900 transition-colors text-base leading-none" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+      <!-- Right: text -->
+      <div>
+        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Session review and history</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-5">
+          Not just P&amp;L. Whether you traded right.
+        </h2>
+        <p class="text-zinc-500 leading-relaxed text-base mb-6">
+          Meridian tracks discipline session by session. Over time, the pattern becomes visible — and so does the improvement.
+        </p>
+        <ul class="space-y-3 text-sm text-zinc-700">
+          {[
+            'Every session saved with PSI score, Composure, and trade stats',
+            'Month-over-month behavioral progress visible at a glance',
+            'Separate from P&L — shows whether you traded in control',
+            '5 years of session history with Meridian Guard',
+          ].map(item => (
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- Section 4: Personalized baselines -->
   <section class="py-20 px-6 bg-zinc-50/60 border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-[3fr_2fr] gap-12 md:gap-20 items-center">
       <!-- Text -->
       <div class="order-2 md:order-1">
         <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Personalized baselines</p>
@@ -605,3 +626,30 @@ const marqueeRow2 = [
     animation-play-state: paused;
   }
 </style>
+
+<script>
+  function initCarousel(id: string) {
+    const slides = Array.from(document.querySelectorAll<HTMLElement>(`[data-carousel="${id}"]`));
+    const dots   = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
+    if (!slides.length) return;
+    let current = 0;
+
+    function goTo(index: number) {
+      slides[current].classList.add('hidden');
+      dots[current]?.classList.remove('bg-zinc-900');
+      dots[current]?.classList.add('bg-zinc-300');
+      current = ((index % slides.length) + slides.length) % slides.length;
+      slides[current].classList.remove('hidden');
+      dots[current]?.classList.add('bg-zinc-900');
+      dots[current]?.classList.remove('bg-zinc-300');
+    }
+
+    document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));
+    document.querySelector(`[data-next="${id}"]`)?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('history');
+  });
+</script>

@@ -123,7 +123,7 @@ const marqueeRow2 = [
       {
         variant: 'primary',
         text: 'Start free trial — 7 days',
-        href: 'https://meridianpsi.lemonsqueezy.com/checkout/buy/60b8b911-1d62-4f90-87a9-23f609a75c86?enabled=1539446',
+        href: '/pricing',
         icon: 'tabler:player-play',
       },
       { text: 'See pricing', href: '/pricing' },
@@ -696,7 +696,7 @@ const marqueeRow2 = [
       {
         variant: 'primary',
         text: 'Start free trial — 7 days',
-        href: 'https://meridianpsi.lemonsqueezy.com/checkout/buy/60b8b911-1d62-4f90-87a9-23f609a75c86?enabled=1539446',
+        href: '/pricing',
         icon: 'tabler:player-play',
       },
       {
@@ -767,19 +767,39 @@ const marqueeRow2 = [
     const dots = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
     const labelEl = document.querySelector<HTMLElement>(`[data-label-display="${id}"]`);
     let current = 0;
+    let animating = false;
+
+    slides.forEach((s, i) => {
+      s.style.transition = 'opacity 0.25s ease';
+      s.style.opacity = i === 0 ? '1' : '0';
+    });
 
     function goTo(n: number) {
+      if (animating) return;
       const prev = current;
-      current = ((n % slides.length) + slides.length) % slides.length;
-      slides[prev].classList.add('hidden');
-      slides[current].classList.remove('hidden');
+      const next = ((n % slides.length) + slides.length) % slides.length;
+      if (prev === next) return;
+      animating = true;
+
       dots[prev]?.classList.remove('w-4', 'bg-emerald-500');
       dots[prev]?.classList.add('w-1.5', 'bg-zinc-300');
-      dots[current]?.classList.add('w-4', 'bg-emerald-500');
-      dots[current]?.classList.remove('w-1.5', 'bg-zinc-300');
-      if (labelEl) {
-        labelEl.textContent = slides[current].dataset.slideLabel ?? '';
-      }
+      dots[next]?.classList.add('w-4', 'bg-emerald-500');
+      dots[next]?.classList.remove('w-1.5', 'bg-zinc-300');
+      if (labelEl) labelEl.textContent = slides[next].dataset.slideLabel ?? '';
+
+      slides[prev].style.opacity = '0';
+      setTimeout(() => {
+        slides[prev].classList.add('hidden');
+        current = next;
+        slides[current].classList.remove('hidden');
+        slides[current].style.opacity = '0';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            slides[current].style.opacity = '1';
+            animating = false;
+          });
+        });
+      }, 250);
     }
 
     document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));

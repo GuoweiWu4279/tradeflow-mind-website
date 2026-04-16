@@ -1,7 +1,5 @@
 import { getPermalink } from './utils/permalinks';
 
-const checkoutUrl = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/60b8b911-1d62-4f90-87a9-23f609a75c86?enabled=1539446';
-
 export const headerData = {
   links: [
     {
@@ -48,7 +46,7 @@ export const headerData = {
       href: getPermalink('/account'),
     },
   ],
-  actions: [{ text: 'Start free trial', href: checkoutUrl, variant: 'primary' }],
+  actions: [{ text: 'Start free trial', href: '/pricing', variant: 'primary' }],
 };
 
 export const footerData = {

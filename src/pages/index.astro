@@ -230,97 +230,100 @@ const marqueeRow2 = [
     </div>
   </section>
 
-  <!-- ── Section 2: Seven dimensions (text LEFT → placeholder RIGHT) ────────── -->
+  <!-- Section 2: Seven dimensions — CSS visual layout, no screenshot needed -->
   <section class="py-20 px-6 bg-zinc-50/60 border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-      <!-- Text -->
-      <div class="order-2 md:order-1">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
         <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Behavioral signals</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-5">
+        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-4">
           Seven patterns. Each one specific to a known failure mode.
         </h2>
-        <p class="text-zinc-600 leading-relaxed text-base mb-6">
-          Every signal tracks a distinct behavioral pattern documented in behavioral-finance research — from loss-aversion-driven revenge entries to disposition-effect stop widening. They run independently and combine into a single score.
+        <p class="text-zinc-500 leading-relaxed text-base max-w-2xl">
+          Every signal tracks a behavioral pattern from behavioral-finance research. They run independently and combine into a single PSI score.
         </p>
-        <ul class="space-y-2 text-sm text-zinc-700">
-          {[
-            ['Revenge Entry', 'Re-entry after loss with elevated size'],
-            ['Stop Manipulation', 'Widening stops in the adverse direction'],
-            ['Size Spike', 'Position exceeds your declared rule'],
-            ['Rushed Exit', 'Hold-time collapse vs your own baseline'],
-            ['Position Overstay', 'Holding a loser past your 90th-pct time'],
-            ['Rule Violations', 'Trading outside your declared session rules'],
-            ['Overtrading Pace', 'Entry frequency accelerating vs your history'],
-          ].map(([name, desc]) => (
-            <li class="flex items-start gap-2.5">
-              <span class="mt-0.5 text-emerald-600 font-semibold text-xs w-36 shrink-0">{name}</span>
-              <span class="text-zinc-500">{desc}</span>
-            </li>
-          ))}
-        </ul>
-        <div class="mt-8">
-          <a href="/features#seven-dimensions" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition-colors">
-            Read the technical detail →
-          </a>
-        </div>
       </div>
-      <!-- Placeholder -->
-      <div class="order-1 md:order-2">
-        <div class="rounded-2xl border-2 border-dashed border-zinc-200 bg-zinc-100/50 flex flex-col items-center justify-center py-24 px-8 text-center min-h-64">
-          <div class="w-12 h-12 rounded-full bg-zinc-200 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+      <div class="space-y-3">
+        {[
+          { name: 'Revenge Entry',     desc: 'Re-entry after loss with elevated size',              pct: 82 },
+          { name: 'Stop Manipulation', desc: 'Widening stops in the adverse direction',             pct: 55 },
+          { name: 'Size Spike',        desc: 'Position exceeds your declared rule',                 pct: 95 },
+          { name: 'Hold Bias',         desc: 'Abnormal hold duration vs your own baseline',        pct: 38 },
+          { name: 'Position Overstay', desc: 'Holding a loser past your 90th-percentile hold time', pct: 60 },
+          { name: 'Rule Violations',   desc: 'Trading outside your declared session rules',         pct: 44 },
+          { name: 'Overtrading Pace',  desc: 'Entry frequency accelerating vs your history',        pct: 71 },
+        ].map(({ name, desc, pct }) => (
+          <div class="flex items-center gap-4 bg-white rounded-xl border border-zinc-100 px-5 py-3.5 shadow-sm">
+            <span class="w-36 shrink-0 text-sm font-semibold text-zinc-900">{name}</span>
+            <div class="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" style={`width:${pct}%`}></div>
+            </div>
+            <span class="w-56 shrink-0 text-xs text-zinc-400 text-right hidden sm:block">{desc}</span>
           </div>
-          <p class="text-sm font-medium text-zinc-500">Screenshot coming soon</p>
-          <p class="text-xs text-zinc-400 mt-1">Seven-bar behavioral signal panel</p>
-        </div>
+        ))}
+      </div>
+      <div class="mt-6">
+        <a href="/features#seven-dimensions" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition-colors">
+          Read the technical detail &rarr;
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ── Section 3: Session review and history (placeholder LEFT → text RIGHT) ── -->
+  <!-- Section 3: Session history — before/after calendar comparison -->
   <section class="py-20 px-6 bg-white border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-      <!-- Placeholder -->
-      <div class="order-1 md:order-1">
-        <div class="rounded-2xl border-2 border-dashed border-zinc-200 bg-zinc-100/50 flex flex-col items-center justify-center py-24 px-8 text-center min-h-64">
-          <div class="w-12 h-12 rounded-full bg-zinc-200 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <p class="text-sm font-medium text-zinc-500">Screenshot coming soon</p>
-          <p class="text-xs text-zinc-400 mt-1">Session history and behavioral review</p>
-        </div>
-      </div>
-      <!-- Text -->
-      <div class="order-2 md:order-2">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10">
         <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Session review and history</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-5">
-          See more than P&amp;L after the session.
+        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-4">
+          Not just P&amp;L. Whether you traded right.
         </h2>
-        <p class="text-zinc-600 leading-relaxed text-base mb-6">
-          Meridian keeps a detailed history of each session, including PSI, discipline trends, alerts, and behavioral pressure. You can review not just whether you made money, but how stable and rule-aligned the session really was.
+        <p class="text-zinc-500 leading-relaxed text-base max-w-2xl">
+          Meridian tracks discipline session by session. Over time, the pattern becomes visible — and so does the improvement.
         </p>
-        <ul class="space-y-3 text-sm text-zinc-700">
-          {[
-            'Session-level PSI and discipline review',
-            'Behavioral pressure and alert history',
-            'See how stability changed across the session',
-            'Review behavior, not just outcomes',
-          ].map(item => (
-            <li class="flex items-start gap-2.5">
-              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-              {item}
-            </li>
-          ))}
-        </ul>
+      </div>
+      <!-- Before / After comparison -->
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Before -->
+        <div class="relative">
+          <div class="absolute -top-3 left-4 z-10">
+            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 1 — December 2025</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-lg border border-zinc-800">
+            <img
+              src="/screenshots/session-log-december.png"
+              alt="Session log December 2025 showing mostly red Critical sessions"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+          <div class="mt-3 flex gap-4 px-1 text-sm">
+            <span class="text-red-500 font-semibold">Composure 49%</span>
+            <span class="text-red-500 font-semibold">Avg P&L &minus;$629</span>
+          </div>
+        </div>
+        <!-- After -->
+        <div class="relative">
+          <div class="absolute -top-3 left-4 z-10">
+            <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 5 — April 2026</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-lg border border-zinc-800">
+            <img
+              src="/screenshots/session-log-april.png"
+              alt="Session log April 2026 showing mostly green and yellow Stable sessions"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+          <div class="mt-3 flex gap-4 px-1 text-sm">
+            <span class="text-emerald-600 font-semibold">Composure 79%</span>
+            <span class="text-emerald-600 font-semibold">Avg P&L +$997</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Section 4: Personalized baselines (text LEFT → placeholder RIGHT) -->
+  <!-- Section 4: Personalized baselines -->
   <section class="py-20 px-6 bg-zinc-50/60 border-t border-zinc-100">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
       <!-- Text -->
@@ -347,20 +350,19 @@ const marqueeRow2 = [
         </ul>
         <div class="mt-8">
           <a href="/features" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition-colors">
-            Full technical breakdown →
+            Full technical breakdown &rarr;
           </a>
         </div>
       </div>
-      <!-- Placeholder -->
+      <!-- Baseline screenshot -->
       <div class="order-1 md:order-2">
-        <div class="rounded-2xl border-2 border-dashed border-zinc-200 bg-zinc-100/50 flex flex-col items-center justify-center py-24 px-8 text-center min-h-64">
-          <div class="w-12 h-12 rounded-full bg-zinc-200 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <p class="text-sm font-medium text-zinc-500">Screenshot coming soon</p>
-          <p class="text-xs text-zinc-400 mt-1">Personal baseline and profile settings</p>
+        <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
+          <img
+            src="/screenshots/baseline-learning.png"
+            alt="Meridian baseline learning panel showing personal trading statistics"
+            class="w-full h-auto block"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>

@@ -401,24 +401,22 @@ const marqueeRow2 = [
 
         <!-- Arrows sit outside the image using px padding + absolute positioning -->
         <div class="relative px-11">
-          <!-- Sliding image track -->
-          <div class="overflow-hidden rounded-xl shadow-md">
-            <div data-track="intel-features" class="flex w-full transition-transform duration-300 ease-out">
-              <div class="min-w-full shrink-0" data-slide-label="Complete session log — daily PSI, Composure and P&L all in one view">
-                <img src="/screenshots/intel-session-calendar.png" alt="Session log calendar" class="w-full h-[280px] object-cover object-top block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="Monthly digest — behavioral grade, trend, and best / worst sessions">
-                <img src="/screenshots/intel-monthly-digest.png" alt="Monthly digest" class="w-full h-[280px] object-cover object-top block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="Today's Risk Brief — personalized pre-session intelligence, every morning">
-                <img src="/screenshots/intel-risk-brief.png" alt="Today's Risk Brief" class="w-full h-[280px] object-cover object-top block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="PSI × P&L correlation — from detailed pattern to regression analysis">
-                <img src="/screenshots/intel-psi-performance.png" alt="PSI x Performance correlation" class="w-full h-[280px] object-cover object-top block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="Six-month Composure trend — long-term behavioral improvement made visible">
-                <img src="/screenshots/intel-composure-progress.png" alt="Composure progress 6 months" class="w-full h-[280px] object-cover object-top block" loading="lazy" />
-              </div>
+          <!-- Image slides — show/hide so each image retains its natural proportions -->
+          <div class="rounded-xl shadow-md overflow-hidden">
+            <div data-slide="intel-features" data-slide-label="Complete session log — daily PSI, Composure and P&L all in one view">
+              <img src="/screenshots/intel-session-calendar.png" alt="Session log calendar" class="w-full h-auto block" loading="lazy" />
+            </div>
+            <div data-slide="intel-features" class="hidden" data-slide-label="Monthly digest — behavioral grade, trend, and best / worst sessions">
+              <img src="/screenshots/intel-monthly-digest.png" alt="Monthly digest" class="w-full h-auto block" loading="lazy" />
+            </div>
+            <div data-slide="intel-features" class="hidden" data-slide-label="Today's Risk Brief — personalized pre-session intelligence, every morning">
+              <img src="/screenshots/intel-risk-brief.png" alt="Today's Risk Brief" class="w-full h-auto block" loading="lazy" />
+            </div>
+            <div data-slide="intel-features" class="hidden" data-slide-label="PSI × P&L correlation — from detailed pattern to regression analysis">
+              <img src="/screenshots/intel-psi-performance.png" alt="PSI x Performance correlation" class="w-full h-auto block" loading="lazy" />
+            </div>
+            <div data-slide="intel-features" class="hidden" data-slide-label="Six-month Composure trend — long-term behavioral improvement made visible">
+              <img src="/screenshots/intel-composure-progress.png" alt="Composure progress 6 months" class="w-full h-auto block" loading="lazy" />
             </div>
           </div>
 
@@ -764,39 +762,29 @@ const marqueeRow2 = [
   }
 
   function initSlider(id: string) {
-    const track = document.querySelector<HTMLElement>(`[data-track="${id}"]`);
-    if (!track) return;
-    const container = track.parentElement as HTMLElement;
-    const total = track.children.length;
+    const slides = Array.from(document.querySelectorAll<HTMLElement>(`[data-slide="${id}"]`));
+    if (!slides.length) return;
     const dots = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
     const labelEl = document.querySelector<HTMLElement>(`[data-label-display="${id}"]`);
     let current = 0;
 
     function goTo(n: number) {
       const prev = current;
-      current = ((n % total) + total) % total;
-      track.style.transform = `translateX(-${current * container.clientWidth}px)`;
+      current = ((n % slides.length) + slides.length) % slides.length;
+      slides[prev].classList.add('hidden');
+      slides[current].classList.remove('hidden');
       dots[prev]?.classList.remove('w-4', 'bg-emerald-500');
       dots[prev]?.classList.add('w-1.5', 'bg-zinc-300');
       dots[current]?.classList.add('w-4', 'bg-emerald-500');
       dots[current]?.classList.remove('w-1.5', 'bg-zinc-300');
       if (labelEl) {
-        const slide = track.children[current] as HTMLElement;
-        labelEl.textContent = slide.dataset.slideLabel ?? '';
+        labelEl.textContent = slides[current].dataset.slideLabel ?? '';
       }
     }
 
     document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));
     document.querySelector(`[data-next="${id}"]`)?.addEventListener('click', () => goTo(current + 1));
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-
-    let resizeTimer: ReturnType<typeof setTimeout>;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      track.style.transitionDuration = '0ms';
-      track.style.transform = `translateX(-${current * container.clientWidth}px)`;
-      resizeTimer = setTimeout(() => { track.style.transitionDuration = ''; }, 150);
-    });
   }
 
   function boot() {

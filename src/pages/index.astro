@@ -231,18 +231,18 @@ const marqueeRow2 = [
   </section>
 
   <!-- Section 2: Seven dimensions — CSS visual layout, no screenshot needed -->
-  <section class="py-20 lg:py-28 px-6 bg-zinc-50/60 border-t border-zinc-100">
+  <section class="py-16 px-6 bg-zinc-50/60 border-t border-zinc-100">
     <div class="max-w-5xl mx-auto">
-      <div class="mb-10">
-        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Behavioral signals</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-4">
+      <div class="mb-8">
+        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">Behavioral signals</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-3">
           Seven patterns. Each one specific to a known failure mode.
         </h2>
-        <p class="text-zinc-500 leading-relaxed text-base max-w-2xl">
+        <p class="text-zinc-500 leading-relaxed text-sm max-w-2xl">
           Every signal tracks a behavioral pattern from behavioral-finance research. They run independently and combine into a single PSI score.
         </p>
       </div>
-      <div class="space-y-3">
+      <div class="space-y-2">
         {[
           { name: 'Revenge Entry',     desc: 'Re-entry after loss with elevated size',              pct: 82 },
           { name: 'Stop Manipulation', desc: 'Widening stops in the adverse direction',             pct: 55 },
@@ -252,7 +252,7 @@ const marqueeRow2 = [
           { name: 'Rule Violations',   desc: 'Trading outside your declared session rules',         pct: 44 },
           { name: 'Overtrading Pace',  desc: 'Entry frequency accelerating vs your history',        pct: 71 },
         ].map(({ name, desc, pct }) => (
-          <div class="flex items-center gap-4 bg-white rounded-xl border border-zinc-100 px-5 py-3.5 shadow-sm">
+          <div class="flex items-center gap-4 bg-white rounded-lg border border-zinc-100 px-5 py-2.5 shadow-sm">
             <span class="w-36 shrink-0 text-sm font-semibold text-zinc-900">{name}</span>
             <div class="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
               <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" style={`width:${pct}%`}></div>
@@ -261,7 +261,7 @@ const marqueeRow2 = [
           </div>
         ))}
       </div>
-      <div class="mt-6">
+      <div class="mt-5">
         <a href="/features#seven-dimensions" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition-colors">
           Read the technical detail &rarr;
         </a>

@@ -395,15 +395,37 @@ const marqueeRow2 = [
       <!-- Right: image switcher -->
       <div>
         <!-- Slide label -->
-        <p data-label-display="intel-features" class="text-xs font-medium text-zinc-400 text-center mb-3 h-4 transition-opacity duration-200">
+        <p data-label-display="intel-features" class="text-xs font-medium text-zinc-400 text-center mb-3 min-h-[1rem]">
           Complete session log — daily PSI, Composure and P&amp;L all in one view
         </p>
-        <!-- Image + side arrows -->
-        <div class="flex items-center gap-3">
-          <!-- Prev arrow -->
+
+        <!-- Arrows sit outside the image using px padding + absolute positioning -->
+        <div class="relative px-11">
+          <!-- Sliding image track — full-width, no flex competition -->
+          <div class="overflow-hidden rounded-xl border border-zinc-800 shadow-lg bg-zinc-900">
+            <div data-track="intel-features" class="flex transition-transform duration-300 ease-out">
+              <div class="min-w-full shrink-0" data-slide-label="Complete session log — daily PSI, Composure and P&L all in one view">
+                <img src="/screenshots/intel-session-calendar.png" alt="Session log calendar" class="w-full max-h-[340px] object-contain object-top block" loading="lazy" />
+              </div>
+              <div class="min-w-full shrink-0" data-slide-label="Monthly digest — behavioral grade, trend, and best / worst sessions">
+                <img src="/screenshots/intel-monthly-digest.png" alt="Monthly digest" class="w-full max-h-[340px] object-contain object-top block" loading="lazy" />
+              </div>
+              <div class="min-w-full shrink-0" data-slide-label="Today's Risk Brief — personalized pre-session intelligence, every morning">
+                <img src="/screenshots/intel-risk-brief.png" alt="Today's Risk Brief" class="w-full max-h-[340px] object-contain object-top block" loading="lazy" />
+              </div>
+              <div class="min-w-full shrink-0" data-slide-label="PSI × P&L correlation — from detailed pattern to regression analysis">
+                <img src="/screenshots/intel-psi-performance.png" alt="PSI x Performance correlation" class="w-full max-h-[340px] object-contain object-top block" loading="lazy" />
+              </div>
+              <div class="min-w-full shrink-0" data-slide-label="Six-month Composure trend — long-term behavioral improvement made visible">
+                <img src="/screenshots/intel-composure-progress.png" alt="Composure progress 6 months" class="w-full max-h-[340px] object-contain object-top block" loading="lazy" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Prev arrow — absolute, left of image -->
           <button
             data-prev="intel-features"
-            class="shrink-0 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition-all duration-200"
+            class="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white bg-white flex items-center justify-center transition-all duration-200 shadow-sm"
             aria-label="Previous"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
@@ -411,31 +433,10 @@ const marqueeRow2 = [
             </svg>
           </button>
 
-          <!-- Sliding image track -->
-          <div class="flex-1 overflow-hidden rounded-xl border border-zinc-200 shadow-md">
-            <div data-track="intel-features" class="flex transition-transform duration-300 ease-out">
-              <div class="min-w-full shrink-0" data-slide-label="Complete session log — daily PSI, Composure and P&L all in one view">
-                <img src="/screenshots/intel-session-calendar.png" alt="Session log calendar" class="w-full h-auto block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="Monthly digest — behavioral grade, trend, and best / worst sessions">
-                <img src="/screenshots/intel-monthly-digest.png" alt="Monthly digest" class="w-full h-auto block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="Today's Risk Brief — personalized pre-session intelligence, every morning">
-                <img src="/screenshots/intel-risk-brief.png" alt="Today's Risk Brief" class="w-full h-auto block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="PSI × P&L correlation — from detailed pattern to regression analysis">
-                <img src="/screenshots/intel-psi-performance.png" alt="PSI x Performance correlation" class="w-full h-auto block" loading="lazy" />
-              </div>
-              <div class="min-w-full shrink-0" data-slide-label="Six-month Composure trend — long-term behavioral improvement made visible">
-                <img src="/screenshots/intel-composure-progress.png" alt="Composure progress 6 months" class="w-full h-auto block" loading="lazy" />
-              </div>
-            </div>
-          </div>
-
-          <!-- Next arrow -->
+          <!-- Next arrow — absolute, right of image -->
           <button
             data-next="intel-features"
-            class="shrink-0 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition-all duration-200"
+            class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white bg-white flex items-center justify-center transition-all duration-200 shadow-sm"
             aria-label="Next"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">

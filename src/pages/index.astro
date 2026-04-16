@@ -231,7 +231,7 @@ const marqueeRow2 = [
   </section>
 
   <!-- Section 2: Seven dimensions — CSS visual layout, no screenshot needed -->
-  <section class="py-20 px-6 bg-zinc-50/60 border-t border-zinc-100">
+  <section class="py-20 lg:py-28 px-6 bg-zinc-50/60 border-t border-zinc-100">
     <div class="max-w-5xl mx-auto">
       <div class="mb-10">
         <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Behavioral signals</p>
@@ -270,7 +270,7 @@ const marqueeRow2 = [
   </section>
 
   <!-- Section 3: Session history — left carousel, right text -->
-  <section class="py-20 px-6 bg-white border-t border-zinc-100">
+  <section class="py-20 lg:py-28 px-6 bg-white border-t border-zinc-100">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
       <!-- Left: image carousel -->
       <div class="relative group/carousel">
@@ -280,7 +280,7 @@ const marqueeRow2 = [
             <img
               src="/screenshots/session-log-december.png"
               alt="Session log December 2025"
-              class="w-full h-auto block"
+              class="w-full max-h-[380px] object-cover object-top block"
               loading="lazy"
             />
           </div>
@@ -297,7 +297,7 @@ const marqueeRow2 = [
             <img
               src="/screenshots/session-log-april.png"
               alt="Session log April 2026"
-              class="w-full h-auto block"
+              class="w-full max-h-[380px] object-cover object-top block"
               loading="lazy"
             />
           </div>
@@ -309,10 +309,10 @@ const marqueeRow2 = [
           </div>
         </div>
 
-        <!-- Overlay prev arrow — positioned over image area -->
+        <!-- Overlay prev arrow — outside overflow-hidden -->
         <button
           data-prev="history"
-          class="absolute left-3 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/25 hover:bg-black/55 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
+          class="absolute left-3 top-[46%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
           aria-label="Previous"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /></svg>
@@ -321,14 +321,14 @@ const marqueeRow2 = [
         <!-- Overlay next arrow -->
         <button
           data-next="history"
-          class="absolute right-3 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/25 hover:bg-black/55 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
+          class="absolute right-3 top-[46%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
           aria-label="Next"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </button>
 
-        <!-- Dot indicators — inset bottom of image area -->
-        <div class="absolute bottom-[52px] left-1/2 -translate-x-1/2 z-10 flex gap-1.5 pointer-events-none group-hover/carousel:pointer-events-auto">
+        <!-- Dot indicators -->
+        <div class="absolute bottom-[52px] left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
           <button data-dot="history" class="h-1.5 w-4 rounded-full bg-white/90 transition-all" aria-label="Slide 1"></button>
           <button data-dot="history" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 2"></button>
         </div>
@@ -360,7 +360,7 @@ const marqueeRow2 = [
   </section>
 
   <!-- Section 4: Personalized baselines -->
-  <section class="py-20 px-6 bg-zinc-50/60 border-t border-zinc-100">
+  <section class="py-20 lg:py-28 px-6 bg-zinc-50/60 border-t border-zinc-100">
     <div class="max-w-6xl mx-auto grid md:grid-cols-[3fr_2fr] gap-12 md:gap-20 items-center">
       <!-- Text -->
       <div class="order-2 md:order-1">
@@ -405,7 +405,7 @@ const marqueeRow2 = [
   </section>
 
   <!-- Guard teaser -->
-  <section class="py-20 px-6 bg-zinc-900 text-white">
+  <section class="py-20 lg:py-28 px-6 bg-zinc-900 text-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
         <p class="text-xs font-semibold tracking-[0.15em] text-emerald-400 uppercase mb-4">Meridian Guard — Coming soon</p>

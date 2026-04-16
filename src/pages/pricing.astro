@@ -88,13 +88,6 @@ const [standard, guard] = tiers;
 
       <!-- Meridian Guard -->
       <div class="rounded-3xl border-2 border-emerald-600/30 bg-gradient-to-b from-white to-emerald-50/30 shadow-lg shadow-emerald-900/5 px-8 py-10 relative overflow-hidden">
-        <!-- Coming soon ribbon -->
-        <div class="absolute top-4 right-4">
-          <span class="inline-block rounded-full bg-emerald-600 text-white text-xs font-semibold px-3 py-1">
-            Coming soon
-          </span>
-        </div>
-
         <div class="mb-6">
           <h2 class="text-xl font-bold text-zinc-900 mb-1">{guard.name}</h2>
           <p class="text-sm text-zinc-500">{guard.description}</p>
@@ -115,12 +108,13 @@ const [standard, guard] = tiers;
           </p>
         </div>
 
-        <button
-          disabled
-          class="block w-full text-center px-6 py-3 rounded-full bg-emerald-600/40 text-white font-semibold text-sm cursor-not-allowed mb-8"
+        <a
+          id="guard-cta"
+          href={guard.monthlyCtaHref}
+          class="block w-full text-center px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-colors mb-8"
         >
-          Coming soon
-        </button>
+          Start free trial
+        </a>
 
         <ul class="space-y-3">
           <li class="flex items-start gap-2.5 text-sm text-zinc-600">
@@ -246,9 +240,12 @@ const [standard, guard] = tiers;
   const guardAnnualPrice  = document.getElementById('guard-annual-price');
   const guardMonthlyNote  = document.getElementById('guard-monthly-note');
   const guardAnnualNote   = document.getElementById('guard-annual-note');
+  const guardCta          = document.getElementById('guard-cta') as HTMLAnchorElement;
 
-  const MONTHLY_URL = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/b7b8b514-fefa-4a34-8cad-d2e68f564d25';
-  const ANNUAL_URL  = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/04e32f4e-a20e-469f-ba4e-274d381739c6';
+  const MONTHLY_URL       = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/60b8b911-1d62-4f90-87a9-23f609a75c86?enabled=1539446';
+  const ANNUAL_URL        = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/c4858443-489a-4a4c-a883-20131c5f6548?enabled=1539453';
+  const GUARD_MONTHLY_URL = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/baeaa0f5-ba08-4ca5-a4dd-a092be966879?enabled=1539460';
+  const GUARD_ANNUAL_URL  = 'https://meridianpsi.lemonsqueezy.com/checkout/buy/8ea4bdf1-8ae2-468b-b74f-24d3b9f065bd?enabled=1539461';
 
   function setMonthly() {
     btnMonthly.classList.add('bg-white', 'text-zinc-900', 'shadow-sm');
@@ -266,6 +263,7 @@ const [standard, guard] = tiers;
     guardAnnualPrice?.classList.add('hidden');
     guardMonthlyNote?.classList.remove('hidden');
     guardAnnualNote?.classList.add('hidden');
+    if (guardCta) guardCta.href = GUARD_MONTHLY_URL;
   }
 
   function setAnnual() {
@@ -284,6 +282,7 @@ const [standard, guard] = tiers;
     guardAnnualPrice?.classList.remove('hidden');
     guardMonthlyNote?.classList.add('hidden');
     guardAnnualNote?.classList.remove('hidden');
+    if (guardCta) guardCta.href = GUARD_ANNUAL_URL;
   }
 
   btnMonthly?.addEventListener('click', setMonthly);

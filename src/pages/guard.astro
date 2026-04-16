@@ -161,56 +161,68 @@ const metadata = {
 
       <!-- Intel image carousel -->
       <div class="relative group/carousel">
-        <!-- Overflow container clips sliding track -->
-        <div class="relative overflow-hidden rounded-2xl border border-zinc-200 shadow-lg">
-          <div data-track="intel" class="flex transition-transform duration-300 ease-out">
-            <!-- Slide 1: PSI x Performance -->
-            <div class="min-w-full shrink-0">
-              <div class="bg-zinc-900">
-                <div class="px-6 pt-5 pb-3">
-                  <p class="text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-1">PSI x Performance — live from your data</p>
-                  <p class="text-zinc-300 text-sm">Stable PSI sessions averaged <span class="text-emerald-400 font-semibold">+$1,296</span>. Critical sessions averaged <span class="text-red-400 font-semibold">-$550</span>. That is a $1,846 difference — per session.</p>
-                </div>
-                <img src="/screenshots/psi-performance.png" alt="PSI x Performance Session-Level Correlation" class="w-full h-auto block" loading="lazy" />
+        <!-- Slides container -->
+        <div class="rounded-2xl overflow-hidden">
+          <!-- Slide 1: PSI x Performance -->
+          <div data-carousel="intel">
+            <div class="bg-zinc-900">
+              <div class="px-6 pt-5 pb-3">
+                <p class="text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-1">PSI x Performance — live from your data</p>
+                <p class="text-zinc-300 text-sm">Stable PSI sessions averaged <span class="text-emerald-400 font-semibold">+$1,296</span>. Critical sessions averaged <span class="text-red-400 font-semibold">-$550</span>. That is a $1,846 difference — per session.</p>
               </div>
-            </div>
-            <!-- Slide 2: Monthly Digest December -->
-            <div class="min-w-full shrink-0">
-              <div class="bg-white">
-                <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
-                  <p class="text-xs font-semibold text-zinc-500">Monthly Digest — December 2025 (Grade C)</p>
-                </div>
-                <img src="/screenshots/digest-december.png" alt="Monthly Digest December 2025 Grade C" class="w-full h-auto block" loading="lazy" />
-              </div>
-            </div>
-            <!-- Slide 3: Monthly Digest March -->
-            <div class="min-w-full shrink-0">
-              <div class="bg-white">
-                <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
-                  <p class="text-xs font-semibold text-zinc-500">Monthly Digest — March 2026 (Grade B+)</p>
-                </div>
-                <img src="/screenshots/digest-march.png" alt="Monthly Digest March 2026 Grade B+" class="w-full h-auto block" loading="lazy" />
-              </div>
-            </div>
-            <!-- Slide 4: Weekday Patterns -->
-            <div class="min-w-full shrink-0">
-              <div class="bg-white">
-                <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
-                  <p class="text-xs font-semibold text-zinc-500">Weekday patterns + 6-month Composure progress</p>
-                </div>
-                <img src="/screenshots/weekday-patterns.png" alt="Weekday Patterns and Composure Progress" class="w-full h-auto block" loading="lazy" />
-              </div>
+              <img
+                src="/screenshots/psi-performance.png"
+                alt="PSI x Performance Session-Level Correlation"
+                class="w-full max-h-72 object-cover object-top block"
+                loading="lazy"
+              />
             </div>
           </div>
-          <!-- Dot indicators -->
-          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
-            <button data-dot="intel" class="h-1.5 w-4 rounded-full bg-white/90 transition-all" aria-label="Slide 1"></button>
-            <button data-dot="intel" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 2"></button>
-            <button data-dot="intel" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 3"></button>
-            <button data-dot="intel" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 4"></button>
+          <!-- Slide 2: Monthly Digest December -->
+          <div data-carousel="intel" class="hidden">
+            <div class="bg-white">
+              <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
+                <p class="text-xs font-semibold text-zinc-500">Monthly Digest — December 2025 (Grade C)</p>
+              </div>
+              <img
+                src="/screenshots/digest-december.png"
+                alt="Monthly Digest December 2025 Grade C"
+                class="w-full max-h-72 object-cover object-top block"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <!-- Slide 3: Monthly Digest March -->
+          <div data-carousel="intel" class="hidden">
+            <div class="bg-white">
+              <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
+                <p class="text-xs font-semibold text-zinc-500">Monthly Digest — March 2026 (Grade B+)</p>
+              </div>
+              <img
+                src="/screenshots/digest-march.png"
+                alt="Monthly Digest March 2026 Grade B+"
+                class="w-full max-h-72 object-cover object-top block"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <!-- Slide 4: Weekday Patterns -->
+          <div data-carousel="intel" class="hidden">
+            <div class="bg-white">
+              <div class="bg-zinc-50 px-5 py-3 border-b border-zinc-200">
+                <p class="text-xs font-semibold text-zinc-500">Weekday patterns + 6-month Composure progress</p>
+              </div>
+              <img
+                src="/screenshots/weekday-patterns.png"
+                alt="Weekday Patterns and Composure Progress"
+                class="w-full max-h-72 object-cover object-top block"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
-        <!-- Overlay prev arrow -->
+
+        <!-- Overlay prev arrow — outside overflow-hidden so it's always clickable -->
         <button
           data-prev="intel"
           class="absolute left-3 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100"
@@ -218,6 +230,7 @@ const metadata = {
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /></svg>
         </button>
+
         <!-- Overlay next arrow -->
         <button
           data-next="intel"
@@ -226,6 +239,14 @@ const metadata = {
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </button>
+
+        <!-- Dot indicators -->
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+          <button data-dot="intel" class="h-1.5 w-4 rounded-full bg-white/90 transition-all" aria-label="Slide 1"></button>
+          <button data-dot="intel" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 2"></button>
+          <button data-dot="intel" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 3"></button>
+          <button data-dot="intel" class="h-1.5 w-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" aria-label="Slide 4"></button>
+        </div>
       </div>
     </div>
   </section>
@@ -292,45 +313,28 @@ const metadata = {
 </Layout>
 
 <script>
-  function initSlider(id: string) {
-    const track = document.querySelector<HTMLElement>(`[data-track="${id}"]`);
-    if (!track) return;
-    const total = track.children.length;
-    const dots = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
+  function initCarousel(id: string) {
+    const slides = Array.from(document.querySelectorAll<HTMLElement>(`[data-carousel="${id}"]`));
+    const dots   = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
+    if (!slides.length) return;
     let current = 0;
 
-    function getW() {
-      return (track.parentElement as HTMLElement).offsetWidth;
-    }
-
-    function goTo(n: number) {
-      const prev = current;
-      current = ((n % total) + total) % total;
-      track.style.transform = `translateX(-${current * getW()}px)`;
-      dots[prev]?.classList.remove('w-4', 'bg-white/90');
-      dots[prev]?.classList.add('w-1.5', 'bg-white/40');
-      dots[current]?.classList.add('w-4', 'bg-white/90');
-      dots[current]?.classList.remove('w-1.5', 'bg-white/40');
+    function goTo(index: number) {
+      slides[current].classList.add('hidden');
+      dots[current]?.classList.remove('bg-white/90', 'w-4');
+      dots[current]?.classList.add('bg-white/40', 'w-1.5');
+      current = ((index % slides.length) + slides.length) % slides.length;
+      slides[current].classList.remove('hidden');
+      dots[current]?.classList.add('bg-white/90', 'w-4');
+      dots[current]?.classList.remove('bg-white/40', 'w-1.5');
     }
 
     document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));
     document.querySelector(`[data-next="${id}"]`)?.addEventListener('click', () => goTo(current + 1));
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-
-    let resizeTimer: ReturnType<typeof setTimeout>;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      track.style.transitionDuration = '0ms';
-      track.style.transform = `translateX(-${current * getW()}px)`;
-      resizeTimer = setTimeout(() => { track.style.transitionDuration = ''; }, 150);
-    });
   }
 
-  function boot() { initSlider('intel'); }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('intel');
+  });
 </script>

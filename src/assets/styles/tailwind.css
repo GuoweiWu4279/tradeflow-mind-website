@@ -9,11 +9,11 @@
     font-feature-settings: 'cv11', 'ss01', 'ss03';
   }
   body {
-    color: #073460;
+    color: #374151;
     background: white;
   }
   h1, h2, h3, h4 {
-    color: #073460;
+    color: #0f172a;
     letter-spacing: -0.02em;
   }
   .dark body {
@@ -139,7 +139,7 @@
   .dark .display { color: #EBE9E4; }
   .lead {
     @apply text-lg leading-relaxed;
-    color: #356197;
+    color: #6b7280;
   }
   .dark .lead { color: rgba(235,233,228,0.7); }
 

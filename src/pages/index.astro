@@ -17,44 +17,14 @@ const marqueeRow1 = [
     role: 'Futures day trader',
   },
   {
-    quote: "Passed my third Apex evaluation. The first two I blew up on days where, in hindsight, I should have just closed the platform. The pattern was obvious once I could see it.",
+    quote: "Passed my third Apex evaluation. The first two I blew up on days where, in hindsight, I should have just closed the platform.",
     name: 'Mike R.',
     role: 'Prop firm trader',
   },
   {
-    quote: "Turned out I wasn't losing because of my entries. I was adding to losing positions and ignoring my own rules. Took data to admit it.",
+    quote: "Turned out I wasn't losing because of my entries. I was adding to losing positions and ignoring my own rules.",
     name: 'Anonymous',
     role: '',
-  },
-  {
-    quote: "I don't use tools that send my fill data to the cloud. Local-only was non-negotiable for me.",
-    name: 'David Chen',
-    role: 'Independent trader',
-  },
-  {
-    quote: "It doesn't close your positions for you — that part is still on you. But I stopped pretending I didn't notice the score dropping while I was moving my stop around.",
-    name: 'T. Rodriguez',
-    role: 'NQ futures',
-  },
-  {
-    quote: "The seven bars make it immediately clear which habit is pulling the score down. I kept telling myself I was trading fine. The data disagreed consistently.",
-    name: 'Elena V.',
-    role: 'MNQ scalper',
-  },
-  {
-    quote: "Being able to use Market Replay without it touching my live baseline was more useful than I expected.",
-    name: 'Chris P.',
-    role: 'Futures swing',
-  },
-  {
-    quote: "I run two accounts with copy fills. I was expecting double-counting issues in the score. It handled it cleanly without any configuration.",
-    name: 'Jordan L.',
-    role: 'Multi-account',
-  },
-  {
-    quote: "After a losing session I used to review charts to explain what happened. Now I check the session report first. It's faster and more honest.",
-    name: 'Sam W.',
-    role: 'ES / NQ',
   },
   {
     quote: "Didn't want another subscription. Tried the trial anyway. Kept it — the overlay is actually readable mid-session without being in the way.",
@@ -70,50 +40,30 @@ const marqueeRow2 = [
     role: 'ES trader',
   },
   {
-    quote: "I've restarted funded accounts more times than I want to count. If someone had told me a revenge-entry detector would matter more than another indicator, I wouldn't have believed them.",
+    quote: "If someone had told me a revenge-entry detector would matter more than another indicator, I wouldn't have believed them.",
     name: 'Alex Nowak',
     role: 'Prop trader',
   },
   {
-    quote: "Four years trading NQ. Thought I had a solid read on my own behavior. First week of data showed me I had several habits I wasn't aware of.",
+    quote: "Four years trading NQ. Thought I had a solid read on my own behavior. First week of data showed me several habits I wasn't aware of.",
     name: 'James O.',
     role: 'Day trader',
-  },
-  {
-    quote: "Post-session journals have their place. This is different — the feedback arrives while the session is still running, not the next morning.",
-    name: 'Anonymous',
-    role: '',
   },
   {
     quote: "Took a few sessions to calibrate. Once it did, the alerts started making sense — I could trace each one back to a specific pattern.",
     name: 'Priya S.',
     role: 'Futures trader',
   },
-  {
-    quote: "The stop-widening flag caught me doing something I always denied — moving my stop out when a trade went against me. Useful confirmation, even if it wasn't comfortable.",
-    name: 'Marcus T.',
-    role: 'CL / GC',
-  },
-  {
-    quote: "Thought my exits were disciplined. Turns out there's a consistent pattern on certain days. I don't love it, but I can work with the information.",
-    name: 'Kim H.',
-    role: 'Index futures',
-  },
-  {
-    quote: "A rough Tuesday doesn't disappear from the score just because Wednesday started. That's accurate. That's how it actually feels.",
-    name: 'Leo B.',
-    role: 'Overnight + day',
-  },
-  {
-    quote: "The alerts are infrequent enough that I don't tune them out. When one fires, I actually pause before doing anything.",
-    name: 'Andre C.',
-    role: 'Prop + personal',
-  },
-  {
-    quote: "The history view is simple. I like that. Seeing consistent streaks makes discipline feel measurable instead of just a goal.",
-    name: 'Nina F.',
-    role: 'Futures',
-  },
+];
+
+const signals = [
+  { name: 'Revenge Entry',     desc: 'Re-entry after loss with elevated size' },
+  { name: 'Stop Manipulation', desc: 'Widening stops in the adverse direction' },
+  { name: 'Size Spike',        desc: 'Position exceeds your declared rule' },
+  { name: 'Hold Bias',         desc: 'Abnormal hold duration vs your baseline' },
+  { name: 'Position Overstay', desc: 'Holding a loser past your 90th-percentile time' },
+  { name: 'Rule Violations',   desc: 'Trading outside your declared session rules' },
+  { name: 'Overtrading Pace',  desc: 'Entry frequency accelerating vs history' },
 ];
 ---
 
@@ -122,43 +72,51 @@ const marqueeRow2 = [
     actions={[
       {
         variant: 'primary',
-        text: 'Start free trial — 7 days',
+        text: 'Start free trial',
         href: '/pricing',
-        icon: 'tabler:player-play',
       },
-      { text: 'How it works', href: '#step-detail' },
+      { text: 'How it works', href: '#how-it-works' },
     ]}
   >
     <Fragment slot="title">
       Every trader has a plan.
       <br />
-      <span class="text-accent dark:text-emerald-700">The market's job is to make you forget it.</span>
+      <span class="text-emerald-700 dark:text-emerald-500">The market's job is to make you forget it.</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <strong>Meridian</strong> is the first real-time behavioral and psychological stability monitor for active traders. Tracks 7 behavioral patterns in combination with advanced cognitive science and psychology — and updates your PSI score in &lt;100ms.
+      <strong class="text-zinc-900 dark:text-zinc-100 font-semibold">Meridian</strong> is the first real-time behavioral and psychological stability monitor for active traders. Seven behavioral patterns, grounded in cognitive science. PSI updates in under 100ms.
     </Fragment>
   </Hero>
 
-  <Stats
-    stats={[
-      { title: 'Live behavioral signals', amount: '7' },
-      { title: 'Updated after and during session', amount: '<100ms' },
-      { title: 'Session history', amount: '5 years' },
-      { title: 'Free trial, no charge', amount: '7-day' },
-    ]}
-  />
+  <!-- Stats bar -->
+  <section class="px-6 -mt-8 md:-mt-12 fade-up">
+    <div class="max-w-6xl mx-auto">
+      <Stats
+        stats={[
+          { title: 'Live behavioral signals', amount: '7' },
+          { title: 'Update latency', amount: '<100ms' },
+          { title: 'Session history', amount: '5 yr' },
+          { title: 'Free trial', amount: '7 day' },
+        ]}
+      />
+    </div>
+  </section>
 
-  <!-- Problem recognition section — institutional vs retail framing -->
-  <section class="py-16 px-6 bg-zinc-50/60">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
+  <!-- ——— PROBLEM ——— -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <p class="eyebrow mb-5 fade-up">The gap</p>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6 fade-up">
         Institutional traders have risk managers.<br />You have yourself.
       </h2>
-      <p class="text-lg text-zinc-600 mb-12 max-w-2xl mx-auto">
-        They have compliance officers, position limits, and systems that enforce rules outside their control. Retail traders have experience, hard-won rules — and then the moment everything goes wrong, nothing stops them from breaking all of them.
+      <p class="lead mb-14 fade-up">
+        They have compliance officers, position limits, and systems that enforce rules outside their control.
+        Retail traders have experience and hard-won rules — and nothing to stop them from breaking those rules
+        the moment it matters most.
       </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto mb-12 text-left">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto text-left fade-up">
         {[
           'Added size right after a loss',
           'Moved the stop to "give it a little more room"',
@@ -167,749 +125,423 @@ const marqueeRow2 = [
           'Broke your session rule — just this once',
           'Hit your daily limit and took one more anyway',
         ].map((item) => (
-          <div class="flex items-center gap-3 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
-            <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center gap-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3.5">
+            <svg class="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
             </svg>
-            <span class="text-sm text-zinc-700">{item}</span>
+            <span class="text-sm text-zinc-700 dark:text-zinc-300">{item}</span>
           </div>
         ))}
       </div>
-      <p class="text-lg font-semibold text-zinc-900 max-w-xl mx-auto">
+
+      <p class="text-xl font-semibold text-zinc-900 dark:text-zinc-100 max-w-xl mx-auto mt-16 fade-up">
         Meridian doesn't tell you what to trade.<br />
-        It tells you <em>where you are</em> — so you can decide whether to continue.
+        It tells you <em class="text-emerald-700 dark:text-emerald-500 not-italic">where you are</em> — so you can decide whether to continue.
       </p>
     </div>
   </section>
 
-  <!-- Product Flow — Roadmap -->
-  <section id="how-it-works" class="py-20 lg:py-28 px-6 bg-white border-t border-zinc-100 overflow-hidden">
-    <div class="max-w-5xl mx-auto">
-
-      <!-- Heading -->
-      <div class="roadmap-heading text-center mb-16">
-        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">How it works</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-3">Before. During. After. Every session.</h2>
-        <p class="text-zinc-500 max-w-xl mx-auto text-base leading-relaxed">Meridian fits into every stage of how you trade — from a fully customized setup, to real-time monitoring and automatic guardrails, to deep post-session review.</p>
+  <!-- ——— ROADMAP / HOW IT WORKS ——— -->
+  <section id="how-it-works" class="section bg-zinc-50 dark:bg-zinc-900/40 border-y border-zinc-100 dark:border-zinc-800">
+    <div class="container-wide">
+      <div class="text-center mb-20 max-w-2xl mx-auto">
+        <p class="eyebrow mb-4 fade-up">How it works</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
+          Before. During. After. Every session.
+        </h2>
+        <p class="lead fade-up">
+          Meridian fits into every stage of how you trade — from setup, to real-time monitoring and
+          automatic guardrails, to post-session review.
+        </p>
       </div>
 
-      <!-- 4-step flow -->
+      <!-- 4-step roadmap -->
       <div class="relative">
-
-        <!-- Connector line (desktop only) -->
-        <div class="roadmap-connector hidden md:block absolute h-px bg-gradient-to-r from-zinc-100 via-emerald-300 to-zinc-100"
-             style="top: 27px; left: calc(12.5% + 4px); right: calc(12.5% + 4px);"></div>
+        <!-- dotted connector line (desktop) -->
+        <div
+          class="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] border-t border-dashed border-zinc-300 dark:border-zinc-700"
+          aria-hidden="true"
+        ></div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-
-          <!-- Step 1: Configure -->
-          <div class="roadmap-step text-center" style="transition-delay: 0ms">
-            <div class="w-14 h-14 rounded-full bg-zinc-800 text-white flex items-center justify-center mx-auto mb-4 ring-4 ring-white shadow-md relative z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-              </svg>
-            </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">01</p>
-            <h3 class="font-bold text-zinc-900 text-sm mb-1">Configure</h3>
-            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">Any strategy. Any style.</p>
-            <div class="roadmap-card bg-zinc-50 border border-zinc-200 rounded-xl p-4 text-left">
-              <ul class="space-y-2">
-                {['Session rules & time windows', 'Size limits and stop conventions', 'Profile settings per account'].map(pt => (
-                  <li class="flex items-start gap-2 text-xs text-zinc-600">
-                    <span class="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400 shrink-0"></span>
-                    {pt}
+          {[
+            { num: '01', title: 'Configure',     sub: 'Any strategy. Any style.',      bullets: ['Session rules & time windows', 'Size limits and stop conventions', 'Profile settings per account'] },
+            { num: '02', title: 'Live Monitor',  sub: '7 signals. <100ms updates.',    bullets: ['PSI score updates in real time', 'Seven behavioral signal bars', 'Floating HUD overlay'] },
+            { num: '03', title: 'Guard',         sub: 'Rules that enforce themselves.', bullets: ['6 trigger conditions', '5 response levels', 'Toast to broker disconnect'] },
+            { num: '04', title: 'Review & Intel', sub: 'Every session. Every pattern.', bullets: ['PSI, Composure, and trade stats', 'Monthly digest & P&L correlation', "Today's Risk Brief"] },
+          ].map((step, i) => (
+            <div class="fade-up" style={`transition-delay:${i * 80}ms`}>
+              <!-- Number disc -->
+              <div class="relative z-10 mx-auto w-12 h-12 rounded-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center mb-5 text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+                {step.num}
+              </div>
+              <div class="text-center mb-5">
+                <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{step.title}</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">{step.sub}</p>
+              </div>
+              <ul class="card card-hover p-5 space-y-2.5">
+                {step.bullets.map((b) => (
+                  <li class="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-300">
+                    <svg class="mt-0.5 w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{b}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-
-          <!-- Step 2: Live Monitor -->
-          <div class="roadmap-step text-center" style="transition-delay: 150ms">
-            <div class="w-14 h-14 rounded-full bg-emerald-700 text-white flex items-center justify-center mx-auto mb-4 ring-4 ring-white shadow-md relative z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-              </svg>
-            </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">02</p>
-            <h3 class="font-bold text-zinc-900 text-sm mb-1">Live Monitor</h3>
-            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">7 signals. &lt;100ms updates.</p>
-            <div class="roadmap-card bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-left">
-              <ul class="space-y-2">
-                {['PSI score updates in real time', 'Seven behavioral signal bars', 'Floating HUD overlay'].map(pt => (
-                  <li class="flex items-start gap-2 text-xs text-zinc-600">
-                    <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <!-- Step 3: Guard -->
-          <div class="roadmap-step text-center" style="transition-delay: 300ms">
-            <div class="w-14 h-14 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto mb-4 ring-4 ring-white shadow-md relative z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-              </svg>
-            </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">03</p>
-            <h3 class="font-bold text-zinc-900 text-sm mb-1">Guard</h3>
-            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">Rules that enforce themselves.</p>
-            <div class="roadmap-card bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-left">
-              <ul class="space-y-2">
-                {['6 trigger conditions', '5 response levels', 'Toast to broker disconnect'].map(pt => (
-                  <li class="flex items-start gap-2 text-xs text-zinc-600">
-                    <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <!-- Step 4: Review & Intel -->
-          <div class="roadmap-step text-center" style="transition-delay: 450ms">
-            <div class="w-14 h-14 rounded-full bg-zinc-700 text-white flex items-center justify-center mx-auto mb-4 ring-4 ring-white shadow-md relative z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
-              </svg>
-            </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">04</p>
-            <h3 class="font-bold text-zinc-900 text-sm mb-1">Review &amp; Intel</h3>
-            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">Every session. Every pattern.</p>
-            <div class="roadmap-card bg-zinc-50 border border-zinc-200 rounded-xl p-4 text-left">
-              <ul class="space-y-2">
-                {['PSI, Composure, and trade stats', 'Monthly digest and P&L correlation', "Today's Risk Brief"].map(pt => (
-                  <li class="flex items-start gap-2 text-xs text-zinc-600">
-                    <span class="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400 shrink-0"></span>
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Step detail — tabbed deep-dive for each of the four stages -->
-  <section id="step-detail" class="py-20 lg:py-28 px-6 bg-white border-t border-zinc-100 overflow-x-hidden">
-    <div class="max-w-5xl mx-auto">
-
-      <!-- Tab navigation -->
-      <div class="flex border-b border-zinc-200 mb-12 overflow-x-auto">
-        <button data-step-tab="0" class="step-tab-btn is-active">
-          <span class="step-tab-num">01</span>
-          Configure
-        </button>
-        <button data-step-tab="1" class="step-tab-btn">
-          <span class="step-tab-num">02</span>
-          Live Monitor
-        </button>
-        <button data-step-tab="2" class="step-tab-btn">
-          <span class="step-tab-num">03</span>
-          Guard
-        </button>
-        <button data-step-tab="3" class="step-tab-btn">
-          <span class="step-tab-num">04</span>
-          Review &amp; Intel
-        </button>
+  <!-- ——— STEP DETAIL — tabbed slider ——— -->
+  <section id="step-detail" class="section overflow-x-hidden">
+    <div class="container-wide">
+      <div class="text-center mb-16 max-w-2xl mx-auto">
+        <p class="eyebrow mb-4 fade-up">See it in action</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 fade-up">
+          Pick a stage. See what you'd get.
+        </h2>
       </div>
 
-      <!-- Sliding panels (track is 400% wide; each panel is w-1/4 = one full viewport slot) -->
-      <div class="overflow-hidden">
-        <div id="step-panels-track" class="flex" style="width: 400%; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);">
+      <!-- Tab navigation -->
+      <div role="tablist" aria-label="Product stages" class="flex border-b border-zinc-200 dark:border-zinc-800 mb-14 overflow-x-auto">
+        {['Configure', 'Live Monitor', 'Guard', 'Review & Intel'].map((label, i) => (
+          <button
+            type="button"
+            role="tab"
+            data-step-tab={i}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`step-panel-${i}`}
+            id={`step-tab-${i}`}
+            class:list={['step-tab-btn', { 'is-active': i === 0 }]}
+          >
+            <span class="step-tab-num">0{i + 1}</span>
+            {label}
+          </button>
+        ))}
+      </div>
 
+      <!-- Sliding panels -->
+      <div class="overflow-hidden">
+        <div id="step-panels-track" class="flex" style="width:400%;">
           <!-- Panel 0: Configure -->
-          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
-            <div>
-              <img
-                src="/screenshots/baseline-learning.png"
-                alt="Meridian profile configuration and personal baseline settings panel"
-                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Configure</p>
-              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Set your rules once. Meridian applies them every session.</h3>
-              <p class="text-zinc-500 text-sm leading-relaxed mb-5">Your profile defines how Meridian reads your behavior — position limits, session windows, stop conventions. Every alert is personalized to your declared rules, not a generic threshold.</p>
-              <ul class="space-y-2.5 text-sm text-zinc-700">
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Session rules &amp; time windows</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Position size limits and stop conventions</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Profile settings per account</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Personal baseline adapts with each recorded session</li>
-              </ul>
+          <div class="w-1/4" role="tabpanel" id="step-panel-0" aria-labelledby="step-tab-0">
+            <div class="grid md:grid-cols-[3fr_2fr] gap-12 md:gap-16 items-center">
+              <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
+                <img src="/screenshots/baseline-learning.png" alt="Meridian personal baseline configuration panel" class="w-full h-auto block" loading="lazy" />
+              </div>
+              <div>
+                <p class="eyebrow mb-3">Configure</p>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5">Set your rules once. Meridian applies them every session.</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
+                  Your profile defines how Meridian reads your behavior — position limits, session
+                  windows, stop conventions. Every alert is personalized to your declared rules, not a
+                  generic threshold.
+                </p>
+                <ul class="space-y-2.5 text-sm text-zinc-700 dark:text-zinc-300">
+                  {['Session rules & time windows', 'Position size limits and stop conventions', 'Profile settings per account', 'Personal baseline adapts with each session'].map((item) => (
+                    <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-emerald-600 shrink-0"></span>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           <!-- Panel 1: Live Monitor -->
-          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
-            <div>
-              <img
-                src="/screenshots/psi-critical.png"
-                alt="Meridian PSI Monitor showing a Critical score with seven behavioral signal bars live"
-                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Live Monitor</p>
-              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Your stability score, updating in real time.</h3>
-              <p class="text-zinc-500 text-sm leading-relaxed mb-5">PSI updates within 100ms of every fill, every stop move, every size decision. Seven behavioral signal bars show exactly what is affecting the score right now.</p>
-              <ul class="space-y-2.5 text-sm text-zinc-700">
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>PSI score updates after every action in &lt;100ms</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Seven behavioral signal bars — visible while trading</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Floating HUD overlay — stays readable mid-session</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Session stats: trades, win rate, alerts, duration</li>
-              </ul>
+          <div class="w-1/4" role="tabpanel" id="step-panel-1" aria-labelledby="step-tab-1">
+            <div class="grid md:grid-cols-[3fr_2fr] gap-12 md:gap-16 items-center">
+              <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
+                <img src="/screenshots/psi-critical.png" alt="Meridian PSI Monitor showing a Critical score with seven behavioral signal bars" class="w-full h-auto block" loading="lazy" />
+              </div>
+              <div>
+                <p class="eyebrow mb-3">Live Monitor</p>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5">Your stability score, updating in real time.</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
+                  PSI updates within 100ms of every fill, every stop move, every size decision. Seven
+                  behavioral signal bars show exactly what is affecting the score right now.
+                </p>
+                <ul class="space-y-2.5 text-sm text-zinc-700 dark:text-zinc-300">
+                  {['PSI score updates after every action in <100ms', 'Seven behavioral signal bars visible while trading', 'Floating HUD overlay — stays readable mid-session', 'Session stats: trades, win rate, alerts, duration'].map((item) => (
+                    <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-emerald-600 shrink-0"></span><span set:html={item} /></li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           <!-- Panel 2: Guard -->
-          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
-            <div>
-              <img
-                src="/screenshots/psi-performance.png"
-                alt="Meridian PSI vs P&L correlation — the measurable cost of trading out of a stable state"
-                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Guard</p>
-              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Rules that enforce themselves — even when you won't.</h3>
-              <p class="text-zinc-500 text-sm leading-relaxed mb-5">Guard is a commitment device. When you are calm, you write the rules. When the moment comes, Guard enforces them automatically — no decision required from you.</p>
-              <ul class="space-y-2.5 text-sm text-zinc-700">
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>6 configurable trigger conditions</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>5 response levels — quiet toast to full broker disconnect</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Set once, active every session automatically</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>No manual override required in the heat of the moment</li>
-              </ul>
-              <div class="mt-6">
-                <a href="/guard" class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors">
-                  Explore Meridian Guard &rarr;
+          <div class="w-1/4" role="tabpanel" id="step-panel-2" aria-labelledby="step-tab-2">
+            <div class="grid md:grid-cols-[3fr_2fr] gap-12 md:gap-16 items-center">
+              <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
+                <img src="/screenshots/psi-performance.png" alt="Meridian PSI vs P&amp;L correlation chart" class="w-full h-auto block" loading="lazy" />
+              </div>
+              <div>
+                <p class="eyebrow mb-3">Guard</p>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5">Rules that enforce themselves — even when you won't.</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
+                  Guard is a commitment device. When you are calm, you write the rules. When the moment
+                  comes, Guard enforces them automatically — no decision required from you.
+                </p>
+                <ul class="space-y-2.5 text-sm text-zinc-700 dark:text-zinc-300">
+                  {['6 configurable trigger conditions', '5 response levels — quiet toast to full broker disconnect', 'Set once, active every session automatically', 'No manual override required in the heat of the moment'].map((item) => (
+                    <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-emerald-600 shrink-0"></span>{item}</li>
+                  ))}
+                </ul>
+                <a href="/guard" class="btn-tertiary mt-6">
+                  Explore Meridian Guard
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>
               </div>
             </div>
           </div>
 
           <!-- Panel 3: Review & Intel -->
-          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
-            <div>
-              <img
-                src="/screenshots/intel-session-calendar.png"
-                alt="Meridian session calendar showing PSI score, Composure and P&L per session"
-                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Review &amp; Intel</p>
-              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Not just P&amp;L. Whether you traded right.</h3>
-              <p class="text-zinc-500 text-sm leading-relaxed mb-5">Every session is saved with PSI score, Composure, and trade stats. Over months, behavioral patterns become visible — and so does the improvement.</p>
-              <ul class="space-y-2.5 text-sm text-zinc-700">
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Session log: PSI, Composure, and trade stats per session</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Monthly behavioral grade and P&amp;L correlation</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Today's Risk Brief — built from your own history</li>
-                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>5 years of session history stored locally</li>
-              </ul>
+          <div class="w-1/4" role="tabpanel" id="step-panel-3" aria-labelledby="step-tab-3">
+            <div class="grid md:grid-cols-[3fr_2fr] gap-12 md:gap-16 items-center">
+              <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
+                <img src="/screenshots/intel-session-calendar.png" alt="Meridian session calendar showing PSI, Composure and P&amp;L per session" class="w-full h-auto block" loading="lazy" />
+              </div>
+              <div>
+                <p class="eyebrow mb-3">Review & Intel</p>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5">Not just P&amp;L. Whether you traded right.</h3>
+                <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
+                  Every session is saved with PSI score, Composure, and trade stats. Over months,
+                  behavioral patterns become visible — and so does the improvement.
+                </p>
+                <ul class="space-y-2.5 text-sm text-zinc-700 dark:text-zinc-300">
+                  {['Session log: PSI, Composure, and trade stats', 'Monthly behavioral grade and P&L correlation', "Today's Risk Brief — built from your own history", '5 years of session history stored locally'].map((item) => (
+                    <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-emerald-600 shrink-0"></span>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Section 2: Seven dimensions — CSS visual layout, no screenshot needed -->
-  <section class="py-16 px-6 bg-zinc-50/60 border-t border-zinc-100">
-    <div class="max-w-5xl mx-auto">
-      <div class="mb-8">
-        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">Behavioral signals</p>
-        <h2 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-3">
-          Seven patterns. Each one specific to a known failure mode.
+  <!-- ——— SEVEN DIMENSIONS ——— -->
+  <section class="section bg-zinc-50 dark:bg-zinc-900/40 border-y border-zinc-100 dark:border-zinc-800">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="eyebrow mb-4 fade-up">Behavioral signals</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
+          Seven patterns. Each tied to a known failure mode.
         </h2>
-        <p class="text-zinc-500 leading-relaxed text-sm max-w-2xl">
-          Every signal tracks a behavioral pattern from behavioral-finance research. They run independently and combine into a single PSI score.
+        <p class="lead fade-up">
+          Every signal tracks a behavioral pattern from behavioral-finance research. They run
+          independently and combine into a single PSI score.
         </p>
       </div>
-      <div class="space-y-2">
-        {[
-          { name: 'Revenge Entry',     desc: 'Re-entry after loss with elevated size',              pct: 82 },
-          { name: 'Stop Manipulation', desc: 'Widening stops in the adverse direction',             pct: 55 },
-          { name: 'Size Spike',        desc: 'Position exceeds your declared rule',                 pct: 95 },
-          { name: 'Hold Bias',         desc: 'Abnormal hold duration vs your own baseline',        pct: 38 },
-          { name: 'Position Overstay', desc: 'Holding a loser past your 90th-percentile hold time', pct: 60 },
-          { name: 'Rule Violations',   desc: 'Trading outside your declared session rules',         pct: 44 },
-          { name: 'Overtrading Pace',  desc: 'Entry frequency accelerating vs your history',        pct: 71 },
-        ].map(({ name, desc, pct }) => (
-          <div class="flex items-center gap-4 bg-white rounded-lg border border-zinc-100 px-5 py-2.5 shadow-sm">
-            <span class="w-36 shrink-0 text-sm font-semibold text-zinc-900">{name}</span>
-            <div class="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
-              <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" style={`width:${pct}%`}></div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 fade-up">
+        {signals.map((s, i) => (
+          <div class="card card-hover p-5 flex items-start gap-4">
+            <span class="shrink-0 mt-0.5 w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-semibold flex items-center justify-center">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{s.name}</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{s.desc}</p>
             </div>
-            <span class="w-56 shrink-0 text-xs text-zinc-400 text-right hidden sm:block">{desc}</span>
           </div>
         ))}
       </div>
-      <div class="mt-5">
-        <a href="/features#seven-dimensions" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition-colors">
-          Read the technical detail &rarr;
+
+      <div class="text-center mt-10">
+        <a href="/features#seven-dimensions" class="btn-tertiary">
+          Read the technical detail
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Session history — left carousel, right text -->
-  <section class="py-20 lg:py-28 px-6 bg-white border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-      <!-- Left: image carousel -->
-      <div>
-        <!-- Image slides with px-11 to make room for outside buttons -->
-        <div class="relative px-11">
-          <!-- Slide 1: December -->
-          <div data-carousel="history">
-            <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
-              <img
-                src="/screenshots/session-log-december.png"
-                alt="Session log December 2025"
-                class="w-full max-h-[380px] object-cover object-top block"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <!-- Slide 2: April -->
-          <div data-carousel="history" class="hidden">
-            <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
-              <img
-                src="/screenshots/session-log-april.png"
-                alt="Session log April 2026"
-                class="w-full max-h-[380px] object-cover object-top block"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          <!-- Prev arrow — outside image -->
-          <button
-            data-prev="history"
-            class="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white bg-white flex items-center justify-center transition-all duration-200 shadow-sm"
-            aria-label="Previous"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /></svg>
-          </button>
-
-          <!-- Next arrow — outside image -->
-          <button
-            data-next="history"
-            class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white bg-white flex items-center justify-center transition-all duration-200 shadow-sm"
-            aria-label="Next"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
-          </button>
-        </div>
-
-        <!-- Dot indicators -->
-        <div class="flex justify-center gap-1.5 mt-3 mb-1">
-          <button data-dot="history" class="h-1.5 w-4 rounded-full bg-zinc-700 transition-all" aria-label="Slide 1"></button>
-          <button data-dot="history" class="h-1.5 w-1.5 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all" aria-label="Slide 2"></button>
-        </div>
-
-        <!-- Captions — toggle with carousel -->
-        <div data-caption="history">
-          <div class="mt-2 flex items-center justify-center flex-wrap gap-2">
-            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 1 — December 2025</span>
-            <span class="text-red-500 font-semibold text-sm">Composure 49%</span>
-            <span class="text-zinc-400 text-sm">·</span>
-            <span class="text-red-500 font-semibold text-sm">Avg P&amp;L &minus;$629</span>
-          </div>
-        </div>
-        <div data-caption="history" class="hidden">
-          <div class="mt-2 flex items-center justify-center flex-wrap gap-2">
-            <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Month 5 — April 2026</span>
-            <span class="text-emerald-600 font-semibold text-sm">Composure 79%</span>
-            <span class="text-zinc-400 text-sm">·</span>
-            <span class="text-emerald-600 font-semibold text-sm">Avg P&amp;L +$997</span>
-          </div>
-        </div>
-      </div>
-      <!-- Right: text -->
-      <div>
-        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Session review and history</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-5">
+  <!-- ——— SESSION HISTORY — before / after comparison ——— -->
+  <section class="section">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="eyebrow mb-4 fade-up">Session review and history</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
           Not just P&amp;L. Whether you traded right.
         </h2>
-        <p class="text-zinc-500 leading-relaxed text-base mb-6">
-          Meridian tracks discipline session by session. Over time, the pattern becomes visible — and so does the improvement.
+        <p class="lead fade-up">
+          Meridian tracks discipline session by session. Over time, the pattern becomes visible — and
+          so does the improvement.
         </p>
-        <ul class="space-y-3 text-sm text-zinc-700">
-          {[
-            'Every session saved with PSI score, Composure, and trade stats',
-            'Month-over-month behavioral progress visible at a glance',
-            'Separate from P&L — shows whether you traded in control',
-            '5 years of session history with Meridian Guard',
-          ].map(item => (
-            <li class="flex items-start gap-2.5">
-              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-              {item}
-            </li>
-          ))}
-        </ul>
       </div>
+
+      <div class="grid md:grid-cols-2 gap-8 fade-up">
+        <!-- Before -->
+        <div>
+          <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
+            <img src="/screenshots/session-log-december.png" alt="Session log December 2025 — Composure 49%, average P&amp;L -$629" class="w-full h-auto block" loading="lazy" />
+          </div>
+          <div class="mt-4 flex items-center flex-wrap gap-2">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Month 1 — Dec 2025</span>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">Composure <span class="text-zinc-900 dark:text-zinc-100 font-semibold">49%</span></span>
+            <span class="text-zinc-300 dark:text-zinc-600">·</span>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">Avg P&amp;L <span class="text-zinc-900 dark:text-zinc-100 font-semibold">&minus;$629</span></span>
+          </div>
+        </div>
+
+        <!-- After -->
+        <div>
+          <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
+            <img src="/screenshots/session-log-april.png" alt="Session log April 2026 — Composure 79%, average P&amp;L +$997" class="w-full h-auto block" loading="lazy" />
+          </div>
+          <div class="mt-4 flex items-center flex-wrap gap-2">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Month 5 — Apr 2026</span>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">Composure <span class="text-emerald-700 dark:text-emerald-400 font-semibold">79%</span></span>
+            <span class="text-zinc-300 dark:text-zinc-600">·</span>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">Avg P&amp;L <span class="text-emerald-700 dark:text-emerald-400 font-semibold">+$997</span></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-8 italic">
+        Illustrative data from a single user's history. Results may vary. Trading involves substantial risk of loss.
+      </p>
     </div>
   </section>
 
-  <!-- Section: Intel Layer — feature showcase -->
-  <section class="py-20 lg:py-28 px-6 bg-zinc-50/60 border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-[2fr_3fr] gap-14 md:gap-20 items-center">
-
-      <!-- Left: copy -->
-      <div>
-        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Exclusive analysis · From day to year</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-5">
+  <!-- ——— INTEL — small grid, not full carousel ——— -->
+  <section class="section bg-zinc-50 dark:bg-zinc-900/40 border-y border-zinc-100 dark:border-zinc-800">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="eyebrow mb-4 fade-up">Intel layer</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
           Data no other trading journal can show you.
         </h2>
-        <p class="text-zinc-500 text-base leading-relaxed mb-6">
-          No trade journal, no broker dashboard, no analytics platform cross-references your psychological state with your P&amp;L across five years of sessions. Meridian does — and it's the only one that does.
+        <p class="lead fade-up">
+          No broker dashboard cross-references your psychological state with your P&amp;L. Meridian does —
+          built entirely from your own history.
         </p>
-        <ul class="space-y-3 text-sm text-zinc-600">
-          {[
-            'Monthly behavioral grade — not just P&L, but how you traded it',
-            'PSI × P&L correlation mapped across your entire history',
-            'Weakest-day patterns and 6-month Composure trend',
-            "Today's Risk Brief — built from your own data, every morning",
-          ].map(item => (
-            <li class="flex items-start gap-2.5">
-              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <div class="mt-8">
-          <a href="/guard" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition-colors">
-            Explore all features &rarr;
-          </a>
-        </div>
       </div>
 
-      <!-- Right: image switcher -->
-      <div>
-        <!-- Slide label -->
-        <p data-label-display="intel-features" class="text-xs font-medium text-zinc-400 text-center mb-3 min-h-[1rem]">
-          Complete session log — daily PSI, Composure and P&amp;L all in one view
-        </p>
-
-        <!-- Arrows sit outside the image using px padding + absolute positioning -->
-        <div class="relative px-11">
-          <!-- Image slides — show/hide so each image retains its natural proportions -->
-          <div class="rounded-xl shadow-md overflow-hidden">
-            <div data-slide="intel-features" data-slide-label="Complete session log — daily PSI, Composure and P&L all in one view">
-              <img src="/screenshots/intel-session-calendar.png" alt="Session log calendar" class="w-full h-auto block" loading="lazy" />
+      <div class="grid md:grid-cols-3 gap-5 fade-up">
+        {[
+          { img: '/screenshots/intel-monthly-digest.png',    title: 'Monthly digest',      sub: 'Behavioral grade, trend, best and worst sessions.' },
+          { img: '/screenshots/intel-risk-brief.png',        title: "Today's Risk Brief",  sub: 'Personalized pre-session intelligence, every morning.' },
+          { img: '/screenshots/intel-composure-progress.png', title: 'Composure trend',     sub: 'Six-month view of long-term behavioral improvement.' },
+        ].map((card) => (
+          <div class="card card-hover overflow-hidden">
+            <div class="aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+              <img src={card.img} alt={card.title} class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
-            <div data-slide="intel-features" class="hidden" data-slide-label="Monthly digest — behavioral grade, trend, and best / worst sessions">
-              <img src="/screenshots/intel-monthly-digest.png" alt="Monthly digest" class="w-full h-auto block" loading="lazy" />
-            </div>
-            <div data-slide="intel-features" class="hidden" data-slide-label="Today's Risk Brief — personalized pre-session intelligence, every morning">
-              <img src="/screenshots/intel-risk-brief.png" alt="Today's Risk Brief" class="w-full h-auto block" loading="lazy" />
-            </div>
-            <div data-slide="intel-features" class="hidden" data-slide-label="PSI × P&L correlation — from detailed pattern to regression analysis">
-              <img src="/screenshots/intel-psi-performance.png" alt="PSI x Performance correlation" class="w-full h-auto block" loading="lazy" />
-            </div>
-            <div data-slide="intel-features" class="hidden" data-slide-label="Six-month Composure trend — long-term behavioral improvement made visible">
-              <img src="/screenshots/intel-composure-progress.png" alt="Composure progress 6 months" class="w-full h-auto block" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{card.title}</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{card.sub}</p>
             </div>
           </div>
-
-          <!-- Prev arrow — absolute, left of image -->
-          <button
-            data-prev="intel-features"
-            class="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white bg-white flex items-center justify-center transition-all duration-200 shadow-sm"
-            aria-label="Previous"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-              <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/>
-            </svg>
-          </button>
-
-          <!-- Next arrow — absolute, right of image -->
-          <button
-            data-next="intel-features"
-            class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white bg-white flex items-center justify-center transition-all duration-200 shadow-sm"
-            aria-label="Next"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-              <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Progress dots -->
-        <div class="flex justify-center gap-1.5 mt-4">
-          <button data-dot="intel-features" class="h-1.5 w-4 rounded-full bg-emerald-500 transition-all" aria-label="Slide 1"></button>
-          <button data-dot="intel-features" class="h-1.5 w-1.5 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all" aria-label="Slide 2"></button>
-          <button data-dot="intel-features" class="h-1.5 w-1.5 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all" aria-label="Slide 3"></button>
-          <button data-dot="intel-features" class="h-1.5 w-1.5 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all" aria-label="Slide 4"></button>
-          <button data-dot="intel-features" class="h-1.5 w-1.5 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all" aria-label="Slide 5"></button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Section 4: Personalized baselines -->
-  <section class="py-20 lg:py-28 px-6 bg-zinc-50/60 border-t border-zinc-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-[3fr_2fr] gap-12 md:gap-20 items-center">
-      <!-- Text -->
-      <div class="order-2 md:order-1">
-        <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Personalized baselines</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 leading-snug mb-5">
-          Built around your behavior. Not a generic threshold.
-        </h2>
-        <p class="text-zinc-600 leading-relaxed text-base mb-6">
-          Meridian learns what normal looks like for you, then makes drift visible when your behavior starts to change. The PSI score is built around your own history, so it stays useful across different trading styles instead of relying on a one-size-fits-all warning level.
-        </p>
-        <ul class="space-y-3 text-sm text-zinc-700">
-          {[
-            'Built from your own trading history',
-            'Personal baseline instead of a generic rule',
-            'Detailed profile settings for different styles, rules, and workflows',
-            'Becomes more useful as more sessions are recorded',
-          ].map(item => (
-            <li class="flex items-start gap-2.5">
-              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <div class="mt-8">
-          <a href="/features" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition-colors">
-            Full technical breakdown &rarr;
-          </a>
-        </div>
-      </div>
-      <!-- Baseline screenshot -->
-      <div class="order-1 md:order-2">
-        <div class="rounded-2xl overflow-hidden shadow-xl border border-zinc-800">
-          <img
-            src="/screenshots/baseline-learning.png"
-            alt="Meridian baseline learning panel showing personal trading statistics"
-            class="w-full h-auto block"
-            loading="lazy"
-          />
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Guard teaser -->
-  <section class="py-20 lg:py-28 px-6 bg-zinc-900 text-white">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-xs font-semibold tracking-[0.15em] text-emerald-400 uppercase mb-4">Meridian Guard</p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+  <!-- ——— GUARD BAND — light, not dark ——— -->
+  <section class="section">
+    <div class="container-wide">
+      <div class="card p-10 md:p-16 text-center fade-up">
+        <p class="eyebrow mb-4">Meridian Guard</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 max-w-2xl mx-auto">
           You already know the rules.<br />Guard makes sure you follow them.
         </h2>
-        <p class="text-zinc-400 text-base max-w-2xl mx-auto leading-relaxed">
-          When you are calm, you write the rules. When the moment comes, Guard enforces them — automatically, without requiring a decision from you. This is what behavioral economists call a commitment device.
+        <p class="lead max-w-2xl mx-auto mb-10">
+          When you are calm, you write the rules. When the moment comes, Guard enforces them —
+          automatically, without requiring a decision from you.
         </p>
-      </div>
-
-      <!-- 3 key feature callouts -->
-      <div class="grid sm:grid-cols-3 gap-4 mb-10">
-        <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-2xl p-5">
-          <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">Guard System</p>
-          <p class="text-white font-semibold mb-2">Rules that enforce themselves</p>
-          <p class="text-zinc-400 text-sm leading-relaxed">6 trigger conditions. 5 action levels from a quiet toast to a full broker disconnect. Set once — active every session.</p>
-        </div>
-        <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-2xl p-5">
-          <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">Intel Layer</p>
-          <p class="text-white font-semibold mb-2">See patterns across months</p>
-          <p class="text-zinc-400 text-sm leading-relaxed">Monthly digest, PSI &times; P&amp;L correlation, weekday patterns, and a pre-session risk brief — built from your own history.</p>
-        </div>
-        <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-2xl p-5">
-          <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">Key finding</p>
-          <p class="text-white font-semibold mb-2">Stable PSI &rarr; +$1,402/session</p>
-          <p class="text-zinc-400 text-sm leading-relaxed">Critical PSI &rarr; &minus;$550/session. Guard shows you — and stops you — before you get there.</p>
-        </div>
-      </div>
-
-      <div class="text-center">
-        <a
-          href="/guard"
-          class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-full px-8 py-3 transition-colors duration-200"
-        >
-          See everything in Meridian Guard
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+        <a href="/guard" class="btn-primary btn-lg">
+          See everything in Guard
+          <svg class="ml-1.5 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials — dual-row infinite marquee -->
-  <section class="py-12 bg-zinc-50 border-t border-zinc-100">
-    <div class="max-w-5xl mx-auto px-6 mb-8 text-center">
-      <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">What traders say</p>
-      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900">From traders who've been there</h2>
+  <!-- ——— TESTIMONIALS ——— -->
+  <section class="py-20 md:py-28 bg-zinc-50 dark:bg-zinc-900/40 border-y border-zinc-100 dark:border-zinc-800 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 mb-14 text-center">
+      <p class="eyebrow mb-4 fade-up">What traders say</p>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 fade-up">
+        From traders who've been there
+      </h2>
     </div>
 
     <div
       class="overflow-hidden"
-      style="mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);"
+      style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
     >
-      <!-- Row 1: scroll left — two strips, no gap between strips, so -50% == one full cycle -->
-      <div class="marquee-left flex w-max mb-3 will-change-transform">
-        <div class="flex gap-3 shrink-0">
-          {marqueeRow1.map((t) => (
-            <div class="w-60 shrink-0 bg-white rounded-xl border border-zinc-200 px-4 py-3.5 shadow-sm">
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center shrink-0 select-none">
-                    {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p class="font-semibold text-zinc-900 text-xs leading-tight">{t.name}</p>
-                    {t.role && <p class="text-xs text-zinc-400">{t.role}</p>}
-                  </div>
-                </div>
-                <div class="flex gap-0.5 shrink-0">
-                  {Array(5).fill(null).map(() => (
-                    <svg class="w-2.5 h-2.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
+      <!-- Row 1 -->
+      <div class="marquee-left flex w-max mb-4 will-change-transform">
+        {[...marqueeRow1, ...marqueeRow1].map((t, idx) => (
+          <div class="w-72 shrink-0 mx-1.5 card p-5" aria-hidden={idx >= marqueeRow1.length ? 'true' : 'false'}>
+            <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-4">"{t.quote}"</p>
+            <div class="flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-semibold flex items-center justify-center select-none">
+                {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
               </div>
-              <p class="text-zinc-600 text-xs leading-relaxed">"{t.quote}"</p>
-            </div>
-          ))}
-        </div>
-        <div class="flex gap-3 shrink-0" aria-hidden="true">
-          {marqueeRow1.map((t) => (
-            <div class="w-60 shrink-0 bg-white rounded-xl border border-zinc-200 px-4 py-3.5 shadow-sm">
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center shrink-0 select-none">
-                    {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p class="font-semibold text-zinc-900 text-xs leading-tight">{t.name}</p>
-                    {t.role && <p class="text-xs text-zinc-400">{t.role}</p>}
-                  </div>
-                </div>
-                <div class="flex gap-0.5 shrink-0">
-                  {Array(5).fill(null).map(() => (
-                    <svg class="w-2.5 h-2.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
+              <div>
+                <p class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 leading-tight">{t.name}</p>
+                {t.role && <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-tight mt-0.5">{t.role}</p>}
               </div>
-              <p class="text-zinc-600 text-xs leading-relaxed">"{t.quote}"</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
-      <!-- Row 2: scroll right -->
+      <!-- Row 2 -->
       <div class="marquee-right flex w-max will-change-transform">
-        <div class="flex gap-3 shrink-0">
-          {marqueeRow2.map((t) => (
-            <div class="w-60 shrink-0 bg-white rounded-xl border border-zinc-200 px-4 py-3.5 shadow-sm">
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center shrink-0 select-none">
-                    {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p class="font-semibold text-zinc-900 text-xs leading-tight">{t.name}</p>
-                    {t.role && <p class="text-xs text-zinc-400">{t.role}</p>}
-                  </div>
-                </div>
-                <div class="flex gap-0.5 shrink-0">
-                  {Array(5).fill(null).map(() => (
-                    <svg class="w-2.5 h-2.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
+        {[...marqueeRow2, ...marqueeRow2].map((t, idx) => (
+          <div class="w-72 shrink-0 mx-1.5 card p-5" aria-hidden={idx >= marqueeRow2.length ? 'true' : 'false'}>
+            <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-4">"{t.quote}"</p>
+            <div class="flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-semibold flex items-center justify-center select-none">
+                {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
               </div>
-              <p class="text-zinc-600 text-xs leading-relaxed">"{t.quote}"</p>
-            </div>
-          ))}
-        </div>
-        <div class="flex gap-3 shrink-0" aria-hidden="true">
-          {marqueeRow2.map((t) => (
-            <div class="w-60 shrink-0 bg-white rounded-xl border border-zinc-200 px-4 py-3.5 shadow-sm">
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center shrink-0 select-none">
-                    {t.name === 'Anonymous' ? '?' : t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p class="font-semibold text-zinc-900 text-xs leading-tight">{t.name}</p>
-                    {t.role && <p class="text-xs text-zinc-400">{t.role}</p>}
-                  </div>
-                </div>
-                <div class="flex gap-0.5 shrink-0">
-                  {Array(5).fill(null).map(() => (
-                    <svg class="w-2.5 h-2.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
+              <div>
+                <p class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 leading-tight">{t.name}</p>
+                {t.role && <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-tight mt-0.5">{t.role}</p>}
               </div>
-              <p class="text-zinc-600 text-xs leading-relaxed">"{t.quote}"</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
 
-    <p class="text-center text-xs text-zinc-400 mt-6 italic">Results may vary. Trading involves substantial risk of loss.</p>
+    <p class="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-10 italic px-6">
+      Results may vary. Trading involves substantial risk of loss.
+    </p>
   </section>
 
+  <!-- ——— FINAL CTA ——— -->
   <CallToAction
     actions={[
-      {
-        variant: 'primary',
-        text: 'Start free trial — 7 days',
-        href: '/pricing',
-        icon: 'tabler:player-play',
-      },
-      {
-        text: 'See pricing',
-        href: '/pricing',
-      },
+      { variant: 'primary', text: 'Start free trial', href: '/pricing' },
+      { text: 'See pricing', href: '/pricing' },
     ]}
   >
+    <Fragment slot="tagline">Ready when you are</Fragment>
     <Fragment slot="title">Every session starts with the best intentions.</Fragment>
-
     <Fragment slot="subtitle">
-      Meridian helps you keep them.
-      <br />
-      <span class="text-sm text-muted italic mt-2 block">
+      Meridian helps you keep them.<br />
+      <span class="text-sm block mt-4 text-zinc-500 dark:text-zinc-400">
         $24.99/month after 7-day trial · cancel any time · NinjaTrader 8 required.
-        Trading involves substantial risk of loss. Meridian does not guarantee trading results.
+        Trading involves substantial risk of loss.
       </span>
     </Fragment>
   </CallToAction>
 </Layout>
 
 <style>
-  .marquee-left {
-    animation: marquee-left 130s linear infinite;
-  }
-  .marquee-right {
-    animation: marquee-right 130s linear infinite;
-  }
+  /* ——— Marquee ——— */
+  .marquee-left { animation: marquee-left 120s linear infinite; }
+  .marquee-right { animation: marquee-right 120s linear infinite; }
   @keyframes marquee-left {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -918,45 +550,17 @@ const marqueeRow2 = [
     from { transform: translateX(-50%); }
     to   { transform: translateX(0); }
   }
-  .marquee-left:hover,
-  .marquee-right:hover {
-    animation-play-state: paused;
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-left,
+    .marquee-right {
+      animation: none;
+    }
   }
 
-  /* Roadmap section animations */
-  .roadmap-heading,
-  .roadmap-step {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
-  .roadmap-connector {
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 150ms;
-  }
-  #how-it-works.is-visible .roadmap-heading,
-  #how-it-works.is-visible .roadmap-step {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  #how-it-works.is-visible .roadmap-connector {
-    transform: scaleX(1);
-  }
-  /* Hover lift on detail cards */
-  .roadmap-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .roadmap-step:hover .roadmap-card {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
-  }
-
-  /* Step detail tab navigation */
+  /* ——— Step-detail tab navigation ——— */
   .step-tab-btn {
     flex: 1;
-    min-width: 80px;
+    min-width: 96px;
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
     font-weight: 600;
@@ -965,153 +569,97 @@ const marqueeRow2 = [
     color: theme('colors.zinc.500');
     transition: color 0.2s ease, border-color 0.2s ease;
     white-space: nowrap;
+    background: transparent;
+    cursor: pointer;
+  }
+  .step-tab-btn:focus-visible {
+    outline: none;
+    color: theme('colors.zinc.900');
   }
   .step-tab-num {
     display: block;
     font-size: 0.7rem;
-    font-weight: 400;
-    opacity: 0.6;
+    font-weight: 500;
+    opacity: 0.55;
     margin-bottom: 0.125rem;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
   }
   .step-tab-btn:hover:not(.is-active) {
-    color: theme('colors.zinc.800');
-    border-color: theme('colors.zinc.300');
+    color: theme('colors.zinc.900');
   }
   .step-tab-btn.is-active {
     border-color: theme('colors.emerald.600');
     color: theme('colors.emerald.700');
-  }</style>
+  }
+
+  /* Step panels smooth slide */
+  #step-panels-track {
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #step-panels-track {
+      transition: none;
+    }
+  }
+</style>
 
 <script>
-  function initCarousel(id: string) {
-    const slides   = Array.from(document.querySelectorAll<HTMLElement>(`[data-carousel="${id}"]`));
-    const captions = Array.from(document.querySelectorAll<HTMLElement>(`[data-caption="${id}"]`));
-    const dots     = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
-    if (!slides.length) return;
-    let current = 0;
-    let animating = false;
-
-    slides.forEach((s, i) => {
-      s.style.transition = 'opacity 0.25s ease';
-      s.style.opacity = i === 0 ? '1' : '0';
-    });
-
-    function goTo(index: number) {
-      if (animating) return;
-      const prev = current;
-      const next = ((index % slides.length) + slides.length) % slides.length;
-      if (prev === next) return;
-      animating = true;
-
-      dots[prev]?.classList.remove('bg-zinc-700', 'w-4');
-      dots[prev]?.classList.add('bg-zinc-300', 'w-1.5');
-      dots[next]?.classList.add('bg-zinc-700', 'w-4');
-      dots[next]?.classList.remove('bg-zinc-300', 'w-1.5');
-
-      slides[prev].style.opacity = '0';
-      setTimeout(() => {
-        slides[prev].classList.add('hidden');
-        if (captions[prev]) captions[prev].classList.add('hidden');
-        current = next;
-        slides[current].classList.remove('hidden');
-        if (captions[current]) captions[current].classList.remove('hidden');
-        slides[current].style.opacity = '0';
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            slides[current].style.opacity = '1';
-            animating = false;
-          });
-        });
-      }, 250);
+  // ——— Scroll-triggered fade-up ———
+  function initFadeUp() {
+    const els = document.querySelectorAll<HTMLElement>('.fade-up');
+    if (!els.length || !('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-visible'));
+      return;
     }
-
-    document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));
-    document.querySelector(`[data-next="${id}"]`)?.addEventListener('click', () => goTo(current + 1));
-    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-  }
-
-  function initSlider(id: string) {
-    const slides = Array.from(document.querySelectorAll<HTMLElement>(`[data-slide="${id}"]`));
-    if (!slides.length) return;
-    const dots = Array.from(document.querySelectorAll<HTMLElement>(`[data-dot="${id}"]`));
-    const labelEl = document.querySelector<HTMLElement>(`[data-label-display="${id}"]`);
-    let current = 0;
-    let animating = false;
-
-    slides.forEach((s, i) => {
-      s.style.transition = 'opacity 0.25s ease';
-      s.style.opacity = i === 0 ? '1' : '0';
-    });
-
-    function goTo(n: number) {
-      if (animating) return;
-      const prev = current;
-      const next = ((n % slides.length) + slides.length) % slides.length;
-      if (prev === next) return;
-      animating = true;
-
-      dots[prev]?.classList.remove('w-4', 'bg-emerald-500');
-      dots[prev]?.classList.add('w-1.5', 'bg-zinc-300');
-      dots[next]?.classList.add('w-4', 'bg-emerald-500');
-      dots[next]?.classList.remove('w-1.5', 'bg-zinc-300');
-      if (labelEl) labelEl.textContent = slides[next].dataset.slideLabel ?? '';
-
-      slides[prev].style.opacity = '0';
-      setTimeout(() => {
-        slides[prev].classList.add('hidden');
-        current = next;
-        slides[current].classList.remove('hidden');
-        slides[current].style.opacity = '0';
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            slides[current].style.opacity = '1';
-            animating = false;
-          });
-        });
-      }, 250);
-    }
-
-    document.querySelector(`[data-prev="${id}"]`)?.addEventListener('click', () => goTo(current - 1));
-    document.querySelector(`[data-next="${id}"]`)?.addEventListener('click', () => goTo(current + 1));
-    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-  }
-
-  function initRoadmap() {
-    const section = document.getElementById('how-it-works');
-    if (!section) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          section.classList.add('is-visible');
-          observer.disconnect();
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
       },
-      { threshold: 0.12 }
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
     );
-    observer.observe(section);
+    els.forEach((el) => observer.observe(el));
   }
 
+  // ——— Step-detail tabs ———
   function initStepTabs() {
-    const tabs = Array.from(document.querySelectorAll<HTMLElement>('[data-step-tab]'));
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-step-tab]'));
     const track = document.getElementById('step-panels-track') as HTMLElement | null;
     if (!tabs.length || !track) return;
     let current = 0;
-    tabs.forEach(tab => {
+
+    function activate(next: number) {
+      if (next === current) return;
+      tabs.forEach((t, i) => {
+        t.classList.toggle('is-active', i === next);
+        t.setAttribute('aria-selected', i === next ? 'true' : 'false');
+      });
+      track!.style.transform = `translateX(-${next * 25}%)`;
+      current = next;
+    }
+
+    tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
-        const next = parseInt((tab as HTMLElement).dataset.stepTab ?? '0', 10);
-        if (next === current) return;
-        tabs.forEach((t, i) => t.classList.toggle('is-active', i === next));
-        track.style.transform = `translateX(-${next * 25}%)`;
-        current = next;
+        activate(parseInt(tab.dataset.stepTab ?? '0', 10));
+      });
+      tab.addEventListener('keydown', (e) => {
+        const k = e.key;
+        if (k !== 'ArrowRight' && k !== 'ArrowLeft') return;
+        e.preventDefault();
+        const delta = k === 'ArrowRight' ? 1 : -1;
+        const next = (current + delta + tabs.length) % tabs.length;
+        tabs[next].focus();
+        activate(next);
       });
     });
   }
 
   function boot() {
-    initCarousel('history');
-    initSlider('intel-features');
-    initRoadmap();
+    initFadeUp();
     initStepTabs();
   }
 

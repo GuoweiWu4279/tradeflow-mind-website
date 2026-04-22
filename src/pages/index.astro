@@ -108,34 +108,30 @@ const signals = [
 ---
 
 <Layout metadata={metadata}>
-  <!-- ——— HERO — dark cinematic ——— -->
-  <section class="relative overflow-hidden md:-mt-[76px] not-prose" style="background: radial-gradient(ellipse at 50% 110%, #0e4a8a 0%, #052244 62%);">
-    <!-- Subtle noise texture -->
-    <div class="absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true"
-      style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%221%22 numOctaves=%224%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 fill=%22%23ffffff%22/></svg>');">
-    </div>
+  <!-- ——— HERO — light, clean ——— -->
+  <section class="relative overflow-hidden md:-mt-[76px] not-prose" style="background: #EBE9E4;">
     <!-- Header spacer -->
     <div class="md:pt-[76px]"></div>
     <div class="relative max-w-6xl mx-auto px-6">
       <div class="pt-20 pb-24 md:pt-32 md:pb-32 lg:pt-40 lg:pb-40">
         <div class="text-center max-w-4xl mx-auto">
           <!-- Eyebrow badge -->
-          <div class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-8 fade-up" style="border-color: rgba(221,185,24,0.45);">
-            <span class="w-1.5 h-1.5 rounded-sm" style="background:#DDB918;" aria-hidden="true"></span>
-            <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#DDB918;">Trading psychology monitor</span>
+          <div class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-8 fade-up rounded-full" style="border-color: rgba(221,185,24,0.7); background: rgba(221,185,24,0.1);">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#DDB918;" aria-hidden="true"></span>
+            <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#073460;">Trading psychology monitor</span>
           </div>
           <!-- Title with word-blur animation -->
-          <h1 class="text-5xl md:text-6xl lg:text-[4.25rem] font-bold leading-[1.08] tracking-tight mb-6 word-blur-target" style="color:#EBE9E4;">
+          <h1 class="text-5xl md:text-6xl lg:text-[4.25rem] font-bold leading-[1.08] tracking-tight mb-6 word-blur-target" style="color:#073460;">
             Every trader has a plan. The market's job is to make you forget it.
           </h1>
           <!-- Subtitle -->
-          <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 fade-up" style="color:rgba(235,233,228,0.72);">
-            <strong style="color:#EBE9E4; font-weight:600;">Meridian</strong> is the first real-time behavioral and psychological stability monitor for active traders. Seven behavioral patterns, grounded in cognitive science. PSI updates in under 100ms.
+          <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 fade-up" style="color:#356197;">
+            <strong style="color:#073460; font-weight:600;">Meridian</strong> is the first real-time behavioral and psychological stability monitor for active traders. Seven behavioral patterns, grounded in cognitive science. PSI updates in under 100ms.
           </p>
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row sm:justify-center gap-3 fade-up">
-            <a href="/pricing" class="btn btn-lg font-semibold" style="background:#DDB918; color:#073460; border:1px solid #DDB918;">Start free trial</a>
-            <a href="#how-it-works" class="btn btn-lg font-semibold" style="border:1px solid rgba(221,185,24,0.4); color:#EBE9E4; background:transparent;">How it works</a>
+            <a href="/pricing" class="btn btn-lg font-semibold" style="background:#073460; color:#EBE9E4; border:1px solid #073460;">Start free trial</a>
+            <a href="#how-it-works" class="btn btn-lg font-semibold" style="border:1px solid rgba(7,52,96,0.3); color:#073460; background:transparent;">How it works</a>
           </div>
         </div>
       </div>
@@ -156,32 +152,28 @@ const signals = [
     </div>
   </section>
 
-  <!-- ——— PROBLEM — dark centered (Skydda-style) ——— -->
-  <section class="relative py-24 md:py-32 px-6" style="background:#073460; border-top:1px solid rgba(53,97,151,0.4); border-bottom:1px solid rgba(53,97,151,0.4);">
-    <!-- Noise overlay -->
-    <div class="absolute inset-0 pointer-events-none opacity-[0.02]" aria-hidden="true"
-      style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%221%22 numOctaves=%224%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 fill=%22%23ffffff%22/></svg>');">
-    </div>
+  <!-- ——— PROBLEM — light centered ——— -->
+  <section class="relative py-24 md:py-32 px-6" style="background:#E1DFDB; border-top:1px solid rgba(7,52,96,0.08); border-bottom:1px solid rgba(7,52,96,0.08);">
     <div class="relative max-w-3xl mx-auto text-center">
       <!-- Eyebrow badge -->
-      <div class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-8" style="border-color: rgba(221,185,24,0.45);">
-        <span class="w-1.5 h-1.5 rounded-sm" style="background:#DDB918;" aria-hidden="true"></span>
-        <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#DDB918;">The Problem</span>
+      <div class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-8 rounded-full" style="border-color: rgba(221,185,24,0.7); background: rgba(221,185,24,0.1);">
+        <span class="w-1.5 h-1.5 rounded-full" style="background:#DDB918;" aria-hidden="true"></span>
+        <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#073460;">The Problem</span>
       </div>
       <!-- Heading with word-blur animation -->
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6 word-blur-target" style="color:#EBE9E4;">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6 word-blur-target" style="color:#073460;">
         Institutional traders have risk managers. You have yourself.
       </h2>
       <!-- Body -->
-      <p class="text-base md:text-lg leading-relaxed mb-10 max-w-2xl mx-auto" style="color:rgba(235,233,228,0.7);">
+      <p class="text-base md:text-lg leading-relaxed mb-10 max-w-2xl mx-auto" style="color:#356197;">
         Compliance officers, position limits, systems enforcing rules outside their control.
         Retail traders have experience and hard-won rules — and nothing to stop them from breaking those rules
         the moment it matters most. Meridian is that system.
       </p>
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row sm:justify-center gap-4">
-        <a href="/pricing" class="btn btn-lg font-semibold" style="background:#DDB918; color:#073460; border:1px solid #DDB918;">Start free trial</a>
-        <a href="#step-detail" class="btn btn-lg font-semibold" style="border:1px solid rgba(221,185,24,0.4); color:#EBE9E4; background:transparent;">See Meridian in action</a>
+        <a href="/pricing" class="btn btn-lg font-semibold" style="background:#073460; color:#EBE9E4; border:1px solid #073460;">Start free trial</a>
+        <a href="#step-detail" class="btn btn-lg font-semibold" style="border:1px solid rgba(7,52,96,0.3); color:#073460; background:transparent;">See Meridian in action</a>
       </div>
     </div>
   </section>
@@ -241,20 +233,20 @@ const signals = [
     </div>
   </section>
 
-  <!-- ——— STEP DETAIL — Skydda accordion + cross-fade image ——— -->
-  <section id="step-detail" class="py-20 lg:py-28 px-6" style="background:#073460; border-top:1px solid rgba(53,97,151,0.4); border-bottom:1px solid rgba(53,97,151,0.4);">
+  <!-- ——— STEP DETAIL — light accordion + cross-fade image ——— -->
+  <section id="step-detail" class="py-20 lg:py-28 px-6" style="background:#EBE9E4; border-top:1px solid rgba(7,52,96,0.08); border-bottom:1px solid rgba(7,52,96,0.08);">
     <div class="max-w-6xl mx-auto">
 
-      <!-- Section header — left-aligned like Skydda -->
+      <!-- Section header -->
       <div class="max-w-xl mb-12 lg:mb-16">
-        <div class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-6" style="border-color:rgba(221,185,24,0.45);">
-          <span class="w-1.5 h-1.5 rounded-sm" style="background:#DDB918;" aria-hidden="true"></span>
-          <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#DDB918;">See it in action</span>
+        <div class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-6 rounded-full" style="border-color:rgba(221,185,24,0.7); background:rgba(221,185,24,0.1);">
+          <span class="w-1.5 h-1.5 rounded-full" style="background:#DDB918;" aria-hidden="true"></span>
+          <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#073460;">See it in action</span>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-4 word-blur-target" style="color:#EBE9E4;">
+        <h2 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-4 word-blur-target" style="color:#073460;">
           Pick a stage. See what you'd get.
         </h2>
-        <p class="text-base leading-relaxed" style="color:rgba(235,233,228,0.65);">
+        <p class="text-base leading-relaxed" style="color:#356197;">
           Four core stages. Each solves a distinct part of the psychological consistency problem.
         </p>
       </div>
@@ -263,7 +255,7 @@ const signals = [
       <div class="lg:grid lg:grid-cols-[55%_45%] lg:gap-14 items-start">
 
         <!-- Left: image display — fixed square, black fill, object-contain, cross-fade -->
-        <div class="relative overflow-hidden rounded-xl mb-8 lg:mb-0" style="background:#000; aspect-ratio:1/1; border:1px solid rgba(53,97,151,0.3);">
+        <div class="relative overflow-hidden rounded-xl mb-8 lg:mb-0" style="background:#000; aspect-ratio:1/1; border:1px solid rgba(7,52,96,0.12);">
           {steps.map((step, i) => (
             <img
               data-step-img={i}
@@ -275,7 +267,7 @@ const signals = [
           ))}
         </div>
 
-        <!-- Right: accordion items — slightly higher alignment via pt on desktop -->
+        <!-- Right: accordion items -->
         <div class="space-y-1 lg:pt-2" role="list" aria-label="Product stages">
           {steps.map((step, i) => (
             <div
@@ -290,13 +282,13 @@ const signals = [
                 <!-- Text content -->
                 <div class="flex-1 min-w-0">
                   <h3 class="acc-item-title text-lg font-semibold">
-                    <span class="acc-item-num text-xs font-medium tracking-widest mr-1" style="opacity:0.45;">0{i + 1} —</span>
+                    <span class="acc-item-num text-xs font-medium tracking-widest mr-1" style="opacity:0.4;">0{i + 1} —</span>
                     {step.label}
                   </h3>
                   <!-- Expandable body -->
                   <div class="acc-item-body overflow-hidden" style="max-height:0;">
-                    <p class="text-sm leading-relaxed mt-2 mb-4" style="color:rgba(235,233,228,0.65);">{step.fullDesc}</p>
-                    <ul class="space-y-1.5 text-sm mb-2" style="color:#E1DFDB;">
+                    <p class="text-sm leading-relaxed mt-2 mb-4" style="color:#356197;">{step.fullDesc}</p>
+                    <ul class="space-y-1.5 text-sm mb-2" style="color:#073460;">
                       {step.bullets.map((b) => (
                         <li class="flex items-start gap-2.5">
                           <span class="mt-[7px] w-1 h-1 rounded-full shrink-0" style="background:#DDB918;"></span>
@@ -305,7 +297,7 @@ const signals = [
                       ))}
                     </ul>
                     {step.link && (
-                      <a href={step.link.href} class="inline-flex items-center gap-1.5 text-sm font-medium mt-3 transition-colors" style="color:#DDB918;">
+                      <a href={step.link.href} class="inline-flex items-center gap-1.5 text-sm font-medium mt-3 transition-colors" style="color:#073460;">
                         {step.link.text}
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                       </a>
@@ -562,14 +554,14 @@ const signals = [
     border-radius: 0.75rem;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     outline: none;
   }
   .acc-item:focus-visible { box-shadow: 0 0 0 2px #DDB918; }
-  .acc-item-title { color: rgba(235,233,228,0.6); transition: color 0.2s ease; }
+  .acc-item-title { color: rgba(7,52,96,0.55); transition: color 0.2s ease; }
   .acc-item-icon {
-    background: rgba(221,185,24,0.1);
-    color: rgba(221,185,24,0.5);
+    background: rgba(221,185,24,0.12);
+    color: rgba(7,52,96,0.5);
     transition: background-color 0.2s ease, color 0.2s ease;
   }
   .acc-item-body {
@@ -577,19 +569,23 @@ const signals = [
     max-height: 0;
   }
   .acc-chevron {
-    color: rgba(221,185,24,0.3);
+    color: rgba(7,52,96,0.2);
     opacity: 0;
     transform: translateX(-6px);
     transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
   }
   /* Active state */
-  .acc-item-active { background: rgba(221,185,24,0.06); border-color: rgba(221,185,24,0.22); }
-  .acc-item-active .acc-item-title { color: #EBE9E4; }
+  .acc-item-active {
+    background: white;
+    border-color: #DDB918;
+    box-shadow: 0 2px 16px rgba(7,52,96,0.07);
+  }
+  .acc-item-active .acc-item-title { color: #073460; }
   .acc-item-active .acc-item-icon { background: #DDB918; color: #073460; }
-  .acc-item-active .acc-chevron { opacity: 1; transform: translateX(0); color: rgba(221,185,24,0.55); }
+  .acc-item-active .acc-chevron { opacity: 1; transform: translateX(0); color: rgba(7,52,96,0.35); }
   /* Hover */
-  .acc-item:not(.acc-item-active):hover { background: rgba(221,185,24,0.04); }
-  .acc-item:not(.acc-item-active):hover .acc-item-title { color: #E1DFDB; }
+  .acc-item:not(.acc-item-active):hover { background: rgba(7,52,96,0.03); }
+  .acc-item:not(.acc-item-active):hover .acc-item-title { color: #073460; }
 
   /* Image cross-fade — absolute stacking inside square container */
   .acc-img {

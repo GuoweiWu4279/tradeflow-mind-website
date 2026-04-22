@@ -55,13 +55,13 @@
 
   .btn-primary {
     @apply btn font-semibold hover:-translate-y-0.5 active:translate-y-0;
-    background: #DDB918;
-    color: #073460;
-    border: 1px solid #DDB918;
+    background: #073460;
+    color: #EBE9E4;
+    border: 1px solid #073460;
   }
   .btn-primary:hover {
-    background: #c9a716;
-    border-color: #c9a716;
+    background: #0d4a8a;
+    border-color: #0d4a8a;
   }
 
   .btn-secondary {

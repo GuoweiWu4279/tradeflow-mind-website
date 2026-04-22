@@ -122,7 +122,8 @@ const signals = [
           </div>
           <!-- Title with word-blur animation -->
           <h1 class="text-5xl md:text-6xl lg:text-[4.25rem] font-bold leading-[1.08] tracking-tight mb-6 word-blur-target" style="color:#18181b;">
-            Every trader has a plan. The market's job is to make you forget it.
+            Every trader has a plan.<br />
+            <span style="color:#059669;">The market's job is to make you forget it.</span>
           </h1>
           <!-- Subtitle -->
           <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 fade-up" style="color:#71717a;">
@@ -239,21 +240,18 @@ const signals = [
   <section id="step-detail" class="py-16 lg:py-24 px-6" style="background:#f4f4f5; border-top:1px solid rgba(0,0,0,0.06); border-bottom:1px solid rgba(0,0,0,0.06);">
     <div class="max-w-6xl mx-auto">
 
-      <!-- Section header -->
-      <div class="max-w-xl mb-10 lg:mb-12">
+      <!-- Badge + heading: full-width above the 2-col grid -->
+      <div class="max-w-xl mb-8">
         <div class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-6 rounded-full" style="border-color:rgba(5,150,105,0.35); background:rgba(5,150,105,0.07);">
           <span class="w-1.5 h-1.5 rounded-full" style="background:#059669;" aria-hidden="true"></span>
           <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#059669;">See it in action</span>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-4 word-blur-target" style="color:#18181b;">
+        <h2 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight word-blur-target" style="color:#18181b;">
           Pick a stage. See what you'd get.
         </h2>
-        <p class="text-base leading-relaxed" style="color:#71717a;">
-          Four core stages. Each solves a distinct part of the psychological consistency problem.
-        </p>
       </div>
 
-      <!-- Grid: left = cross-fade image, right = accordion -->
+      <!-- Grid: left = image, right = subtitle + accordion (aligned together) -->
       <div class="lg:grid lg:grid-cols-[52%_48%] lg:gap-12 items-start">
 
         <!-- Left: image display — 16:9, black fill, object-contain, sticky on desktop -->
@@ -269,8 +267,12 @@ const signals = [
           ))}
         </div>
 
-        <!-- Right: accordion items -->
-        <div class="space-y-1" role="list" aria-label="Product stages">
+        <!-- Right: subtitle at top + accordion (both start at image level) -->
+        <div>
+          <p class="text-sm leading-relaxed mb-5" style="color:#71717a;">
+            Four core stages. Each solves a distinct part of the psychological consistency problem.
+          </p>
+          <div class="space-y-1" role="list" aria-label="Product stages">
           {steps.map((step, i) => (
             <div
               data-acc-item={i}
@@ -313,6 +315,8 @@ const signals = [
               </div>
             </div>
           ))}
+        </div>
+
         </div>
 
       </div>

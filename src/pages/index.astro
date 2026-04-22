@@ -126,7 +126,7 @@ const marqueeRow2 = [
         href: '/pricing',
         icon: 'tabler:player-play',
       },
-      { text: 'See pricing', href: '/pricing' },
+      { text: 'How it works', href: '#step-detail' },
     ]}
   >
     <Fragment slot="title">
@@ -210,9 +210,9 @@ const marqueeRow2 = [
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
               </svg>
             </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-400 mb-1">01</p>
+            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">01</p>
             <h3 class="font-bold text-zinc-900 text-sm mb-1">Configure</h3>
-            <p class="text-xs text-zinc-400 mb-4 leading-relaxed">Any strategy. Any style.</p>
+            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">Any strategy. Any style.</p>
             <div class="roadmap-card bg-zinc-50 border border-zinc-200 rounded-xl p-4 text-left">
               <ul class="space-y-2">
                 {['Session rules & time windows', 'Size limits and stop conventions', 'Profile settings per account'].map(pt => (
@@ -232,9 +232,9 @@ const marqueeRow2 = [
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
               </svg>
             </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-400 mb-1">02</p>
+            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">02</p>
             <h3 class="font-bold text-zinc-900 text-sm mb-1">Live Monitor</h3>
-            <p class="text-xs text-zinc-400 mb-4 leading-relaxed">7 signals. &lt;100ms updates.</p>
+            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">7 signals. &lt;100ms updates.</p>
             <div class="roadmap-card bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-left">
               <ul class="space-y-2">
                 {['PSI score updates in real time', 'Seven behavioral signal bars', 'Floating HUD overlay'].map(pt => (
@@ -254,9 +254,9 @@ const marqueeRow2 = [
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
               </svg>
             </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-400 mb-1">03</p>
+            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">03</p>
             <h3 class="font-bold text-zinc-900 text-sm mb-1">Guard</h3>
-            <p class="text-xs text-zinc-400 mb-4 leading-relaxed">Rules that enforce themselves.</p>
+            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">Rules that enforce themselves.</p>
             <div class="roadmap-card bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-left">
               <ul class="space-y-2">
                 {['6 trigger conditions', '5 response levels', 'Toast to broker disconnect'].map(pt => (
@@ -276,9 +276,9 @@ const marqueeRow2 = [
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
               </svg>
             </div>
-            <p class="text-xs font-bold tracking-widest text-zinc-400 mb-1">04</p>
+            <p class="text-xs font-bold tracking-widest text-zinc-500 mb-1">04</p>
             <h3 class="font-bold text-zinc-900 text-sm mb-1">Review &amp; Intel</h3>
-            <p class="text-xs text-zinc-400 mb-4 leading-relaxed">Every session. Every pattern.</p>
+            <p class="text-xs text-zinc-500 mb-4 leading-relaxed">Every session. Every pattern.</p>
             <div class="roadmap-card bg-zinc-50 border border-zinc-200 rounded-xl p-4 text-left">
               <ul class="space-y-2">
                 {['PSI, Composure, and trade stats', 'Monthly digest and P&L correlation', "Today's Risk Brief"].map(pt => (
@@ -296,51 +296,134 @@ const marqueeRow2 = [
     </div>
   </section>
 
-  <!-- Live score — dark showcase -->
-  <section class="relative py-28 px-6 overflow-hidden">
-    <!-- Gradient fade from white above into dark, and back to white below -->
-    <div class="pointer-events-none absolute inset-0 bg-[#0a0a0a]"></div>
+  <!-- Step detail — tabbed deep-dive for each of the four stages -->
+  <section id="step-detail" class="py-20 lg:py-28 px-6 bg-white border-t border-zinc-100 overflow-x-hidden">
+    <div class="max-w-5xl mx-auto">
 
-    <!-- Red ambient glow — matches the screenshot's critical alarm color -->
-    <div class="pointer-events-none absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-red-700/10 blur-[100px]"></div>
-    <!-- Subtle green counter-glow on the right for the green toggle -->
-    <div class="pointer-events-none absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-emerald-700/8 blur-[80px]"></div>
+      <!-- Tab navigation -->
+      <div class="flex border-b border-zinc-200 mb-12 overflow-x-auto">
+        <button data-step-tab="0" class="step-tab-btn is-active">
+          <span class="step-tab-num">01</span>
+          Configure
+        </button>
+        <button data-step-tab="1" class="step-tab-btn">
+          <span class="step-tab-num">02</span>
+          Live Monitor
+        </button>
+        <button data-step-tab="2" class="step-tab-btn">
+          <span class="step-tab-num">03</span>
+          Guard
+        </button>
+        <button data-step-tab="3" class="step-tab-btn">
+          <span class="step-tab-num">04</span>
+          Review &amp; Intel
+        </button>
+      </div>
 
-    <div class="relative z-20 max-w-6xl mx-auto grid md:grid-cols-[55fr_45fr] gap-12 md:gap-20 items-center">
-      <!-- Screenshot — larger, floats with depth shadow -->
-      <div class="order-1 md:order-1">
-        <div class="rounded-2xl overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.06)]">
-          <img
-            src="/screenshots/psi-critical.png"
-            alt="Meridian PSI Monitor showing a Critical score of 47 with behavioral signal bars"
-            class="w-full h-auto block"
-            loading="eager"
-          />
+      <!-- Sliding panels (track is 400% wide; each panel is w-1/4 = one full viewport slot) -->
+      <div class="overflow-hidden">
+        <div id="step-panels-track" class="flex" style="width: 400%; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);">
+
+          <!-- Panel 0: Configure -->
+          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
+            <div>
+              <img
+                src="/screenshots/baseline-learning.png"
+                alt="Meridian profile configuration and personal baseline settings panel"
+                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Configure</p>
+              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Set your rules once. Meridian applies them every session.</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-5">Your profile defines how Meridian reads your behavior — position limits, session windows, stop conventions. Every alert is personalized to your declared rules, not a generic threshold.</p>
+              <ul class="space-y-2.5 text-sm text-zinc-700">
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Session rules &amp; time windows</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Position size limits and stop conventions</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Profile settings per account</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Personal baseline adapts with each recorded session</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Panel 1: Live Monitor -->
+          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
+            <div>
+              <img
+                src="/screenshots/psi-critical.png"
+                alt="Meridian PSI Monitor showing a Critical score with seven behavioral signal bars live"
+                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Live Monitor</p>
+              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Your stability score, updating in real time.</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-5">PSI updates within 100ms of every fill, every stop move, every size decision. Seven behavioral signal bars show exactly what is affecting the score right now.</p>
+              <ul class="space-y-2.5 text-sm text-zinc-700">
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>PSI score updates after every action in &lt;100ms</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Seven behavioral signal bars — visible while trading</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Floating HUD overlay — stays readable mid-session</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Session stats: trades, win rate, alerts, duration</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Panel 2: Guard -->
+          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
+            <div>
+              <img
+                src="/screenshots/psi-performance.png"
+                alt="Meridian PSI vs P&L correlation — the measurable cost of trading out of a stable state"
+                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Guard</p>
+              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Rules that enforce themselves — even when you won't.</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-5">Guard is a commitment device. When you are calm, you write the rules. When the moment comes, Guard enforces them automatically — no decision required from you.</p>
+              <ul class="space-y-2.5 text-sm text-zinc-700">
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>6 configurable trigger conditions</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>5 response levels — quiet toast to full broker disconnect</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Set once, active every session automatically</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>No manual override required in the heat of the moment</li>
+              </ul>
+              <div class="mt-6">
+                <a href="/guard" class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors">
+                  Explore Meridian Guard &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Review & Intel -->
+          <div class="w-1/4 grid md:grid-cols-[3fr_2fr] gap-10 md:gap-16 items-center py-2">
+            <div>
+              <img
+                src="/screenshots/intel-session-calendar.png"
+                alt="Meridian session calendar showing PSI score, Composure and P&L per session"
+                class="rounded-2xl shadow-xl border border-zinc-200 w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p class="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-3">Review &amp; Intel</p>
+              <h3 class="text-2xl md:text-3xl font-bold text-zinc-900 leading-snug mb-4">Not just P&amp;L. Whether you traded right.</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-5">Every session is saved with PSI score, Composure, and trade stats. Over months, behavioral patterns become visible — and so does the improvement.</p>
+              <ul class="space-y-2.5 text-sm text-zinc-700">
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Session log: PSI, Composure, and trade stats per session</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Monthly behavioral grade and P&amp;L correlation</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>Today's Risk Brief — built from your own history</li>
+                <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span>5 years of session history stored locally</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
-      <!-- Text (white on dark) -->
-      <div class="order-2 md:order-2">
-        <p class="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-3">Live session view</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-white leading-snug mb-5">
-          A live view of your trading stability.
-        </h2>
-        <p class="text-zinc-400 leading-relaxed text-base mb-6">
-          Your PSI updates in real time during the session, with clear signals showing what is driving the score.
-        </p>
-        <ul class="space-y-3 text-sm text-zinc-300">
-          {['Updates during the session, not just after fills', 'Seven visible signal bars show what is driving the score', 'Session stats: trades, win rate, alerts, duration', 'PSI timeline shows how pressure evolved across the session'].map(item => (
-            <li class="flex items-start gap-2.5">
-              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-500 shrink-0"></span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <div class="mt-8">
-          <a href="/features" class="inline-flex items-center gap-1.5 text-sm font-medium text-white/75 hover:text-white transition-colors">
-            See full feature breakdown &rarr;
-          </a>
-        </div>
-      </div>
+
     </div>
   </section>
 
@@ -628,7 +711,7 @@ const marqueeRow2 = [
   <section class="py-20 lg:py-28 px-6 bg-zinc-900 text-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
-        <p class="text-xs font-semibold tracking-[0.15em] text-emerald-400 uppercase mb-4">Meridian Guard — Coming soon</p>
+        <p class="text-xs font-semibold tracking-[0.15em] text-emerald-400 uppercase mb-4">Meridian Guard</p>
         <h2 class="text-3xl md:text-4xl font-bold mb-4">
           You already know the rules.<br />Guard makes sure you follow them.
         </h2>
@@ -868,6 +951,36 @@ const marqueeRow2 = [
   .roadmap-step:hover .roadmap-card {
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  }
+
+  /* Step detail tab navigation */
+  .step-tab-btn {
+    flex: 1;
+    min-width: 80px;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    color: theme('colors.zinc.500');
+    transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+  }
+  .step-tab-num {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-bottom: 0.125rem;
+    letter-spacing: 0.06em;
+  }
+  .step-tab-btn:hover:not(.is-active) {
+    color: theme('colors.zinc.800');
+    border-color: theme('colors.zinc.300');
+  }
+  .step-tab-btn.is-active {
+    border-color: theme('colors.emerald.600');
+    color: theme('colors.emerald.700');
   }</style>
 
 <script>
@@ -979,10 +1092,27 @@ const marqueeRow2 = [
     observer.observe(section);
   }
 
+  function initStepTabs() {
+    const tabs = Array.from(document.querySelectorAll<HTMLElement>('[data-step-tab]'));
+    const track = document.getElementById('step-panels-track') as HTMLElement | null;
+    if (!tabs.length || !track) return;
+    let current = 0;
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const next = parseInt((tab as HTMLElement).dataset.stepTab ?? '0', 10);
+        if (next === current) return;
+        tabs.forEach((t, i) => t.classList.toggle('is-active', i === next));
+        track.style.transform = `translateX(-${next * 25}%)`;
+        current = next;
+      });
+    });
+  }
+
   function boot() {
     initCarousel('history');
     initSlider('intel-features');
     initRoadmap();
+    initStepTabs();
   }
 
   if (document.readyState === 'loading') {

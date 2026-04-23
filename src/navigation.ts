@@ -7,7 +7,7 @@ export const headerData = {
       href: getPermalink('/'),
       links: [
         {
-          text: 'Meridian',
+          text: 'Features',
           href: getPermalink('/features'),
         },
         {
@@ -54,7 +54,7 @@ export const footerData = {
     {
       title: 'Meridian',
       links: [
-        { text: 'Meridian', href: getPermalink('/features') },
+        { text: 'Features', href: getPermalink('/features') },
         { text: 'Meridian Guard', href: getPermalink('/guard') },
         { text: 'Pricing', href: getPermalink('/pricing') },
         { text: 'Releases', href: getPermalink('/releases') },

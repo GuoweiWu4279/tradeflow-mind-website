@@ -109,7 +109,7 @@ const signals = [
 
 <Layout metadata={metadata}>
   <!-- ——— HERO — light, clean ——— -->
-  <section class="relative overflow-hidden md:-mt-[76px] not-prose" style="background: white;">
+  <section class="relative overflow-hidden md:-mt-[76px] not-prose bg-gradient-to-b from-zinc-50 via-white to-white">
     <!-- Header spacer -->
     <div class="md:pt-[76px]"></div>
     <div class="relative max-w-6xl mx-auto px-6">
@@ -140,7 +140,7 @@ const signals = [
   </section>
 
   <!-- Stats bar — tight strip, white background anchored to hero -->
-  <div class="fade-up" style="background:white; border-bottom:1px solid rgba(7,52,96,0.08);">
+  <div class="fade-up bg-white/80 backdrop-blur-[2px] border-b border-zinc-200/80">
     <div class="max-w-6xl mx-auto px-6">
       <Stats
         classes={{ container: 'py-6 md:py-8 px-0' }}
@@ -181,16 +181,15 @@ const signals = [
   </section>
 
   <!-- ——— ROADMAP / HOW IT WORKS ——— -->
-  <section id="how-it-works" class="section border-y" style="background:white; border-color:rgba(7,52,96,0.08);">
+  <section id="how-it-works" class="section border-y border-zinc-200/80 bg-white">
     <div class="container-wide">
       <div class="text-center mb-16 max-w-2xl mx-auto">
         <p class="eyebrow mb-4 fade-up">How it works</p>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-5 fade-up" style="color:#18181b;">
           Before. During. After. Every session.
         </h2>
-        <p class="lead fade-up" style="color:#71717a;">
-          Meridian fits into every stage of how you trade — from setup, to real-time monitoring and
-          automatic guardrails, to post-session review.
+        <p class="lead fade-up max-w-3xl mx-auto text-balance" style="color:#71717a;">
+          Meridian fits into every stage of how you trade — setup, real-time monitoring and guardrails, and post-session review.
         </p>
       </div>
 
@@ -198,8 +197,7 @@ const signals = [
       <div class="relative">
         <!-- dotted connector line (desktop) -->
         <div
-          class="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] border-t border-dashed"
-          style="border-color:rgba(7,52,96,0.15);"
+          class="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] border-t border-dashed border-zinc-300/80"
           aria-hidden="true"
         ></div>
 
@@ -212,17 +210,17 @@ const signals = [
           ].map((step, i) => (
             <div class="fade-up" style={`transition-delay:${i * 80}ms`}>
               <!-- Number disc -->
-              <div class="relative z-10 mx-auto w-12 h-12 rounded-full bg-white border flex items-center justify-center mb-5 text-sm font-semibold tracking-tight" style="border-color:rgba(0,0,0,0.12); color:#18181b;">
+              <div class="relative z-10 mx-auto w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-5 text-sm font-semibold tracking-tight text-[#4b734e] shadow-sm">
                 {step.num}
               </div>
               <div class="text-center mb-5">
                 <h3 class="text-base font-semibold mb-1" style="color:#18181b;">{step.title}</h3>
                 <p class="text-sm" style="color:#71717a;">{step.sub}</p>
               </div>
-              <ul class="card card-hover p-5 space-y-2.5">
+              <ul class="card card-hover p-5 space-y-2.5 shadow-sm shadow-zinc-900/5 ring-1 ring-zinc-900/[0.04]">
                 {step.bullets.map((b) => (
                   <li class="flex items-start gap-2.5 text-sm" style="color:#71717a;">
-                    <svg class="mt-0.5 w-4 h-4 shrink-0" style="color:#059669;" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="mt-0.5 w-4 h-4 shrink-0 text-[#4b734e]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                     </svg>
                     <span>{b}</span>
@@ -237,7 +235,7 @@ const signals = [
   </section>
 
   <!-- ——— STEP DETAIL — light accordion + cross-fade image ——— -->
-  <section id="step-detail" class="py-16 lg:py-24 px-6" style="background:#f4f4f5; border-top:1px solid rgba(0,0,0,0.06); border-bottom:1px solid rgba(0,0,0,0.06);">
+  <section id="step-detail" class="py-16 lg:py-24 px-6 border-y border-zinc-200/70 bg-gradient-to-b from-zinc-100/70 via-zinc-50/90 to-white">
     <div class="max-w-6xl mx-auto">
 
       <!-- Eyebrow spans above both columns; grid aligns accordion top with H2 -->
@@ -251,7 +249,7 @@ const signals = [
       <div class="lg:grid lg:grid-cols-[52%_48%] lg:gap-12 lg:items-start">
         <div class="flex flex-col gap-6 lg:gap-8">
           <h2 class="max-w-xl text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight word-blur-target" style="color:#18181b;">
-            Pick a stage. See what you'd get.
+            From setup to review—what each stage does in your session.
           </h2>
           <p class="text-sm leading-relaxed max-w-xl" style="color:#71717a;">
             Four core stages. Each solves a distinct part of the psychological consistency problem.
@@ -283,7 +281,7 @@ const signals = [
                   <div class="acc-item-icon flex-shrink-0 p-2 rounded-lg mt-0.5" aria-hidden="true" set:html={step.icon} />
                   <div class="flex-1 min-w-0">
                     <h3 class="acc-item-title text-base font-semibold">
-                      <span class="acc-item-num text-xs font-medium tracking-widest mr-1" style="opacity:0.35;">0{i + 1} —</span>
+                      <span class="acc-item-num text-xs font-semibold tracking-widest mr-1">0{i + 1} —</span>
                       {step.label}
                     </h3>
                     <div class="acc-item-body overflow-hidden" style="max-height:0;">
@@ -291,13 +289,13 @@ const signals = [
                       <ul class="space-y-1.5 text-sm mb-2" style="color:#3f3f46;">
                         {step.bullets.map((b) => (
                           <li class="flex items-start gap-2.5">
-                            <span class="mt-[7px] w-1 h-1 rounded-full shrink-0" style="background:#059669;"></span>
+                            <span class="mt-[7px] w-1 h-1 rounded-full shrink-0 bg-[#4b734e]"></span>
                             <span set:html={b} />
                           </li>
                         ))}
                       </ul>
                       {step.link && (
-                        <a href={step.link.href} class="inline-flex items-center gap-1.5 text-sm font-medium mt-3 transition-colors" style="color:#059669;">
+                        <a href={step.link.href} class="inline-flex items-center gap-1.5 text-sm font-medium mt-3 transition-colors text-[#4b734e] hover:text-[#3d5c40]">
                           {step.link.text}
                           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                         </a>
@@ -317,7 +315,7 @@ const signals = [
   </section>
 
   <!-- ——— SEVEN DIMENSIONS ——— -->
-  <section class="section bg-zinc-50 dark:bg-zinc-900/40 border-y border-zinc-100 dark:border-zinc-800">
+  <section class="section bg-zinc-50/90 dark:bg-zinc-900/40 border-y border-zinc-200/80 dark:border-zinc-800">
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <p class="eyebrow mb-4 fade-up">Behavioral signals</p>
@@ -332,8 +330,8 @@ const signals = [
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 fade-up">
         {signals.map((s, i) => (
-          <div class="card card-hover p-5 flex items-start gap-4">
-            <span class="shrink-0 mt-0.5 w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-semibold flex items-center justify-center">
+          <div class="card card-hover p-5 flex items-start gap-4 shadow-sm shadow-zinc-900/5 ring-1 ring-zinc-900/[0.03]">
+            <span class="shrink-0 mt-0.5 w-7 h-7 rounded-lg bg-[rgba(75,115,78,0.12)] dark:bg-emerald-900/30 text-[#4b734e] dark:text-emerald-400 text-xs font-semibold flex items-center justify-center">
               {String(i + 1).padStart(2, '0')}
             </span>
             <div>
@@ -354,7 +352,7 @@ const signals = [
   </section>
 
   <!-- ——— SESSION HISTORY — before / after comparison ——— -->
-  <section class="section">
+  <section class="section bg-white border-y border-zinc-200/70">
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <p class="eyebrow mb-4 fade-up">Session review and history</p>
@@ -395,14 +393,14 @@ const signals = [
         </div>
       </div>
 
-      <p class="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-8 italic">
-        Illustrative data from a single user's history. Results may vary. Trading involves substantial risk of loss.
+      <p class="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-8 italic text-balance">
+        Illustrative data from one user · Results may vary · Trading involves substantial risk of loss
       </p>
     </div>
   </section>
 
   <!-- ——— INTEL — small grid, not full carousel ——— -->
-  <section class="section bg-zinc-50 dark:bg-zinc-900/40 border-y border-zinc-100 dark:border-zinc-800">
+  <section class="section bg-zinc-100/40 dark:bg-zinc-900/40 border-y border-zinc-200/70 dark:border-zinc-800">
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <p class="eyebrow mb-4 fade-up">Intel layer</p>
@@ -436,9 +434,9 @@ const signals = [
   </section>
 
   <!-- ——— GUARD BAND — light, not dark ——— -->
-  <section class="section">
+  <section class="section bg-zinc-50/80 border-y border-zinc-200/60">
     <div class="container-wide">
-      <div class="card p-10 md:p-16 text-center fade-up">
+      <div class="card p-10 md:p-16 text-center fade-up shadow-md shadow-zinc-900/5 ring-1 ring-zinc-900/[0.05] bg-white">
         <p class="eyebrow mb-4">Meridian Guard</p>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 max-w-2xl mx-auto">
           You already know the rules.<br />Guard makes sure you follow them.
@@ -456,7 +454,7 @@ const signals = [
   </section>
 
   <!-- ——— TESTIMONIALS ——— -->
-  <section class="py-20 md:py-28 bg-zinc-50 dark:bg-zinc-900/40 border-y border-zinc-100 dark:border-zinc-800 overflow-hidden">
+  <section class="py-20 md:py-28 bg-gradient-to-b from-zinc-100/80 via-zinc-50 to-white border-y border-zinc-200/70 dark:from-zinc-900 dark:via-zinc-900/80 dark:to-zinc-900 dark:border-zinc-800 overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 mb-14 text-center">
       <p class="eyebrow mb-4 fade-up">What traders say</p>
       <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 fade-up">
@@ -469,9 +467,16 @@ const signals = [
       style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
     >
       <!-- Row 1 -->
-      <div class="marquee-left flex w-max mb-4 will-change-transform">
+      <div class="marquee-left flex w-max mb-5 will-change-transform">
         {[...marqueeRow1, ...marqueeRow1].map((t, idx) => (
-          <div class="w-72 shrink-0 mx-1.5 card p-5" aria-hidden={idx >= marqueeRow1.length ? 'true' : 'false'}>
+          <div class="testimonial-marquee-card w-80 shrink-0 mx-2" aria-hidden={idx >= marqueeRow1.length ? 'true' : 'false'}>
+            <div class="flex gap-0.5 mb-3 text-[#4b734e]" aria-hidden="true">
+              {[0, 1, 2, 3, 4].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-3.5 h-3.5 fill-current shrink-0" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
             <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-4">"{t.quote}"</p>
             <div class="flex items-center gap-2.5">
               <div class="w-7 h-7 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-semibold flex items-center justify-center select-none">
@@ -489,7 +494,14 @@ const signals = [
       <!-- Row 2 -->
       <div class="marquee-right flex w-max will-change-transform">
         {[...marqueeRow2, ...marqueeRow2].map((t, idx) => (
-          <div class="w-72 shrink-0 mx-1.5 card p-5" aria-hidden={idx >= marqueeRow2.length ? 'true' : 'false'}>
+          <div class="testimonial-marquee-card w-80 shrink-0 mx-2" aria-hidden={idx >= marqueeRow2.length ? 'true' : 'false'}>
+            <div class="flex gap-0.5 mb-3 text-[#4b734e]" aria-hidden="true">
+              {[0, 1, 2, 3, 4].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-3.5 h-3.5 fill-current shrink-0" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
             <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-4">"{t.quote}"</p>
             <div class="flex items-center gap-2.5">
               <div class="w-7 h-7 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-semibold flex items-center justify-center select-none">
@@ -505,8 +517,8 @@ const signals = [
       </div>
     </div>
 
-    <p class="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-10 italic px-6">
-      Results may vary. Trading involves substantial risk of loss.
+    <p class="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-10 italic px-6 text-balance max-w-3xl mx-auto">
+      Results may vary · Trading involves substantial risk of loss
     </p>
   </section>
 
@@ -517,22 +529,33 @@ const signals = [
       { text: 'See pricing', href: '/pricing' },
     ]}
   >
+    <div slot="bg" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-100/90 via-white to-zinc-50/80 dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-950" aria-hidden="true"></div>
     <Fragment slot="tagline">Ready when you are</Fragment>
     <Fragment slot="title">Every session starts with the best intentions.</Fragment>
     <Fragment slot="subtitle">
-      Meridian helps you keep them.<br />
-      <span class="text-sm block mt-4 text-zinc-500 dark:text-zinc-400">
-        $24.99/month after 7-day trial · cancel any time · NinjaTrader 8 required.
-        Trading involves substantial risk of loss.
+      Meridian helps you keep them.
+      <span class="text-sm block mt-4 text-zinc-500 dark:text-zinc-400 text-balance">
+        $24.99/mo after 7-day trial · cancel anytime · NinjaTrader 8 · Trading involves substantial risk of loss
       </span>
     </Fragment>
   </CallToAction>
 </Layout>
 
 <style>
+  /* ——— Testimonial cards (marquee) ——— */
+  .testimonial-marquee-card {
+    border-radius: 1rem;
+    padding: 1.25rem 1.35rem;
+    background: linear-gradient(165deg, #ffffff 0%, #f4f4f5 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 14px 40px -18px rgba(15, 23, 42, 0.18),
+      0 0 0 1px rgba(0, 0, 0, 0.03);
+  }
+
   /* ——— Marquee ——— */
-  .marquee-left { animation: marquee-left 120s linear infinite; }
-  .marquee-right { animation: marquee-right 120s linear infinite; }
+  .marquee-left { animation: marquee-left 95s linear infinite; }
+  .marquee-right { animation: marquee-right 95s linear infinite; }
   @keyframes marquee-left {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -556,11 +579,15 @@ const signals = [
     transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     outline: none;
   }
-  .acc-item:focus-visible { box-shadow: 0 0 0 2px #059669; }
+  .acc-item-num {
+    color: #4b734e;
+    letter-spacing: 0.08em;
+  }
+  .acc-item:focus-visible { box-shadow: 0 0 0 2px #4b734e; }
   .acc-item-title { color: #52525b; transition: color 0.2s ease; }
   .acc-item-icon {
-    background: rgba(5,150,105,0.08);
-    color: #059669;
+    background: rgba(75, 115, 78, 0.12);
+    color: #4b734e;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
   .acc-item-body {
@@ -576,11 +603,12 @@ const signals = [
   /* Active state */
   .acc-item-active {
     background: white;
-    border-color: #059669;
-    box-shadow: 0 2px 16px rgba(5,150,105,0.1);
+    border-color: #4b734e;
+    box-shadow: 0 2px 16px rgba(75, 115, 78, 0.12);
   }
   .acc-item-active .acc-item-title { color: #18181b; }
-  .acc-item-active .acc-item-icon { background: #059669; color: white; }
+  .acc-item-active .acc-item-num { color: #4b734e; }
+  .acc-item-active .acc-item-icon { background: #4b734e; color: white; }
   .acc-item-active .acc-chevron { opacity: 1; transform: translateX(0); color: rgba(0,0,0,0.3); }
   /* Hover */
   .acc-item:not(.acc-item-active):hover { background: rgba(0,0,0,0.025); border-color: rgba(0,0,0,0.08); }

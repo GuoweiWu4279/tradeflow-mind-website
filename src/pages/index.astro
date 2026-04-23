@@ -169,22 +169,11 @@ const signals = [
 
 <Layout metadata={metadata}>
   <!-- ——— HERO — light, clean ——— -->
-  <section class="relative overflow-hidden md:-mt-[76px] not-prose">
-    <!-- Background image layer -->
-    <div class="absolute inset-0 -z-10" aria-hidden="true">
-      <img
-        src="/hero-bg.png"
-        alt=""
-        class="w-full h-full object-cover object-center"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <!-- very light overlay so text stays readable -->
-      <div class="absolute inset-0" style="background: rgba(255,255,255,0.18);"></div>
-    </div>
+  <!-- Hero background: add public/hero-bg.png (see .hero-bg-home in tailwind.css). -->
+  <section class="relative overflow-hidden md:-mt-[76px] not-prose hero-bg-home">
     <!-- Header spacer -->
     <div class="md:pt-[76px]"></div>
-    <div class="relative max-w-6xl mx-auto px-6">
+    <div class="relative z-[1] max-w-6xl mx-auto px-6">
       <div class="pt-14 pb-12 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20">
         <div class="text-center max-w-4xl mx-auto">
           <!-- Eyebrow badge -->

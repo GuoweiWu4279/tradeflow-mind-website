@@ -58,7 +58,7 @@ We reserve the right to terminate your license if you violate these Terms. Upon 
 
 ## 12. Governing Law
 
-These Terms are governed by the laws of [Jurisdiction TBD — consult legal counsel]. Any disputes shall be resolved in the courts of that jurisdiction.
+These Terms are governed by the laws of the State of California, United States, without regard to its conflict of law provisions. Any disputes shall be resolved in the state or federal courts located in Santa Clara County, California.
 
 ## 13. Contact
 

@@ -320,8 +320,11 @@ const signals = [
           <p class="text-sm leading-relaxed max-w-xl" style="color:#71717a;">
             Four core stages. Each solves a distinct part of the psychological consistency problem.
           </p>
-          <!-- Image — 16:9, black fill, object-contain, sticky on desktop -->
-          <div class="relative overflow-hidden rounded-xl mb-8 lg:mb-0 lg:sticky lg:top-[92px]" style="background:#000; aspect-ratio:16/9; border:1px solid rgba(0,0,0,0.1);">
+          <!-- Image — 16:9, light matte (dark screenshots still read fine); sticky on desktop -->
+          <div
+            class="relative overflow-hidden rounded-xl mb-8 lg:mb-0 lg:sticky lg:top-[92px] shadow-sm ring-1 ring-zinc-900/[0.06]"
+            style="background:#f4f4f5; aspect-ratio:16/9;"
+          >
             {steps.map((step, i) => (
               <img
                 data-step-img={i}

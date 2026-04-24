@@ -30,7 +30,7 @@ const portalUrl = 'https://whop.com/@me/settings/memberships';
         </div>
         <h2 class="text-lg font-semibold text-zinc-900 mb-2">Manage your subscription</h2>
         <p class="text-sm text-zinc-500 mb-6 max-w-sm mx-auto">
-          Cancel, update your payment method, switch plans, or download past invoices — all from the Lemon Squeezy customer portal.
+          Cancel, update your payment method, switch plans, download invoices, or view your License Key — all from your Whop account.
         </p>
         <a
           href={portalUrl}
@@ -44,7 +44,7 @@ const portalUrl = 'https://whop.com/@me/settings/memberships';
           </svg>
         </a>
         <p class="text-xs text-zinc-400 mt-4">
-          Opens Lemon Squeezy — enter the email you used at checkout to sign in.
+          Opens Whop — sign in with the same email you used at checkout.
         </p>
       </div>
 
@@ -73,7 +73,7 @@ const portalUrl = 'https://whop.com/@me/settings/memberships';
         <ul class="space-y-2.5">
           {[
             ['Cancel subscription', 'Cancel any time — no fees. Access continues until the end of your current period.'],
-            ['Update payment method', 'Change your credit card or PayPal account.'],
+            ['Update payment method', 'Change the card or payment method on file in Whop.'],
             ['Switch plans', 'Move between monthly and annual billing.'],
             ['Download invoices', 'Access PDF receipts for every payment.'],
           ].map(([action, detail]) => (

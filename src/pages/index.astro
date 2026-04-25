@@ -114,9 +114,13 @@ const steps = [
   },
   {
     label: 'Live Monitor',
-    desc: 'PSI updates in <100ms',
-    fullDesc: 'PSI updates within 100ms of every fill, every stop move, every size decision. Seven behavioral signal bars show exactly what is affecting the score right now.',
-    bullets: ['PSI score updates after every action in <100ms', 'Seven signal bars — see which pattern is driving the score', 'Session stats: trades, win rate, alerts, duration'],
+    desc: 'Real-time PSI',
+    fullDesc: 'The Psychological Stability Index (PSI) is your 0–100 read on how you are actually trading, not what you think you are doing. It updates in real time so you can see which dimension is under pressure while you still have a position on.',
+    bullets: [
+      'Built on quantitative math models and behavioral/cognitive research',
+      '7 behavioral signals. Tracks the most common psychological failure patterns in real-time.',
+      'Actionable live score. Instantly see exactly which habit is driving your current performance.',
+    ],
     image: '/screenshots/psi-critical.png',
     imgAlt: 'Meridian PSI Monitor showing a Critical score with seven behavioral signal bars',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>',
@@ -178,11 +182,10 @@ const signals = [
             <span style="color:#059669;">The market's job is to make you forget it.</span>
           </h1>
           <p class="text-sm md:text-base font-medium leading-snug max-w-xl mx-auto mb-6 fade-up" style="color:#3f3f46;">
-            The only system that enforces your trading rules when you can't — in the moment, not in tomorrow's journal entry.
+            Meridian is a real-time psychological stability monitor for active traders.
           </p>
-          <!-- Subtitle -->
           <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 fade-up" style="color:#71717a;">
-            <strong style="color:#18181b; font-weight:600;">Meridian</strong> is that risk manager: a native NinjaTrader 8 add-on on your PC — no cloud — with live PSI, seven behavioral signals, and the session trail that shows where discipline actually pays.
+            Powered by cognitive research and adaptive learning, it tracks seven behavioral signals to enforce your risk limits and journal your performance — all locally on your PC.
           </p>
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row sm:justify-center gap-3 fade-up">
@@ -219,14 +222,14 @@ const signals = [
       </div>
       <!-- Heading with word-blur animation + two-tone split -->
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.12] tracking-tight mb-5 word-blur-target" style="color:#18181b;">
-        Institutional traders have risk managers.<br />
-        <span style="color:#059669;">You have yourself.</span>
+        Institutions have risk management teams.<br />
+        <span style="color:#059669;">You have Meridian.</span>
       </h2>
-      <!-- Body -->
+      <p class="text-base leading-relaxed max-w-xl mx-auto mb-4 fade-up" style="color:#71717a;">
+        Institutional traders rely on dedicated teams, data systems, and hard limits to prevent emotional decisions. Retail traders trade alone, relying only on willpower.
+      </p>
       <p class="text-base leading-relaxed max-w-xl mx-auto fade-up" style="color:#71717a;">
-        Institutional traders operate inside systems designed to stop them from making emotional decisions — position limits, compliance rules, risk managers watching every move.
-        Retail traders have none of that. Just experience, a plan, and the very real ability to ignore both the moment it costs them most.
-        Meridian is that missing system.
+        Meridian bridges this gap. It acts as your personal risk manager, tracking your behavior and enforcing your rules the moment emotions take over.
       </p>
     </div>
   </section>
@@ -255,7 +258,7 @@ const signals = [
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { num: '01', title: 'Configure',     sub: 'Any strategy. Any style.',      bullets: ['Session rules & time windows', 'Size limits and stop conventions', 'Adaptive baseline learns your rhythm'] },
-            { num: '02', title: 'Live Monitor',  sub: '7 signals. <100ms updates.',    bullets: ['PSI score updates in real time', 'Seven behavioral signal bars', 'Live score — which signal is driving it'] },
+            { num: '02', title: 'Live Monitor',  sub: 'Real-time PSI. <100ms on key events.',    bullets: ['Built on quantitative math models and behavioral/cognitive research', '7 behavioral signals. Tracks the most common psychological failure patterns in real-time.', 'Actionable live score. Instantly see exactly which habit is driving your current performance.'] },
             { num: '03', title: 'Guard',         sub: 'Rules that enforce themselves.', bullets: ['6 trigger conditions', '5 response levels', 'Quiet alert to full platform lockout'] },
             { num: '04', title: 'Review & Intel', sub: 'Every session. Every pattern.', bullets: ['PSI, Composure, and trade stats', 'Monthly digest & P&L correlation', "Today's Risk Brief"] },
           ].map((step, i) => (

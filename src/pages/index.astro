@@ -13,14 +13,14 @@ const metadata = {
 
 const marqueeRow1 = [
   {
-    quote: "Three months in. I thought I had clean execution — the overtrading metric disagreed from day one.",
-    name: 'Jason K.',
-    role: 'Futures day trader',
-  },
-  {
     quote: "Passed my third Apex evaluation. The first two I blew up on days where, in hindsight, I should have just closed the platform. The pattern was obvious once I could see it.",
     name: 'Mike R.',
     role: 'Prop firm trader',
+  },
+  {
+    quote: "Three months in. I thought I had clean execution — the overtrading metric disagreed from day one.",
+    name: 'Jason K.',
+    role: 'Futures day trader',
   },
   {
     quote: "Turned out I wasn't losing because of my entries. I was adding to losing positions and ignoring my own rules. Took data to admit it.",
@@ -28,9 +28,9 @@ const marqueeRow1 = [
     role: '',
   },
   {
-    quote: "I don't use tools that send my fill data to the cloud. Local-only was non-negotiable for me.",
-    name: 'David Chen',
-    role: 'Independent trader',
+    quote: "After a losing session I used to review charts to explain what happened. Now I check the session report first. It's faster and more honest.",
+    name: 'Sam W.',
+    role: 'ES / NQ',
   },
   {
     quote: "It doesn't close your positions for you — that part is still on you. But I stopped pretending I didn't notice the score dropping while I was moving my stop around.",
@@ -43,6 +43,11 @@ const marqueeRow1 = [
     role: 'MNQ scalper',
   },
   {
+    quote: "I don't use tools that send my fill data to the cloud. Local-only was non-negotiable for me.",
+    name: 'David Chen',
+    role: 'Independent trader',
+  },
+  {
     quote: "Being able to use Market Replay without it touching my live baseline was more useful than I expected.",
     name: 'Chris P.',
     role: 'Futures swing',
@@ -52,23 +57,18 @@ const marqueeRow1 = [
     name: 'Jordan L.',
     role: 'Multi-account',
   },
-  {
-    quote: "After a losing session I used to review charts to explain what happened. Now I check the session report first. It's faster and more honest.",
-    name: 'Sam W.',
-    role: 'ES / NQ',
-  },
-  {
-    quote: "Didn't want another subscription. Tried the trial anyway. Kept it — the overlay is actually readable mid-session without being in the way.",
-    name: 'Rina M.',
-    role: 'Day trader',
-  },
 ];
 
 const marqueeRow2 = [
   {
-    quote: "The caution signal fired and I decided I could manage through it. Twenty minutes later I had hit my daily limit. I can't blame the tool — I ignored it.",
-    name: 'Sara',
-    role: 'ES trader',
+    quote: "Post-session journals have their place. This is different — the feedback arrives while the session is still running, not the next morning.",
+    name: 'Anonymous',
+    role: '',
+  },
+  {
+    quote: "The stop-widening flag caught me doing something I always denied — moving my stop out when a trade went against me. Useful confirmation, even if it wasn't comfortable.",
+    name: 'Marcus T.',
+    role: 'CL / GC',
   },
   {
     quote: "I've restarted funded accounts more times than I want to count. If someone had told me a revenge-entry detector would matter more than another indicator, I wouldn't have believed them.",
@@ -81,24 +81,9 @@ const marqueeRow2 = [
     role: 'Day trader',
   },
   {
-    quote: "Post-session journals have their place. This is different — the feedback arrives while the session is still running, not the next morning.",
-    name: 'Anonymous',
-    role: '',
-  },
-  {
-    quote: "Took a few sessions to calibrate. Once it did, the alerts started making sense — I could trace each one back to a specific pattern.",
-    name: 'Priya S.',
-    role: 'Futures trader',
-  },
-  {
-    quote: "The stop-widening flag caught me doing something I always denied — moving my stop out when a trade went against me. Useful confirmation, even if it wasn't comfortable.",
-    name: 'Marcus T.',
-    role: 'CL / GC',
-  },
-  {
-    quote: "Thought my exits were disciplined. Turns out there's a consistent pattern on certain days. I don't love it, but I can work with the information.",
-    name: 'Kim H.',
-    role: 'Index futures',
+    quote: "The caution signal fired and I decided I could manage through it. Twenty minutes later I had hit my daily limit. I can't blame the tool — I ignored it.",
+    name: 'Sara',
+    role: 'ES trader',
   },
   {
     quote: "A rough Tuesday doesn't disappear from the score just because Wednesday started. That's accurate. That's how it actually feels.",
@@ -106,14 +91,14 @@ const marqueeRow2 = [
     role: 'Overnight + day',
   },
   {
+    quote: "Thought my exits were disciplined. Turns out there's a consistent pattern on certain days. I don't love it, but I can work with the information.",
+    name: 'Kim H.',
+    role: 'Index futures',
+  },
+  {
     quote: "The alerts are infrequent enough that I don't tune them out. When one fires, I actually pause before doing anything.",
     name: 'Andre C.',
     role: 'Prop + personal',
-  },
-  {
-    quote: "The history view is simple. I like that. Seeing consistent streaks makes discipline feel measurable instead of just a goal.",
-    name: 'Nina F.',
-    role: 'Futures',
   },
 ];
 
@@ -140,7 +125,7 @@ const steps = [
     label: 'Guard',
     desc: 'Automated enforcement',
     fullDesc: 'Guard is a commitment device. When you are calm, you write the rules. When the moment comes, Guard enforces them automatically — no decision required from you.',
-    bullets: ['6 configurable trigger conditions', '5 response levels — quiet alert to full platform lockout', 'Set once, active every session automatically', 'No manual override required in the heat of the moment'],
+    bullets: ['6 configurable trigger conditions', '5 response levels — quiet alert to full platform lockout', 'Set once, active every session automatically', 'When the moment comes, Guard acts — you don\'t have to decide'],
     image: '/screenshots/psi-performance.png',
     imgAlt: 'Meridian PSI vs P&L correlation chart',
     link: { href: '/guard', text: 'Explore Meridian Guard' },
@@ -193,11 +178,11 @@ const signals = [
             <span style="color:#059669;">The market's job is to make you forget it.</span>
           </h1>
           <p class="text-sm md:text-base font-medium leading-snug max-w-xl mx-auto mb-6 fade-up" style="color:#3f3f46;">
-            Live PSI, seven behavioral signals, and optional automatic enforcement — in NinjaTrader 8 on your PC, no cloud, updates in under 100ms.
+            The only system that enforces your trading rules when you can't — real-time PSI, seven behavioral signals, and automatic rule enforcement inside NinjaTrader 8, on your PC, no cloud.
           </p>
           <!-- Subtitle -->
           <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 fade-up" style="color:#71717a;">
-            <strong style="color:#18181b; font-weight:600;">Meridian</strong> is the first real-time behavioral and psychological stability monitor for active traders. Seven behavioral patterns, grounded in cognitive science. PSI updates in under 100ms.
+            <strong style="color:#18181b; font-weight:600;">Meridian</strong> is the risk manager retail traders have never had. Real-time PSI, automatic rule enforcement, and the session data to prove the difference — built inside NinjaTrader 8, on your PC.
           </p>
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row sm:justify-center gap-3 fade-up">
@@ -215,7 +200,7 @@ const signals = [
       <Stats
         classes={{ container: 'py-2 md:py-2.5 px-0' }}
         stats={[
-          { title: 'Live behavioral signals', amount: '7' },
+          { title: 'Your data never leaves your PC', amount: 'Local' },
           { title: 'Update latency', amount: '<100ms' },
           { title: 'Session history', amount: '5 yr' },
           { title: 'Free trial', amount: '7 day' },
@@ -241,7 +226,7 @@ const signals = [
       <p class="text-base leading-relaxed max-w-xl mx-auto fade-up" style="color:#71717a;">
         Compliance officers, position limits, systems enforcing rules outside their control.
         Retail traders have experience and hard-won rules — and nothing to stop them from breaking those rules
-        the moment it matters most. Meridian is that system.
+        the moment it matters most. Meridian is that risk manager.
       </p>
     </div>
   </section>
@@ -383,43 +368,6 @@ const signals = [
     </div>
   </section>
 
-  <!-- ——— SEVEN DIMENSIONS ——— -->
-  <section class="section bg-zinc-50/90 dark:bg-zinc-900/40 border-y border-zinc-200/80 dark:border-zinc-800">
-    <div class="container-wide">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="eyebrow mb-4 fade-up">Behavioral signals</p>
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
-          Seven patterns. Each tied to a known failure mode.
-        </h2>
-        <p class="lead fade-up">
-          Every signal tracks a behavioral pattern from behavioral-finance research. They run
-          independently and combine into a single PSI score.
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 fade-up">
-        {signals.map((s, i) => (
-          <div class="card card-hover p-5 flex items-start gap-4 shadow-sm shadow-zinc-900/5 ring-1 ring-zinc-900/[0.03]">
-            <span class="shrink-0 mt-0.5 w-7 h-7 rounded-lg bg-[rgba(75,115,78,0.12)] dark:bg-emerald-900/30 text-[#4b734e] dark:text-emerald-400 text-xs font-semibold flex items-center justify-center">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <div>
-              <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{s.name}</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{s.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-10">
-        <a href="/features#seven-dimensions" class="btn-tertiary">
-          Read the technical detail
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ——— SESSION HISTORY — before / after comparison ——— -->
   <section class="section bg-white border-y border-zinc-200/70">
     <div class="container-wide">
@@ -472,21 +420,20 @@ const signals = [
   <section class="section bg-zinc-100/40 dark:bg-zinc-900/40 border-y border-zinc-200/70 dark:border-zinc-800">
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="eyebrow mb-4 fade-up">Intel layer</p>
+        <p class="eyebrow mb-4 fade-up">Intel layer — Meridian Guard</p>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
-          Data no other trading journal can show you.
+          Your Stable sessions and your Critical sessions don't just feel different. The P&amp;L proves it.
         </h2>
         <p class="lead fade-up">
-          No broker dashboard cross-references your psychological state with your P&amp;L. Meridian does —
-          built entirely from your own history.
+          No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that connection from your own history — and shows you exactly where the gap is.
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-5 fade-up">
         {[
-          { img: '/screenshots/intel-monthly-digest.png',    title: 'Monthly digest',      sub: 'Behavioral grade, trend, best and worst sessions.' },
-          { img: '/screenshots/intel-risk-brief.png',        title: "Today's Risk Brief",  sub: 'Personalized pre-session intelligence, every morning.' },
-          { img: '/screenshots/intel-composure-progress.png', title: 'Composure trend',     sub: 'Six-month view of long-term behavioral improvement.' },
+          { img: '/screenshots/psi-performance.png',       title: 'PSI × Performance',   sub: 'Stable sessions vs Critical sessions — the P&L gap, measured from your own data.' },
+          { img: '/screenshots/intel-monthly-digest.png',   title: 'Monthly digest',      sub: 'Behavioral grade, trend, best and worst sessions.' },
+          { img: '/screenshots/intel-risk-brief.png',       title: "Today's Risk Brief",  sub: 'Personalized pre-session intelligence, ready before your first trade.' },
         ].map((card) => (
           <div class="card card-hover overflow-hidden">
             <div class="aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
@@ -498,6 +445,43 @@ const signals = [
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— SEVEN DIMENSIONS ——— -->
+  <section class="section bg-zinc-50/90 dark:bg-zinc-900/40 border-y border-zinc-200/80 dark:border-zinc-800">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="eyebrow mb-4 fade-up">Behavioral signals</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
+          Seven patterns. Each tied to a known failure mode.
+        </h2>
+        <p class="lead fade-up">
+          Every signal tracks a behavioral pattern from behavioral-finance research. They run
+          independently and combine into a single PSI score.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 fade-up">
+        {signals.map((s, i) => (
+          <div class="card card-hover p-5 flex items-start gap-4 shadow-sm shadow-zinc-900/5 ring-1 ring-zinc-900/[0.03]">
+            <span class="shrink-0 mt-0.5 w-7 h-7 rounded-lg bg-[rgba(75,115,78,0.12)] dark:bg-emerald-900/30 text-[#4b734e] dark:text-emerald-400 text-xs font-semibold flex items-center justify-center">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{s.name}</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/features#seven-dimensions" class="btn-tertiary">
+          Read the technical detail
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
       </div>
     </div>
   </section>

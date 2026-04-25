@@ -73,9 +73,9 @@ const metadata = {
         icon: 'tabler:trending-up',
       },
       {
-        title: 'Hold Bias (D4) — abnormal hold duration',
+        title: 'Hold Bias (D4) — holding losers too long',
         description:
-          'Compares your current hold times against your personal baseline to detect both cutting winners too early and holding losers too long. Both are behavioral signatures of pressure — and both are detected against your own history, not a generic benchmark.',
+          'Detects the loss-aversion pattern: holding a losing trade with the same patience you\'d normally give a winner. Measured against your own trade history, not a generic benchmark.',
         icon: 'tabler:clock-bolt',
       },
       {
@@ -168,19 +168,19 @@ const metadata = {
       {
         title: 'Fast rise, slower recovery',
         description:
-          'Each dimension uses separate attack and recovery behavior. Pressure from a violation builds quickly, while recovery requires sustained discipline, so one mistake can fade but repeated behavior stays visible.',
+          'Pressure from a bad trade builds quickly. Recovery takes longer — and requires actually trading clean, not just waiting. One mistake can fade. A pattern stays visible.',
         icon: 'tabler:wave-sine',
       },
       {
         title: 'Overnight carry keeps unresolved pressure visible',
         description:
-          'Behavioral pressure does not automatically reset at midnight. Meridian carries unresolved pressure forward with time decay, so a rough Tuesday can still matter on Wednesday while longer breaks allow more recovery.',
+          'A rough session doesn\'t get a free reset just because the date changed. Meridian carries unresolved pressure forward with decay — longer breaks allow more recovery, but a bad Tuesday can absolutely still matter on Wednesday.',
         icon: 'tabler:moon',
       },
       {
         title: 'Persistent size violations stop recovery',
         description:
-          'When position size remains above your declared limit, recovery is held in place until size comes back into line. The system reflects the reality that ongoing violations should not look resolved just because time passed.',
+          'If your position size is still above your declared rule, PSI doesn\'t recover — because the violation hasn\'t ended. The score reflects what you\'re actually doing right now, not what you did an hour ago.',
         icon: 'tabler:lock',
       },
     ]}
@@ -195,7 +195,7 @@ const metadata = {
       {
         title: 'No accounts, no cloud, no telemetry',
         description:
-          'There are zero HTTP calls in the codebase. No analytics, no crash reporting, and no license-check pings. Computation happens on your PC, and data stays under your control.',
+          'No analytics, no crash reporting, no usage telemetry. Your fills, session history, and behavioral data never leave your machine — the only outbound call is license key validation.',
         icon: 'tabler:cloud-off',
       },
       {

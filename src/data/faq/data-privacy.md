@@ -4,6 +4,6 @@ category: technical
 order: 1
 ---
 
-No. Meridian is designed with privacy as a core principle. All calculations and data storage happen **entirely on your local machine**. No trading data, session information, or behavioral metrics are ever transmitted to external servers.
+No. Meridian is designed with privacy as a core principle. All trading calculations and data storage happen **entirely on your local machine**. No trading data, session information, or behavioral metrics are ever transmitted to any server.
 
-The only network activity the software performs is optional license validation on startup, which sends only an anonymous license key hash — never any trading data.
+The only outbound request Meridian makes is a license key validation against the payment provider on startup. No fills, no session data, and no behavioral metrics are part of that request.

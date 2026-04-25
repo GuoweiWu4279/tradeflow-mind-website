@@ -31,7 +31,7 @@
     {
       "id": "local-only",
       "title": "No cloud, no accounts",
-      "description": "Configuration and history stay in local XML on your machine. The add-on does not phone home — suitable for traders who care about privacy.",
+      "description": "Your trading data stays on your machine. No telemetry, no analytics, no behavioral data in the cloud — suitable for traders who care about privacy.",
       "icon": "tabler:cloud-off",
       "category": "privacy"
     },

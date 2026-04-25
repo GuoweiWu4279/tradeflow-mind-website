@@ -428,60 +428,76 @@ const intelShowcaseTabs = [
     </div>
   </section>
 
-  <!-- ——— INTEL — tabs + single large preview (scheme A) ——— -->
-  <section class="section bg-zinc-100/40 dark:bg-zinc-900/40 border-y border-zinc-200/70 dark:border-zinc-800">
-    <div class="container-wide max-w-6xl">
-      <div class="text-center max-w-2xl mx-auto mb-10 md:mb-14">
-        <p class="eyebrow mb-4 fade-up">Intel layer — Meridian Guard</p>
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
-          Your Stable sessions and your Critical sessions don't just feel different. The P&amp;L proves it.
-        </h2>
-        <p class="lead fade-up">
-          No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that connection from your own history — and shows you exactly where the gap is.
-        </p>
+  <!-- ——— INTEL — same 2-col rhythm as step-detail: copy + sticky 16:9 left, tabs right ——— -->
+  <section
+    id="intel-showcase"
+    class="py-16 lg:py-24 px-6 border-y border-zinc-200/70 bg-gradient-to-b from-zinc-100/70 via-zinc-50/90 to-white dark:from-zinc-900 dark:via-zinc-900/90 dark:to-zinc-900 dark:border-zinc-800"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-xl mb-6 lg:mb-8">
+        <div
+          class="inline-flex items-center gap-2.5 border px-4 py-1.5 rounded-full"
+          style="border-color: rgba(5,150,105,0.35); background: rgba(5,150,105,0.07);"
+        >
+          <span class="w-1.5 h-1.5 rounded-full" style="background:#059669;" aria-hidden="true"></span>
+          <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#059669;">Intel layer — Meridian Guard</span>
+        </div>
       </div>
 
-      <div
-        class="fade-up flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,280px)_1fr] lg:gap-10 xl:gap-12 items-start"
-        data-intel-showcase
-      >
-        <div class="w-full lg:max-w-none shrink-0" role="tablist" aria-label="Intel views">
-          {intelShowcaseTabs.map((tab, i) => (
-            <button
-              type="button"
-              role="tab"
-              id={`intel-tab-${i}`}
-              data-intel-tab
-              aria-selected={i === 0 ? 'true' : 'false'}
-              aria-controls="intel-showcase-panel"
-              tabindex={i === 0 ? 0 : -1}
-              class:list={[
-                'intel-tab-btn w-full text-left rounded-xl border px-4 py-3.5 mb-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900',
-                { 'intel-tab-active': i === 0 },
-              ]}
-            >
-              <span class="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">{tab.title}</span>
-              <span class="mt-1 block text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{tab.sub}</span>
-            </button>
-          ))}
+      <div class="lg:grid lg:grid-cols-[52%_48%] lg:gap-12 lg:items-start fade-up" data-intel-showcase>
+        <!-- Left column: headline + lead + sticky preview (mirrors step-detail image column) -->
+        <div class="flex flex-col gap-6 lg:gap-8">
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-zinc-900 dark:text-zinc-100 text-balance"
+          >
+            Your Stable sessions and your Critical sessions don&apos;t just feel different. The P&amp;L proves it.
+          </h2>
+          <p class="text-sm leading-relaxed max-w-xl text-zinc-600 dark:text-zinc-400">
+            No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that
+            connection from your own history — and shows you exactly where the gap is.
+          </p>
+          <div
+            class="relative overflow-hidden rounded-xl mb-8 lg:mb-0 lg:sticky lg:top-[92px] shadow-sm ring-1 ring-zinc-900/[0.06] dark:ring-zinc-700/80 bg-zinc-100 dark:bg-zinc-800"
+            style="aspect-ratio: 16 / 9;"
+            id="intel-showcase-panel"
+            role="tabpanel"
+            aria-labelledby="intel-tab-0"
+          >
+            {intelShowcaseTabs.map((tab, i) => (
+              <img
+                data-intel-img={i}
+                src={tab.img}
+                alt={tab.imgAlt}
+                class:list={['intel-showcase-img', { 'is-active': i === 0 }]}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            ))}
+          </div>
         </div>
 
-        <div
-          class="relative w-full min-h-[220px] sm:min-h-[300px] lg:min-h-[min(52vw,440px)] xl:min-h-[480px] rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 ring-1 ring-zinc-900/[0.06] dark:ring-zinc-700/80 shadow-md shadow-zinc-900/5"
-          id="intel-showcase-panel"
-          role="tabpanel"
-          aria-labelledby="intel-tab-0"
-        >
-          {intelShowcaseTabs.map((tab, i) => (
-            <img
-              data-intel-img={i}
-              src={tab.img}
-              alt={tab.imgAlt}
-              class:list={['intel-showcase-img', { 'is-active': i === 0 }]}
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding="async"
-            />
-          ))}
+        <!-- Right column: tab list (mirrors step-detail accordion column) -->
+        <div class="lg:self-start max-lg:mt-8 w-full">
+          <div class="space-y-1.5" role="tablist" aria-label="Intel views">
+            {intelShowcaseTabs.map((tab, i) => (
+              <button
+                type="button"
+                role="tab"
+                id={`intel-tab-${i}`}
+                data-intel-tab
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-controls="intel-showcase-panel"
+                tabindex={i === 0 ? 0 : -1}
+                class:list={[
+                  'intel-tab-btn w-full text-left rounded-xl border px-4 py-3.5 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900',
+                  { 'intel-tab-active': i === 0 },
+                ]}
+              >
+                <span class="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">{tab.title}</span>
+                <span class="mt-1 block text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{tab.sub}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

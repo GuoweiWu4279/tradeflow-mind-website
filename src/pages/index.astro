@@ -154,25 +154,25 @@ const signals = [
 
 const intelShowcaseTabs = [
   {
-    img: '/screenshots/psi-performance.png',
-    title: 'PSI × Performance',
-    sub: 'See the exact P&L gap between your Stable and Critical sessions.',
-    imgAlt: 'Meridian correlation view: PSI versus session outcomes and P&L',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>',
-  },
-  {
-    img: '/screenshots/intel-risk-brief.png',
-    title: "Today's Risk Brief",
-    sub: 'Personalized pre-session intelligence before your first trade.',
-    imgAlt: "Meridian Today's Risk Brief with session risk highlights",
+    img: '/screenshots/intel-session-calendar.png',
+    title: 'Session Report',
+    sub: 'Detailed breakdown of every trade session. Track your PSI fluctuations, time spent in critical zones, and exact behavioral signals triggered.',
+    imgAlt: 'Meridian session report with PSI, composure, and per-session stats',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>',
   },
   {
     img: '/screenshots/intel-monthly-digest.png',
-    title: 'Monthly digest',
-    sub: 'Track your behavioral grade, long-term trends, and weak spots.',
-    imgAlt: 'Meridian monthly digest with behavioral grade and trends',
+    title: 'History & Progress',
+    sub: 'Visualize your discipline over time. Track your monthly composure grades, daily streak stability, and long-term behavioral progress.',
+    imgAlt: 'Meridian monthly digest and behavioral progress over time',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>',
+  },
+  {
+    img: '/screenshots/psi-performance.png',
+    title: 'Intel & Correlation',
+    sub: 'Cross-reference your psychology with your P&L. Discover your weakest trading days and receive a personalized Pre-Session Risk Brief.',
+    imgAlt: 'Meridian PSI and P&L correlation with session-level outcomes',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>',
   },
 ];
 ---
@@ -489,11 +489,11 @@ const intelShowcaseTabs = [
         <!-- Right column = former copy + image column (headline, sub, then sticky preview) -->
         <div class="flex flex-col gap-6 lg:gap-8 min-w-0">
           <h2 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-balance text-zinc-900 dark:text-zinc-100">
-            Your Stable sessions and your Critical sessions don&apos;t just feel different. The P&amp;L proves it.
+            See the exact cost of your trading psychology.
           </h2>
           <p class="text-sm leading-relaxed max-w-xl" style="color:#71717a;">
-            No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that
-            connection from your own history — and shows you exactly where the gap is.
+            Broker dashboards only show what happened. Meridian shows why. Track your behavioral data to uncover the
+            exact financial impact of your habits.
           </p>
           <div
             class="relative overflow-hidden rounded-xl mb-8 lg:mb-0 lg:sticky lg:top-[92px] shadow-sm ring-1 ring-zinc-900/[0.06] dark:ring-zinc-700/80"

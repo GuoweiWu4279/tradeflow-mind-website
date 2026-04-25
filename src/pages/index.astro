@@ -371,86 +371,6 @@ const signals = [
   </section>
 
   <!-- ——— SESSION HISTORY — before / after comparison ——— -->
-  <section class="section bg-white border-y border-zinc-200/70">
-    <div class="container-wide">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="eyebrow mb-4 fade-up">Session review and history</p>
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
-          Not just P&amp;L. Whether you traded right.
-        </h2>
-        <p class="lead fade-up">
-          Meridian tracks discipline session by session. Over time, the pattern becomes visible — and
-          so does the improvement.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 fade-up">
-        <!-- Before -->
-        <div>
-          <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
-            <img src="/screenshots/session-log-december.png" alt="Session log December 2025 — Composure 49%, average P&amp;L -$629" class="w-full h-auto block" loading="lazy" />
-          </div>
-          <div class="mt-4 flex items-center flex-wrap gap-2">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">Month 1 — Dec 2025</span>
-            <span class="text-sm text-zinc-500 dark:text-zinc-400">Composure <span class="text-zinc-900 dark:text-zinc-100 font-semibold">49%</span></span>
-            <span class="text-zinc-300 dark:text-zinc-600">·</span>
-            <span class="text-sm text-zinc-500 dark:text-zinc-400">Avg P&amp;L <span class="text-zinc-900 dark:text-zinc-100 font-semibold">&minus;$629</span></span>
-          </div>
-        </div>
-
-        <!-- After -->
-        <div>
-          <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
-            <img src="/screenshots/session-log-april.png" alt="Session log April 2026 — Composure 79%, average P&amp;L +$997" class="w-full h-auto block" loading="lazy" />
-          </div>
-          <div class="mt-4 flex items-center flex-wrap gap-2">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Month 5 — Apr 2026</span>
-            <span class="text-sm text-zinc-500 dark:text-zinc-400">Composure <span class="text-emerald-700 dark:text-emerald-400 font-semibold">79%</span></span>
-            <span class="text-zinc-300 dark:text-zinc-600">·</span>
-            <span class="text-sm text-zinc-500 dark:text-zinc-400">Avg P&amp;L <span class="text-emerald-700 dark:text-emerald-400 font-semibold">+$997</span></span>
-          </div>
-        </div>
-      </div>
-
-      <p class="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-8 italic text-balance">
-        Illustrative data from one user · Results may vary · Trading involves substantial risk of loss
-      </p>
-    </div>
-  </section>
-
-  <!-- ——— INTEL — small grid, not full carousel ——— -->
-  <section class="section bg-zinc-100/40 dark:bg-zinc-900/40 border-y border-zinc-200/70 dark:border-zinc-800">
-    <div class="container-wide">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="eyebrow mb-4 fade-up">Intel layer — Meridian Guard</p>
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
-          Your Stable sessions and your Critical sessions don't just feel different. The P&amp;L proves it.
-        </h2>
-        <p class="lead fade-up">
-          No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that connection from your own history — and shows you exactly where the gap is.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-5 fade-up">
-        {[
-          { img: '/screenshots/psi-performance.png',       title: 'PSI × Performance',   sub: 'Stable sessions vs Critical sessions — the P&L gap, measured from your own data.' },
-          { img: '/screenshots/intel-monthly-digest.png',   title: 'Monthly digest',      sub: 'Behavioral grade, trend, best and worst sessions.' },
-          { img: '/screenshots/intel-risk-brief.png',       title: "Today's Risk Brief",  sub: 'Personalized pre-session intelligence, ready before your first trade.' },
-        ].map((card) => (
-          <div class="card card-hover overflow-hidden">
-            <div class="aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
-              <img src={card.img} alt={card.title} class="w-full h-full object-cover object-top" loading="lazy" />
-            </div>
-            <div class="p-5">
-              <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{card.title}</h3>
-              <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{card.sub}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- ——— SEVEN DIMENSIONS ——— -->
   <section class="section bg-zinc-50/90 dark:bg-zinc-900/40 border-y border-zinc-200/80 dark:border-zinc-800">
     <div class="container-wide">
@@ -483,6 +403,39 @@ const signals = [
           Read the technical detail
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— INTEL — small grid, not full carousel ——— -->
+  <section class="section bg-zinc-100/40 dark:bg-zinc-900/40 border-y border-zinc-200/70 dark:border-zinc-800">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="eyebrow mb-4 fade-up">Intel layer — Meridian Guard</p>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-5 fade-up">
+          Your Stable sessions and your Critical sessions don't just feel different. The P&amp;L proves it.
+        </h2>
+        <p class="lead fade-up">
+          No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that connection from your own history — and shows you exactly where the gap is.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5 fade-up">
+        {[
+          { img: '/screenshots/psi-performance.png',       title: 'PSI × Performance',   sub: 'Stable sessions vs Critical sessions — the P&L gap, measured from your own data.' },
+          { img: '/screenshots/intel-monthly-digest.png',   title: 'Monthly digest',      sub: 'Behavioral grade, trend, best and worst sessions.' },
+          { img: '/screenshots/intel-risk-brief.png',       title: "Today's Risk Brief",  sub: 'Personalized pre-session intelligence, ready before your first trade.' },
+        ].map((card) => (
+          <div class="card card-hover overflow-hidden">
+            <div class="aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+              <img src={card.img} alt={card.title} class="w-full h-full object-cover object-top" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{card.title}</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{card.sub}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

@@ -431,7 +431,7 @@ const intelShowcaseTabs = [
     </div>
   </section>
 
-  <!-- ——— INTEL — step-detail visual language: left accordion-style tabs, right sticky 16:9 preview ——— -->
+  <!-- ——— INTEL — same grid as step-detail but mirrored: tabs left (48%), headline + sticky 16:9 right (52%) ——— -->
   <section
     id="intel-showcase"
     class="py-16 lg:py-24 px-6 border-y border-zinc-200/70 bg-gradient-to-b from-zinc-100/70 via-zinc-50/90 to-white dark:from-zinc-900 dark:via-zinc-900/90 dark:to-zinc-900 dark:border-zinc-800"
@@ -447,21 +447,9 @@ const intelShowcaseTabs = [
         </div>
       </div>
 
-      <div
-        class="lg:grid lg:grid-cols-[minmax(0,46%)_minmax(0,54%)] lg:gap-12 lg:items-start fade-up"
-        data-intel-showcase
-      >
-        <!-- Left: headline + lead + tab rows (same acc-item / icon / chevron pattern as 4 Stages) -->
-        <div class="flex flex-col gap-6 lg:gap-8">
-          <h2
-            class="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-zinc-900 dark:text-zinc-100 text-balance"
-          >
-            Your Stable sessions and your Critical sessions don&apos;t just feel different. The P&amp;L proves it.
-          </h2>
-          <p class="text-sm leading-relaxed max-w-xl text-zinc-600 dark:text-zinc-400">
-            No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that
-            connection from your own history — and shows you exactly where the gap is.
-          </p>
+      <div class="lg:grid lg:grid-cols-[48%_52%] lg:gap-12 lg:items-start fade-up" data-intel-showcase>
+        <!-- Left column = former accordion column (tabs only) -->
+        <div class="lg:self-start max-lg:mb-8 w-full min-w-0">
           <div class="space-y-1" role="tablist" aria-label="Intel views">
             {intelShowcaseTabs.map((tab, i) => (
               <button
@@ -498,11 +486,18 @@ const intelShowcaseTabs = [
           </div>
         </div>
 
-        <!-- Right: sticky preview (mirrors 4 Stages image column) -->
-        <div class="lg:self-start max-lg:mt-8 w-full min-w-0">
+        <!-- Right column = former copy + image column (headline, sub, then sticky preview) -->
+        <div class="flex flex-col gap-6 lg:gap-8 min-w-0">
+          <h2 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-balance text-zinc-900 dark:text-zinc-100">
+            Your Stable sessions and your Critical sessions don&apos;t just feel different. The P&amp;L proves it.
+          </h2>
+          <p class="text-sm leading-relaxed max-w-xl" style="color:#71717a;">
+            No broker dashboard cross-references your psychological state with your P&amp;L. Meridian builds that
+            connection from your own history — and shows you exactly where the gap is.
+          </p>
           <div
-            class="relative overflow-hidden rounded-xl lg:sticky lg:top-[92px] shadow-sm ring-1 ring-zinc-900/[0.06] dark:ring-zinc-700/80 bg-zinc-100 dark:bg-zinc-800"
-            style="aspect-ratio: 16 / 9;"
+            class="relative overflow-hidden rounded-xl mb-8 lg:mb-0 lg:sticky lg:top-[92px] shadow-sm ring-1 ring-zinc-900/[0.06] dark:ring-zinc-700/80"
+            style="background:#f4f4f5; aspect-ratio:16/9;"
             id="intel-showcase-panel"
             role="tabpanel"
             aria-labelledby="intel-tab-0"

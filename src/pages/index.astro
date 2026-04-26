@@ -154,32 +154,25 @@ const signals = [
 
 const intelShowcaseTabs = [
   {
+    img: '/screenshots/intel-session-calendar.png',
     title: 'Session Report',
     sub: 'Detailed breakdown of every trade session. Track your PSI fluctuations, time spent in critical zones, and exact behavioral signals triggered.',
+    imgAlt: 'Meridian session report with PSI, composure, and per-session stats',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>',
-    slides: [
-      { src: '/screenshots/intel-session-calendar.png', alt: 'Meridian session calendar with PSI, composure, and P&L per session' },
-    ],
   },
   {
+    img: '/screenshots/intel-monthly-digest.png',
     title: 'History & Progress',
     sub: 'Visualize your discipline over time. Track your monthly composure grades, daily streak stability, and long-term behavioral progress.',
+    imgAlt: 'Meridian monthly digest and behavioral progress over time',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>',
-    slides: [
-      { src: '/screenshots/homepage-intel/history/monthly-calendar-list.png', alt: 'Meridian monthly calendar in list view' },
-      { src: '/screenshots/homepage-intel/history/monthly-calendar.png', alt: 'Meridian monthly calendar overview' },
-      { src: '/screenshots/homepage-intel/history/psi-trend-in-month.png', alt: 'Meridian PSI trend for the month' },
-    ],
   },
   {
+    img: '/screenshots/psi-performance.png',
     title: 'Intel & Correlation',
     sub: 'Cross-reference your psychology with your P&L. Discover your weakest trading days and receive a personalized Pre-Session Risk Brief.',
+    imgAlt: 'Meridian PSI and P&L correlation with session-level outcomes',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>',
-    slides: [
-      { src: '/screenshots/homepage-intel/intel/regression.png', alt: 'Meridian regression analysis: psychology vs outcomes' },
-      { src: '/screenshots/homepage-intel/intel/today-risk-and-analysis.png', alt: 'Meridian today risk and analysis' },
-      { src: '/screenshots/homepage-intel/intel/weekly-trending.png', alt: 'Meridian weekly behavioral trending' },
-    ],
   },
 ];
 ---
@@ -512,51 +505,16 @@ const intelShowcaseTabs = [
             role="tabpanel"
             aria-labelledby="intel-tab-0"
           >
-            {intelShowcaseTabs.map((tab, ti) => (
-              <div
-                class="intel-tab-view absolute inset-0"
-                data-intel-view={ti}
-                class:list={[{ 'is-active': ti === 0 }]}
-                aria-hidden={ti === 0 ? 'false' : 'true'}
-              >
-                {tab.slides.map((slide, si) => (
-                  <img
-                    data-intel-slide
-                    src={slide.src}
-                    alt={slide.alt}
-                    class:list={['intel-showcase-img', { 'is-active': ti === 0 && si === 0 }]}
-                    loading={ti === 0 && si === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
-                ))}
-              </div>
+            {intelShowcaseTabs.map((tab, i) => (
+              <img
+                data-intel-img={i}
+                src={tab.img}
+                alt={tab.imgAlt}
+                class:list={['intel-showcase-img', { 'is-active': i === 0 }]}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
             ))}
-            <div
-              class="intel-carousel-nav pointer-events-none absolute inset-x-0 bottom-3 z-20 flex items-center justify-between gap-2 px-2 sm:px-3 hidden"
-              data-intel-carousel-nav
-              aria-hidden="true"
-            >
-              <button
-                type="button"
-                class="intel-carousel-btn flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-zinc-200/90 bg-white/95 text-zinc-700 shadow-md ring-1 ring-zinc-900/5 pointer-events-auto transition hover:bg-white hover:text-zinc-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 sm:h-10 sm:w-10"
-                data-intel-carousel-prev
-                aria-label="Previous screenshot"
-              >
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                class="intel-carousel-btn flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-zinc-200/90 bg-white/95 text-zinc-700 shadow-md ring-1 ring-zinc-900/5 pointer-events-auto transition hover:bg-white hover:text-zinc-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 sm:h-10 sm:w-10"
-                data-intel-carousel-next
-                aria-label="Next screenshot"
-              >
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -830,20 +788,6 @@ const intelShowcaseTabs = [
     z-index: 1;
   }
 
-  .intel-tab-view {
-    transition: opacity 0.3s ease;
-  }
-  .intel-tab-view:not(.is-active) {
-    opacity: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .intel-tab-view.is-active {
-    opacity: 1;
-    z-index: 2;
-    pointer-events: auto;
-  }
-
   .intel-tab-item {
     appearance: none;
     -webkit-appearance: none;
@@ -996,121 +940,64 @@ const intelShowcaseTabs = [
     if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
   }
 
-  // ——— Intel: main tabs + per-tab image carousel (prev/next) ———
+  // ——— Intel showcase tabs (left labels, one large preview) ———
   function initIntelTabs() {
     const root = document.querySelector<HTMLElement>('[data-intel-showcase]');
     if (!root) return;
-    const tabButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-intel-tab]'));
-    const views = Array.from(root.querySelectorAll<HTMLElement>('[data-intel-view]'));
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-intel-tab]'));
+    const imgs = Array.from(root.querySelectorAll<HTMLImageElement>('[data-intel-img]'));
     const panel = root.querySelector<HTMLElement>('#intel-showcase-panel');
-    const nav = root.querySelector<HTMLElement>('[data-intel-carousel-nav]');
-    const prevBtn = root.querySelector<HTMLButtonElement>('[data-intel-carousel-prev]');
-    const nextBtn = root.querySelector<HTMLButtonElement>('[data-intel-carousel-next]');
-    if (!tabButtons.length || !views.length) return;
+    if (!tabs.length || !imgs.length) return;
 
-    const slideIndex = [0, 0, 0];
-    let currentTab = 0;
+    let current = 0;
 
-    function slideCount(tabIdx: number) {
-      return views[tabIdx]?.querySelectorAll<HTMLImageElement>('[data-intel-slide]').length ?? 0;
-    }
+    function activate(next: number) {
+      if (next < 0 || next >= tabs.length || next === current) return;
+      current = next;
 
-    function updateSlidesInView(tabIdx: number) {
-      const view = views[tabIdx];
-      if (!view) return;
-      const imgs = Array.from(view.querySelectorAll<HTMLImageElement>('[data-intel-slide]'));
-      const n = imgs.length;
-      if (n === 0) return;
-      let idx = slideIndex[tabIdx];
-      if (idx >= n) idx = 0;
-      slideIndex[tabIdx] = idx;
-      imgs.forEach((img, si) => {
-        img.classList.toggle('is-active', si === idx);
-      });
-    }
-
-    function updateNavVisibility() {
-      const n = slideCount(currentTab);
-      if (!nav) return;
-      const show = n > 1;
-      nav.classList.toggle('hidden', !show);
-      nav.setAttribute('aria-hidden', show ? 'false' : 'true');
-    }
-
-    function syncViewAria() {
-      views.forEach((v, i) => {
-        v.setAttribute('aria-hidden', i === currentTab ? 'false' : 'true');
-      });
-    }
-
-    function activateTab(next: number) {
-      if (next < 0 || next >= tabButtons.length || next === currentTab) return;
-      currentTab = next;
-      tabButtons.forEach((tab, i) => {
-        const on = i === currentTab;
+      tabs.forEach((tab, i) => {
+        const on = i === next;
         tab.setAttribute('aria-selected', on ? 'true' : 'false');
         tab.tabIndex = on ? 0 : -1;
         tab.classList.toggle('acc-item-active', on);
       });
-      views.forEach((v, i) => {
-        v.classList.toggle('is-active', i === currentTab);
+
+      imgs.forEach((img, i) => {
+        img.classList.toggle('is-active', i === next);
       });
-      updateSlidesInView(currentTab);
-      updateNavVisibility();
-      syncViewAria();
-      if (panel && tabButtons[currentTab]) panel.setAttribute('aria-labelledby', tabButtons[currentTab].id);
+
+      if (panel && tabs[next]) panel.setAttribute('aria-labelledby', tabs[next].id);
     }
 
-    function stepCarousel(delta: number) {
-      const n = slideCount(currentTab);
-      if (n <= 1) return;
-      slideIndex[currentTab] = (slideIndex[currentTab] + delta + n) % n;
-      updateSlidesInView(currentTab);
-    }
-
-    tabButtons.forEach((tab, i) => {
+    tabs.forEach((tab, i) => {
       tab.addEventListener('click', () => {
-        if (i === currentTab) return;
-        activateTab(i);
+        activate(i);
         tab.focus();
       });
       tab.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
           e.preventDefault();
-          const next = (i + 1) % tabButtons.length;
-          activateTab(next);
-          tabButtons[next]?.focus();
+          activate((i + 1) % tabs.length);
+          tabs[(i + 1) % tabs.length]?.focus();
         } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
           e.preventDefault();
-          const next = (i - 1 + tabButtons.length) % tabButtons.length;
-          activateTab(next);
-          tabButtons[next]?.focus();
+          activate((i - 1 + tabs.length) % tabs.length);
+          tabs[(i - 1 + tabs.length) % tabs.length]?.focus();
         } else if (e.key === 'Home') {
           e.preventDefault();
-          activateTab(0);
-          tabButtons[0]?.focus();
+          activate(0);
+          tabs[0]?.focus();
         } else if (e.key === 'End') {
           e.preventDefault();
-          const last = tabButtons.length - 1;
-          activateTab(last);
-          tabButtons[last]?.focus();
+          activate(tabs.length - 1);
+          tabs[tabs.length - 1]?.focus();
         }
       });
     });
 
-    prevBtn?.addEventListener('click', () => stepCarousel(-1));
-    nextBtn?.addEventListener('click', () => stepCarousel(1));
-
-    // Initial
-    currentTab = 0;
-    tabButtons.forEach((t, i) => {
-      t.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-      t.tabIndex = i === 0 ? 0 : -1;
+    imgs.forEach((img, i) => {
+      img.classList.toggle('is-active', i === 0);
     });
-    views.forEach((v, i) => v.classList.toggle('is-active', i === 0));
-    updateSlidesInView(0);
-    updateNavVisibility();
-    syncViewAria();
   }
 
   function boot() {

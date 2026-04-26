@@ -503,80 +503,61 @@ const intelShowcaseTabs = [
           </div>
         </div>
 
-        <!-- Right column: arrows sit outside 16:9 frame; sticky the whole row -->
+        <!-- Right column: sticky preview -->
         <div class="min-w-0">
           <div
-            class="mb-8 grid w-full min-w-0 grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] items-center gap-1.5 self-start sm:grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] sm:gap-2 lg:mb-0 lg:sticky lg:top-[92px]"
-            data-intel-carousel-row
-            aria-label="Product screenshots"
+            class="relative overflow-hidden rounded-xl mb-8 lg:mb-0 lg:sticky lg:top-[92px] shadow-sm ring-1 ring-zinc-900/[0.06] dark:ring-zinc-700/80"
+            style="position: relative; isolation: isolate; z-index: 0; width: 100%; background: #f4f4f5; aspect-ratio: 16/9;"
+            id="intel-showcase-panel"
+            role="tabpanel"
+            aria-labelledby="intel-tab-0"
           >
-            <!-- Fixed-width rail so the 16:9 frame never resizes when arrows show/hide -->
-            <div
-              class="flex min-w-0 items-center justify-center self-center py-0.5"
-              data-intel-carousel-prev-wrap
-            >
-              <button
-                type="button"
-                data-intel-carousel-prev
-                class="intel-carousel-ctrl inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(5,150,105,0.32)] text-[#059669] transition hover:bg-[rgba(5,150,105,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-emerald-500/35 dark:text-emerald-400"
-                style="visibility: hidden; background: rgba(5,150,105,0.08); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); cursor: pointer;"
-                aria-label="Previous screenshot"
-                aria-hidden="true"
-                tabindex="-1"
+            {intelShowcaseTabs.map((tab, ti) => (
+              <div
+                class:list={['intel-tab-view', { 'is-active': ti === 0 }]}
+                style="position: absolute; inset: 0; overflow: hidden;"
+                data-intel-view={ti}
+                aria-hidden={ti === 0 ? 'false' : 'true'}
               >
-                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-            </div>
+                {tab.slides.map((slide, si) => (
+                  <img
+                    data-intel-slide
+                    src={slide.src}
+                    alt={slide.alt}
+                    class:list={['intel-showcase-img', { 'is-active': ti === 0 && si === 0 }]}
+                    style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: top center;"
+                    loading={ti === 0 && si === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                ))}
+              </div>
+            ))}
 
-            <div
-              class="relative min-h-0 min-w-0 w-full overflow-hidden rounded-xl shadow-sm ring-1 ring-zinc-900/[0.06] dark:ring-zinc-700/80"
-              style="position: relative; isolation: isolate; z-index: 0; max-width: 100%; background: #f4f4f5; aspect-ratio: 16/9;"
-              id="intel-showcase-panel"
-              role="tabpanel"
-              aria-labelledby="intel-tab-0"
+            <!-- Prev / Next — inside frame, vertically centred, visibility-toggled so frame never resizes -->
+            <button
+              type="button"
+              data-intel-carousel-prev
+              aria-label="Previous screenshot"
+              aria-hidden="true"
+              tabindex="-1"
+              style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); z-index: 30; visibility: hidden; pointer-events: none; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.18); color: #fff; cursor: pointer; transition: background 0.15s ease; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"
             >
-              {intelShowcaseTabs.map((tab, ti) => (
-                <div
-                  class:list={['intel-tab-view', { 'is-active': ti === 0 }]}
-                  style="position: absolute; inset: 0; overflow: hidden;"
-                  data-intel-view={ti}
-                  aria-hidden={ti === 0 ? 'false' : 'true'}
-                >
-                  {tab.slides.map((slide, si) => (
-                    <img
-                      data-intel-slide
-                      src={slide.src}
-                      alt={slide.alt}
-                      class:list={['intel-showcase-img', { 'is-active': ti === 0 && si === 0 }]}
-                      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: top center;"
-                      loading={ti === 0 && si === 0 ? 'eager' : 'lazy'}
-                      decoding="async"
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            <div
-              class="flex min-w-0 items-center justify-center self-center py-0.5"
-              data-intel-carousel-next-wrap
+              <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              data-intel-carousel-next
+              aria-label="Next screenshot"
+              aria-hidden="true"
+              tabindex="-1"
+              style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); z-index: 30; visibility: hidden; pointer-events: none; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.18); color: #fff; cursor: pointer; transition: background 0.15s ease; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"
             >
-              <button
-                type="button"
-                data-intel-carousel-next
-                class="intel-carousel-ctrl inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(5,150,105,0.32)] text-[#059669] transition hover:bg-[rgba(5,150,105,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-emerald-500/35 dark:text-emerald-400"
-                style="visibility: hidden; background: rgba(5,150,105,0.08); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); cursor: pointer;"
-                aria-label="Next screenshot"
-                aria-hidden="true"
-                tabindex="-1"
-              >
-                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+              <svg style="width:15px;height:15px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

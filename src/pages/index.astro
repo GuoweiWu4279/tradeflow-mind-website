@@ -518,8 +518,8 @@ const intelShowcaseTabs = [
               <button
                 type="button"
                 data-intel-carousel-prev
-                class="intel-carousel-ctrl inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(5,150,105,0.32)] text-[#059669] transition hover:bg-[rgba(5,150,105,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-emerald-500/35 dark:text-emerald-400 invisible pointer-events-none"
-                style="background: rgba(5, 150, 105, 0.08); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"
+                class="intel-carousel-ctrl inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(5,150,105,0.32)] text-[#059669] transition hover:bg-[rgba(5,150,105,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-emerald-500/35 dark:text-emerald-400"
+                style="visibility: hidden; background: rgba(5,150,105,0.08); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); cursor: pointer;"
                 aria-label="Previous screenshot"
                 aria-hidden="true"
                 tabindex="-1"
@@ -566,8 +566,8 @@ const intelShowcaseTabs = [
               <button
                 type="button"
                 data-intel-carousel-next
-                class="intel-carousel-ctrl inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(5,150,105,0.32)] text-[#059669] transition hover:bg-[rgba(5,150,105,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-emerald-500/35 dark:text-emerald-400 invisible pointer-events-none"
-                style="background: rgba(5, 150, 105, 0.08); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"
+                class="intel-carousel-ctrl inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(5,150,105,0.32)] text-[#059669] transition hover:bg-[rgba(5,150,105,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-emerald-500/35 dark:text-emerald-400"
+                style="visibility: hidden; background: rgba(5,150,105,0.08); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); cursor: pointer;"
                 aria-label="Next screenshot"
                 aria-hidden="true"
                 tabindex="-1"
@@ -1056,8 +1056,8 @@ const intelShowcaseTabs = [
 
     function setCarouselBtn(btn: HTMLButtonElement | null | undefined, on: boolean) {
       if (!btn) return;
-      btn.classList.toggle('invisible', !on);
-      btn.classList.toggle('pointer-events-none', !on);
+      btn.style.visibility = on ? 'visible' : 'hidden';
+      btn.style.pointerEvents = on ? 'auto' : 'none';
       btn.setAttribute('aria-hidden', on ? 'false' : 'true');
       btn.tabIndex = on ? 0 : -1;
     }

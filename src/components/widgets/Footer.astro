@@ -21,10 +21,11 @@ export interface Props {
   secondaryLinks: Array<Link>;
   socialLinks: Array<Link>;
   footNote?: string;
+  ntDisclaimers?: string;
   theme?: string;
 }
 
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', ntDisclaimers = '', theme = 'light' } = Astro.props;
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-950 not-prose']}>
@@ -76,6 +77,13 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         ))
       }
     </div>
+    {ntDisclaimers && (
+      <div class="border-t border-zinc-100 dark:border-zinc-800 py-8">
+        <div class="text-[11px] leading-relaxed text-zinc-400 dark:text-zinc-500 space-y-3">
+          <Fragment set:html={ntDisclaimers} />
+        </div>
+      </div>
+    )}
     <div class="border-t border-zinc-100 dark:border-zinc-800 md:flex md:items-center md:justify-between py-6">
       {
         socialLinks?.length ? (

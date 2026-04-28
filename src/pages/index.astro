@@ -236,19 +236,46 @@ const intelShowcaseTabs = [
     </div>
   </section>
 
-  <!-- Supported Platforms section -->
+  <!-- Ecosystem / Recommended Resources section -->
   <div class="fade-up border-b border-zinc-200/60" style="background: #FEFEFE;">
     <div class="max-w-6xl mx-auto px-6 py-8 md:py-10">
-      <div class="flex items-center justify-between mb-6">
-        <p class="text-base font-semibold" style="color:#18181b;">Supported Platform</p>
+      <div class="flex items-center justify-between mb-8">
+        <p class="text-base font-semibold" style="color:#18181b;">Our Recommended Resources</p>
         <p class="text-xs" style="color:#a1a1aa;">More platforms launching very shortly.</p>
       </div>
-      <div class="flex justify-center">
-        <img
-          src="/logos/ninja-trader.jpg"
-          alt="NinjaTrader"
-          style="height: 104px; width: auto; object-fit: contain; opacity: 0.9;"
-        />
+      <div class="flex flex-wrap items-center justify-center gap-12 md:gap-20">
+        <!-- NinjaTrader — affiliate link -->
+        <a
+          href="https://account.ninjatrader.com/register?introducingPartner=Meridian"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="NinjaTrader — trading platform"
+          class="flex flex-col items-center gap-3 group"
+        >
+          <img
+            src="/logos/ninjatrader-wordmark.png"
+            alt="NinjaTrader"
+            style="height: 36px; width: auto; object-fit: contain; opacity: 0.85; transition: opacity 0.2s;"
+            class="group-hover:opacity-100"
+          />
+          <span class="text-[11px] text-zinc-400 tracking-wide">Trading Platform</span>
+        </a>
+        <!-- Kinetick — data feed -->
+        <a
+          href="https://kinetick.com/NinjaTrader"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Kinetick — market data feed"
+          class="flex flex-col items-center gap-3 group"
+        >
+          <img
+            src="/logos/kinetick-logo.png"
+            alt="Kinetick"
+            style="height: 36px; width: auto; object-fit: contain; opacity: 0.85; transition: opacity 0.2s;"
+            class="group-hover:opacity-100"
+          />
+          <span class="text-[11px] text-zinc-400 tracking-wide">Market Data Feed</span>
+        </a>
       </div>
     </div>
   </div>

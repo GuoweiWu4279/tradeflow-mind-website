@@ -11,3 +11,19 @@ import { ANALYTICS } from 'astrowind:config';
     />
   ) : null
 }
+
+{/* Re-fire GA page_view on every Astro View Transitions client-side navigation.
+    astro:after-swap fires only on navigations (not initial load), so the first
+    page_view sent by gtag("config", id) above is never double-counted. */}
+{ANALYTICS?.vendors?.googleAnalytics?.id && (
+  <script is:inline>
+    document.addEventListener('astro:after-swap', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: window.location.href,
+        });
+      }
+    });
+  </script>
+)}

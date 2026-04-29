@@ -79,7 +79,7 @@ function formatDate(d?: Date) {
     </div>
 
     <!-- Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7" id="articles-grid">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="articles-grid">
       {posts.map((post) => {
         const cat = post.data.category ?? '';
         const label = categoryMap[cat] ?? cat;
@@ -91,45 +91,55 @@ function formatDate(d?: Date) {
         return (
           <article
             data-cat={cat}
-            class="article-card group flex flex-col"
+            class="article-card group flex flex-col border border-zinc-300 bg-white hover:shadow-sm transition-shadow duration-200"
           >
-            <!-- Cover image -->
-            <a href={href} class="block overflow-hidden rounded-xl mb-4" style="aspect-ratio: 16/9;">
+            <!-- Cover image — flush to card edges, no radius -->
+            <a href={href} class="block overflow-hidden shrink-0" style="aspect-ratio: 16/9;">
               {img ? (
                 <img
                   src={typeof img === 'string' ? img : (img as any).src ?? img}
                   alt={post.data.title}
-                  class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                  class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                   loading="lazy"
                 />
               ) : (
                 <div class="w-full h-full bg-gradient-to-br from-zinc-800 via-zinc-700 to-emerald-900 flex items-end p-5">
-                  <span class="text-xs font-semibold tracking-widest uppercase text-emerald-400 opacity-80">
+                  <span class="text-[10px] font-semibold tracking-widest uppercase text-emerald-400 opacity-80">
                     {label || 'Article'}
                   </span>
                 </div>
               )}
             </a>
 
-            <!-- Card body -->
-            <div class="flex flex-col flex-1">
-              <!-- Meta row -->
-              <div class="flex items-center gap-2 text-xs text-zinc-400 mb-2">
-                <span>{date}</span>
-                <span>·</span>
-                <span>{mins} min read</span>
+            <!-- Card body with generous padding -->
+            <div class="flex flex-col flex-1 px-5 pt-5 pb-6">
+              <!-- Author / meta row -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full bg-zinc-200 flex items-center justify-center shrink-0">
+                    <svg class="w-3.5 h-3.5 text-zinc-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                    </svg>
+                  </div>
+                  <span class="text-xs text-zinc-500">{date} &nbsp;·&nbsp; {mins} min read</span>
+                </div>
+                <div class="w-5 h-5 flex items-center justify-center opacity-30 hover:opacity-60 cursor-pointer">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/>
+                  </svg>
+                </div>
               </div>
 
               <!-- Title -->
-              <a href={href} class="block mb-2">
-                <h2 class="text-base font-bold text-zinc-900 leading-snug group-hover:text-emerald-700 transition-colors duration-150 line-clamp-2">
+              <a href={href} class="block mb-2.5">
+                <h2 class="text-[15px] font-bold text-zinc-900 leading-snug group-hover:text-emerald-700 transition-colors duration-150">
                   {post.data.title}
                 </h2>
               </a>
 
               <!-- Excerpt -->
               {post.data.excerpt && (
-                <p class="text-sm text-zinc-500 leading-relaxed line-clamp-2">
+                <p class="text-sm text-zinc-500 leading-relaxed line-clamp-3 flex-1">
                   {post.data.excerpt}
                 </p>
               )}

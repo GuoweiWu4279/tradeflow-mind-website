@@ -19,11 +19,6 @@ The real edge is not informational. It is psychological infrastructure.
 
 ---
 
-<figure style="max-width:520px;margin:2.5rem auto;text-align:center">
-  <img src="/images/articles/institutional-vs-retail.jpg" alt="Institutional vs retail trading infrastructure" style="width:100%;border-radius:4px" />
-  <figcaption style="font-size:0.82rem;color:#a1a1aa;margin-top:0.6rem;line-height:1.5">Institutional desks operate inside systems that enforce discipline. Retail traders operate inside systems that don't.</figcaption>
-</figure>
-
 ## What Institutional Trading Actually Looks Like
 
 A trader at a hedge fund or a prop desk does not sit down in the morning and decide, based on how they feel, whether to stick to their risk limits today.

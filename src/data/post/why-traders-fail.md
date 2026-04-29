@@ -21,11 +21,6 @@ Below are the five factors that most reliably predict trading failure, drawn fro
 
 ---
 
-<figure style="max-width:520px;margin:2.5rem auto;text-align:center">
-  <img src="/images/articles/why-traders-fail.jpg" alt="The structural reasons traders fail" style="width:100%;border-radius:4px" />
-  <figcaption style="font-size:0.82rem;color:#a1a1aa;margin-top:0.6rem;line-height:1.5">Trading failure is rarely a strategy problem. It is almost always a structural and behavioral one.</figcaption>
-</figure>
-
 ## 1. Undefined Risk Parameters
 
 The single most consistent predictor of trading failure is the absence of predetermined, hard limits on risk. This encompasses position sizing, maximum daily drawdown, and maximum loss per trade.

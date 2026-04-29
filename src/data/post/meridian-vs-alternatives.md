@@ -2,7 +2,7 @@
 title: "Trade Journals, Analytics Platforms, and Risk Management Tools: An Honest Assessment — 2026"
 excerpt: "A detailed look at the most widely used retail trading software across three distinct categories. Each tool is evaluated on its own terms — what it was built to do, how well it does it, and where it falls short."
 publishDate: 2026-04-29T00:00:00Z
-image: /images/articles/institutional-vs-retail.jpg
+image: /images/articles/comparison.jpg
 category: 'risk-management'
 tags: ['risk management', 'trading tools', 'comparison', 'trading psychology', 'NinjaTrader', 'trade journal']
 metadata:

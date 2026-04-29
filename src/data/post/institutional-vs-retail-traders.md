@@ -97,6 +97,8 @@ But they can do several things that significantly close the gap.
 
 **Build in external accountability.** Even an informal version of this — a trading partner, a public commitment, a structured review process — changes behavior more than internal resolve alone. The accountability does not need to come from a risk manager. It needs to come from somewhere other than yourself.
 
+**Use software-level enforcement where available.** The manual suggestions above reduce the problem. They do not eliminate it, because they still depend on the trader to remember and execute them under pressure. The furthest a retail trader can go is removing that dependency entirely. Some trading platforms allow third-party tools that monitor behavioral signals in real time and automatically halt trading when predefined thresholds are reached — functioning, in a limited but meaningful way, as a software-level risk desk. This does not replicate an institutional infrastructure. But it does eliminate the on-the-fly negotiation that causes the most damage, which is the part that matters.
+
 ---
 
 ## The Deeper Asymmetry
@@ -113,4 +115,4 @@ The gap between institutional and retail is real, and most of it is not closable
 
 ---
 
-*The author trades futures independently. This article reflects personal research and observations and does not constitute financial advice.*
+*The author trades futures independently. This article reflects personal research and observations and does not constitute financial advice. The author also developed [Meridian](https://www.meridianpsi.com), a real-time behavioral monitor and automated risk management add-on for NinjaTrader 8, built to function as the software-level commitment device described in this article.*

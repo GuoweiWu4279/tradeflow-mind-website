@@ -79,8 +79,10 @@ Memory reconstructs confidence. Traders who rely on recollection rather than con
 
 All five of these failure modes share a structural characteristic: they occur in the gap between a trader's stated rules and their actual behavior in the moment. That gap is not a character flaw. It is a design problem. Systems that close the gap — through pre-session rule-setting, automated enforcement, and systematic review — consistently outperform systems that rely on the trader to exercise willpower under pressure.
 
+The most reliable way to close that gap is to remove the decision from the moment entirely. When rules are enforced by something external — a system, a tool, a hard constraint that does not negotiate — the failure mode disappears not because the trader became more disciplined, but because the environment stopped requiring them to be.
+
 The market does not care how disciplined a trader believes themselves to be. It only responds to what they actually do.
 
 ---
 
-*This article draws on research in behavioral finance and decision science, including work by Daniel Kahneman, Amos Tversky, and Terrance Odean. Data on retail trader outcomes is sourced from studies published in the Journal of Finance and Journal of Financial Economics.*
+*This article draws on research in behavioral finance and decision science, including work by Daniel Kahneman, Amos Tversky, and Terrance Odean. Data on retail trader outcomes is sourced from studies published in the Journal of Finance and Journal of Financial Economics. The author also developed [Meridian](https://www.meridianpsi.com), a real-time behavioral monitor and automated risk management add-on for NinjaTrader 8, built specifically to address the structural failure modes described here.*

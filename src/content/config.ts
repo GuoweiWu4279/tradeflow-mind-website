@@ -83,7 +83,7 @@ const faqCollection = defineCollection({
   loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/faq' }),
   schema: z.object({
     question: z.string(),
-    category: z.enum(['installation', 'trading', 'billing', 'technical', 'general']),
+    category: z.enum(['psychology', 'installation', 'trading', 'billing', 'technical', 'general']),
     order: z.number().default(99),
   }),
 });

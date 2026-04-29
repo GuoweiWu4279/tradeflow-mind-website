@@ -13,4 +13,4 @@ Meridian's PSI runs from 0 to 100:
 - **Caution (55–87):** One or more behavioral patterns are building pressure. This is the zone where pausing and reassessing is worth considering.
 - **Critical (0–54):** Sustained psychological distress signals are present across multiple dimensions. This is a clear prompt to stop trading and review.
 
-The score is calculated from seven independent behavioral dimensions — including revenge entry detection, stop manipulation, position sizing, hold-time bias, and overtrading pace — using your own trading history as the baseline, not industry averages. The system becomes more accurate as it accumulates more sessions from your specific trading style.
+The score is calculated from [seven independent behavioral dimensions](/features#seven-dimensions) — including revenge entry detection, stop manipulation, position sizing, hold-time bias, and overtrading pace — using your own trading history as the baseline, not industry averages. The system becomes more accurate as it accumulates more sessions from your specific trading style. Learn more on the [Features page](/features#live-psi).

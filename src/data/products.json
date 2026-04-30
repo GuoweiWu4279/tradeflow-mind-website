@@ -15,13 +15,13 @@
   },
   "pricing": {
     "currency": "USD",
-    "price": 24.99,
+    "price": 49.99,
     "billing": "monthly subscription",
     "trialDays": 7,
     "cancelAnytime": true
   },
   "purchase": {
-    "checkoutUrl": "https://whop.com/checkout/plan_3g3DzRG6iLVr8",
+    "checkoutUrl": "https://whop.com/checkout/plan_4Z0XZqQl7TaDH",
     "checkoutPath": "/checkout",
     "supportEmail": "contactmeridianpsi@gmail.com",
     "salesEmail": "contactmeridianpsi@gmail.com"

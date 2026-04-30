@@ -9,7 +9,7 @@ import pricing from '~/data/pricing.json';
 const metadata = {
   title: 'Pricing — Meridian',
   description:
-    'Meridian pricing: from $24.99/month after a 7-day free trial. Trading involves substantial risk.',
+    'Meridian pricing: from $49.99/month after a 7-day free trial. Trading involves substantial risk.',
 };
 
 const { tiers, footnote, headline, subhead } = pricing;
@@ -34,7 +34,7 @@ const [standard, guard] = tiers;
       >
         Annual
         <span class="ml-2 inline-block rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold px-2 py-0.5">
-          Save ~$60/yr
+          Save ~$120/yr
         </span>
       </button>
     </div>
@@ -220,7 +220,7 @@ const [standard, guard] = tiers;
   >
     <Fragment slot="title">Try Meridian free for seven days</Fragment>
     <Fragment slot="subtitle">
-      Full product access during the trial. Monthly at $24.99 or annual at $239.88/year. NinjaTrader 8 is required.
+      Full product access during the trial. Monthly at $49.99 or annual at $479.90/year. NinjaTrader 8 is required.
       <span class="block text-xs text-muted mt-2">Trading involves substantial risk of loss. Meridian does not guarantee trading results.</span>
     </Fragment>
   </CallToAction>
@@ -242,10 +242,10 @@ const [standard, guard] = tiers;
   const guardAnnualNote   = document.getElementById('guard-annual-note');
   const guardCta          = document.getElementById('guard-cta') as HTMLAnchorElement;
 
-  const MONTHLY_URL       = 'https://whop.com/checkout/plan_3g3DzRG6iLVr8';
+  const MONTHLY_URL       = 'https://whop.com/checkout/plan_4Z0XZqQl7TaDH';
   const ANNUAL_URL        = 'https://whop.com/checkout/plan_JhWetoQ39OCNz';
   const GUARD_MONTHLY_URL = 'https://whop.com/checkout/plan_ZHX4ySB65fahf';
-  const GUARD_ANNUAL_URL  = 'https://whop.com/checkout/plan_MGCcEbDRslnpn';
+  const GUARD_ANNUAL_URL  = 'https://whop.com/checkout/plan_frPOgHtDTvBkR';
 
   function setMonthly() {
     btnMonthly.classList.add('bg-white', 'text-zinc-900', 'shadow-sm');

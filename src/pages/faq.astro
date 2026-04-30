@@ -7,6 +7,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 const metadata = {
   title: 'FAQ — Meridian',
   description: 'Frequently asked questions about Meridian — installation, pricing, trading, privacy, and support.',
+  robots: { index: true, follow: true },
 };
 
 const allFaqs = await getCollection('faq');
@@ -46,11 +47,13 @@ const faqJsonLd = {
     },
   })),
 };
+
+const faqJsonLdHtml = JSON.stringify(faqJsonLd).replace(/</g, '\\u003c');
 ---
 
 <Layout metadata={metadata}>
   <!-- FAQPage structured data for GEO (Gemini / ChatGPT / Perplexity) -->
-  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  <script type="application/ld+json" set:html={faqJsonLdHtml} />
   <HeroText
     title="Frequently Asked Questions"
     subtitle="Can't find what you're looking for? Contact us at contactmeridianpsi@gmail.com"

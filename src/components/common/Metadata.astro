@@ -29,8 +29,9 @@ const seoProps: AstroSeoProps = merge(
     title: '',
     titleTemplate: '%s',
     canonical: canonical,
-    noindex: true,
-    nofollow: true,
+    /* Public-site default: indexable. Page + config layers override via merge. */
+    noindex: false,
+    nofollow: false,
     description: undefined,
     openGraph: {
       url: canonical,

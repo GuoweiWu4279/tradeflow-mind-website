@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
-  "releaseDate": "2026-04-12",
-  "downloadUrl": "https://www.meridianpsi.com/downloads/Meridian_PSI_Monitor_V1.0.0.zip",
+  "version": "1.1.0",
+  "releaseDate": "2026-05-01",
+  "downloadUrl": "https://www.meridianpsi.com/downloads/MeridianPSI_V1.1.0.zip",
   "releasesUrl": "https://www.meridianpsi.com/releases",
-  "notes": "Initial public release of Meridian for NinjaTrader 8"
+  "notes": "HUD redesign, session journal workflow, guard system improvements, and bug fixes"
 }

@@ -11,9 +11,51 @@ const metadata = {
   description:
     'See how Meridian works: live PSI, seven behavioral signals, session review, personal baselines, adaptable profiles, and fully local privacy.',
 };
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Meridian",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Trading Psychology Monitor",
+  "operatingSystem": "Windows 10 or later",
+  "description": "Meridian is a real-time behavioral and psychological stability monitor for active traders on NinjaTrader 8. It tracks seven behavioral dimensions and computes a live Psychological Stability Index (PSI) entirely on your PC with no cloud dependency.",
+  "url": "https://www.meridianpsi.com",
+  "featureList": [
+    "Real-time Psychological Stability Index (PSI) — updates in under 100ms after every execution",
+    "Seven independent behavioral signal dimensions: Revenge Entry, Stop Manipulation, Size Spike, Hold Bias, Position Overstay, Rule Violations, Overtrading Pace",
+    "Personal adaptive baseline — calibrates from your own session history",
+    "Session review with Composure score and P&L correlation",
+    "Meridian Guard — six trigger conditions and five action levels including automated broker disconnect",
+    "Intel Layer — monthly behavioral digest, weekday patterns, Today's Risk Brief",
+    "100% local — no cloud, no telemetry, no external accounts",
+    "5-year local session history",
+    "NinjaTrader 8 native add-on"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "24.99",
+    "priceCurrency": "USD",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "24.99",
+      "priceCurrency": "USD",
+      "billingDuration": "P1M"
+    }
+  },
+  "softwareVersion": "1.0.0",
+  "releaseNotes": "https://www.meridianpsi.com/releases",
+  "requirements": "NinjaTrader 8 (64-bit), Windows 10 or later, 4 GB RAM",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Meridian",
+    "url": "https://www.meridianpsi.com"
+  }
+});
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={schemaJson} />
   <HeroText
     tagline="How Meridian works"
     title="See behavioral pressure live. Review it after the session."

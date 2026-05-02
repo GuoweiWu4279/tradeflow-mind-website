@@ -49,6 +49,10 @@ export const headerData = {
           href: getPermalink('/articles'),
         },
         {
+          text: 'Glossary',
+          href: getPermalink('/glossary'),
+        },
+        {
           text: 'Affiliate Program',
           href: getPermalink('/affiliate'),
         },
@@ -80,6 +84,8 @@ export const footerData = {
         { text: 'Support', href: getPermalink('/support') },
         { text: 'Account', href: getPermalink('/account') },
         { text: 'FAQ', href: getPermalink('/faq') },
+        { text: 'Articles', href: getPermalink('/articles') },
+        { text: 'Glossary', href: getPermalink('/glossary') },
         { text: 'System requirements', href: getPermalink('/releases#requirements') },
         { text: 'Affiliate Program', href: getPermalink('/affiliate') },
       ],

@@ -2,7 +2,7 @@
 title: "NinjaTrader 8 Risk Management: Built-in Controls vs. Behavioral Monitoring Add-Ons"
 excerpt: "NinjaTrader 8's native risk controls are real and useful. But they operate at the order level, not the behavioral level. Understanding the difference determines which type of failure each one can and cannot prevent."
 publishDate: 2026-05-01T12:00:00Z
-image: /images/articles/nt8-risk-management.jpg
+author: "Meridian"
 category: 'risk-management'
 tags: ['NinjaTrader 8', 'NinjaTrader risk management', 'NT8 add-ons', 'trading risk controls', 'position sizing', 'automated trading', 'behavioral finance']
 metadata:

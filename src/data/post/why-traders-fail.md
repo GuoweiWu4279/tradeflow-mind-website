@@ -2,6 +2,7 @@
 title: "The Top 5 Reasons Traders Actually Fail"
 excerpt: "Most traders who fail do not fail because their strategy was wrong. They fail because of five structural problems that have nothing to do with market analysis — and everything to do with how decisions are made under pressure."
 publishDate: 2026-04-28T12:00:00Z
+author: "Meridian"
 image: /images/articles/why-traders-fail.jpg
 category: 'trading-psychology'
 tags: ['trading psychology', 'risk management', 'discipline', 'trading failure', 'behavioral finance']

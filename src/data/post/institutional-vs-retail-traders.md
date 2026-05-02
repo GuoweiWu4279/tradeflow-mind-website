@@ -2,6 +2,7 @@
 title: "Why Retail Traders Lose: The Institutional Advantage Nobody Talks About"
 excerpt: "The gap between institutional and retail traders isn't capital or information. It's infrastructure. One side has systems that make discipline automatic. The other relies entirely on willpower."
 publishDate: 2026-04-28T00:00:00Z
+author: "Meridian"
 image: /images/articles/institutional-vs-retail.jpg
 category: 'trading-psychology'
 tags: ['trading psychology', 'risk management', 'institutional trading', 'prop trading', 'discipline']

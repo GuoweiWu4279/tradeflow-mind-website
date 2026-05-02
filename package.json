@@ -1,7 +1,7 @@
 {
-  "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.52",
-  "description": "AstroWind: A free template using Astro 5.0 and Tailwind CSS. Astro starter theme.",
+  "name": "meridian-psi-website",
+  "version": "1.0.0",
+  "description": "Official website for Meridian — real-time psychological stability index for NinjaTrader 8 traders.",
   "type": "module",
   "private": true,
   "engines": {

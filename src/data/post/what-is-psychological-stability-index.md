@@ -2,7 +2,7 @@
 title: "What Is a Psychological Stability Index (PSI) in Trading?"
 excerpt: "The Psychological Stability Index is a composite real-time score that measures a trader's behavioral stability during a live session — computed from seven independent signal dimensions, updated in under 100 milliseconds after every execution."
 publishDate: 2026-05-01T10:00:00Z
-image: /images/articles/psi-explainer.jpg
+author: "Meridian"
 category: 'trading-psychology'
 tags: ['psychological stability index', 'PSI', 'trading psychology', 'behavioral finance', 'real-time monitoring', 'NinjaTrader']
 metadata:

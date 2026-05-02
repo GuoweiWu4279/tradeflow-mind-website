@@ -2,7 +2,7 @@
 title: "How to Stop Revenge Trading: Why Willpower Fails and What Actually Works"
 excerpt: "Revenge trading is not a discipline problem. It is a structural problem — and it has a structural solution. Understanding the neurological mechanism behind it changes what kind of intervention is actually effective."
 publishDate: 2026-05-01T11:00:00Z
-image: /images/articles/revenge-trading.jpg
+author: "Meridian"
 category: 'trading-psychology'
 tags: ['revenge trading', 'overtrading prevention', 'trading psychology', 'behavioral finance', 'emotional trading', 'risk management', 'NinjaTrader']
 metadata:

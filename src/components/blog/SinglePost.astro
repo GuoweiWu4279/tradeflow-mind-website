@@ -13,7 +13,41 @@ export interface Props {
 const { post, url } = Astro.props;
 
 const mins = post.readingTime ?? null;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.excerpt ?? '',
+  datePublished: post.publishDate instanceof Date ? post.publishDate.toISOString() : String(post.publishDate),
+  ...(post.updateDate
+    ? { dateModified: post.updateDate instanceof Date ? post.updateDate.toISOString() : String(post.updateDate) }
+    : {}),
+  author: {
+    '@type': 'Organization',
+    name: post.author ?? 'Meridian',
+    url: 'https://www.meridianpsi.com',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Meridian',
+    url: 'https://www.meridianpsi.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.meridianpsi.com/meridian-logo.png',
+    },
+  },
+  url: String(url),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': String(url),
+  },
+  ...(post.image && typeof post.image === 'string' ? { image: `https://www.meridianpsi.com${post.image}` } : {}),
+  ...(post.tags && post.tags.length > 0 ? { keywords: post.tags.join(', ') } : {}),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
 <!-- Off-white newspaper background -->
 <div class="bg-zinc-50 min-h-screen">

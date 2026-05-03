@@ -1,0 +1,120 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Security & Privacy — Meridian',
+  description:
+    'Meridian stores all session data locally on your PC. No cloud, no broker credentials, no trade data leaves your machine. Understand exactly what the software does and does not do.',
+  robots: { index: true, follow: true },
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Header -->
+      <div class="mb-14">
+        <p class="text-[11px] font-semibold tracking-[0.15em] uppercase mb-3" style="color:#059669;">Security & Privacy</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight tracking-tight mb-5">
+          Your data never<br />leaves your machine.
+        </h1>
+        <p class="text-base text-zinc-500 leading-relaxed max-w-xl">
+          Meridian runs entirely inside NinjaTrader 8 on your Windows PC. There is no cloud backend,
+          no external data collection, and no requirement to share credentials with any party other
+          than your existing broker and NinjaTrader license.
+        </p>
+      </div>
+
+      <!-- Section 1: What Meridian stores -->
+      <div class="mb-12 border-t border-zinc-100 pt-10">
+        <h2 class="text-lg font-bold text-zinc-900 mb-4">What Meridian stores — and where</h2>
+        <ul class="space-y-3 text-sm text-zinc-600 leading-relaxed">
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-zinc-800">Session behavioral data</strong> — PSI scores, signal readings, composure grades, trade counts, and timestamps. Stored in a local database on your Windows PC.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-zinc-800">Your configuration</strong> — Guard rules, session parameters, baseline preferences. Stored locally in NinjaTrader's standard add-on data path.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-zinc-800">Up to 5 years of history</strong> — all stored on your machine. Uninstalling Meridian removes the software; your local data files remain under your control unless you delete them.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 2: What it does NOT do -->
+      <div class="mb-12 border-t border-zinc-100 pt-10">
+        <h2 class="text-lg font-bold text-zinc-900 mb-4">What Meridian does not do</h2>
+        <ul class="space-y-3 text-sm text-zinc-600 leading-relaxed">
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span><strong class="text-zinc-800">Does not transmit your trade data</strong> — fills, P&amp;L, positions, and account details never leave NinjaTrader's local environment through Meridian.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span><strong class="text-zinc-800">Does not require broker credentials</strong> — Meridian reads execution data from NinjaTrader's internal data layer, not directly from your broker's API. No passwords or API keys are ever passed to Meridian.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span><strong class="text-zinc-800">Does not auto-liquidate positions</strong> — Guard can block new order entry and, at the highest enforcement level, disconnect the broker connection (which prevents new orders but does not force-close open trades). Closing existing positions always remains in your hands.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span><strong class="text-zinc-800">Does not provide trading signals</strong> — PSI is a behavioral stability score, not a directional indicator. Meridian generates no buy or sell signals and offers no investment advice.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span><strong class="text-zinc-800">Does not use third-party analytics or telemetry</strong> — no usage events, crash reports, or behavioral analytics are sent to external services. The software has no built-in tracking.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 3: The only external connection -->
+      <div class="mb-12 border-t border-zinc-100 pt-10">
+        <h2 class="text-lg font-bold text-zinc-900 mb-4">The only external connection</h2>
+        <p class="text-sm text-zinc-600 leading-relaxed mb-3">
+          Meridian makes one type of external network request: <strong class="text-zinc-800">license validation via Whop</strong>.
+          When Meridian starts, it checks that your subscription is active. This request contains only a license identifier — no trade data, no account information, and no personally identifiable information beyond what Whop holds as your subscription provider.
+        </p>
+        <p class="text-sm text-zinc-600 leading-relaxed">
+          If you have questions about how Whop handles subscription data, their privacy policy is available at
+          <a href="https://whop.com/privacy" target="_blank" rel="noopener noreferrer" class="text-emerald-700 underline hover:text-emerald-900">whop.com/privacy</a>.
+        </p>
+      </div>
+
+      <!-- Section 4: Guard enforcement boundaries -->
+      <div class="mb-12 border-t border-zinc-100 pt-10">
+        <h2 class="text-lg font-bold text-zinc-900 mb-4">What Guard enforces — and what it cannot touch</h2>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-5 text-sm text-zinc-600 leading-relaxed space-y-3">
+          <p><strong class="text-zinc-800">Guard blocks new order entry</strong> at the NinjaTrader platform level when a configured threshold is crossed. It intercepts the order before it is submitted — it does not interfere with orders already in the market.</p>
+          <p><strong class="text-zinc-800">Guard does not force-close open positions.</strong> If Guard locks new entries while you have a live trade, you can still exit that trade normally through NinjaTrader. The lockout applies to new entries only.</p>
+          <p><strong class="text-zinc-800">Broker disconnect mode</strong> (the highest enforcement level) terminates NinjaTrader's broker connection. This prevents all new order activity — including exits — until you reconnect. This mode is an advanced option intended for situations where full disengagement from the market is desired. It should be understood and tested in simulation before being used live.</p>
+        </div>
+      </div>
+
+      <!-- Section 5: NinjaTrader relationship -->
+      <div class="mb-12 border-t border-zinc-100 pt-10">
+        <h2 class="text-lg font-bold text-zinc-900 mb-4">Relationship to NinjaTrader</h2>
+        <p class="text-sm text-zinc-600 leading-relaxed">
+          Meridian is an independent third-party add-on for NinjaTrader 8. It is not affiliated with, endorsed by, or
+          supported by NinjaTrader LLC. NinjaTrader® is a registered trademark of NinjaTrader LLC. Meridian installs
+          through NinjaTrader's standard add-on import process and operates within the permissions that NinjaTrader
+          makes available to all add-on developers.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="border-t border-zinc-100 pt-10">
+        <p class="text-sm text-zinc-500">
+          Questions about data handling or security?
+          <a href="/support" class="text-emerald-700 underline hover:text-emerald-900">Contact us</a> —
+          we'll get back to you within 24 hours.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</Layout>

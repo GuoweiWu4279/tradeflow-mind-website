@@ -276,8 +276,8 @@ const homePageJsonLdHtml = JSON.stringify(homePageJsonLd).replace(/</g, '\\u003c
           </div>
           <!-- Title with word-blur animation -->
           <h1 class="text-5xl md:text-6xl lg:text-[4.25rem] font-bold leading-[1.08] tracking-tight mb-5 word-blur-target" style="color:#18181b;">
-            Every trader has a plan.<br />
-            <span style="color:#059669;">The market's job is to make you forget it.</span>
+            Stop mistakes<br />
+            <span style="color:#059669;">before they reach the order window.</span>
           </h1>
           <p class="text-sm md:text-base font-medium leading-snug max-w-xl mx-auto mb-6 fade-up" style="color:#3f3f46;">
             Trading without a risk management system is like working on a skyscraper without a safety harness.
@@ -289,7 +289,7 @@ const homePageJsonLdHtml = JSON.stringify(homePageJsonLd).replace(/</g, '\\u003c
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row sm:justify-center gap-3 fade-up">
             <a href="/pricing" class="btn btn-lg font-semibold" style="background:#059669; color:white; border:1px solid #059669;">Start free trial</a>
-            <a href="#how-it-works" class="btn btn-lg font-semibold" style="border:1.5px solid rgba(0,0,0,0.2); color:#18181b; background:transparent;">How it works</a>
+            <a href="#video-demo" class="btn btn-lg font-semibold" style="border:1.5px solid rgba(0,0,0,0.2); color:#18181b; background:transparent;">Watch demo</a>
           </div>
         </div>
       </div>
@@ -364,7 +364,7 @@ const homePageJsonLdHtml = JSON.stringify(homePageJsonLd).replace(/</g, '\\u003c
   </section>
 
   <!-- ——— VIDEO DEMO ——— -->
-  <section class="py-16 md:py-20 px-6 bg-white border-b border-zinc-100">
+  <section id="video-demo" class="py-16 md:py-20 px-6 bg-white border-b border-zinc-100">
     <div class="max-w-3xl mx-auto text-center">
       <!-- Eyebrow -->
       <p class="text-[11px] font-semibold tracking-[0.15em] uppercase mb-3 fade-up" style="color:#059669;">See It In Action</p>
@@ -426,6 +426,87 @@ const homePageJsonLdHtml = JSON.stringify(homePageJsonLd).replace(/</g, '\\u003c
       facade.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') play(); });
     }
   </script>
+
+  <!-- ——— MERIDIAN GUARD — mini-hero: hook + CTA, no product screenshots ——— -->
+  <section
+    id="meridian-guard"
+    class="section border-y border-zinc-200/60 dark:border-zinc-800 overflow-hidden bg-gradient-to-br from-zinc-50 via-zinc-100/90 to-emerald-50/50 dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-800/80"
+  >
+    <div class="container-wide max-w-6xl">
+      <div class="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-10 lg:gap-14 items-center">
+        <div class="text-center lg:text-left">
+          <div
+            class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-6 rounded-full"
+            style="border-color: rgba(5,150,105,0.35); background: rgba(5,150,105,0.07);"
+          >
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#059669;" aria-hidden="true"></span>
+            <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#059669;">Meridian Guard</span>
+          </div>
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.12] mb-5 text-balance"
+          >
+            You write the rules.{' '}
+            <span class="text-emerald-700 dark:text-emerald-500">Guard enforces them.</span>
+          </h2>
+          <p class="text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6">
+            Willpower isn&apos;t a risk strategy. Guard acts as your personal compliance system, automatically enforcing
+            your limits the moment your psychological stability drops.
+          </p>
+          <div
+            class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-8"
+            aria-label="Guard at a glance"
+          >
+            <span
+              class="inline-flex items-center rounded-full border border-zinc-200/90 bg-zinc-100/70 dark:border-zinc-700/90 dark:bg-zinc-800/50 px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300"
+              >6 behavioral triggers</span
+            >
+            <span
+              class="inline-flex items-center rounded-full border border-zinc-200/90 bg-zinc-100/70 dark:border-zinc-700/90 dark:bg-zinc-800/50 px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300"
+              >5 automated responses</span
+            >
+            <span
+              class="inline-flex items-center rounded-full border border-zinc-200/90 bg-zinc-100/70 dark:border-zinc-700/90 dark:bg-zinc-800/50 px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300"
+              >100% local execution</span
+            >
+          </div>
+          <a href="/guard" class="btn-primary btn-lg w-full sm:w-auto inline-flex justify-center">
+            Explore Meridian Guard
+            <svg class="ml-1.5 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <div
+          class="relative mx-auto w-full max-w-md aspect-[4/3] rounded-2xl border border-zinc-200/80 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 shadow-lg shadow-zinc-900/5 ring-1 ring-zinc-900/[0.04] backdrop-blur-sm flex items-center justify-center overflow-hidden"
+          aria-hidden="true"
+        >
+          <div class="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-emerald-500/20 blur-3xl"></div>
+          <div class="absolute -bottom-20 -left-16 w-56 h-56 rounded-full bg-zinc-400/15 blur-2xl"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="relative w-[min(55%,200px)] aspect-square flex items-center justify-center">
+              <div class="absolute inset-0 rounded-3xl border-2 border-emerald-500/20 rotate-6"></div>
+              <div class="absolute inset-2 rounded-3xl border border-zinc-200/80 dark:border-zinc-600 -rotate-3"></div>
+              <svg
+                class="w-[45%] text-emerald-600 dark:text-emerald-500 drop-shadow-sm"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.25"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ——— ROADMAP / HOW IT WORKS ——— -->
   <section id="how-it-works" class="section border-y border-zinc-200/80 bg-white">
@@ -780,96 +861,15 @@ const homePageJsonLdHtml = JSON.stringify(homePageJsonLd).replace(/</g, '\\u003c
     </div>
   </section>
 
-  <!-- ——— MERIDIAN GUARD — mini-hero: hook + CTA, no product screenshots ——— -->
-  <section
-    id="meridian-guard"
-    class="section border-y border-zinc-200/60 dark:border-zinc-800 overflow-hidden bg-gradient-to-br from-zinc-50 via-zinc-100/90 to-emerald-50/50 dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-800/80"
-  >
-    <div class="container-wide max-w-6xl">
-      <div class="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-10 lg:gap-14 items-center">
-        <div class="text-center lg:text-left">
-          <div
-            class="inline-flex items-center gap-2.5 border px-4 py-1.5 mb-6 rounded-full"
-            style="border-color: rgba(5,150,105,0.35); background: rgba(5,150,105,0.07);"
-          >
-            <span class="w-1.5 h-1.5 rounded-full" style="background:#059669;" aria-hidden="true"></span>
-            <span class="text-[11px] font-semibold tracking-[0.15em] uppercase" style="color:#059669;">Meridian Guard</span>
-          </div>
-          <h2
-            class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.12] mb-5 text-balance"
-          >
-            You write the rules.{' '}
-            <span class="text-emerald-700 dark:text-emerald-500">Guard enforces them.</span>
-          </h2>
-          <p class="text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6">
-            Willpower isn&apos;t a risk strategy. Guard acts as your personal compliance system, automatically enforcing
-            your limits the moment your psychological stability drops.
-          </p>
-          <div
-            class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-8"
-            aria-label="Guard at a glance"
-          >
-            <span
-              class="inline-flex items-center rounded-full border border-zinc-200/90 bg-zinc-100/70 dark:border-zinc-700/90 dark:bg-zinc-800/50 px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300"
-              >6 behavioral triggers</span
-            >
-            <span
-              class="inline-flex items-center rounded-full border border-zinc-200/90 bg-zinc-100/70 dark:border-zinc-700/90 dark:bg-zinc-800/50 px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300"
-              >5 automated responses</span
-            >
-            <span
-              class="inline-flex items-center rounded-full border border-zinc-200/90 bg-zinc-100/70 dark:border-zinc-700/90 dark:bg-zinc-800/50 px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300"
-              >100% local execution</span
-            >
-          </div>
-          <a href="/guard" class="btn-primary btn-lg w-full sm:w-auto inline-flex justify-center">
-            Explore Meridian Guard
-            <svg class="ml-1.5 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-
-        <div
-          class="relative mx-auto w-full max-w-md aspect-[4/3] rounded-2xl border border-zinc-200/80 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 shadow-lg shadow-zinc-900/5 ring-1 ring-zinc-900/[0.04] backdrop-blur-sm flex items-center justify-center overflow-hidden"
-          aria-hidden="true"
-        >
-          <div class="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-emerald-500/20 blur-3xl"></div>
-          <div class="absolute -bottom-20 -left-16 w-56 h-56 rounded-full bg-zinc-400/15 blur-2xl"></div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="relative w-[min(55%,200px)] aspect-square flex items-center justify-center">
-              <div class="absolute inset-0 rounded-3xl border-2 border-emerald-500/20 rotate-6"></div>
-              <div class="absolute inset-2 rounded-3xl border border-zinc-200/80 dark:border-zinc-600 -rotate-3"></div>
-              <svg
-                class="w-[45%] text-emerald-600 dark:text-emerald-500 drop-shadow-sm"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.25"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ——— TESTIMONIALS ——— -->
   <section class="py-20 md:py-28 bg-gradient-to-b from-zinc-100/80 via-zinc-50 to-white border-y border-zinc-200/70 dark:from-zinc-900 dark:via-zinc-900/80 dark:to-zinc-900 dark:border-zinc-800 overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 mb-14 text-center">
       <p class="eyebrow mb-4 fade-up">What traders say</p>
       <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 fade-up">
-        From traders who've been there
+        From early access users
       </h2>
       <p class="text-xs text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto mt-4 leading-relaxed fade-up">
-        Short quotes in users' own words. Stars are decorative only — not a third-party rating or verified endorsement.
+        Quotes from real early access users in their own words. Stars are decorative only and do not represent a verified rating.
       </p>
     </div>
 

@@ -22,6 +22,10 @@ export const headerData = {
           text: 'Releases',
           href: getPermalink('/releases'),
         },
+        {
+          text: 'Security & Privacy',
+          href: getPermalink('/trust'),
+        },
       ],
     },
     {
@@ -87,6 +91,7 @@ export const footerData = {
         { text: 'Articles', href: getPermalink('/articles') },
         { text: 'Glossary', href: getPermalink('/glossary') },
         { text: 'System requirements', href: getPermalink('/releases#requirements') },
+        { text: 'Security & Privacy', href: getPermalink('/trust') },
         { text: 'Affiliate Program', href: getPermalink('/affiliate') },
       ],
     },

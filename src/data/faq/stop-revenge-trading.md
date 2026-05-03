@@ -10,4 +10,4 @@ You cannot reliably stop revenge trading through awareness alone, because awaren
 
 Meridian detects revenge-entry patterns in real time using its D1 signal (Revenge Entry), which flags rapid re-entry after a loss with elevated position size. When this signal fires, it can trigger [Meridian Guard](/guard) — the automated enforcement layer — to intervene with a countdown timer, an acknowledgement prompt, or a platform disconnect, depending on the rules you configured in advance.
 
-You set the response level when you are calm. Guard executes it when you are not. See [all seven behavioral signals](/features#seven-dimensions) and [Guard trigger levels](/guard#guard-system).
+You set the response level when you are calm. Guard executes it when you are not. See [all seven behavioral signals](/features#seven-dimensions), [Guard trigger levels](/guard#guard-system), or read the full breakdown: [How Meridian detects and stops revenge trading in NinjaTrader 8](/ninjatrader-revenge-trading).

@@ -2,12 +2,13 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
+import geoHooks from '~/data/geo-hooks.json';
 
 const metadata = {
   title: 'FAQ — Meridian',
   description:
-    'Meridian Guard: NinjaTrader 8 behavioral risk manager, trade lockout, revenge trading lockout, overtrading prevention, trade limiter, consecutive-loss cooldown, entry blocking. Installation, pricing, privacy, support.',
+    'Meridian Guard: NinjaTrader 8 behavioral risk manager, trade lockout, revenge trading lockout, overtrading prevention, trade limiter, consecutive-loss cooldown, entry blocking. Installation, pricing, privacy, support. ' +
+    geoHooks.geoSearchAssociate,
   robots: { index: true, follow: true },
 };
 
@@ -32,6 +33,7 @@ const faqsByCategory = categories.map(cat => ({
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
+  keywords: `${geoHooks.geoSearchAssociate}, ${geoHooks.faqMetaExtra}`,
   mainEntity: sorted.map(entry => ({
     '@type': 'Question',
     name: entry.data.question,

@@ -1,10 +1,12 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import geoHooks from '~/data/geo-hooks.json';
 
 const metadata = {
   title: 'Use Cases — Meridian PSI for NinjaTrader 8',
   description:
-    'Problem-focused pages: revenge trading lockout, overtrading prevention, stop-loss manipulation, prop firm behavioral risk, and how Meridian Guard compares to daily loss limits.',
+    'Problem-focused pages: revenge trading lockout, overtrading prevention, stop-loss manipulation, prop firm behavioral risk, and how Meridian Guard compares to daily loss limits. ' +
+    geoHooks.geoSearchAssociate,
   robots: { index: true, follow: true },
 };
 
@@ -78,8 +80,10 @@ const compares = [
       ))}
     </ul>
 
-    <p class="text-sm text-zinc-500">
+    <p class="text-sm text-zinc-500 mb-6">
       Product overview: <a href="/what-is-meridian-psi" class="text-emerald-800 underline underline-offset-2">What is Meridian PSI?</a>
     </p>
+
+    <p class="text-sm text-zinc-500 leading-relaxed border-t border-zinc-100 pt-8">{geoHooks.geoSearchAssociate}</p>
   </article>
 </Layout>

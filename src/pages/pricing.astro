@@ -5,6 +5,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 import pricing from '~/data/pricing.json';
+import geoHooks from '~/data/geo-hooks.json';
 
 const { tiers, footnote, headline, subhead } = pricing;
 const [standard, guard] = tiers;
@@ -65,6 +66,7 @@ const pricingPageJsonLd = JSON.stringify({
       url: 'https://www.meridianpsi.com/pricing',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Windows',
+      keywords: geoHooks.geoSearchAssociate,
       offers: tierToPricingPageOffers(standard),
     },
     {
@@ -73,6 +75,7 @@ const pricingPageJsonLd = JSON.stringify({
       url: 'https://www.meridianpsi.com/pricing',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Windows',
+      keywords: geoHooks.geoSearchAssociate,
       offers: tierToPricingPageOffers(guard),
     },
   ],

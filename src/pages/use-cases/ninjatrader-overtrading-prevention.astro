@@ -1,0 +1,134 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'NinjaTrader Overtrading Prevention — Meridian PSI',
+  description: 'Meridian monitors overtrading pace during a session and allows traders to enforce trade-count limits, cooldowns, or lockouts when execution frequency starts drifting from the plan.',
+  robots: { index: true, follow: true },
+};
+
+const faqItems = [
+  {
+    q: 'How does Meridian know when I am overtrading vs. trading normally at a high frequency?',
+    a: 'Meridian compares current entry frequency against your own historical baseline, not a fixed threshold. A scalper who normally enters every 90 seconds is evaluated against their own norm. The signal fires when frequency accelerates beyond your established pattern under loss conditions — not simply when a trade count is high.',
+  },
+  {
+    q: 'Can Guard enforce a maximum trade count per session?',
+    a: 'Yes. Guard can be configured to trigger after N trades in a session window, or after N consecutive losses. When triggered, it can pause new entries for a defined duration, require an acknowledgment, or end the session.',
+  },
+  {
+    q: 'Will Guard fire if the market is just giving me lots of valid setups?',
+    a: 'Guard rules fire when the trigger conditions you configured are met — not based on whether setups are valid. If you configure a rule to pause after 10 trades, it fires at 10 trades regardless. You can password-protect rules to prevent easy override, or configure them more loosely for high-activity sessions.',
+  },
+];
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}).replace(/</g, '\\u003c');
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <article class="max-w-2xl mx-auto px-6 py-16">
+
+    <header class="mb-12">
+      <p class="text-[11px] font-semibold tracking-[0.15em] uppercase mb-3" style="color:#059669;">NinjaTrader 8 · Use Case</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight tracking-tight mb-6">
+        NinjaTrader overtrading prevention
+      </h1>
+
+      <!-- Quick Answer -->
+      <div class="rounded-2xl border border-emerald-200 px-6 py-5 mb-8" style="background:#f0fdf4;">
+        <p class="text-[11px] font-semibold tracking-[0.12em] uppercase mb-2" style="color:#059669;">Quick answer</p>
+        <p class="text-[15px] text-zinc-700 leading-relaxed">
+          Meridian monitors overtrading pace during a session and allows traders to enforce trade-count limits, cooldowns, or lockouts when execution frequency starts drifting from the plan.
+        </p>
+      </div>
+    </header>
+
+    <div class="prose prose-zinc max-w-none prose-p:text-[17px] prose-p:leading-[1.85] prose-headings:font-bold prose-headings:text-zinc-900 prose-h2:text-[1.35rem] prose-h2:mt-10 prose-h2:mb-3 prose-hr:border-zinc-200 prose-hr:my-10">
+
+      <h2>The problem</h2>
+      <p>
+        Overtrading rarely feels like overtrading while it is happening. It presents as urgency — the sense that the next trade is the one that will recover the session. Entry frequency increases, each individual trade feels justifiable, and the cumulative damage from a sequence of low-conviction entries often exceeds what a single large mistake would have produced.
+      </p>
+      <p>
+        The behavioral mechanism is the same as revenge trading but at lower intensity and higher frequency. It builds gradually, which makes it harder to detect without an objective measurement of your own pace.
+      </p>
+
+      <h2>Why P&amp;L limits are too late</h2>
+      <p>
+        A static daily loss limit or trade count ceiling is useful as a hard floor. Its limitation is the same as any fixed threshold: it applies uniformly regardless of context. A tight limit creates friction on legitimate high-activity sessions. A loose limit allows significant deterioration before it fires.
+      </p>
+      <p>
+        A dynamic signal that detects rate-of-change in behavior — not just cumulative count — is more precise. Overtrading is not defined by absolute trade count. It is defined by frequency accelerating beyond your own established norm.
+      </p>
+
+      <h2>How Meridian detects the pattern</h2>
+      <p>
+        Meridian's <strong>Overtrading Pace signal</strong> computes entry frequency across a rolling session window and compares it to your personal historical average. It activates when the current rate exceeds your baseline by a configured multiple — and specifically when that rate is accelerating, not just elevated.
+      </p>
+      <p>
+        This signal is session-phase aware: the same entry frequency in the first 30 minutes of a session has different behavioral implications than the same frequency in the final 30 minutes after a string of losses. Meridian tracks the directional change, not just the level.
+      </p>
+
+      <h2>What Guard can enforce</h2>
+      <ul>
+        <li><strong>Trade count limit per session window</strong> — a hard ceiling on entries per hour or per session, enforced by the software and not subject to in-session rationalization</li>
+        <li><strong>Pace-triggered cooldown</strong> — Guard blocks new entries when the Overtrading Pace signal exceeds a defined threshold, independent of the composite PSI score</li>
+        <li><strong>Cooldown after consecutive losses</strong> — mandatory wait period after N consecutive losing trades, regardless of total session trade count</li>
+        <li><strong>PSI-based entry restriction</strong> — when composite PSI drops below a configured floor (reflecting multiple signals, including Pace, activating simultaneously), Guard blocks entries until PSI recovers</li>
+      </ul>
+
+      <h2>What Meridian does not do</h2>
+      <ul>
+        <li>Does not automatically close or reduce open positions</li>
+        <li>Does not provide signals for when to trade — only data on when your behavioral pattern suggests not to</li>
+        <li>Does not eliminate overtrading — it raises the structural friction around the behavioral patterns that produce it</li>
+        <li>Does not transmit trade data externally</li>
+      </ul>
+
+      <hr />
+
+      <h2>Frequently asked questions</h2>
+      <dl class="space-y-6 not-prose">
+        {faqItems.map(({ q, a }) => (
+          <div>
+            <dt class="font-semibold text-zinc-900 text-[17px] mb-1">{q}</dt>
+            <dd class="text-zinc-600 text-[16px] leading-relaxed">{a}</dd>
+          </div>
+        ))}
+      </dl>
+
+    </div>
+
+    <div class="mt-14 pt-10 border-t border-zinc-100">
+      <div class="flex flex-wrap gap-3">
+        <a href="/pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white" style="background:#059669;">
+          Start 7-day free trial
+        </a>
+        <a href="/features" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border border-zinc-300 text-zinc-700 hover:border-zinc-500 transition-colors">
+          See all PSI signals →
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-zinc-100">
+      <p class="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-3">About Meridian PSI</p>
+      <p class="text-sm text-zinc-500 leading-relaxed">
+        Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.
+      </p>
+      <p class="text-xs text-zinc-400 mt-3">
+        <em>Meridian is not affiliated with NinjaTrader LLC. NinjaTrader® is a registered trademark of NinjaTrader LLC. Trading involves substantial risk of loss. Results may vary.</em>
+      </p>
+    </div>
+
+  </article>
+</Layout>

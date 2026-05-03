@@ -231,39 +231,61 @@ const homePageJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'SoftwareApplication',
+      '@type': 'Organization',
+      '@id': 'https://www.meridianpsi.com/#organization',
       name: 'Meridian',
+      url: 'https://www.meridianpsi.com',
+      logo: 'https://www.meridianpsi.com/meridian-logo.png',
+      description:
+        'Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.',
+      sameAs: [
+        'https://x.com/Meridian_PSI',
+        'https://www.youtube.com/@Meridianpsi1',
+        'https://www.tiktok.com/@meridianpsi',
+        'https://www.instagram.com/meridianpsi/',
+      ],
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Meridian PSI',
       applicationCategory: 'FinanceApplication',
       applicationSubCategory: 'TradingApplication',
       operatingSystem: 'Windows',
+      softwareRequirements: 'NinjaTrader 8',
       description:
-        'Meridian is a real-time psychological stability monitor and automated risk management system for active traders. It tracks seven behavioral signals — including revenge trading, stop manipulation, and overtrading pace — and enforces trading rules automatically through configurable Guard rules. Runs natively inside NinjaTrader 8 with no cloud dependency.',
+        'Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.',
       url: 'https://www.meridianpsi.com',
       offers: pricing.tiers.flatMap(tierToSchemaOffers),
       featureList: [
         'Real-time Psychological Stability Index (PSI)',
         'Seven behavioral signal dimensions',
-        'Automated trading rule enforcement (Guard)',
-        'Revenge trading detection',
-        'Stop manipulation detection',
-        'Overtrading pace monitoring',
+        'Revenge Entry detection',
+        'Stop-Loss Manipulation detection',
+        'Overtrading Pace monitoring',
+        'Size Spike detection',
+        'Rule Violations tracking',
+        'Meridian Guard — automated behavioral enforcement',
+        'Intel Layer analytics',
         'Local-only data storage — no cloud',
         'NinjaTrader 8 native add-on',
         'Prop firm compatible',
       ],
-      softwareRequirements: 'NinjaTrader 8',
-      creator: {
-        '@type': 'Organization',
-        name: 'Meridian',
-        url: 'https://www.meridianpsi.com',
+      releaseNotes: 'https://www.meridianpsi.com/releases',
+      downloadUrl: 'https://www.meridianpsi.com/download',
+      publisher: {
+        '@id': 'https://www.meridianpsi.com/#organization',
       },
     },
     {
       '@type': 'WebSite',
+      '@id': 'https://www.meridianpsi.com/#website',
       name: 'Meridian',
       url: 'https://www.meridianpsi.com',
       description:
         'Real-time psychological stability monitoring and automated risk management for active futures traders using NinjaTrader 8.',
+      publisher: {
+        '@id': 'https://www.meridianpsi.com/#organization',
+      },
     },
   ],
 };

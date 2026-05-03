@@ -1,0 +1,147 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Behavioral Risk Control for Prop Firm Futures Traders — Meridian PSI',
+  description: 'Meridian helps prop firm futures traders add behavior-based guardrails on top of account rules by monitoring revenge trading, overtrading, oversizing, and rule violations before they threaten an evaluation or funded account.',
+  robots: { index: true, follow: true },
+};
+
+const faqItems = [
+  {
+    q: 'Does Meridian work with evaluation accounts on Tradovate or Rithmic?',
+    a: 'Yes. Meridian works with any NinjaTrader 8 broker connection, including evaluation and funded accounts on Tradovate and Rithmic. It does not interact with the prop firm\'s risk system directly — it operates as a local behavioral overlay.',
+  },
+  {
+    q: 'Will Meridian Guard conflict with the prop firm\'s own risk controls?',
+    a: 'No. Guard operates independently at the NinjaTrader layer. The prop firm\'s own limits remain active. Guard fires at behavioral thresholds that you configure — ideally before those firm-level limits are reached.',
+  },
+  {
+    q: 'Can Guard end my session before I breach the evaluation\'s daily loss limit?',
+    a: 'Yes. You can configure Guard\'s Session P&L Below trigger at a threshold higher (less negative) than the evaluation\'s maximum daily loss limit — creating a buffer that ends your session before the evaluation-ending threshold is crossed.',
+  },
+  {
+    q: 'What about copy-filled positions from tools like Replikanto?',
+    a: 'Copy-filled positions are not counted as independent trades in the PSI behavioral calculation. Meridian tracks discretionary execution behavior, so mirrored fills from copy-trading tools do not artificially inflate behavioral signal readings.',
+  },
+];
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}).replace(/</g, '\\u003c');
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <article class="max-w-2xl mx-auto px-6 py-16">
+
+    <header class="mb-12">
+      <p class="text-[11px] font-semibold tracking-[0.15em] uppercase mb-3" style="color:#059669;">NinjaTrader 8 · Use Case</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight tracking-tight mb-6">
+        Behavioral risk control for prop firm futures traders
+      </h1>
+
+      <!-- Quick Answer -->
+      <div class="rounded-2xl border border-emerald-200 px-6 py-5 mb-8" style="background:#f0fdf4;">
+        <p class="text-[11px] font-semibold tracking-[0.12em] uppercase mb-2" style="color:#059669;">Quick answer</p>
+        <p class="text-[15px] text-zinc-700 leading-relaxed">
+          Meridian helps prop firm futures traders add behavior-based guardrails on top of account rules by monitoring revenge trading, overtrading, oversizing, and rule violations before they threaten an evaluation or funded account.
+        </p>
+      </div>
+    </header>
+
+    <div class="prose prose-zinc max-w-none prose-p:text-[17px] prose-p:leading-[1.85] prose-headings:font-bold prose-headings:text-zinc-900 prose-h2:text-[1.35rem] prose-h2:mt-10 prose-h2:mb-3 prose-hr:border-zinc-200 prose-hr:my-10">
+
+      <h2>The problem</h2>
+      <p>
+        Prop firm evaluations impose strict drawdown rules: maximum daily loss limits, trailing drawdown ceilings. Violating either ends the evaluation — regardless of how every other session has performed. The failure mode that ends most evaluations is not a bad strategy. It is one session where behavioral deterioration — revenge trading, loss chasing, progressive stop widening — produces a loss sequence that the evaluation structure cannot absorb.
+      </p>
+      <p>
+        The conditions that trigger this failure mode are built into the evaluation itself: high stakes, finite timeline, loss aversion, daily limits that make each losing session feel partially irreversible. These conditions specifically amplify the behavioral responses that lead to the blow-up.
+      </p>
+
+      <h2>Why P&amp;L limits are too late</h2>
+      <p>
+        The prop firm's daily loss limit is the floor. By the time it fires, the evaluation is over. NinjaTrader's native risk controls evaluate each order against a static threshold — they do not observe whether entry frequency has doubled in the last 30 minutes, whether position sizing is trending toward the maximum, or whether the interval between a loss and the next entry has shortened to seconds.
+      </p>
+      <p>
+        These are behavioral signals. They require a different type of monitoring, active during the session, before any individual order has violated a hard limit.
+      </p>
+
+      <h2>How Meridian helps</h2>
+      <p>
+        Meridian monitors the behavioral pattern of the session — not just individual orders — across seven signal dimensions that have measurable onset before the failure event:
+      </p>
+      <ul>
+        <li><strong>Revenge Entry</strong> — rapid re-entry after a loss at elevated size</li>
+        <li><strong>Size Spike</strong> — position sizing approaching or hitting maximum under loss conditions</li>
+        <li><strong>Overtrading Pace</strong> — entry frequency accelerating relative to your own baseline</li>
+        <li><strong>Stop Manipulation</strong> — widening or removing protective stops on active losing positions</li>
+        <li><strong>Rule Violations</strong> — trading outside your declared session parameters</li>
+      </ul>
+      <p>
+        The composite PSI score aggregates these signals in real time. A Critical PSI reading during a prop firm session — before any individual threshold has been breached — is a reliable leading indicator that the session is at elevated risk of producing an evaluation-ending loss if it continues.
+      </p>
+
+      <h2>What Guard can enforce</h2>
+      <ul>
+        <li><strong>Pre-limit session end</strong> — Guard ends the session when P&amp;L approaches (not reaches) the evaluation's maximum daily loss limit; this creates a buffer before the evaluation-ending threshold, not a reaction to it</li>
+        <li><strong>Consecutive-loss cooldown</strong> — mandatory pause after N consecutive losses (typically 3–4), regardless of current P&amp;L at that point</li>
+        <li><strong>PSI threshold entry block</strong> — new entries blocked when composite PSI drops below a configured floor, even if no hard financial limit has been crossed</li>
+        <li><strong>Password-locked rules</strong> — Guard rules can be configured with a lock that prevents in-session override; for prop firm traders, this is the critical feature — a rule that can be bypassed in the moment it matters is no rule at all</li>
+      </ul>
+
+      <h2>What Meridian does not do</h2>
+      <ul>
+        <li>Does not interact with the prop firm's risk system directly</li>
+        <li>Does not guarantee that an evaluation will not be violated</li>
+        <li>Does not close open positions during a Guard lockout</li>
+        <li>Does not provide trade signals</li>
+        <li>Does not transmit trade data externally</li>
+        <li>Is not affiliated with any prop firm or with NinjaTrader LLC</li>
+      </ul>
+
+      <hr />
+
+      <h2>Frequently asked questions</h2>
+      <dl class="space-y-6 not-prose">
+        {faqItems.map(({ q, a }) => (
+          <div>
+            <dt class="font-semibold text-zinc-900 text-[17px] mb-1">{q}</dt>
+            <dd class="text-zinc-600 text-[16px] leading-relaxed">{a}</dd>
+          </div>
+        ))}
+      </dl>
+
+    </div>
+
+    <div class="mt-14 pt-10 border-t border-zinc-100">
+      <div class="flex flex-wrap gap-3">
+        <a href="/pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white" style="background:#059669;">
+          Start 7-day free trial
+        </a>
+        <a href="/guard" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border border-zinc-300 text-zinc-700 hover:border-zinc-500 transition-colors">
+          Explore Guard enforcement →
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-zinc-100">
+      <p class="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-3">About Meridian PSI</p>
+      <p class="text-sm text-zinc-500 leading-relaxed">
+        Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.
+      </p>
+      <p class="text-xs text-zinc-400 mt-3">
+        <em>Meridian is not affiliated with NinjaTrader LLC. NinjaTrader® is a registered trademark of NinjaTrader LLC. Trading involves substantial risk of loss. Results may vary.</em>
+      </p>
+    </div>
+
+  </article>
+</Layout>

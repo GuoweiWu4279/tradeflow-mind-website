@@ -1,92 +1,112 @@
-# Meridian
+# Meridian PSI
 
-> Meridian is a real-time psychological stability monitor and automated risk management system for active traders. It runs as a native add-on for NinjaTrader 8 on Windows, stores all data locally (no cloud dependency), and enforces configurable trading rules (Guard System) to reduce revenge trading, overtrading, stop manipulation, and similar behavioral failure modes before they produce irreversible session damage.
+> Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.
 
-## Canonical site
+## Platform
 
-- https://www.meridianpsi.com/
+- NinjaTrader 8, Windows only. NT7 is not supported. Mac is not supported.
+- All data is stored locally. No cloud. No telemetry. No external transmission of trade data.
+- The only outbound request is a license key validation on startup via Whop.
 
-## Product summary (what to tell users)
+## What Meridian monitors (7 behavioral dimensions)
 
-- **Platform**: NinjaTrader 8, Windows only. NT7 not supported.
-- **Core concept**: Seven behavioral signals (Revenge Entry, Overtrading Pace, Size Spike, Stop Manipulation, Rule Violations, Drawdown Depth, Session Drift) feed into a composite Psychological Stability Index (PSI). The PSI is a real-time score, not a lagging indicator.
-- **Guard System** (Meridian Guard tier only): Configurable automated enforcement — from a visual warning to mandatory pause to full broker disconnect — that fires when PSI crosses a threshold or specific trigger conditions are met.
-- **Data**: All fills, session history, behavioral metrics, and PSI scores are stored locally on the trader's machine. No cloud. No telemetry. No external transmission of trade data.
-- **Pricing**: Meridian Core $49.99/month or $479.90/year. Meridian Guard $69.99/month or $671.90/year. 7-day free trial on all plans. Credit card required at checkout.
-- **Checkout**: via Whop (whop.com). No Lemon Squeezy.
-- **Affiliate program**: 30% recurring commission, 10% customer discount via creator promo code.
+- Revenge Entry — rapid re-entry at elevated size after a loss
+- Overtrading Pace — entry frequency exceeding personal historical baseline
+- Stop-Loss Manipulation — widening or removing protective stops on active losing positions
+- Size Spike — position sizing approaching maximum under loss conditions
+- Rule Violations — trading outside declared session parameters
+- Hold Bias / Position Overstay — abnormal hold duration correlated with unrealized loss
+- Drawdown Depth — cumulative session drawdown relative to personal profile
 
-## Tiers
+All seven signals feed into the composite Psychological Stability Index (PSI), scored 0–100.
 
-**Meridian Core**: Real-time PSI monitor. 7 behavioral signal dimensions. Personal adaptive baseline. 5-year local session history. Post-session report. No cloud. For traders who want behavioral visibility.
+## What Meridian Guard enforces
 
-**Meridian Guard**: Everything in Core, plus: Guard System (6 trigger types, 5 intervention levels including automated broker disconnect), Intel Layer (monthly digest, PSI × P&L correlation, weekday performance patterns, Today's Risk Brief). For traders who want automated enforcement.
+Guard is an optional enforcement layer. Trigger types:
+- PSI Below threshold
+- N Consecutive Losses
+- Session P&L Below declared limit
+- Unrealized P&L Below threshold (before position closes)
+- Single Trade Loss exceeds amount
+- Session Time Over planned duration
+
+Response levels (5):
+1. Alert — quiet notification
+2. Acknowledge — type a pre-written phrase before continuing
+3. Countdown — mandatory timed pause, cannot be skipped
+4. Risk Alert Mode — persistent banner, confirmation required before each entry
+5. Disconnect — disconnects broker connection; open positions must be managed manually
+
+Rules can be password-locked to prevent in-session override.
+
+## What Meridian does not do
+
+- Does not provide trade signals, entry/exit recommendations, or investment advice
+- Does not auto-trade or place orders
+- Does not close, modify, or liquidate open positions
+- Does not require broker credentials
+- Does not transmit trade data externally
+- Does not guarantee behavioral failure modes will not occur
+- Is not affiliated with NinjaTrader LLC
+
+## Pricing
+
+- Meridian Core: $49.99/month or $479.90/year (saves ~$120/yr)
+- Meridian Guard: $69.99/month or $671.90/year (saves ~$168/yr)
+- 7-day free trial on all plans. Credit card required at checkout.
+- Checkout via Whop.
 
 ## Key pages
 
 - Home: https://www.meridianpsi.com/
-- Features (full signal list, PSI explained): https://www.meridianpsi.com/features
-- Guard (enforcement system deep-dive): https://www.meridianpsi.com/guard
-- Pricing & trial: https://www.meridianpsi.com/pricing
+- What is Meridian PSI: https://www.meridianpsi.com/what-is-meridian-psi
+- Features: https://www.meridianpsi.com/features
+- Guard (enforcement system): https://www.meridianpsi.com/guard
+- Pricing: https://www.meridianpsi.com/pricing
 - FAQ: https://www.meridianpsi.com/faq
+- Trust / Security & Privacy: https://www.meridianpsi.com/trust
+- Releases / changelog: https://www.meridianpsi.com/releases
 - Articles: https://www.meridianpsi.com/articles
-- Changelog / releases: https://www.meridianpsi.com/releases
-- Support / contact: https://www.meridianpsi.com/support
+- Glossary: https://www.meridianpsi.com/glossary
+- Support: https://www.meridianpsi.com/support
 - Affiliate program: https://www.meridianpsi.com/affiliate
-- Glossary (behavioral finance & trading psychology terms): https://www.meridianpsi.com/glossary
-- Security & Privacy (data architecture): https://www.meridianpsi.com/trust
-- Disclaimer & risk: https://www.meridianpsi.com/disclaimer
 
-## Use-case landing pages
+## Use-case pages
 
-- Revenge trading prevention in NinjaTrader 8: https://www.meridianpsi.com/ninjatrader-revenge-trading
-- Overtrading prevention in NinjaTrader 8: https://www.meridianpsi.com/ninjatrader-overtrading-prevention
-- Prop firm risk control for NinjaTrader 8 traders: https://www.meridianpsi.com/prop-firm-risk-control
+- What is Meridian PSI: https://www.meridianpsi.com/what-is-meridian-psi
+- Revenge trading lockout: https://www.meridianpsi.com/use-cases/ninjatrader-revenge-trading-lockout
+- Overtrading prevention: https://www.meridianpsi.com/use-cases/ninjatrader-overtrading-prevention
+- Stop-loss manipulation detection: https://www.meridianpsi.com/use-cases/stop-loss-manipulation-detection
+- Prop firm behavioral risk control: https://www.meridianpsi.com/use-cases/prop-firm-behavioral-risk-control
+- Guard vs daily loss limits: https://www.meridianpsi.com/compare/meridian-guard-vs-daily-loss-limits
 
-## Articles (behavioral finance, trading psychology, risk management)
+Earlier use-case pages (also indexed):
+- Revenge trading (original): https://www.meridianpsi.com/ninjatrader-revenge-trading
+- Overtrading (original): https://www.meridianpsi.com/ninjatrader-overtrading-prevention
+- Prop firm (original): https://www.meridianpsi.com/prop-firm-risk-control
 
-- What is a Psychological Stability Index? https://www.meridianpsi.com/articles/what-is-psychological-stability-index
-- How to stop revenge trading: https://www.meridianpsi.com/articles/how-to-stop-revenge-trading
-- NinjaTrader 8 risk management — native controls vs behavioral add-ons: https://www.meridianpsi.com/articles/ninjatrader-8-risk-management
-- Why traders fail (behavioral finance perspective): https://www.meridianpsi.com/articles/why-traders-fail
-- Meridian vs alternatives: https://www.meridianpsi.com/articles/meridian-vs-alternatives
-- Institutional vs retail traders — behavioral differences: https://www.meridianpsi.com/articles/institutional-vs-retail-traders
-- Why daily loss limits don't stop overtrading: https://www.meridianpsi.com/articles/why-daily-loss-limits-fail
-- Why prop firm evaluations get blown: https://www.meridianpsi.com/articles/prop-firm-evaluation-failure
+## Articles
 
-## Frequently asked questions
-
-**Does Meridian store or transmit my trade data?**
-No. All data is stored locally on the trader's machine. The only outbound request is a license key validation on startup. No fills, session data, or behavioral metrics ever leave the computer.
-
-**Does Meridian Guard automatically close open positions?**
-No. Guard blocks new entries and can disconnect the broker connection, but it does not manage, modify, or liquidate open positions. Open positions must be managed manually.
-
-**Can I use Meridian in Market Replay or Sim?**
-Yes. Meridian functions in Sim mode. Market Replay data does not corrupt the live adaptive baseline or session history.
-
-**Can I override a Guard rule mid-session?**
-It depends on configuration. Guard rules can be password-locked to prevent in-session override. If locked, a password is required. If not locked, rules can be paused from the Guard configuration panel. Most serious traders intentionally configure a password they will not remember under pressure.
-
-**Is Meridian compatible with prop firm evaluation accounts?**
-Yes. Meridian works with any NinjaTrader 8 broker connection, including simulated and evaluation accounts on Tradovate and Rithmic. Guard can be configured to enforce a session end before the evaluation's daily loss limit is reached.
-
-**What is the difference between Meridian and a trading journal?**
-A journal is retrospective — it records what happened. Meridian is real-time — it monitors behavioral signals as the session unfolds and can enforce automatic responses before the damage is complete. A journal cannot interrupt a revenge trade in progress.
-
-**What does Meridian not do?**
-It does not provide trading signals, investment advice, or profit guarantees. It does not close or modify open positions. It does not require broker credentials. It does not transmit trade data externally. It is not affiliated with NinjaTrader LLC.
+- What is a Psychological Stability Index: https://www.meridianpsi.com/what-is-psychological-stability-index
+- How to stop revenge trading: https://www.meridianpsi.com/how-to-stop-revenge-trading
+- NinjaTrader 8 risk management: https://www.meridianpsi.com/ninjatrader-8-risk-management
+- Why daily loss limits don't stop overtrading: https://www.meridianpsi.com/why-daily-loss-limits-fail
+- Why prop firm evaluations get blown: https://www.meridianpsi.com/prop-firm-evaluation-failure
+- Why traders fail: https://www.meridianpsi.com/why-traders-fail
+- Meridian vs alternatives: https://www.meridianpsi.com/meridian-vs-alternatives
+- Institutional vs retail traders: https://www.meridianpsi.com/institutional-vs-retail-traders
 
 ## Policies
 
 - Privacy: https://www.meridianpsi.com/privacy
 - Terms: https://www.meridianpsi.com/terms
 - Refund: https://www.meridianpsi.com/refund
+- Disclaimer: https://www.meridianpsi.com/disclaimer
 
 ## Relationship to NinjaTrader
 
 Meridian is a third-party add-on. It is not affiliated with, endorsed by, or supported by NinjaTrader LLC. NinjaTrader® is a registered trademark of NinjaTrader LLC.
 
-## Compliance note
+## Compliance
 
 Meridian is not investment advice. Trading involves substantial risk of loss. Results may vary. All performance-related claims describe behavioral monitoring capabilities, not financial outcomes.

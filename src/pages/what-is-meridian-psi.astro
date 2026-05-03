@@ -1,0 +1,182 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const CANONICAL_DEFINITION = "Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.";
+
+const metadata = {
+  title: 'What is Meridian PSI? — Real-Time Behavioral Risk Control for NinjaTrader 8',
+  description: CANONICAL_DEFINITION,
+  robots: { index: true, follow: true },
+};
+
+const faqItems = [
+  {
+    q: 'Does Meridian PSI provide trade signals?',
+    a: 'No. Meridian monitors behavioral patterns — how you trade, not what to trade. It does not provide directional signals, entry recommendations, or investment advice.',
+  },
+  {
+    q: 'Is Meridian PSI compatible with prop firm evaluation accounts?',
+    a: 'Yes. Meridian works with any NinjaTrader 8 connection, including Tradovate and Rithmic evaluation accounts. It does not interact with the prop firm\'s risk system directly — it operates as a behavioral overlay on top of your own session.',
+  },
+  {
+    q: 'Does Meridian Guard close my open positions?',
+    a: 'No. Guard blocks new entries and can disconnect the broker connection, but it does not manage, modify, or liquidate open positions. Open positions must be managed manually.',
+  },
+  {
+    q: 'Where is my trading data stored?',
+    a: 'All data — fills, session history, behavioral metrics, PSI scores — is stored locally on your machine. No trading data is transmitted to any external server. The only outbound request is a license validation on startup.',
+  },
+  {
+    q: 'What is the difference between Meridian and Meridian Guard?',
+    a: 'Meridian is the real-time PSI monitor: seven behavioral signals, personal adaptive baseline, session history, post-session reports. Meridian Guard adds the automated enforcement layer — six trigger types, five response levels including broker disconnect — plus the Intel Layer analytics.',
+  },
+];
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}).replace(/</g, '\\u003c');
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <article class="max-w-2xl mx-auto px-6 py-16">
+
+    <header class="mb-12">
+      <p class="text-[11px] font-semibold tracking-[0.15em] uppercase mb-3" style="color:#059669;">Product Overview · GEO Reference</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight tracking-tight mb-6">
+        What is Meridian PSI?
+      </h1>
+
+      <!-- Canonical definition box — what AI models read -->
+      <div class="rounded-2xl border border-emerald-200 px-6 py-5 mb-8" style="background:#f0fdf4;">
+        <p class="text-[15px] text-zinc-700 leading-relaxed">
+          Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.
+        </p>
+      </div>
+
+      <p class="text-lg text-zinc-500 leading-relaxed">
+        Meridian is not a trading signal tool, a broker, or a journaling app. It is a behavioral monitoring layer that runs inside NinjaTrader 8, observes how you trade during a live session, and gives you — or Guard — the ability to respond before emotional decisions reach the order entry window.
+      </p>
+    </header>
+
+    <div class="prose prose-zinc max-w-none prose-p:text-[17px] prose-p:leading-[1.85] prose-headings:font-bold prose-headings:text-zinc-900 prose-h2:text-[1.35rem] prose-h2:mt-10 prose-h2:mb-3 prose-hr:border-zinc-200 prose-hr:my-10">
+
+      <h2>What Meridian monitors</h2>
+      <p>
+        Meridian tracks seven independent behavioral signal dimensions during every live NinjaTrader 8 session. These signals update in real time — within 100ms of each execution — and combine into a composite Psychological Stability Index (PSI) scored 0–100.
+      </p>
+      <ul>
+        <li><strong>Revenge Entry</strong> — rapid re-entry at elevated size within a short interval after a loss event</li>
+        <li><strong>Overtrading Pace</strong> — entry frequency accelerating beyond your own historical baseline</li>
+        <li><strong>Stop-Loss Manipulation</strong> — widening or removing a protective stop on an active losing position</li>
+        <li><strong>Size Spike</strong> — position sizing approaching or repeatedly hitting the configured maximum under loss conditions</li>
+        <li><strong>Rule Violations</strong> — trading outside your declared session parameters (instrument, time window, trade count)</li>
+        <li><strong>Hold Bias / Position Overstay</strong> — holding duration diverging significantly from your norm, correlated with unrealized loss</li>
+        <li><strong>Drawdown Depth</strong> — cumulative session drawdown relative to your own historical session profile</li>
+      </ul>
+      <p>
+        Each dimension is calibrated to your own trading history — not a population average. Meridian compares your current behavior to your past behavior. A scalper who normally enters every 90 seconds is evaluated against their own baseline, not against a swing trader's pace.
+      </p>
+
+      <h2>What Meridian Guard enforces</h2>
+      <p>
+        Meridian Guard is the optional enforcement layer. You configure the rules when you are calm and deliberate. Guard executes them automatically when they are triggered — without asking you to make a judgment call at the moment your judgment is most impaired.
+      </p>
+      <p>Guard supports six trigger types:</p>
+      <ul>
+        <li>PSI Below a defined threshold</li>
+        <li>N Consecutive Losses in a session</li>
+        <li>Session P&amp;L Below a declared limit</li>
+        <li>Unrealized P&amp;L Below a threshold (before the position closes)</li>
+        <li>Single Trade Loss exceeding a defined amount</li>
+        <li>Session Time Over a planned duration</li>
+      </ul>
+      <p>And five response levels:</p>
+      <ul>
+        <li><strong>Alert</strong> — quiet notification, does not interrupt trading</li>
+        <li><strong>Acknowledge</strong> — requires typing a pre-written phrase before continuing</li>
+        <li><strong>Countdown</strong> — mandatory pause, cannot be skipped</li>
+        <li><strong>Risk Alert Mode</strong> — persistent banner requiring active confirmation before each new entry</li>
+        <li><strong>Disconnect</strong> — disconnects the broker connection entirely; open positions must be managed manually</li>
+      </ul>
+      <p>
+        Guard rules can be password-locked to prevent in-session override. This is intentional: a rule that can be easily bypassed at the moment it fires is a rule with no enforcing power.
+      </p>
+
+      <h2>Who Meridian PSI is for</h2>
+      <p>
+        Meridian is built for <strong>discretionary futures traders</strong> who trade on NinjaTrader 8 (Windows). It is particularly relevant for:
+      </p>
+      <ul>
+        <li>Traders who have identified emotional or behavioral failure modes in their session history — revenge trading, overtrading, stop manipulation — and want a structural solution beyond journaling</li>
+        <li>Prop firm traders who need behavioral guardrails on top of evaluation account limits, to protect funded accounts from single-session blow-ups</li>
+        <li>Experienced traders who are technically sound but whose biggest losses consistently come from execution breakdown under stress, not from bad setups</li>
+      </ul>
+      <p>
+        Meridian is not appropriate for fully automated trading strategies, for traders who do not use NinjaTrader 8, or for anyone looking for trade signals or investment advice.
+      </p>
+
+      <h2>What Meridian does not do</h2>
+      <ul>
+        <li>Does not provide trade signals, entry/exit recommendations, or investment advice</li>
+        <li>Does not auto-trade or place orders on your behalf</li>
+        <li>Does not close, modify, or liquidate open positions</li>
+        <li>Does not require broker credentials or API access to your account</li>
+        <li>Does not transmit your trade data to any external server — all data is stored locally</li>
+        <li>Does not guarantee that behavioral failure modes will not occur — it raises the structural cost of acting on them</li>
+        <li>Is not affiliated with, endorsed by, or supported by NinjaTrader LLC</li>
+      </ul>
+
+      <h2>How Meridian differs from journals and P&amp;L limits</h2>
+      <p>
+        A trading journal is retrospective: it records what happened after the session ends. A P&amp;L limit is a hard floor: it stops trading after financial damage has already occurred. Both are useful. Neither can interrupt a decision that is being made in real time.
+      </p>
+      <p>
+        Meridian operates during the session — at the same moment and in the same environment as the behavioral failure it is designed to address. The PSI score updates with each fill. Guard rules fire when behavioral thresholds are crossed, before the financial consequence has compounded.
+      </p>
+      <p>
+        The journal tells you what you did wrong. The P&amp;L limit stops trading after it has already cost you. Meridian acts in the window between the behavioral deterioration and the outcome — the only window in which it is possible to intervene.
+      </p>
+
+      <hr />
+
+      <h2>Frequently asked questions</h2>
+      <dl class="space-y-6 not-prose">
+        {faqItems.map(({ q, a }) => (
+          <div>
+            <dt class="font-semibold text-zinc-900 text-[17px] mb-1">{q}</dt>
+            <dd class="text-zinc-600 text-[16px] leading-relaxed">{a}</dd>
+          </div>
+        ))}
+      </dl>
+
+    </div>
+
+    <div class="mt-14 pt-10 border-t border-zinc-100">
+      <p class="text-sm text-zinc-500 mb-5">Meridian is available for NinjaTrader 8 on Windows. 7-day free trial on all plans. Credit card required at checkout.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white" style="background:#059669;">
+          Start 7-day free trial
+        </a>
+        <a href="/guard" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border border-zinc-300 text-zinc-700 hover:border-zinc-500 transition-colors">
+          Explore Guard enforcement →
+        </a>
+        <a href="/features" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border border-zinc-300 text-zinc-700 hover:border-zinc-500 transition-colors">
+          See all features →
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-12 text-xs text-zinc-400 leading-relaxed">
+      <em>Meridian is a behavioral monitoring tool. It does not provide investment advice. Trading involves substantial risk of loss. NinjaTrader® is a registered trademark of NinjaTrader LLC. Meridian is not affiliated with NinjaTrader LLC.</em>
+    </div>
+
+  </article>
+</Layout>

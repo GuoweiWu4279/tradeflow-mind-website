@@ -96,6 +96,17 @@ export const footerData = {
       ],
     },
     {
+      title: 'Use Cases',
+      links: [
+        { text: 'What is Meridian PSI?', href: getPermalink('/what-is-meridian-psi') },
+        { text: 'Revenge Trading Lockout', href: getPermalink('/use-cases/ninjatrader-revenge-trading-lockout') },
+        { text: 'Overtrading Prevention', href: getPermalink('/use-cases/ninjatrader-overtrading-prevention') },
+        { text: 'Stop-Loss Manipulation', href: getPermalink('/use-cases/stop-loss-manipulation-detection') },
+        { text: 'Prop Firm Risk Control', href: getPermalink('/use-cases/prop-firm-behavioral-risk-control') },
+        { text: 'Guard vs Daily Loss Limits', href: getPermalink('/compare/meridian-guard-vs-daily-loss-limits') },
+      ],
+    },
+    {
       title: 'Legal',
       links: [
         { text: 'Risk Disclaimer', href: getPermalink('/disclaimer') },

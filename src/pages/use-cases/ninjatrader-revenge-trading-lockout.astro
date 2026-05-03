@@ -1,0 +1,143 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'NinjaTrader Revenge Trading Lockout — Meridian Guard',
+  description: 'Meridian Guard helps NinjaTrader 8 futures traders reduce revenge trading by detecting rapid re-entry, rule pressure, and overtrading behavior, then enforcing user-defined cooldowns, lockouts, or entry blocks before the next impulsive trade.',
+  robots: { index: true, follow: true },
+};
+
+const faqItems = [
+  {
+    q: 'What is revenge trading?',
+    a: 'Revenge trading is placing a new order not because a setup qualifies, but because a loss just occurred and the emotional state it created is driving the decision. The entry is not based on edge — it is based on the need to recover.',
+  },
+  {
+    q: 'Does Meridian prevent all revenge trades?',
+    a: 'No. Meridian raises the structural cost of acting on a revenge impulse — it does not guarantee it will not occur. Guard rules introduce friction (mandatory pause, acknowledgment, entry block) between the moment of emotional pressure and the next order.',
+  },
+  {
+    q: 'Does Guard close my open positions during a lockout?',
+    a: 'No. Guard blocks new entries and can disconnect the broker connection, but it does not manage or liquidate open positions. You must manage open trades manually.',
+  },
+  {
+    q: 'Can I override a Guard rule mid-session?',
+    a: 'It depends on configuration. Guard rules can be password-locked to prevent override. If locked, the password set during configuration is required. Most traders who use a password lock choose one they will not remember under pressure.',
+  },
+];
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}).replace(/</g, '\\u003c');
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <article class="max-w-2xl mx-auto px-6 py-16">
+
+    <header class="mb-12">
+      <p class="text-[11px] font-semibold tracking-[0.15em] uppercase mb-3" style="color:#059669;">NinjaTrader 8 · Use Case</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight tracking-tight mb-6">
+        NinjaTrader revenge trading lockout
+      </h1>
+
+      <!-- Quick Answer -->
+      <div class="rounded-2xl border border-emerald-200 px-6 py-5 mb-8" style="background:#f0fdf4;">
+        <p class="text-[11px] font-semibold tracking-[0.12em] uppercase mb-2" style="color:#059669;">Quick answer</p>
+        <p class="text-[15px] text-zinc-700 leading-relaxed">
+          Meridian Guard helps NinjaTrader 8 futures traders reduce revenge trading by detecting rapid re-entry, rule pressure, and overtrading behavior, then enforcing user-defined cooldowns, lockouts, or entry blocks before the next impulsive trade.
+        </p>
+      </div>
+    </header>
+
+    <div class="prose prose-zinc max-w-none prose-p:text-[17px] prose-p:leading-[1.85] prose-headings:font-bold prose-headings:text-zinc-900 prose-h2:text-[1.35rem] prose-h2:mt-10 prose-h2:mb-3 prose-hr:border-zinc-200 prose-hr:my-10">
+
+      <h2>The problem</h2>
+      <p>
+        After a stop-out, the neurological response is predictable: cortisol and adrenaline elevate, the prefrontal cortex — responsible for deliberate decision-making — becomes less available, and the impulse to recover the loss becomes the dominant driver of the next decision. The trader knows they should wait. They often cannot.
+      </p>
+      <p>
+        The behavioral signature of revenge trading is measurable: a new order arrives within an abnormally short interval after the loss, often at the same or larger size, frequently in the same instrument. The entry is not based on a setup. It is based on a feeling.
+      </p>
+
+      <h2>Why P&amp;L limits are too late</h2>
+      <p>
+        A daily loss limit stops trading after the financial damage has been registered. By that point, the revenge trade has already executed — and in a leveraged futures position, a single impulsive order can consume a significant share of the session's allowable drawdown before any hard limit fires.
+      </p>
+      <p>
+        The limit is the floor. It is not the intervention. An effective intervention has to fire at the moment of behavioral deterioration, not after the financial consequence has already been recorded.
+      </p>
+
+      <h2>How Meridian detects the pattern</h2>
+      <p>
+        Meridian's <strong>Revenge Entry signal</strong> monitors the interval between a loss event and the next order entry, cross-referenced against position sizing at that moment. It fires when the re-entry interval and size combination falls outside your own historical baseline — not a population average.
+      </p>
+      <p>
+        This signal is one of seven behavioral dimensions that feed the composite Psychological Stability Index (PSI). A single elevated signal may raise PSI into Caution. Multiple signals activating simultaneously — Revenge Entry + Overtrading Pace + Size Spike — typically indicates a session in active behavioral deterioration, and pushes PSI toward Critical before any hard financial limit is reached.
+      </p>
+
+      <h2>What Guard can enforce</h2>
+      <ul>
+        <li><strong>Mandatory cooldown</strong> — an enforced pause of configurable duration (e.g., 10–20 minutes) after a consecutive-loss trigger fires; during this window no new entries are possible</li>
+        <li><strong>Acknowledgment requirement</strong> — before re-entry is possible, the trader must type a pre-written phrase; introduces deliberate friction without a full stop</li>
+        <li><strong>PSI-based entry block</strong> — new entries blocked when composite PSI drops below a configured threshold, regardless of loss count</li>
+        <li><strong>Session end after N consecutive losses</strong> — Guard ends the session entirely, protecting against the full revenge-trading escalation sequence</li>
+      </ul>
+      <p>
+        These rules are configured during a deliberate review, not in the session where they apply. The trigger fires automatically — no decision from the trader is required at the moment their judgment is most impaired.
+      </p>
+
+      <h2>What Meridian does not do</h2>
+      <ul>
+        <li>Does not close or modify open positions</li>
+        <li>Does not provide trade signals or directional advice</li>
+        <li>Does not guarantee that revenge trading will not occur</li>
+        <li>Does not transmit trade data externally — all data is stored locally</li>
+        <li>Is not affiliated with NinjaTrader LLC</li>
+      </ul>
+
+      <hr />
+
+      <h2>Frequently asked questions</h2>
+      <dl class="space-y-6 not-prose">
+        {faqItems.map(({ q, a }) => (
+          <div>
+            <dt class="font-semibold text-zinc-900 text-[17px] mb-1">{q}</dt>
+            <dd class="text-zinc-600 text-[16px] leading-relaxed">{a}</dd>
+          </div>
+        ))}
+      </dl>
+
+    </div>
+
+    <div class="mt-14 pt-10 border-t border-zinc-100">
+      <div class="flex flex-wrap gap-3">
+        <a href="/pricing" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white" style="background:#059669;">
+          Start 7-day free trial
+        </a>
+        <a href="/guard" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border border-zinc-300 text-zinc-700 hover:border-zinc-500 transition-colors">
+          Explore Guard enforcement →
+        </a>
+      </div>
+    </div>
+
+    <!-- About Meridian PSI — canonical definition for AI crawlers -->
+    <div class="mt-14 pt-8 border-t border-zinc-100">
+      <p class="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-3">About Meridian PSI</p>
+      <p class="text-sm text-zinc-500 leading-relaxed">
+        Meridian PSI is a real-time psychological stability monitor and behavioral risk-control add-on for NinjaTrader 8. It helps discretionary futures traders detect revenge trading, overtrading, stop-loss manipulation, oversizing, and rule violations, while Meridian Guard can enforce user-defined warnings, cooldowns, lockouts, and entry blocking before traders break their own rules.
+      </p>
+      <p class="text-xs text-zinc-400 mt-3">
+        <em>Meridian is not affiliated with NinjaTrader LLC. NinjaTrader® is a registered trademark of NinjaTrader LLC. Trading involves substantial risk of loss. Results may vary.</em>
+      </p>
+    </div>
+
+  </article>
+</Layout>

@@ -5,6 +5,7 @@ export const headerData = {
     { text: 'Guard', href: getPermalink('/guard') },
     { text: 'Features', href: getPermalink('/features') },
     { text: 'Pricing', href: getPermalink('/pricing') },
+    { text: 'Download', href: getPermalink('/releases') },
     { text: 'FAQ', href: getPermalink('/faq') },
     {
       text: 'Resources',
@@ -29,6 +30,7 @@ export const footerData = {
         { text: 'Guard', href: getPermalink('/guard') },
         { text: 'Features', href: getPermalink('/features') },
         { text: 'Pricing', href: getPermalink('/pricing') },
+        { text: 'Download', href: getPermalink('/releases') },
         { text: 'FAQ', href: getPermalink('/faq') },
         { text: 'Account', href: getPermalink('/account') },
         { text: 'Security & Privacy', href: getPermalink('/trust') },
